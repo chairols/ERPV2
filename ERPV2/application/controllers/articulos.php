@@ -27,10 +27,10 @@ class Articulos extends CI_Controller {
         
         $data['articulos'] = $this->articulos_model->gets();
         
-        $this->load->view('layout/header_datatable', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('articulos/index');
-        $this->load->view('layout/footer_datatable');
+        $this->load->view('layout/footer');
     }
     
     public function agregar() {
