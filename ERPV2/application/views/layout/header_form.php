@@ -1,35 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="shortcut icon" href="images/icon.png">
+   <meta charset="utf-8" />
+   <title><?=$title?></title>
+   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+   <meta content="" name="description" />
+   <meta content="Mosaddek" name="author" />
+   <link href="/assets/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+   <link href="/assets/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+   <link href="/assets/assets/bootstrap/css/bootstrap-fileupload.css" rel="stylesheet" />
+   <link href="/assets/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+   <link href="/assets/css/style.css" rel="stylesheet" />
+   <link href="/assets/css/style-responsive.css" rel="stylesheet" />
+   <link href="/assets/css/style-default.css" rel="stylesheet" id="style_color" />
+   
+   <link href="/assets/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+   <link rel="stylesheet" type="text/css" href="/assets/assets/uniform/css/uniform.default.css" />
+   
+   <link rel="stylesheet" type="text/css" href="/assets/assets/chosen-bootstrap/chosen/chosen.css" />
+   <link rel="stylesheet" type="text/css" href="/assets/assets/jquery-tags-input/jquery.tagsinput.css" />
+   <link rel="stylesheet" type="text/css" href="/assets/assets/clockface/css/clockface.css" />
+   <link rel="stylesheet" type="text/css" href="/assets/assets/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+   <link rel="stylesheet" type="text/css" href="/assets/assets/bootstrap-datepicker/css/datepicker.css" />
+   <link rel="stylesheet" type="text/css" href="/assets/assets/bootstrap-timepicker/compiled/timepicker.css" />
+   <link rel="stylesheet" type="text/css" href="/assets/assets/bootstrap-colorpicker/css/colorpicker.css" />
+   <link rel="stylesheet" href="/assets/assets/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" />
+   <link rel="stylesheet" type="text/css" href="/assets/assets/bootstrap-daterangepicker/daterangepicker.css" />
+   
+   <link href="/assets/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
+   <link href="/assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+   
+   
+   
 
-	<title>Flat Dream</title>
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Raleway:300,200,100' rel='stylesheet' type='text/css'>
-
-	<!-- Bootstrap core CSS -->
-        <link href="/assets/flatdream/js/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="/assets/flatdream/js/jquery.gritter/css/jquery.gritter.css" />
-	<link rel="stylesheet" href="/assets/flatdream/fonts/font-awesome-4/css/font-awesome.min.css">
-
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	  <script src="../../assets/js/html5shiv.js"></script>
-	  <script src="../../assets/js/respond.min.js"></script>
-	<![endif]-->
-	<link rel="stylesheet" type="text/css" href="/assets/flatdream/js/jquery.nanoscroller/nanoscroller.css" />
-
-  <link rel="stylesheet" type="text/css" href="/assets/flatdream/js/bootstrap.switch/bootstrap-switch.css" />
-<link rel="stylesheet" type="text/css" href="/assets/flatdream/js/bootstrap.datetimepicker/css/bootstrap-datetimepicker.min.css" />
-<link rel="stylesheet" type="text/css" href="/assets/datepicker/css/datepicker.css" />
-
-<link rel="stylesheet" type="text/css" href="/assets/flatdream/js/jquery.select2/select2.css" />
-<link rel="stylesheet" type="text/css" href="/assets/flatdream/js/bootstrap.slider/css/slider.css" />
-<link href="/assets/flatdream/js/jquery.icheck/skins/flat/green.css" rel="stylesheet">  
-	<link href="/assets/flatdream/css/style.css" rel="stylesheet" />	
-    
 </head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="fixed-top">
+   <!-- BEGIN HEADER -->
+   <div id="header" class="navbar navbar-inverse navbar-fixed-top">
+       <!-- BEGIN TOP NAVIGATION BAR -->
+       <div class="navbar-inner">
+           <div class="container-fluid">
+               <!--BEGIN SIDEBAR TOGGLE-->
+               <div class="sidebar-toggle-box hidden-phone">
+                   <div class="icon-reorder"></div>
+               </div>
+               <!--END SIDEBAR TOGGLE-->
+               <!-- BEGIN LOGO -->
+               <a class="brand" href="index.html">
+                   <img src="/assets/img/logo.png" alt="Metro Lab" />
+               </a>
+               <!-- END LOGO -->
+               <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+               <a class="btn btn-navbar collapsed" id="main_menu_trigger" data-toggle="collapse" data-target=".nav-collapse">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="arrow"></span>
+               </a>
+               <!-- END RESPONSIVE MENU TOGGLER -->
+               <div class="top-nav ">
+                   <ul class="nav pull-right top-menu" >
+                       <!-- BEGIN USER LOGIN DROPDOWN -->
+                       <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                               <img src="/assets/img/avatar1_small.jpg" alt="">
+                               <span class="username"><?=$session['nombre']?> <?=$session['apellido']?></span>
+                               <b class="caret"></b>
+                           </a>
+                           <ul class="dropdown-menu extended logout">
+                               <li><a href="/usuarios/perfil/"><i class="icon-user"></i> Perfil</a></li>
+                               <li><a href="/usuarios/logout/"><i class="icon-key"></i> Log Out</a></li>
+                           </ul>
+                       </li>
+                       <!-- END USER LOGIN DROPDOWN -->
+                   </ul>
+                   <!-- END TOP NAVIGATION MENU -->
+               </div>
+           </div>
+       </div>
+       <!-- END TOP NAVIGATION BAR -->
+   </div>
+   <!-- END HEADER -->

@@ -11,7 +11,8 @@ class Usuarios_model extends CI_Model {
                                         usuario,
                                         nombre,
                                         apellido,
-                                        correo
+                                        correo,
+                                        tipo_usuario
                                     FROM
                                         usuarios
                                     WHERE

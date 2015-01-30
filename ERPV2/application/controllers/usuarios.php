@@ -30,7 +30,8 @@ class Usuarios extends CI_Controller {
                     'usuario' => $usuario['usuario'],
                     'nombre' => $usuario['nombre'],
                     'apellido' => $usuario['apellido'],
-                    'correo' => $usuario['correo']
+                    'correo' => $usuario['correo'],
+                    'tipo_usuario' => $usuario['tipo_usuario']
                 );
                 $this->session->set_userdata($datos);
                 redirect('/dashboard/', 'refresh');

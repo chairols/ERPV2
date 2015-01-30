@@ -1,54 +1,43 @@
-<div class="col-md-4 col-sm-6">
-    <div class="fd-tile detail tile-purple">
-        <div class="content">
-            <h1 class="text-left"><?=count($ots_pendientes)?></h1>
-            <p>Órdenes de Trabajo Pendientes</p>
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <h3 class="page-title">
+                    <?=$segmento?>
+                </h3>
+            </div>
         </div>
-        <div class="icon">
-            <i class="fa fa-cogs"></i>
+        
+        <div class="row-fluid">
+            <div class="metro-nav metro-fix-view">
+                <div class="metro-nav-block nav-block-purple double">
+                    <a data-original-title="" href="/ots/pendientes/">
+                        <span class="value">
+                            <i class="icon-cogs"></i>
+                            <div class="info"><?=count($ots_pendientes)?></div>
+                            <div class="status">Órdenes de Trabajo Pendientes</div>
+                        </span>
+                    </a>
+                </div>
+                <div class="metro-nav-block nav-block-red double">
+                    <a data-original-title="" href="/ots/vencidas/">
+                        <span class="value">
+                            <i class="icon-cogs"></i>
+                            <div class="info"><?=count($ots_vencidas)?></div>
+                            <div class="status">Órdenes de Trabajo Vencidas</div>
+                        </span>
+                    </a>
+                </div>
+                <div class="metro-nav-block nav-block-green double">
+                    <a data-original-title="" href="#">
+                        <span class="value">
+                            <i class="icon-cogs"></i>
+                            <div class="info"><?=count($ots_cumplidas)?></div>
+                            <div class="status">Órdenes de Trabajo Cumplidas</div>
+                        </span>
+                    </a>
+                </div>
+            </div>
         </div>
-        <a class="details" href="/ots/pendientes/">
-            DETALLES
-            <span>
-                <i class="fa fa-arrow-circle-right pull-right"></i>
-            </span>
-        </a>
-    </div>
-</div>
-
-
-<div class="col-md-4 col-sm-6">
-    <div class="fd-tile detail tile-red">
-        <div class="content">
-            <h1 class="text-left"><?=count($ots_vencidas)?></h1>
-            <p>Órdenes de trabajo Vencidas</p>
-        </div>
-        <div class="icon">
-            <i class="fa fa-cogs"></i>
-        </div>
-        <a class="details" href="/ots/vencidas/">
-            DETALLES
-            <span>
-                <i class="fa fa-arrow-circle-right pull-right"></i>
-            </span>
-        </a>
-    </div>
-</div>
-
-<div class="col-md-4 col-sm-6">
-    <div class="fd-tile detail tile-lemon">
-        <div class="content">
-            <h1 class="text-left"><?=count($ots_cumplidas);?></h1>
-            <p>Órdenes de Trabajo Cumplidas</p>
-        </div>
-        <div class="icon">
-            <i class="fa fa-cogs"></i>
-        </div>
-        <a class="details" href="#">
-            DETALLES
-            <span>
-                <i class="fa fa-arrow-circle-right pull-right"></i>
-            </span>
-        </a>
     </div>
 </div>

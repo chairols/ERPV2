@@ -27,10 +27,10 @@ class Dashboard extends CI_Controller {
         $data['ots_vencidas'] = $this->ots_model->gets_vencidas();
         
         
-        $this->load->view('layout/header_form', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('dashboard/index');
-        $this->load->view('layout/footer_form');
+        $this->load->view('layout/footer');
     }
 }
 
