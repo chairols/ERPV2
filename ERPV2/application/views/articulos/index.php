@@ -12,9 +12,9 @@
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li class="active"><a href="/articulos/">Listar Artículos</a></li>
                 <li><a href="/articulos/agregar/">Agregar Artículos</a></li>
-                <li><a href="/articulos/modificar/">Modificar artículo</a></li>
-                <li><a href="/articulos/ver/">Ver artículo</a></li>
-                <li><a href="/articulos/borrados/">Artículos borrados</a></li>
+                <li><a href="/articulos/modificar/">Modificar Artículo</a></li>
+                <li><a href="/articulos/ver/">Ver Artículo</a></li>
+                <li><a href="/articulos/borrados/">Artículos Borrados</a></li>
             </ul>
             
             <div class="row-fluid">

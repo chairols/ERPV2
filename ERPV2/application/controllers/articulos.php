@@ -106,10 +106,10 @@ class Articulos extends CI_Controller {
             }
         }
         
-        $this->load->view('layout/header_form', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('articulos/agregar');
-        $this->load->view('layout/footer_form');
+        $this->load->view('layout/footer');
     }
     
     public function modificar($idarticulo = null) {

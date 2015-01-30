@@ -1,89 +1,63 @@
 <!DOCTYPE html>
-<html lang="es">
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="shortcut icon" href="images/favicon.html">
-
-	<title>Login</title>
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Raleway:300,200,100' rel='stylesheet' type='text/css'>
-
-	<!-- Bootstrap core CSS -->
-        <link href="/assets/flatdream/js/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-
-	<link rel="stylesheet" href="/assets/flatdream/fonts/font-awesome-4/css/font-awesome.min.css">
-
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	  <script src="../../assets/js/html5shiv.js"></script>
-	  <script src="../../assets/js/respond.min.js"></script>
-	<![endif]-->
-
-	<!-- Custom styles for this template -->
-	<link href="/assets/flatdream/css/style.css" rel="stylesheet" />	
-
+   <meta charset="utf-8" />
+   <title>Login</title>
+   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+   <meta content="" name="description" />
+   <meta content="" name="author" />
+   <link href="/assets/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+   <link href="/assets/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+   <link href="/assets/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+   <link href="/assets/css/style.css" rel="stylesheet" />
+   <link href="/assets/css/style-responsive.css" rel="stylesheet" />
+   <link href="/assets/css/style-default.css" rel="stylesheet" id="style_color" />
 </head>
-
-<body class="texture">
-
-<div id="cl-wrapper" class="login-container">
-
-	<div class="middle-login">
-		<div class="block-flat">
-			<div class="header">							
-				<h3 class="text-center"><img class="logo-img" src="/assets/flatdream/images/logo.png" alt="logo"/></h3>
-			</div>
-			<div>
-				<form style="margin-bottom: 0px !important;" class="form-horizontal" method="post">
-					<div class="content">
-						<h4 class="title">Acceso a Usuarios</h4>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                                                <input type="text" placeholder="Usuario" id="username" class="form-control" name="usuario" autofocus>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-										<input type="password" placeholder="Contraseña" id="password" class="form-control" name="password">
-									</div>
-								</div>
-							</div>
-							
-					</div>
-					<div class="foot">
-						<button class="btn btn-primary" data-dismiss="modal" type="submit">Entrar</button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="text-center out-links"><a href="#">&copy; 2014 Roller Service S.A.</a></div>
-	</div> 
-	
-</div>
-
-<script src="/assets/flatdream/js/jquery.js"></script>
-	<script type="text/javascript">
-    $(function(){
-      $("#cl-wrapper").css({opacity:1,'margin-left':0});
-    });
-  </script>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-  <script src="/assets/flatdream/js/behaviour/voice-commands.js"></script>
-  <script src="/assets/flatdream/js/bootstrap/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/assets/flatdream/js/jquery.flot/jquery.flot.js"></script>
-<script type="text/javascript" src="/assets/flatdream/js/jquery.flot/jquery.flot.pie.js"></script>
-<script type="text/javascript" src="/assets/flatdream/js/jquery.flot/jquery.flot.resize.js"></script>
-<script type="text/javascript" src="/assets/flatdream/js/jquery.flot/jquery.flot.labels.js"></script>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="lock">
+    <div class="lock-header">
+        <!-- BEGIN LOGO -->
+        <a class="center" id="logo" href="/usuarios/login">
+            <img class="center" alt="logo" src="/assets/img/logo.png">
+        </a>
+        <!-- END LOGO -->
+    </div>
+    <div class="login-wrap">
+        <form method="post">
+            <div class="metro single-size red">
+                <div class="locked">
+                    <i class="icon-lock"></i>
+                    <span>Login</span>
+                </div>
+            </div>
+            <div class="metro double-size green">
+                <div class="input-append lock-input">
+                    <input type="text" name="usuario" class="" placeholder="Usuario" required autofocus>
+                </div>
+            </div>
+            <div class="metro double-size yellow">
+                <div class="input-append lock-input">
+                    <input type="password" name="password" class="" placeholder="Contraseña" required>
+                </div>
+            </div>
+            <div class="metro single-size terques login">
+                <button type="submit" class="btn login-btn">
+                    Ingresar
+                    <i class=" icon-long-arrow-right"></i>
+                </button>
+            </div>
+        </form>
+        
+        <div class="login-footer">
+            <div class="forgot-hint pull-right">
+                <a id="forget-password" class="" href="javascript:;">Olvidó su contraseña?</a>
+            </div>
+        </div>
+    </div>
 </body>
+<!-- END BODY -->
 </html>

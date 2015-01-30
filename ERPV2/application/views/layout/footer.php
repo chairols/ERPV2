@@ -53,6 +53,8 @@
    
    <script src="/assets/assets/jquery-tags-input/jquery.tagsinput.min.js"></script>
    
+   <script type="text/javascript" src="/assets/assets/select2/select2.min.js"></script>
+   
    <script type="text/javascript">
        inicio();
    </script>
