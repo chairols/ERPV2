@@ -21,7 +21,7 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="sub-menu<?=($segmento=='articulos'||$segmento=='clientes'||$segmento=='fabricas')?" active":""?>">
+            <li class="sub-menu<?=($segmento=='articulos'||$segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos')?" active":""?>">
                 <a href="javascript:;" class="">
                     <i class="icon-file"></i>
                     <span>Maestros</span>
@@ -31,6 +31,7 @@
                     <li<?=($segmento=='articulos')?" class='active'":""?>><a class="" href="/articulos/">Artículos</a></li>
                     <li<?=($segmento=='clientes')?" class='active'":""?>><a class="" href="/clientes/">Clientes</a></li>
                     <li<?=($segmento=='fabricas')?" class='active'":""?>><a class="" href="/fabricas/">Fábricas</a></li>
+                    <li<?=($segmento=='insumos')?" class='active'":""?>><a class="" href="/insumos/">Insumos</a></li>
                 </ul>
             </li>
               <?php
