@@ -3,7 +3,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <h3 class="page-title">
-                    <?=$segmento?>
+                    <?=$title?>
                 </h3>
             </div>
         </div>

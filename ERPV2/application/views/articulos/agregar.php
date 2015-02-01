@@ -3,7 +3,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <h3 class="page-title">
-                    <?=$segmento?>
+                    <?=$title?>
                 </h3>
             </div>
         </div>
@@ -50,7 +50,7 @@
                             <div class="control-group">
                                 <label class="control-label">Producto</label>
                                 <div class="controls">
-                                    <select name="producto" id="select2" class="input-xlarge">
+                                    <select name="producto" class="select2 input-xlarge">
                                         <?php foreach($productos as $producto) { ?>
                                         <option value="<?=$producto['idproducto']?>"><?=$producto['producto']?></option>
                                         <?php } ?>
@@ -93,21 +93,3 @@
         
     </div>
 </div>
-
-
-<div class="block-flat">
-    <form role="form" method="post" enctype="multipart/form-data">
-       
-
-
-
-        <button type="submit" class="btn btn-primary">Agregar</button>
-    </form>
-</div>
-
-
-<script type="text/javascript">
-    function inicio() {
-        $("#select2").select2();
-    }
-</script>

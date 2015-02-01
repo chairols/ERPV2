@@ -6,8 +6,7 @@ class Articulos extends CI_Controller {
         $this->load->library(array(
             'session',
             'r_session',
-            'form_validation',
-            'uri'
+            'form_validation'
         ));
         $this->load->helper(array(
             'url'
@@ -22,6 +21,7 @@ class Articulos extends CI_Controller {
     public function index() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
+        $data['title'] = 'Listar Artículos';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
@@ -36,6 +36,7 @@ class Articulos extends CI_Controller {
     public function agregar() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
+        $data['title'] = 'Agregar Artículo';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         $data['alerta'] = '';  // Se utiliza cuando se repite un artículo ya existente
