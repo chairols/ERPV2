@@ -6,8 +6,7 @@ class Insumos extends CI_Controller {
         $this->load->library(array(
             'session',
             'r_session',
-            'form_validation',
-            'uri'
+            'form_validation'
         ));
         $this->load->helper(array(
             'url'

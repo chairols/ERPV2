@@ -6,8 +6,7 @@ class Monedas extends CI_Controller {
         $this->load->library(array(
             'session',
             'r_session',
-            'form_validation',
-            'uri'
+            'form_validation'
         ));
         $this->load->helper(array(
             'url'
@@ -21,21 +20,22 @@ class Monedas extends CI_Controller {
     public function index() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
+        $data['title'] = 'Listar Monedas';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
         $data['monedas'] = $this->monedas_model->gets();
         
-        $this->load->view('layout/header_datatable', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('monedas/index');
-        $this->load->view('layout/footer_datatable');
+        $this->load->view('layout/footer');
     }
     
     public function agregar() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        
+        $data['title'] = 'Agregar Moneda';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         $data['alerta'] = '';  // Se utiliza si existe el insumo repetido
@@ -78,10 +78,10 @@ class Monedas extends CI_Controller {
             }
         }
         
-        $this->load->view('layout/header_form', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('monedas/agregar');
-        $this->load->view('layout/footer_form');
+        $this->load->view('layout/footer');
     }
 }
 ?>
