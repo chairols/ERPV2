@@ -25,7 +25,7 @@
                             </span>
                         </div>
                         <div class="widget-body">
-                            <table class="table table-striped table-bordered">
+                            <table class="table table-condensed table-hover table-bordered">
                                 <thead>
                                     <tr>
                                         <th><strong>Moneda</strong></th>

@@ -21,7 +21,7 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="sub-menu<?=($segmento=='articulos'||$segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='monedas'||$segmento=='productos')?" active":""?>">
+            <li class="sub-menu<?=($segmento=='articulos'||$segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='monedas'||$segmento=='productos'||$segmento=='proveedores')?" active":""?>">
                 <a href="javascript:;" class="">
                     <i class="icon-file"></i>
                     <span>Maestros</span>
@@ -34,6 +34,7 @@
                     <li<?=($segmento=='insumos')?" class='active'":""?>><a class="" href="/insumos/">Insumos</a></li>
                     <li<?=($segmento=='monedas')?" class='active'":""?>><a class="" href="/monedas/">Monedas</a></li>
                     <li<?=($segmento=='productos')?" class='active'":""?>><a class="" href="/productos/">Productos</a></li>
+                    <li<?=($segmento=='proveedores')?" class='active'":""?>><a class="" href="/proveedores/">Proveedores</a></li>
                 </ul>
             </li>
               <?php

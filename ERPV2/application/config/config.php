@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://erpv2.local/';
+$config['base_url']	= '';
 
 /*
 |--------------------------------------------------------------------------

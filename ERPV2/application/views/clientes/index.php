@@ -25,7 +25,7 @@
                             </span>
                         </div>
                         <div class="widget-body">
-                            <table class="table table-striped table-bordered" id="sample_1">
+                            <table class="table table-condensed table-bordered table-hover" id="sample_1">
                                 <thead>
                                     <tr>
                                         <th><strong>ID</strong></th>
