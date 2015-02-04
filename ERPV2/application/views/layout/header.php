@@ -23,6 +23,7 @@
    <link rel="stylesheet" type="text/css" href="/assets/assets/bootstrap-timepicker/compiled/timepicker.css" />
    <link rel="stylesheet" type="text/css" href="/assets/assets/jquery-tags-input/jquery.tagsinput.css" />
    <link rel="stylesheet" type="text/css" href="/assets/assets/select2/select2.css" />
+   <link rel="stylesheet" type="text/css" href="/assets/css/timeline-component.css" />
 
 </head>
 <!-- END HEAD -->

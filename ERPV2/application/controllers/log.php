@@ -20,6 +20,7 @@ class Log extends CI_Controller {
     public function ver($tabla, $idtabla) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
+        $data['title'] = 'Log';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
@@ -28,10 +29,10 @@ class Log extends CI_Controller {
         foreach ($data['logs'] as $key => $value) {
             $data['logs'][$key]['usuario'] = $this->usuarios_model->get($value['idusuario']);
         }
-        $this->load->view('layout/header_form', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('log/ver');
-        $this->load->view('layout/footer_form');
+        $this->load->view('layout/footer');
     }
 }
 ?>
