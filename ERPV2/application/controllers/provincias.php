@@ -37,6 +37,7 @@ class Provincias extends CI_Controller {
     public function agregar() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
+        $data['title'] = 'Agregar Provincia';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
@@ -74,10 +75,10 @@ class Provincias extends CI_Controller {
             }
         }
         
-        $this->load->view('layout/header_form', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('provincias/agregar');
-        $this->load->view('layout/footer_form');
+        $this->load->view('layout/footer');
     }
 }
 
