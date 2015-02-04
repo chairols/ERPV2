@@ -22,15 +22,16 @@ class Provincias extends CI_Controller {
     public function index() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
+        $data['title'] = 'Listar Provincias';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
         $data['provincias'] = $this->provincias_model->gets();
         
-        $this->load->view('layout/header_datatable', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('provincias/index');
-        $this->load->view('layout/footer_datatable');   
+        $this->load->view('layout/footer');   
     }
     
     public function agregar() {

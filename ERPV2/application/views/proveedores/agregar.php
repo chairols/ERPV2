@@ -113,18 +113,3 @@
         </div>
     </div>
 </div>
-
-
-
-<div class="block-flat">
-    <form role="form" method="post">
-
-        <div class="form-group">
-            <label>Observaciones</label>
-            <textarea class="form-control" name="observaciones"><?=set_value('observaciones')?></textarea>
-        </div>
-
-
-        <button type="submit" class="btn btn-primary">Agregar</button>
-    </form>
-</div>
