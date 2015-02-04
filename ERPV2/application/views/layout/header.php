@@ -56,7 +56,7 @@
                        <!-- BEGIN USER LOGIN DROPDOWN -->
                        <li class="dropdown">
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                               <img src="/assets/img/avatar1_small.jpg" alt="">
+                               <img src="/assets/img/avatar-azul.jpg" alt="">
                                <span class="username"><?=$session['nombre']?> <?=$session['apellido']?></span>
                                <b class="caret"></b>
                            </a>
