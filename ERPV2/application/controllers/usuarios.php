@@ -54,11 +54,13 @@ class Usuarios extends CI_Controller {
     public function perfil() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
+        $data['title'] = 'Perfil';
         $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
         
-        $this->load->view('layout/header_form', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
-        $this->load->view('layout/footer_form');
+        $this->load->view('layout/footer');
     }
 }
 

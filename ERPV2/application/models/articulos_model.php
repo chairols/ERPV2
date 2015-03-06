@@ -28,9 +28,14 @@ class Articulos_model extends CI_Model {
     public function gets() {
         $query = $this->db->query("SELECT *
                                     FROM
-                                        articulos a,
+                                        (articulos a
+                                    LEFT JOIN
+                                        planos pl
+                                    ON  
+                                        a.idplano = pl.idplano)
+                                    INNER JOIN
                                         productos p
-                                    WHERE
+                                    ON
                                         a.idproducto = p.idproducto AND
                                         a.activo = '1'
                                     ORDER BY

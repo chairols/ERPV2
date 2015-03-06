@@ -31,8 +31,8 @@
                             <table class="table table-bordered table-condensed table-hover" id="sample_1">
                                 <thead>
                                     <tr>
-                                        <th><strong>Producto</strong></th>
                                         <th><strong>Artículo</strong></th>
+                                        <th><strong>Producto</strong></th>
                                         <th><strong>Plano</strong></th>
                                         <th><strong>Revisión</strong></th>
                                         <th><strong>Posición</strong></th>
@@ -43,8 +43,8 @@
                                 <tbody>
                                     <?php foreach($articulos as $articulo) { ?>
                                     <tr>
-                                        <td><?=$articulo['producto']?></td>
                                         <td><?=$articulo['articulo']?></td>
+                                        <td><?=$articulo['producto']?></td>
                                         <td><?=$articulo['plano']?></td>
                                         <td><?=$articulo['revision']?></td>
                                         <td><?=$articulo['posicion']?></td>

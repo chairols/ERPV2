@@ -36,15 +36,16 @@
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Plano</label>
-                                <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('plano')?>" name="plano">
+                                <div class="controls checkbox">
+                                    <input type="checkbox" name="checkbox" id="checkbox">
+                                    <div id="selectplano" style="display: none;">
+                                        <select name="plano" class="input-xlarge select2">
+                                            <?php foreach($planos as $plano) { ?>
+                                            <option value="<?=$plano['idplano']?>"><?=$plano['plano']?> Rev <?=$plano['revision']?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                     <span class="help-inline"><?=form_error('plano', '<div class="alert alert-danger">', '</div>')?></span>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Archivo del Plano</label>
-                                <div class="controls">
-                                    <input type="file" class="input-xlarge" name="planofile">
                                 </div>
                             </div>
                             <div class="control-group">
@@ -55,13 +56,6 @@
                                         <option value="<?=$producto['idproducto']?>"><?=$producto['producto']?></option>
                                         <?php } ?>
                                     </select>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Revisión</label>
-                                <div class="controls">
-                                    <input type="number" maxlength="11" class="input-xlarge" value="<?=set_value('revision')?>" name="revision" required>
-                                    <span class="help-inline"><?=form_error('revision', '<div class="alert alert-danger">', '</div>')?></span>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -93,3 +87,19 @@
         
     </div>
 </div>
+<script type="text/javascript">
+    function inicio() {
+        //$("#selectplano").hide();
+        
+        $("#checkbox").click(function() {
+            var flag = $("#checkbox").is(':checked');
+            if(flag == true) {
+                $("#selectplano").fadeIn(500);
+            } else {
+                $("#selectplano").fadeOut(500);
+            }
+        });
+    };
+    
+    
+</script>

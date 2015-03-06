@@ -21,7 +21,7 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="sub-menu<?=($segmento=='articulos'||$segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='monedas'||$segmento=='productos'||$segmento=='proveedores'||$segmento=='provincias')?" active":""?>">
+            <li class="sub-menu<?=($segmento=='articulos'||$segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='monedas'||$segmento=='planos'||$segmento=='productos'||$segmento=='proveedores'||$segmento=='provincias'||$segmento=='medidas')?" active":""?>">
                 <a href="javascript:;" class="">
                     <i class="icon-file"></i>
                     <span>Maestros</span>
@@ -33,9 +33,33 @@
                     <li<?=($segmento=='fabricas')?" class='active'":""?>><a class="" href="/fabricas/">Fábricas</a></li>
                     <li<?=($segmento=='insumos')?" class='active'":""?>><a class="" href="/insumos/">Insumos</a></li>
                     <li<?=($segmento=='monedas')?" class='active'":""?>><a class="" href="/monedas/">Monedas</a></li>
+                    <li<?=($segmento=='planos')?" class='active'":""?>><a class="" href="/planos/">Planos</a></li>
                     <li<?=($segmento=='productos')?" class='active'":""?>><a class="" href="/productos/">Productos</a></li>
                     <li<?=($segmento=='proveedores')?" class='active'":""?>><a class="" href="/proveedores/">Proveedores</a></li>
                     <li<?=($segmento=='provincias')?" class='active'":""?>><a class="" href="/provincias/">Provincias</a></li>
+                    <li<?=($segmento=='medidas')?" class='active'":""?>><a class="" href="/medidas/">Unidades de Medida</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu<?=($segmento=='ots'||$segmento=='pedidos')?" active":""?>">
+                <a href="javascript:;" class="">
+                    <i class="icon-gears"></i>
+                    <span>Producción</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                    <li<?=($segmento=='ots')?" class='active'":""?>><a class="" href="/ots/">Órdenes de Trabajo</a></li>
+                    <li<?=($segmento=='pedidos')?" class='active'":""?>><a class="" href="/pedidos/">Pedidos</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu<?=($segmento=='ocs'||$segmento=='rfqs')?" active":""?>">
+                <a href="javascript:;" class="">
+                    <i class="icon-dollar"></i>
+                    <span>Compras</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                    <li<?=($segmento=='ocs')?" class='active'":""?>><a class="" href="/ocs/">Órdenes de Compra</a></li>
+                    <li<?=($segmento=='rfqs')?" class='active'":""?>><a class="" href="/rfqs">RFQ's</a></li>
                 </ul>
             </li>
               <?php
@@ -45,23 +69,7 @@
                         show_404();
                         break;
                 }?>
-              <?php if($session['tipo_usuario'] == '1') { ?>
               
-            <li class="sub-menu<?=($segmento=='categorias'||$segmento=='consultantes'||$segmento=='especializaciones'||$segmento=='profesionales'||$segmento=='profesiones')?" active":""?>">
-                <a href="javascript:;" class="">
-                    <i class="icon-gears"></i>
-                    <span>Administrar</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub">
-                    <li<?=($segmento=='categorias')?" class='active'":""?>><a class="" href="/categorias/">Categorías</a></li>
-                    <li<?=($segmento=='consultantes')?" class='active'":""?>><a class="" href="/consultantes/">Consultantes</a></li>
-                    <li<?=($segmento=='especializaciones')?" class='active'":""?>><a class="" href="/especializaciones/">Especializaciones</a></li>
-                      <li<?=($segmento=='profesionales')?" class='active'":""?>><a class="" href="/profesionales/">Profesionales</a></li>
-                      <li<?=($segmento=='profesiones')?" class='active'":""?>><a class="" href="/profesiones/">Profesiones</a></li>
-                  </ul>
-              </li>
-              <?php } ?>
               <?php if($session['tipo_usuario'] == '2') { ?>
               <li class="sub-menu<?=($segmento=='dashboard')?" active":""?>">
                   <a class="" href="/dashboard/">

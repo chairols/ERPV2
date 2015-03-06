@@ -28,15 +28,16 @@ class Ots extends CI_Controller {
     public function index() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
+        $data['title'] = 'Listar Órdenes de Trabajo';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
         $data['ots'] = $this->ots_model->gets();
         
-        $this->load->view('layout/header_datatable', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('ots/index');
-        $this->load->view('layout/footer_datatable');
+        $this->load->view('layout/footer');
     }
     
     public function ver($idot = null) {
