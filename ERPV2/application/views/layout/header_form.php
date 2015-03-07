@@ -32,6 +32,7 @@
    
    <link href="/assets/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
    <link href="/assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+   <link rel="stylesheet" type="text/css" href="/assets/assets/select2/select2.css" />
    
    
    

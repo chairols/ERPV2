@@ -57,7 +57,7 @@
                             <div class="control-group">
                                 <label class="control-label">Cantidad</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="11" class="input-xlarge" value="<?=$ot['cantidad']?>" name="cantidad">
+                                    <input type="number" maxlength="11" class="input-xlarge" value="<?=$ot['cantidad']?>" name="cantidad">
                                     <?=form_error('cantidad', '<div class="alert alert-danger">', '</div>')?>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                             <div class="control-group">
                                 <label class="control-label">Observaciones</label>
                                 <div class="controls">
-                                    <textarea class="form-control" rows="5" name="observaciones"><?=$ot['observaciones']?></textarea>
+                                    <textarea class="form-control input-xlarge" rows="5" name="observaciones"><?=$ot['observaciones']?></textarea>
                                 </div>
                             </div>
                             <div class="form-actions">

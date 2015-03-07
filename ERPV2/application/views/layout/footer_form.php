@@ -39,7 +39,8 @@
    
    <script src="/assets/assets/fullcalendar/fullcalendar/fullcalendar.min.js"></script>
    
-   
+   <script type="text/javascript" src="/assets/assets/select2/select2.min.js"></script>
+   <script type="text/javascript" src="/assets/js/select2.js"></script>
 
    
    <!--common script for all pages-->
