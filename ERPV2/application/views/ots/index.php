@@ -23,7 +23,7 @@
                 <div class="span12">
                     <div class="widget blue">
                         <div class="widget-title">
-                            <h4><i class="icon-reorder"></i> Artículos</h4>
+                            <h4><i class="icon-reorder"></i> Órdenes de Trabajo</h4>
                             <span class="tools">
                                 <a href="javascript:;" class="icon-chevron-down"></a>
                                 <a href="javascript:;" class="icon-remove"></a>

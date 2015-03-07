@@ -145,6 +145,7 @@ class Ots extends CI_Controller {
         if($idot == null) {
             redirect('/ots/', 'refresh');
         }
+        $data['title'] = 'Modificar O.T.';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         

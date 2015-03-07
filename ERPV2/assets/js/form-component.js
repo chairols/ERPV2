@@ -88,9 +88,11 @@ var Script = function () {
     $(function(){
         window.prettyPrint && prettyPrint();
         $('#dp1').datepicker({
-            format: 'dd-mm-yyyy'
+            format: 'yyyy-mm-dd'
         });
-        $('#dp2').datepicker();
+        $('#dp2').datepicker({
+            format: 'yyyy-mm-dd'
+        });
         $('#dp3').datepicker();
         $('#dp3').datepicker();
         $('#dpYears').datepicker();
