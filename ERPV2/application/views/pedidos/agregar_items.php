@@ -1,7 +1,46 @@
-<ul class="nav nav-tabs nav-tabs-justified">
-    <li><a href="/pedidos/">Listar pedidos</a></li>
-    <li class="active"><a href="/pedidos/agregar/">Agregar pedido</a></li>
-</ul>
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <h3 class="page-title">
+                    <?=$title?>
+                </h3>
+            </div>
+        </div>
+        
+        <div class="row-fluid">
+            <ul class="nav nav-tabs nav-tabs-justified">
+                <li><a href="/pedidos/">Listar pedidos</a></li>
+                <li class="active"><a href="/pedidos/agregar/">Agregar pedido</a></li>
+            </ul>
+            
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="widget blue">
+                        <div class="widget-title">
+                            <h4><i class="icon-reorder"></i> Agregar Fábrica</h4>
+                            <span class="tools">
+                                <a href="javascript:;" class="icon-chevron-down"></a>
+                                <a href="javascript:;" class="icon-remove"></a>
+                            </span>
+                        </div>
+                        <div class="widget-body">
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <div class="text-center">
+                                        <h1><strong>Pedido # <?=$pedido['idpedido']?></strong></h1>
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="block-flat">
     <h4 class="page-header">

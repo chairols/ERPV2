@@ -3,7 +3,7 @@
    
     <!-- BEGIN FOOTER -->
    <div id="footer">
-       2015 &copy; <a href="http://eclypsedesign.com/" target="_blank">Eclypse Design</a>
+       2015 &copy; <a href="http://www.rollerservice.com.ar/" target="_blank">Roller Service S.A.</a>
    </div>
    <!-- END FOOTER -->
 
@@ -54,7 +54,9 @@
    <script src="/assets/js/form-component.js"></script>
    
    
-   
+   <script type="text/javascript">
+       inicio();
+   </script>
    <!--<script src="/assets/js/external-dragging-calendar.js"></script>
    <!-- END JAVASCRIPTS -->   
 </body>

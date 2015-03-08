@@ -26,20 +26,22 @@ class Pedidos extends CI_Controller {
     public function index() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
+        $data['title'] = 'Listar Pedidos';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
         $data['pedidos'] = $this->pedidos_model->gets();
         
-        $this->load->view('layout/header_datatable', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('pedidos/index');
-        $this->load->view('layout/footer_datatable');
+        $this->load->view('layout/footer');
     }
     
     public function agregar() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
+        $data['title'] = 'Agregar Pedido';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
@@ -107,6 +109,7 @@ class Pedidos extends CI_Controller {
     public function agregar_items($idpedido = null) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
+        $data['title'] = 'Agregar Item a Pedido';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
