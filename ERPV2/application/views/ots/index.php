@@ -32,10 +32,12 @@
                         <div class="widget-body">
                             <table class="table table-hover table-bordered table-condensed" id="sample_1">
                                 <thead>
-                                    <th><strong>Orden de Trabajo</strong></th>
+                                    <th><strong>O.T.</strong></th>
                                     <th><strong>Fábrica</strong></th>
-                                    <th><strong>Fecha de Necesidad</strong></th>
-                                    <th><strong>Fecha de Terminado</strong></th>
+                                    <th><strong>Cantidad</strong></th>
+                                    <th><strong>Material</strong></th>
+                                    <th><strong>Necesidad</strong></th>
+                                    <th><strong>Terminado</strong></th>
                                     <th><strong>Estado</strong></th>
                                     <th><strong>Acción</strong></th>
                                 </thead>
@@ -44,6 +46,8 @@
                                     <tr>
                                         <td><?=$ot['numero_ot']?></td>
                                         <td><?=$ot['fabrica']?></td>
+                                        <td><?=$ot['cantidad']?></td>
+                                        <td><?=$ot['producto']?> <?=$ot['articulo']?></td>
                                         <td><?=$ot['fecha_necesidad']?></td>
                                         <td><?=$ot['fecha_terminado']?></td>
                                         <td>

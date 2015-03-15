@@ -24,9 +24,13 @@ class Ots_model extends CI_Model {
         $query = $this->db->query("SELECT *
                                     FROM
                                         ots o,
-                                        fabricas f
+                                        fabricas f,
+                                        articulos a,
+                                        productos p
                                     WHERE
                                         o.idfabrica = f.idfabrica AND
+                                        a.idarticulo = o.idarticulo AND
+                                        a.idproducto = p.idproducto AND
                                         o.activo = '1'
                                     ORDER BY
                                         o.numero_ot DESC");

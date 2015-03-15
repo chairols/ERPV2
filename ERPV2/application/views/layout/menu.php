@@ -37,6 +37,7 @@
                     <li<?=($segmento=='productos')?" class='active'":""?>><a class="" href="/productos/">Productos</a></li>
                     <li<?=($segmento=='proveedores')?" class='active'":""?>><a class="" href="/proveedores/">Proveedores</a></li>
                     <li<?=($segmento=='provincias')?" class='active'":""?>><a class="" href="/provincias/">Provincias</a></li>
+                    <li<?=($segmento=='roles')?" class='active'":""?>><a class="" href="/roles/">Roles</a></li>
                     <li<?=($segmento=='medidas')?" class='active'":""?>><a class="" href="/medidas/">Unidades de Medida</a></li>
                 </ul>
             </li>
