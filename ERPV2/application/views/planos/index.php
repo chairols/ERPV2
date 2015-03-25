@@ -31,6 +31,7 @@
                                         <th><strong>Plano</strong></th>
                                         <th><strong>ID</strong></th>
                                         <th><strong>Revisión</strong></th>
+                                        <th><strong>Documento</strong></th>
                                         <th><strong>Plano</strong></th>
                                         <th><strong>Acción</strong></th>
                                     </tr>
@@ -41,6 +42,7 @@
                                         <td><?=$plano['plano']?></td>
                                         <td><?=$plano['idplano']?></td>
                                         <td><?=$plano['revision']?></td>
+                                        <td><?=($plano['propio'])?"INTERNO":"EXTERNO"?></td>
                                         <td>
                                         <?php if($plano['planofile'] != '') { ?>
                                             <a href="<?=$plano['planofile']?>" target="_blank">

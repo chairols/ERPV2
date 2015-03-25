@@ -57,6 +57,11 @@ class Planos extends CI_Controller {
                     'observaciones' => $this->input->post('observaciones'),
                     'activo' => '1'
                 );
+                if($this->input->post('propio') == 'on') {
+                    $datos['propio'] = '1';
+                } else {
+                    $datos['propio'] = '0';
+                }
                 
                 $config['upload_path'] = "./upload/planos/";
                 $config['allowed_types'] = '*';
@@ -84,6 +89,7 @@ class Planos extends CI_Controller {
                    'texto' => 'Se agregó: <br>'
                     . 'plano: '.$this->input->post('plano').'<br>'
                     . 'revision: '.$this->input->post('revision').'<br>'
+                    . 'plano propio '.$datos['propio'].'<br>'
                     . 'observaciones: '.$this->input->post('observaciones').'<br>'
                     . 'adjunto: '.'/upload/planos/'.$adjunto['upload_data']['file_name'],
                    'tipo' => 'add',

@@ -38,6 +38,12 @@
                                 </div>
                             </div>
                             <div class="control-group">
+                                <label class="control-label">Plano Propio</label>
+                                <div class="controls">
+                                    <input type="checkbox" name="propio">
+                                </div>
+                            </div>
+                            <div class="control-group">
                                 <label class="control-label">Archivo del Plano</label>
                                 <div class="controls">
                                     <input type="file" class="input-xlarge" name="planofile">
