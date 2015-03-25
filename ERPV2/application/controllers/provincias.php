@@ -80,6 +80,50 @@ class Provincias extends CI_Controller {
         $this->load->view('provincias/agregar');
         $this->load->view('layout/footer');
     }
+    
+    public function modificar($idprovincia = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if($idprovincia == null) {
+            redirect('/provincias/', 'refresh');
+        }
+        $data['title'] = 'Modificar Provincia';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        
+        $this->form_validation->set_rules('provincia', 'Provincia', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'provincia' => $this->input->post('provincia')
+            );
+            $this->provincias_model->update($datos, $idprovincia);
+            
+            $log = array(
+                'tabla' => 'provincias',
+                'idtabla' => $idprovincia,
+                'texto' => "Se modificó: <br>"
+                . "provincia: ".$this->input->post('provincia'),
+                'tipo' => 'edit',
+                'idusuario' => $session['SID']
+            );
+            $this->log_model->set($log);
+            
+            redirect('/provincias/', 'refresh');
+        }
+        
+        $datos = array(
+            'idprovincia' => $idprovincia
+        );
+        $data['provincia'] = $this->provincias_model->get_where($datos);
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('provincias/modificar');
+        $this->load->view('layout/footer');
+    }
 }
 
 ?>

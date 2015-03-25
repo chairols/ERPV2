@@ -42,12 +42,24 @@ class Provincias_model extends CI_Model {
      * proveedores/agregar
      * 
      * provincias/agregar
+     * provincias/modificar
      * 
      */
     public function get_where($where) {
         $query = $this->db->get_where('provincias', $where);
         
         return $query->row_array();
+    }
+    
+    
+    /*
+     * 
+     *  provincias/modificar
+     * 
+     */
+    public function update($datos, $id) {
+        $array = array('idprovincia' => $id);
+        $this->db->update('provincias', $datos, $array);
     }
 }
 ?>

@@ -10,16 +10,15 @@
         
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
-                <li class="active"><a href="/provincias/">Listar Provincias</a></li>
-                <li><a href="/provincias/agregar/">Agregar Provincia</a></li>
-                <li><a href="/provincias/modificar/">Modificar Provincia</a></li>
+                <li class="active"><a href="/menu/">Listar Menú</a></li>
+                <li><a href="/menu/agregar/">Agregar Menú</a></li>
             </ul>
             
             <div class="row-fluid">
                 <div class="span12">
                     <div class="widget blue">
                         <div class="widget-title">
-                            <h4><i class="icon-reorder"></i> Productos</h4>
+                            <h4><i class="icon-reorder"></i> Menú</h4>
                             <span class="tools">
                                 <a href="javascript:;" class="icon-chevron-down"></a>
                                 <a href="javascript:;" class="icon-remove"></a>
@@ -29,23 +28,27 @@
                             <table class="table table-bordered table-condensed table-hover" id="sample_1">
                                 <thead>
                                     <tr>
-                                        <th><strong>ID</strong></th>
-                                        <th><strong>Provincias</strong></th>
+                                        <th><strong>#</strong></th>
+                                        <th><strong>Menú</strong></th>
+                                        <th><strong>Href</strong></th>
+                                        <th><strong>Orden</strong></th>
+                                        <th><strong>Padre</strong></th>
+                                        <th><strong>Visible</strong></th>
                                         <th><strong>Acción</strong></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach($provincias as $provincia) { ?>
+                                    <?php foreach($menu as $m) { ?>
                                     <tr>
-                                        <td><?=$provincia['idprovincia']?></td>
-                                        <td><?=$provincia['provincia']?></td>
-                                        <td>
-                                            <a href="/provincias/modificar/<?=$provincia['idprovincia']?>/" class="label label-default"><i class="icon-edit"></i></a> 
-                                            <a href="#" class="label label-important"><i class="icon-remove"></i></a>
-                                            <a href="/log/ver/provincias/<?=$provincia['idprovincia']?>/" class="label label-info"><i class="icon-time"></i></a>
-                                        </td>
+                                        <td><?=$m['idmenu']?></td>
+                                        <td><?=$m['menu']?></td>
+                                        <td><?=$m['href']?></td>
+                                        <td><?=$m['orden']?></td>
+                                        <td><?=(count($m['padre']))?$m['padre']['menu']:"-- No tiene --"?></td>
+                                        <td><?=($m['visible'])?"Si":"No"?></td>
+                                        <td></td>
                                     </tr>
-                                <?php } ?>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>

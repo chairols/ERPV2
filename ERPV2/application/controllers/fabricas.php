@@ -73,5 +73,16 @@ class Fabricas extends CI_Controller {
         $this->load->view('fabricas/agregar');
         $this->load->view('layout/footer');
     }
+    
+    public function modificar($idfabrica = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if($idfabrica == null) {
+            redirect('/fabricas/', 'refresh');
+        }
+        $data['title'] = 'Modificar Fábrica';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+    }
 }
 ?>
