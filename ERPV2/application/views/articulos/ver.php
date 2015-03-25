@@ -39,6 +39,7 @@
                             <div class="control-group">
                                 <label class="control-label">Plano</label>
                                 <input type="text" maxlength="100" class="form-control" value="<?=(!empty($articulo['plano']))?$articulo['plano']['plano']:""?>" readonly>
+                                <?=(!empty($articulo['plano']))?"<a href='".$articulo['plano']['planofile']."' target='_blank'>Ver plano</a>":""?>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Revisión</label>
