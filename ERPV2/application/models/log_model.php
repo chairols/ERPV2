@@ -13,6 +13,8 @@ class Log_model extends CI_Model {
      * 
      * insumos/agregar
      * 
+     * medidas/agregar
+     * 
      * monedas/agregar
      * 
      * ots/agregar

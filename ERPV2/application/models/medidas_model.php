@@ -7,6 +7,15 @@ class Medidas_model extends CI_Model {
     
     /*
      * 
+     *  medidas/agregar
+     */
+    public function set($datos) {
+        $this->db->insert('medidas', $datos);
+        return $this->db->insert_id();
+    }
+    
+    /*
+     * 
      * medidas/index
      * 
      */

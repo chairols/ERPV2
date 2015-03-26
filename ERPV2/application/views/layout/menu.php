@@ -21,7 +21,7 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="sub-menu<?=($segmento=='articulos'||$segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='menu'||$segmento=='monedas'||$segmento=='planos'||$segmento=='productos'||$segmento=='proveedores'||$segmento=='provincias'||$segmento=='roles'||$segmento=='medidas')?" active":""?>">
+            <li class="sub-menu<?=($segmento=='articulos'||$segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='menu'||$segmento=='monedas'||$segmento=='planos'||$segmento=='productos'||$segmento=='proveedores'||$segmento=='provincias'||$segmento=='roles'||$segmento=='stock'||$segmento=='medidas')?" active":""?>">
                 <a href="javascript:;" class="">
                     <i class="icon-file"></i>
                     <span>Maestros</span>
@@ -39,6 +39,7 @@
                     <li<?=($segmento=='proveedores')?" class='active'":""?>><a class="" href="/proveedores/">Proveedores</a></li>
                     <li<?=($segmento=='provincias')?" class='active'":""?>><a class="" href="/provincias/">Provincias</a></li>
                     <li<?=($segmento=='roles')?" class='active'":""?>><a class="" href="/roles/">Roles</a></li>
+                    <li<?=($segmento=='stock')?" class='active'":""?>><a class="" href="/stock/">Stock</a></li>
                     <li<?=($segmento=='medidas')?" class='active'":""?>><a class="" href="/medidas/">Unidades de Medida</a></li>
                 </ul>
             </li>
