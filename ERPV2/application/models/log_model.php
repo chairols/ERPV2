@@ -29,6 +29,8 @@ class Log_model extends CI_Model {
      * 
      * roles/agregar
      * 
+     * stock/modificar
+     * 
      */
     public function set($array) {
         $this->db->insert('log', $array);

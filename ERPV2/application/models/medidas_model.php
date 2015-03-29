@@ -18,6 +18,8 @@ class Medidas_model extends CI_Model {
      * 
      * medidas/index
      * 
+     * stock/agregar
+     * 
      */
     public function gets() {
         $query = $this->db->query("SELECT *
@@ -28,6 +30,17 @@ class Medidas_model extends CI_Model {
                                     ORDER BY
                                         medida_corta");
         return $query->result_array();
+    }
+    
+    
+    /*
+     * 
+     *  stock/modificar
+     */
+    public function get_where($where) {
+        $query = $this->db->get_where('medidas', $where);
+        
+        return $query->row_array();
     }
 }
 ?>
