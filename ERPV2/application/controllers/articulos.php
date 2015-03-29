@@ -115,15 +115,16 @@ class Articulos extends CI_Controller {
     public function borrados() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
+        $data['title'] = 'Artículos Borrados';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
         $data['articulos'] = $this->articulos_model->gets_inactivos();
         
-        $this->load->view('layout/header_datatable', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('articulos/borrados');
-        $this->load->view('layout/footer_datatable');
+        $this->load->view('layout/footer');
     }
     
     public function borrar($idarticulo = null) {

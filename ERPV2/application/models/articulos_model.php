@@ -46,11 +46,18 @@ class Articulos_model extends CI_Model {
     public function gets_inactivos() {
         $query = $this->db->query("SELECT *
                                     FROM
-                                        articulos
-                                    WHERE
-                                        activo = '0'
+                                        (articulos a
+                                    LEFT JOIN
+                                        planos pl
+                                    ON  
+                                        a.idplano = pl.idplano)
+                                    INNER JOIN
+                                        productos p
+                                    ON
+                                        a.idproducto = p.idproducto AND
+                                        a.activo = '0'
                                     ORDER BY
-                                        articulo");
+                                        a.articulo");
         return $query->result_array();
     }
     
