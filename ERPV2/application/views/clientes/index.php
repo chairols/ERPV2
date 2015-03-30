@@ -12,6 +12,8 @@
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li class="active"><a href="/clientes/">Listar Clientes</a></li>
                 <li><a href="/clientes/agregar/">Agregar Cliente</a></li>
+                <li><a href="/clientes/modificar/">Modificar Clientes</a></li>
+                <li><a href="/clientes/borrados/">Clientes Borrados</a></li>
             </ul>
             
             <div class="row-fluid">
@@ -39,7 +41,7 @@
                                         <td><?=$cliente['idcliente']?></td>
                                         <td><?=$cliente['cliente']?></td>
                                         <td>
-                                            <a href="#" class="label label-default"><i class="icon-edit"></i></a> 
+                                            <a href="/clientes/modificar/<?=$cliente['idcliente']?>/" class="label label-default"><i class="icon-edit"></i></a> 
                                             <a href="#" class="label label-important"><i class="icon-remove"></i></a>
                                             <a href="/log/ver/clientes/<?=$cliente['idcliente']?>/" class="label label-info"><i class="icon-time"></i></a>
                                         </td>

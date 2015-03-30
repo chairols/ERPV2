@@ -61,6 +61,7 @@ class Clientes extends CI_Controller {
                     'localidad' => $this->input->post('localidad'),
                     'idprovincia' => $this->input->post('provincia'),
                     'contacto' => $this->input->post('contacto'),
+                    'correo' => $this->input->post('correo'),
                     'observaciones' => $this->input->post('observaciones')
                 );
 
@@ -77,6 +78,7 @@ class Clientes extends CI_Controller {
                    . 'localidad: '.$this->input->post('localidad').'<br>'
                    . 'provincia: '.$provincia['provincia'].'<br>'
                    . 'contacto: '.$this->input->post('contacto').'<br>'
+                   . 'correo: '.$this->input->post('correo').'<br>'
                    . 'observaciones: '.$this->input->post('observaciones'),
                    'tipo' => 'add',
                    'idusuario' => $session['SID']
@@ -92,6 +94,73 @@ class Clientes extends CI_Controller {
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('clientes/agregar');
+        $this->load->view('layout/footer');
+    }
+    
+    public function modificar($idcliente = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if($idcliente == null) {
+            redirect('/clientes/', 'refresh');
+        }
+        $data['title'] = 'Modificar Cliente';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['alerta'] = '';
+        
+        $this->form_validation->set_rules('cliente', 'Cliente', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+
+
+            $datos = array(
+                'cliente' => $this->input->post('cliente'),
+                'domicilio' => $this->input->post('domicilio'),
+                'telefono' => $this->input->post('telefono'),
+                'localidad' => $this->input->post('localidad'),
+                'idprovincia' => $this->input->post('provincia'),
+                'contacto' => $this->input->post('contacto'),
+                'correo' => $this->input->post('correo'),
+                'observaciones' => $this->input->post('observaciones')
+            );
+
+            $this->clientes_model->update($datos, $idcliente);
+
+            $provincia = $this->provincias_model->get_where(array('idprovincia' => $this->input->post('provincia')));
+
+            $log = array(
+                'tabla' => 'clientes',
+                'idtabla' => $idcliente,
+                'texto' => 'Se modificó el cliente '.$this->input->post('cliente').'<br>'
+                . 'domicilio: '.$this->input->post('domicilio').'<br>'
+                . 'telefono: '.$this->input->post('telefono').'<br>'
+                . 'localidad: '.$this->input->post('localidad').'<br>'
+                . 'provincia: '.$provincia['provincia'].'<br>'
+                . 'contacto: '.$this->input->post('contacto').'<br>'
+                . 'correo: '.$this->input->post('correo').'<br>'
+                . 'observaciones: '.$this->input->post('observaciones'),
+                'tipo' => 'edit',
+                'idusuario' => $session['SID']
+            );
+            $this->log_model->set($log);
+
+            redirect('/clientes/', 'refresh');
+        }
+        
+        
+        $datos = array(
+            'idcliente' => $idcliente
+        );
+        $data['cliente'] = $this->clientes_model->get_where($datos);
+        
+        $data['provincias'] = $this->provincias_model->gets();
+        
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('clientes/modificar');
         $this->load->view('layout/footer');
     }
 }

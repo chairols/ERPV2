@@ -34,6 +34,7 @@ class Clientes_model extends CI_Model {
     /*
      * 
      * clientes/agregar
+     * clientes/modificar
      * 
      * pedidos/agregar
      * pedidos/agregar_items
@@ -43,6 +44,16 @@ class Clientes_model extends CI_Model {
         $query = $this->db->get_where('clientes', $where);
         
         return $query->row_array();
+    }
+    
+    /*
+     * 
+     * clientes/modificar
+     * 
+     */
+    public function update($datos, $idcliente) {
+        $id = array('idcliente' => $idcliente);
+        $this->db->update('clientes', $datos, $id);
     }
 }
 ?>
