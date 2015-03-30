@@ -62,7 +62,8 @@ class Clientes extends CI_Controller {
                     'idprovincia' => $this->input->post('provincia'),
                     'contacto' => $this->input->post('contacto'),
                     'correo' => $this->input->post('correo'),
-                    'observaciones' => $this->input->post('observaciones')
+                    'observaciones' => $this->input->post('observaciones'),
+                    'activo' => '1'
                 );
 
                $id = $this->clientes_model->set($datos); 
