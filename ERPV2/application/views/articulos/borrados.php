@@ -52,7 +52,6 @@
                                         <td>
                                             <a href="/articulos/ver/<?=$articulo['idarticulo']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver" class="label label-success tooltips"><i class="icon-eye-open"></i></a>
                                             <a href="/articulos/modificar/<?=$articulo['idarticulo']?>/" class="label label-default"><i class="icon-edit"></i></a> 
-                                            <a href="/articulos/borrar/<?=$articulo['idarticulo']?>" class="label label-important"><i class="icon-remove"></i></a>
                                             <a href="/log/ver/articulos/<?=$articulo['idarticulo']?>/" class="label label-info"><i class="icon-time"></i></a>
                                         </td>
                                     </tr>

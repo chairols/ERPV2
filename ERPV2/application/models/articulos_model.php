@@ -38,11 +38,19 @@ class Articulos_model extends CI_Model {
                                     ON
                                         a.idproducto = p.idproducto AND
                                         a.activo = '1'
+                                    LEFT JOIN
+                                        medidas m
+                                    ON
+                                        a.unidad_medida = m.idmedida
                                     ORDER BY
                                         a.articulo");
         return $query->result_array();
     }
     
+    /*
+     * 
+     *  articulos/borrados
+     */
     public function gets_inactivos() {
         $query = $this->db->query("SELECT *
                                     FROM
@@ -64,6 +72,8 @@ class Articulos_model extends CI_Model {
     /*
      * 
      * articulos/agregar
+     * articulos/modificar
+     * articulos/ver
      * 
      * ots/pdf
      * 
@@ -74,6 +84,12 @@ class Articulos_model extends CI_Model {
         return $query->row_array();
     }
     
+    /*
+     *  
+     *  articulos/borrar
+     *  articulos/modificar
+     * 
+     */
     public function update($datos, $idarticulo) {
         $id = array('idarticulo' => $idarticulo);
         $this->db->update('articulos', $datos, $id);

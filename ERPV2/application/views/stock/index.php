@@ -47,7 +47,7 @@
                                         <td><?=$articulo['revision']?></td>
                                         <td><?=$articulo['posicion']?></td>
                                         <td><?=$articulo['cantidad']?></td>
-                                        <td><?=$articulo['unidad_medida']?></td>
+                                        <td><?=$articulo['medida_larga']?></td>
                                         <td><?=$articulo['ubicacion']?></td>
                                         <td>
                                             <a href="/stock/ver/<?=$articulo['idarticulo']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver" class="label label-success tooltips"><i class="icon-eye-open"></i></a>

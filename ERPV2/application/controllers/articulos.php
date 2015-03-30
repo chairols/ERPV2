@@ -102,9 +102,63 @@ class Articulos extends CI_Controller {
         if($idarticulo == null) {
             redirect('/articulos/', 'refresh');
         }
+        $data['title'] = 'Modificar Artículo';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         $data['alerta'] = '';
+        
+        $datos = array(
+            'idarticulo' => $idarticulo
+        );
+        $data['articulo'] = $this->articulos_model->get_where($datos);
+        
+        $data['planos'] = $this->planos_model->gets();
+        
+        $data['productos'] = $this->productos_model->gets();
+        
+        $this->form_validation->set_rules('articulo', 'Artículo', 'required');
+        $this->form_validation->set_rules('producto', 'Producto', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'articulo' => $this->input->post('articulo'),
+                'idproducto' => $this->input->post('producto'),
+                'posicion' => $this->input->post('posicion'),
+                'observaciones' => $this->input->post('observaciones')
+            );
+            if($this->input->post('checkbox') == 'on') {
+                $datos['idplano'] = $this->input->post('plano');
+            } else {
+                $datos['idplano'] = 0;
+            }
+            
+            $this->articulos_model->update($datos, $idarticulo);
+            
+            $plano['plano'] = 'No tiene';
+            if($this->input->post('checkbox') == 'on') {
+                $datos = array(
+                    'idplano' => $this->input->post('plano')
+                );
+                $plano = $this->planos_model->get_where($datos);
+            }
+            $log = array(
+                'tabla' => 'articulos',
+                'idtabla' => $idarticulo,
+                'texto' => 'Se modificó: <br>'
+                 . 'articulo: '.$this->input->post('articulo').'<br>'
+                 . 'plano: '.$plano['plano'].'<br>'
+                 . 'posicion: '.$this->input->post('posicion').'<br>'
+                 . 'observaciones: '.$this->input->post('observaciones').'<br>',
+                'tipo' => 'edit',
+                'idusuario' => $session['SID']
+            );
+
+             $this->log_model->set($log);
+
+             redirect('/articulos/', 'refresh');
+        }
         
         $this->load->view('layout/header_form', $data);
         $this->load->view('layout/menu');
@@ -142,14 +196,14 @@ class Articulos extends CI_Controller {
         $this->articulos_model->update($datos, $idarticulo);
         
         $log = array(
-                   'tabla' => 'articulos',
-                   'idtabla' => $idarticulo,
-                   'texto' => 'Se borró el artículo',
-                   'tipo' => 'del',
-                   'idusuario' => $session['SID']
-               );
-                
-                $this->log_model->set($log);
+            'tabla' => 'articulos',
+            'idtabla' => $idarticulo,
+            'texto' => 'Se borró el artículo',
+            'tipo' => 'del',
+            'idusuario' => $session['SID']
+        );
+
+        $this->log_model->set($log);
         
         redirect('/articulos/borrados/', 'refresh');
     }
