@@ -26,11 +26,26 @@ class Clientes_model extends CI_Model {
         $query = $this->db->query("SELECT *
                                     FROM
                                         clientes
+                                    WHERE
+                                        activo = '1'
                                     ORDER BY
                                         cliente");
         return $query->result_array();
     }
     
+    /*
+     *  clientes/borrados
+     */
+    public function gets_inactivos() {
+        $query = $this->db->query("SELECT *
+                                    FROM
+                                        clientes
+                                    WHERE
+                                        activo = '0'
+                                    ORDER BY
+                                        cliente");
+        return $query->result_array();
+    }
     /*
      * 
      * clientes/agregar

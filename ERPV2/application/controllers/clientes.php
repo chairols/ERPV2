@@ -163,5 +163,20 @@ class Clientes extends CI_Controller {
         $this->load->view('clientes/modificar');
         $this->load->view('layout/footer');
     }
+    
+    public function borrados() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Listar Clientes';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        
+        $data['clientes'] = $this->clientes_model->gets_inactivos();
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('clientes/borrados');
+        $this->load->view('layout/footer');
+    }
 }
 ?>
