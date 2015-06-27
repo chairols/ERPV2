@@ -21,7 +21,8 @@ class Planos_model extends CI_Model {
      * 
      *  articulos/ver
      *  planos/agregar 
-     *  
+     *  planos/ver 
+     * 
      */
     public function get_where($where) {
         $query = $this->db->get_where('planos', $where);
@@ -37,6 +38,17 @@ class Planos_model extends CI_Model {
     public function set($datos) {
         $this->db->insert('planos', $datos);
         return $this->db->insert_id();
+    }
+    
+    
+    /*
+     *  
+     *  planos/borrar
+     * 
+     */
+    public function update($datos, $idplano) {
+        $id = array('idplano' => $idplano);
+        $this->db->update('planos', $datos, $id);
     }
 }
 ?>

@@ -128,6 +128,33 @@ class Planos extends CI_Controller {
         $this->load->view('planos/ver');
         $this->load->view('layout/footer');
     }
+    
+    public function borrar($idplano = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        if($idplano == null) {
+            redirect('/planos/', 'refresh');
+        }
+        
+        $datos = array(
+            'activo' => 0
+        );
+        
+        $this->planos_model->update($datos, $idplano);
+        
+        $log = array(
+            'tabla' => 'planos',
+            'idtabla' => $idplano,
+            'texto' => 'Se borró el plano',
+            'tipo' => 'del',
+            'idusuario' => $session['SID']
+        );
+
+        $this->log_model->set($log);
+        
+        redirect('/planos/borrados/', 'refresh');
+    }
 }
 
 ?>
