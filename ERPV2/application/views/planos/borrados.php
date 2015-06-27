@@ -10,10 +10,10 @@
         
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
-                <li class="active"><a href="/planos/">Listar Planos</a></li>
+                <li><a href="/planos/">Listar Planos</a></li>
                 <li><a href="/planos/agregar/">Agregar Plano</a></li>
                 <li><a href="/planos/ver/">Ver Plano</a></li>
-                <li><a href="/planos/borrados/">Planos Borrados</a></li>
+                <li class="active"><a href="/planos/borrados/">Planos Borrados</a></li>
             </ul>
             
             <div class="row-fluid">
@@ -58,9 +58,6 @@
                                             </a>
                                             <a href="/planos/modificar/<?=$plano['idplano']?>" class="label label-default">
                                                 <i class="icon-edit"></i>
-                                            </a>
-                                            <a href="/planos/borrar/<?=$plano['idplano']?>" class="label label-important">
-                                                <i class="icon-remove"></i>
                                             </a>
                                             <a href="/log/ver/planos/<?=$plano['idplano']?>" class="label label-info">
                                                 <i class="icon-time"></i>

@@ -31,6 +31,17 @@ class Planos_model extends CI_Model {
     }
     
     /*
+     *  
+     *  planos/borrados
+     * 
+     */
+    public function gets_where($where) {
+        $query = $this->db->get_where('planos', $where);
+        
+        return $query->result_array();
+    }
+    
+    /*
      * 
      *  planos/agregar
      * 

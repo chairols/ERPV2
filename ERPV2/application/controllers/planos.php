@@ -155,6 +155,25 @@ class Planos extends CI_Controller {
         
         redirect('/planos/borrados/', 'refresh');
     }
+    
+    public function borrados() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Listar Planos Borrados';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        
+        $datos = array(
+            'activo' => '0'
+        );
+        $data['planos'] = $this->planos_model->gets_where($datos);
+        
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('planos/borrados');
+        $this->load->view('layout/footer');
+    }
 }
 
 ?>

@@ -12,6 +12,7 @@
             <li><a href="/planos/">Listar Planos</a></li>
             <li><a href="/planos/agregar/">Agregar Plano</a></li>
             <li class="active"><a href="/planos/ver/">Ver Plano</a></li>
+            <li><a href="/planos/borrados/">Planos Borrados</a></li>
         </ul>
         
         <div class="row-fluid">
