@@ -12,6 +12,7 @@
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li class="active"><a href="/planos/">Listar Planos</a></li>
                 <li><a href="/planos/agregar/">Agregar Plano</a></li>
+                <li><a href="/planos/ver/">Ver Plano</a></li>
             </ul>
             
             <div class="row-fluid">

@@ -21,7 +21,7 @@ class Ots_model extends CI_Model {
      * 
      */
     public function gets() {
-        $query = $this->db->query("SELECT *
+        $query = $this->db->query("SELECT o.*, f.fabrica, p.producto, a.articulo
                                     FROM
                                         ots o,
                                         fabricas f,

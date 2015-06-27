@@ -107,6 +107,27 @@ class Planos extends CI_Controller {
         $this->load->view('planos/agregar');
         $this->load->view('layout/footer');
     }
+    
+    public function ver($idplano = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Ver Plano';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        
+        if($idplano == null) {
+            redirect('/planos/', 'refresh');
+        }
+        $datos = array(
+            'idplano' => $idplano
+        );
+        $data['plano'] = $this->planos_model->get_where($datos);
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('planos/ver');
+        $this->load->view('layout/footer');
+    }
 }
 
 ?>
