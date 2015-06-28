@@ -174,6 +174,109 @@ class Planos extends CI_Controller {
         $this->load->view('planos/borrados');
         $this->load->view('layout/footer');
     }
+    
+    public function modificar($idplano = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if($idplano == null) {
+            redirect('/planos/', 'refresh');
+        }
+        $data['title'] = 'Modificar Plano';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['alerta'] = '';
+        
+        
+        
+        $this->form_validation->set_rules('plano', 'Plano', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'plano' => $this->input->post('plano'),
+                'revision' => $this->input->post('revision'),
+                'observaciones' => $this->input->post('observaciones')
+            );
+            if($this->input->post('propio') == 'on') {
+                $datos['propio'] = '1';
+            } else {
+                $datos['propio'] = '0';
+            }
+            
+            $config['upload_path'] = "./upload/planos/";
+            $config['allowed_types'] = '*';
+            $config['encrypt_name'] = true;
+            $config['remove_spaces'] = true;
+
+            $this->load->library('upload', $config);
+            $adjunto = null;
+
+            if(!$this->upload->do_upload('planofile')) {
+                $error = array('error' => $this->upload->display_errors());
+            } else {
+                $adjunto = array('upload_data' => $this->upload->data());
+            }
+
+            if($adjunto != null) {
+                $datos['planofile'] = '/upload/planos/'.$adjunto['upload_data']['file_name'];
+            }
+            
+            $this->planos_model->update($datos, $idplano);
+            
+            $log = array(
+                'tabla' => 'planos',
+                'idtabla' => $idplano,
+                'texto' => 'Se modificó: <br>'
+                 . 'plano: '.$this->input->post('plano').'<br>'
+                 . 'revisión: '.$this->input->post('revision').'<br>'
+                 . 'plano propio: '.($datos['propio'])?"SI":"NO".'<br>'
+                 . 'archivo: '.($datos['planofile'])?$datos['planofile']:"".'<br>'
+                 . 'observaciones: '.$this->input->post('observaciones').'<br>',
+                'tipo' => 'edit',
+                'idusuario' => $session['SID']
+            );
+            
+            $this->log_model->set($log);
+        }
+        
+        $datos = array(
+            'idplano' => $idplano
+        );
+        $data['plano'] = $this->planos_model->get_where($datos);
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('planos/modificar');
+        $this->load->view('layout/footer');
+    }
+    
+    public function borrararchivo($idplano = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        if($idplano == null) {
+            redirect('/planos/', 'refresh');
+        }
+        
+        $datos = array(
+            'planofile' => ''
+        );
+        
+        $this->planos_model->update($datos, $idplano);
+        
+        $log = array(
+            'tabla' => 'planos',
+            'idtabla' => $idplano,
+            'texto' => 'Se borró el archivo del plano',
+            'tipo' => 'del',
+            'idusuario' => $session['SID']
+        );
+
+        $this->log_model->set($log);
+        
+        redirect('/planos/modificar/'.$idplano.'/', 'refresh');
+    }
 }
 
 ?>

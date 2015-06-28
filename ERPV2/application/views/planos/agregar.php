@@ -11,6 +11,7 @@
         <ul class="nav nav-tabs nav-tabs-justified">
             <li><a href="/planos/">Listar Planos</a></li>
             <li class="active"><a href="/planos/agregar/">Agregar Plano</a></li>
+            <li><a href="/planos/modificar">Modificar Plano</a></li>
             <li><a href="/planos/ver/">Ver Plano</a></li>
             <li><a href="/planos/borrados/">Planos Borrados</a></li>
         </ul>

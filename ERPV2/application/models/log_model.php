@@ -23,6 +23,10 @@ class Log_model extends CI_Model {
      * pedidos/agregar
      * pedidos/agregar_items
      * 
+     * planos/agregar
+     * planos/borrar
+     * planos/modificar
+     * 
      * proveedores/agregar
      * 
      * provincias/agregar

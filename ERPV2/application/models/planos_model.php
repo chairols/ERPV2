@@ -55,6 +55,7 @@ class Planos_model extends CI_Model {
     /*
      *  
      *  planos/borrar
+     *  planos/modificar
      * 
      */
     public function update($datos, $idplano) {
