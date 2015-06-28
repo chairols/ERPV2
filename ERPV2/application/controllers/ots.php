@@ -47,6 +47,29 @@ class Ots extends CI_Controller {
         if($idot == null) {
             redirect('/ots/', 'refresh');
         }
+        $data['title'] = 'Ver Orden de Trabajo';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        
+        $datos = array(
+            'idot' => $idot
+        );
+        $data['ot'] = $this->ots_model->get_where($datos);
+        
+        $datos = array(
+            'idfabrica' => $data['ot']['idfabrica']
+        );
+        $data['fabrica'] = $this->fabricas_model->get_where($datos);
+        
+        $datos = array(
+            'idarticulo' => $data['ot']['idarticulo']
+        );
+        $data['articulo'] = $this->articulos_model->get_where($datos);
+        
+        $this->load->view('layout/header_form', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('ots/ver');
+        $this->load->view('layout/footer_form');
     }
     
     public function agregar() {

@@ -36,6 +36,7 @@ class Fabricas_model extends CI_Model {
      * 
      * ots/modificar
      * ots/pdf
+     * ots/ver
      * 
      */
     public function get_where($where) {
