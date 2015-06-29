@@ -95,6 +95,7 @@ class Ots_model extends CI_Model {
     /*
      * 
      * ots/modificar
+     * ots/borrar
      * 
      */
     public function update($datos, $id) {

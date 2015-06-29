@@ -522,6 +522,31 @@ class Ots extends CI_Controller {
         $this->load->view('ots/planilla', $data);
         
     }
+    
+    public function borrar($idot) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if($idot == null) {
+            redirect('/ots/', 'refresh');
+        }
+        
+        $datos = array(
+            'activo' => '0'
+        );
+        $this->ots_model->update($datos, $idot);
+        
+        $log = array(
+            'tabla' => 'ots',
+            'idtabla' => $idot,
+            'texto' => 'Se borró la OT con ID: '.$idot,
+            'tipo' => 'del',
+            'idusuario' => $session['SID']
+         );
+
+         $this->log_model->set($log);
+         
+         redirect('/ots/', 'refresh');
+    }
 }
 
 ?>
