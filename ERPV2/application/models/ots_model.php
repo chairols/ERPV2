@@ -130,5 +130,25 @@ class Ots_model extends CI_Model {
                                         o.fecha_terminado IS NULL");
         return $query->result_array();
     }
+    
+    /*
+     *  ots/borradas
+     */
+    public function gets_borradas() {
+        $query = $this->db->query("SELECT o.*, f.fabrica, p.producto, a.articulo
+                                    FROM
+                                        ots o,
+                                        fabricas f,
+                                        articulos a,
+                                        productos p
+                                    WHERE
+                                        o.idfabrica = f.idfabrica AND
+                                        a.idarticulo = o.idarticulo AND
+                                        a.idproducto = p.idproducto AND
+                                        o.activo = '0'
+                                    ORDER BY
+                                        o.numero_ot DESC");
+        return $query->result_array();
+    }
 }
 ?>

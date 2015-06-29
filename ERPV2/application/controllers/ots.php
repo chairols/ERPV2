@@ -545,7 +545,22 @@ class Ots extends CI_Controller {
 
          $this->log_model->set($log);
          
-         redirect('/ots/', 'refresh');
+         redirect('/ots/borradas/', 'refresh');
+    }
+    
+    public function borradas() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Listar Órdenes de Trabajo';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        
+        $data['ots'] = $this->ots_model->gets_borradas();
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('ots/borradas');
+        $this->load->view('layout/footer');
     }
 }
 

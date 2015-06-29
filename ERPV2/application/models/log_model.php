@@ -18,6 +18,7 @@ class Log_model extends CI_Model {
      * monedas/agregar
      * 
      * ots/agregar
+     * ots/borrar
      * ots/modificar
      * 
      * pedidos/agregar
