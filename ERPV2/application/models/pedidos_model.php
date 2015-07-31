@@ -62,7 +62,7 @@ class Pedidos_model extends CI_Model {
      * 
      */
     public function gets_items($idpedido) {
-        $query = $this->db->query("SELECT *
+        $query = $this->db->query("SELECT *, pi.cantidad
                                     FROM
                                         pedidos_items pi,
                                         articulos a,
