@@ -7,16 +7,14 @@ class Materiales_model extends CI_Model {
     
     /*
      * 
-     * productos/agregar
+     * materiales/agregar
      * 
-     *
+     */
     public function set($datos) {
-        $this->db->insert('productos', $datos);
-    }*/
+        $this->db->insert('materiales', $datos);
+    }
     
     /*
-     * 
-     *     ********************     articulos/agregar
      * 
      * materiales/index
      * 
@@ -32,15 +30,13 @@ class Materiales_model extends CI_Model {
     
     /*
      * 
-     * ots/pdf
+     *  materiales/agregar
      * 
-     * productos/agregar
-     * 
-     *
+     */
     public function get_where($where) {
-        $query = $this->db->get_where('productos', $where);
+        $query = $this->db->get_where('materiales', $where);
         
         return $query->row_array();
-    }*/
+    }
 }
 ?>
