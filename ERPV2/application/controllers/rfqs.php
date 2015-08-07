@@ -20,13 +20,14 @@ class Rfqs extends CI_Controller {
     public function index() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
+        $data['title'] = "Listar RFQ's";
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
-        $this->load->view('layout/header_datatable', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('rfqs/index');
-        $this->load->view('layout/footer_datatable');
+        $this->load->view('layout/footer');
     }
     
     public function agregar() {
