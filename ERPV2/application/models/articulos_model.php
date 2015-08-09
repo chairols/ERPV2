@@ -24,6 +24,8 @@ class Articulos_model extends CI_Model {
      * 
      * pedidos/agregar_items
      * 
+     * rfqs/agregar
+     * 
      */
     public function gets() {
         $query = $this->db->query("SELECT *

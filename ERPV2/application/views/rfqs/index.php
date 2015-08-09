@@ -29,11 +29,25 @@
                         <table class="table table-hover table-bordered table-condensed" id="sample_1">
                             <thead>
                                 <tr>
-                                    
+                                    <td><strong>O.T.</strong></td>
+                                    <td><strong>Cantidad</strong></td>
+                                    <td><strong>Artículo</strong></td>
+                                    <td><strong>Material</strong></td>
+                                    <td><strong>Destino</strong></td>
+                                    <td><strong>Acción</strong></td>
                                 </tr>
                             </thead>
                             <tbody>
-
+                                <?php foreach($rfqs as $rfq) { ?>
+                                <tr>
+                                    <td><?=($rfq['numero_ot']==null)?"Sin OT":$rfq['numero_ot']?></td>
+                                    <td><?=$rfq['cantidad']?></td>
+                                    <td><?=$rfq['producto']?> <?=$rfq['articulo']?></td>
+                                    <td><?=$rfq['material']?></td>
+                                    <td><?=$rfq['fabrica']?></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>

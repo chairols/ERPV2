@@ -10,7 +10,11 @@ class Rfqs extends CI_Controller {
         ));
         $this->load->model(array(
             'rfqs_model',
-            'ots_model'
+            'ots_model',
+            'articulos_model',
+            'materiales_model',
+            'fabricas_model',
+            'log_model'
         ));
         $this->load->helper(array(
             'url'
@@ -24,6 +28,8 @@ class Rfqs extends CI_Controller {
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
+        $data['rfqs'] = $this->rfqs_model->gets();
+        
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('rfqs/index');
@@ -35,23 +41,21 @@ class Rfqs extends CI_Controller {
         $this->r_session->check($session);
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['title'] = 'Agregar RFQ';
         
-        $this->form_validation->set_rules('item', 'Item', 'numeric');
-        $this->form_validation->set_rules('fecha', 'Fecha', 'required');
+        $this->form_validation->set_rules('cantidad', 'Cantidad', 'required|numeric');
         
         if($this->form_validation->run() == FALSE) {
             
         } else {
-            $datos = array();
-            if($this->input->post('item') == '') {
-                $datos['item'] = null;
-            } else {
-                $datos['item'] = $this->input->post('item');
-            }
-            
-            $datos['fecha'] = $this->input->post('fecha');
-            
-            if($this->input->post('ot') == 'null') {
+            $datos = array(
+                'cantidad' => $this->input->post('cantidad'),
+                'idarticulo' => $this->input->post('articulo'),
+                'idmaterial' => $this->input->post('material'),
+                'idfabrica' => $this->input->post('destino'),
+                'observaciones' => $this->input->post('observaciones')
+            );
+            if($this->input->post('checkbox') == 'on') {
                 $datos['idot'] = null;
             } else {
                 $datos['idot'] = $this->input->post('ot');
@@ -59,15 +63,32 @@ class Rfqs extends CI_Controller {
             
             $id = $this->rfqs_model->set($datos);
             
-            redirect('/rfqs/agregar_items/'.$id, 'refresh');
+            $log = array(
+                'tabla' => 'rfqs',
+                'idtabla' => $id,
+                'texto' => 'Se agregó la RFQ<br>'
+                . 'ID Orden de Trabajo: '.$datos['idot'].'<br>'
+                . 'Cantidad: '.$datos['cantidad'].'<br>'
+                . 'ID Artículo: '.$datos['idarticulo'].'<br>'
+                . 'ID Material: '.$datos['idmaterial'].'<br>'
+                . 'ID Fabrica/Destino'.$datos['idfabrica'].'<br>'
+                . 'Observaciones: '.$datos['observaciones']
+            );
+            $this->log_model->set($log);
+            
+            redirect('/rfqs/', 'refresh');
+
         }
         
         $data['ots'] = $this->ots_model->gets();
+        $data['articulos'] = $this->articulos_model->gets();
+        $data['materiales'] = $this->materiales_model->gets();
+        $data['fabricas'] = $this->fabricas_model->gets();
         
-        $this->load->view('layout/header_form', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('rfqs/agregar');
-        $this->load->view('layout/footer_form');
+        $this->load->view('layout/footer');
     }
     
     public function agregar_items($idrfq = null) {

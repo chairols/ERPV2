@@ -20,13 +20,15 @@ class Fabricas_model extends CI_Model {
      * 
      * ots/agregar
      * 
+     * rfqs/agregar
+     * 
      */
     public function gets() {
         $query = $this->db->query("SELECT *
                                     FROM
                                         fabricas
                                     ORDER BY
-                                        idfabrica");
+                                        fabrica");
         return $query->result_array();
     }
     

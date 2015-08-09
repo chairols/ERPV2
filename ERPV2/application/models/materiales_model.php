@@ -18,6 +18,8 @@ class Materiales_model extends CI_Model {
      * 
      * materiales/index
      * 
+     * rfqs/agregar
+     * 
      */
     public function gets() {
         $query = $this->db->query("SELECT *

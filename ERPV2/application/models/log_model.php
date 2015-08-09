@@ -32,6 +32,8 @@ class Log_model extends CI_Model {
      * 
      * provincias/agregar
      * 
+     * rfqs/agregar
+     * 
      * roles/agregar
      * 
      * stock/modificar
