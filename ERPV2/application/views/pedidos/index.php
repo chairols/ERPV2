@@ -41,7 +41,7 @@
                                         <td><?=$pedido['idpedido']?></td>
                                         <td><?=$pedido['cliente']?></td>
                                         <td><?=$pedido['ordendecompra']?></td>
-                                        <td><a href="<?=$pedido['adjunto']?>" target="_blank"><?=($pedido['adjunto']!='')?"<i class='fa fa-file-o'></i>":""?></a></td>
+                                        <td><a href="<?=$pedido['adjunto']?>" target="_blank"><?=($pedido['adjunto']!='')?"<i class='icon-file'></i>":""?></a></td>
                                         <td>
                                             <a href="/pedidos/agregar_items/<?=$pedido['idpedido']?>" class="label label-default"><i class="icon-edit"></i></a> 
                                             <a href="#" class="label label-important"><i class="icon-remove"></i></a>

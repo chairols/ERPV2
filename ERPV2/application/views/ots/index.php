@@ -47,7 +47,7 @@
                                         <td><?=$ot['numero_ot']?></td>
                                         <td><?=$ot['fabrica']?></td>
                                         <td><?=$ot['cantidad']?></td>
-                                        <td><?=$ot['producto']?> <?=$ot['articulo']?></td>
+                                        <td><a href="/articulos/ver/<?=$ot['idarticulo']?>"><?=$ot['producto']?> <?=$ot['articulo']?></a></td>
                                         <td><?=$ot['fecha_necesidad']?></td>
                                         <td><?=$ot['fecha_terminado']?></td>
                                         <td>

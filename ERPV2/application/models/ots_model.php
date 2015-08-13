@@ -150,5 +150,19 @@ class Ots_model extends CI_Model {
                                         o.numero_ot DESC");
         return $query->result_array();
     }
+    
+    /*
+     * 
+     * pedidos/asociar_ot
+     * 
+     */
+    public function gets_ots_sin_pedidos_por_articulo($idarticulo) {
+       $query = $this->db->query("SELECT o.*, f.fabrica 
+                                    FROM 
+                                        (ots o inner join fabricas f on o.idarticulo = '$idarticulo' AND o.idfabrica = f.idfabrica)
+                                        left join pedidos_items pi on o.idot = pi.idot");
+       
+       return $query->result_array();
+    }
 }
 ?>

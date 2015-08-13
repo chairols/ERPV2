@@ -71,8 +71,10 @@ class Rfqs extends CI_Controller {
                 . 'Cantidad: '.$datos['cantidad'].'<br>'
                 . 'ID Artículo: '.$datos['idarticulo'].'<br>'
                 . 'ID Material: '.$datos['idmaterial'].'<br>'
-                . 'ID Fabrica/Destino'.$datos['idfabrica'].'<br>'
-                . 'Observaciones: '.$datos['observaciones']
+                . 'ID Fabrica/Destino: '.$datos['idfabrica'].'<br>'
+                . 'Observaciones: '.$datos['observaciones'],
+                'tipo' => 'add',
+                'idusuario' => $session['SID']
             );
             $this->log_model->set($log);
             
@@ -91,23 +93,6 @@ class Rfqs extends CI_Controller {
         $this->load->view('layout/footer');
     }
     
-    public function agregar_items($idrfq = null) {
-        $session = $this->session->all_userdata();
-        $this->r_session->check($session);
-        $data['session'] = $session;
-        $data['segmento'] = $this->uri->segment(1);
-        if($idrfq == null) {
-            redirect('/rfqs/', 'refresh');
-        }
-        
-        $data['rfq'] = $this->rfqs_model->get_where(array('idrfq' => $idrfq));
-        $data['ot'] = $this->ots_model->get_where(array('idot' => $data['rfq']['idot']));
-        
-        $this->load->view('layout/header_datatable', $data);
-        $this->load->view('layout/menu');
-        $this->load->view('rfqs/agregar_items');
-        $this->load->view('layout/footer_datatable');
-    }
 }
 
 ?>

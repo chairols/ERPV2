@@ -73,5 +73,23 @@ class Pedidos_model extends CI_Model {
                                         pi.idpedido = '$idpedido'");
         return $query->result_array();
     }
+    
+    /*
+     * 
+     * pedidos/asociar_ot
+     * 
+     */
+    public function get_item_where($idpedido_item) {
+        $query = $this->db->query("SELECT pi.*, p.producto, a.articulo 
+                                    FROM 
+                                        pedidos_items pi,
+                                        articulos a,
+                                        productos p
+                                    WHERE
+                                        pi.idarticulo = a.idarticulo AND
+                                        a.idproducto = p.idproducto AND
+                                        pi.idpedido_item = $idpedido_item");
+        return $query->row_array();
+    }
 }
 ?>

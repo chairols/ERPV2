@@ -19,7 +19,8 @@ class Pedidos extends CI_Controller {
             'provincias_model',
             'log_model',
             'articulos_model',
-            'productos_model'
+            'productos_model',
+            'ots_model'
         ));
     }
     
@@ -135,11 +136,11 @@ class Pedidos extends CI_Controller {
             
             $articulo = $this->articulos_model->get_where(array('idarticulo' => $this->input->post('articulo')));
             $producto = $this->productos_model->get_where(array('idproducto' => $articulo['idproducto']));
-            
+                
             $log = array(
                 'tabla' => 'pedidos',
                 'idtabla' => $idpedido,
-                'texto' => 'Se agregó: <br>'
+                   'texto' => 'Se agregó: <br>'
                  . 'cantidad: '.$this->input->post('cantidad').'<br>'
                  . 'articulo: '.$producto['producto'].' '.$articulo['articulo'].' '.$articulo['plano'].'<br>'
                  . 'precio: '.number_format($this->input->post('precio'), 2),
@@ -169,6 +170,23 @@ class Pedidos extends CI_Controller {
         } else {
             
         }
+    }
+    
+    public function asociar_ot($idpedido_item) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Asociar Orden de Trabajo a Pedido';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        
+        
+        $data['item'] = $this->pedidos_model->get_item_where($idpedido_item);
+        $data['ots'] = $this->ots_model->gets_ots_sin_pedidos_por_articulo($data['item']['idarticulo']);
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('pedidos/asociar_ot');
+        $this->load->view('layout/footer');
     }
 }
 
