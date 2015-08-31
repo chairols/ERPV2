@@ -7,6 +7,7 @@ class Planos_model extends CI_Model {
     
     /*
      *  articulos/agregar
+     *  articulos/modificar
      * 
      *  planos/index
      */

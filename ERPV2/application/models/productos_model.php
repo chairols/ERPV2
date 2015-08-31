@@ -17,6 +17,7 @@ class Productos_model extends CI_Model {
     /*
      * 
      * articulos/agregar
+     * articulos/modificar
      * 
      * productos/index
      * 
@@ -32,6 +33,7 @@ class Productos_model extends CI_Model {
     
     /*
      * 
+     * articulos/ver
      * ots/pdf
      * 
      * productos/agregar

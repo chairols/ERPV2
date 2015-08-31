@@ -11,8 +11,8 @@
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li><a href="/fabricas/">Listar Fábricas</a></li>
-                <li class="active"><a href="/fabricas/agregar/">Agregar Fábrica</a></li>
-                <li><a href="/fabricas/modificar/">Modificar Fábrica</a></li>
+                <li><a href="/fabricas/agregar/">Agregar Fábrica</a></li>
+                <li class="active"><a href="/fabricas/modificar/">Modificar Fábrica</a></li>
             </ul>
         </div>
         
@@ -31,7 +31,7 @@
                             <div class="control-group">
                                 <label class="control-label">Nombre</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('fabrica')?>" name="fabrica" autofocus required>
+                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=$fabrica['fabrica']?>" name="fabrica" autofocus required>
                                     <span class="help-inline">
                                         <?=form_error('fabrica', '<div class="alert alert-danger">', '</div>')?>
                                         <?=$alerta?>
@@ -41,7 +41,7 @@
                             <div class="control-group">
                                 <label class="control-label">Dirección</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('direccion')?>" name="direccion" required>
+                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=$fabrica['direccion']?>" name="direccion" required>
                                     <span class="help-inline">
                                         <?=form_error('direccion', '<div class="alert alert-danger">', '</div>')?>
                                     </span>
@@ -50,7 +50,7 @@
                             <div class="control-group">
                                 <label class="control-label">Localidad</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('localidad')?>" name="localidad" required>
+                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=$fabrica['localidad']?>" name="localidad" required>
                                     <span class="help-inline">
                                         <?=form_error('localidad', '<div class="alert alert-danger">', '</div>')?>
                                     </span>
@@ -59,7 +59,7 @@
                             <div class="control-group">
                                 <label class="control-label">Teléfono</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('telefono')?>" name="telefono" required>
+                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=$fabrica['telefono']?>" name="telefono" required>
                                 </div>
                             </div>
                             <div class="form-actions">

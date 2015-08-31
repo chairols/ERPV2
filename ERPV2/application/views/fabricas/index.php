@@ -12,6 +12,7 @@
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li class="active"><a href="/fabricas/">Listar Fábricas</a></li>
                 <li><a href="/fabricas/agregar/">Agregar Fábrica</a></li>
+                <li><a href="/fabricas/modificar/">Modificar Fábrica</a></li>
             </ul>
             
             <div class="row-fluid">
@@ -39,8 +40,12 @@
                                         <td><?=$fabrica['idfabrica']?></td>
                                         <td><?=$fabrica['fabrica']?></td>
                                         <td>
-                                            <a href="#" class="label label-default"><i class="icon-edit"></i></a> 
-                                            <a href="#" class="label label-info"><i class="icon-time"></i></a>
+                                            <a href="/fabricas/modificar/<?=$fabrica['idfabrica']?>/">
+                                                <i class="alert-info icon-edit tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Editar"></i>
+                                            </a> 
+                                            <a href="/log/ver/fabricas/<?=$fabrica['idfabrica']?>/">
+                                                <i class="alert-block icon-time tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log"></i> 
+                                            </a>
                                         </td>
                                     </tr>
                                     <?php } ?>

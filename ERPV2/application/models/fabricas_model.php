@@ -12,6 +12,7 @@ class Fabricas_model extends CI_Model {
      */
     public function set($datos) {
         $this->db->insert('fabricas', $datos);
+        return $this->db->insert_id();
     }
     
     /*
@@ -35,6 +36,7 @@ class Fabricas_model extends CI_Model {
     /*
      * 
      * fabricas/agregar 
+     * fabricas/modificar
      * 
      * ots/modificar
      * ots/pdf
@@ -45,6 +47,15 @@ class Fabricas_model extends CI_Model {
         $query = $this->db->get_where('fabricas', $where);
         
         return $query->row_array();
+    }
+    
+    /*
+     * fabricas/modificar
+     * 
+     */
+    public function update($datos, $idfabrica) {
+        $id = array('idfabrica' => $idfabrica);
+        $this->db->update('fabricas', $datos, $id);
     }
 }
 ?>

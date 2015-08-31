@@ -8,8 +8,11 @@ class Log_model extends CI_Model {
     /*
      * 
      * articulos/agregar
+     * articulos/modificar
+     * articulos/borrar
      * 
      * clientes/agregar
+     * clientes/modificar
      * 
      * insumos/agregar
      * 
