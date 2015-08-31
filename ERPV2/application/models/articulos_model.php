@@ -96,5 +96,6 @@ class Articulos_model extends CI_Model {
         $id = array('idarticulo' => $idarticulo);
         $this->db->update('articulos', $datos, $id);
     }
+    
 }
 ?>

@@ -31,7 +31,7 @@
                             <div class="control-group">
                                 <label class="control-label">Artículo</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" name="articulo" required autofocus>
+                                    <input type="text" maxlength="100" class="span12" name="articulo" required autofocus>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -39,7 +39,7 @@
                                 <div class="controls checkbox">
                                     <input type="checkbox" name="checkbox" id="checkbox">
                                     <div id="selectplano" style="display: none;">
-                                        <select name="plano" class="input-xlarge select2">
+                                        <select name="plano" class="span12 select2">
                                             <?php foreach($planos as $plano) { ?>
                                             <option value="<?=$plano['idplano']?>"><?=$plano['plano']?> Rev <?=$plano['revision']?></option>
                                             <?php } ?>
@@ -51,7 +51,7 @@
                             <div class="control-group">
                                 <label class="control-label">Producto</label>
                                 <div class="controls">
-                                    <select name="producto" class="select2 input-xlarge">
+                                    <select name="producto" class="select2 span12">
                                         <?php foreach($productos as $producto) { ?>
                                         <option value="<?=$producto['idproducto']?>"><?=$producto['producto']?></option>
                                         <?php } ?>
@@ -61,14 +61,14 @@
                             <div class="control-group">
                                 <label class="control-label">Posición</label>
                                 <div class="controls">
-                                    <input type="number" maxlength="11" class="input-xlarge" value="<?=set_value('posicion')?>" name="posicion" required>
+                                    <input type="number" maxlength="11" class="span12" value="<?=set_value('posicion')?>" name="posicion" required>
                                     <span class="help-inline"><?=form_error('posicion', '<div class="alert alert-danger">', '</div>')?></span>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Observaciones</label>
                                 <div class="controls">
-                                    <textarea name="observaciones" class="input-xlarge"><?=set_value('observaciones')?></textarea>
+                                    <textarea name="observaciones" class="span12"><?=set_value('observaciones')?></textarea>
                                 </div>
                             </div>
                             <div class="form-actions">

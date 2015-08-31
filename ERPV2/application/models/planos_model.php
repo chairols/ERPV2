@@ -6,6 +6,8 @@ class Planos_model extends CI_Model {
     }
     
     /*
+     *  articulos/agregar
+     * 
      *  planos/index
      */
     public function gets() {

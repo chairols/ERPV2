@@ -56,9 +56,9 @@ class Rfqs extends CI_Controller {
                 'observaciones' => $this->input->post('observaciones')
             );
             if($this->input->post('checkbox') == 'on') {
-                $datos['idot'] = null;
-            } else {
                 $datos['idot'] = $this->input->post('ot');
+            } else {
+                $datos['idot'] = null;
             }
             
             $id = $this->rfqs_model->set($datos);

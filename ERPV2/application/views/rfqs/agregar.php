@@ -29,47 +29,59 @@
                         <form method="POST" class="form-horizontal">
                             <div class="control-group">
                                 <label class="control-label">Órden de Trabajo</label>
-                                <div id="ot" class="help-inline">
-                                    <select class="select2 input-xlarge" name="ot">
-                                        <?php foreach($ots as $ot) { ?>
-                                        <option value="<?=$ot['idot']?>"><?=$ot['numero_ot']?></option>
-                                        <?php } ?>
-                                    </select>
+                                <div class="controls checkbox">
+                                    <input type="checkbox" name="checkbox" id="checkbox">
+                                    <div id="selectot" style="display: none;">
+                                        <select name="ot" class="span12 select2">
+                                            <?php foreach($ots as $ot) { ?>
+                                            <option value="<?=$ot['idot']?>"><?=$ot['numero_ot']?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                 </div>
-                                No Aplica <input type="checkbox" name="checkbox" id="checkbox" >
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Cantidad</label>
-                                <input type="text" class="input-xlarge" value="<?=set_value('cantidad')?>" name="cantidad" required>
-                                <span class="help-inline"><?=form_error('cantidad', '<div class="alert alert-danger">', '</div>')?></span>
+                                <div class="controls">
+                                    <input type="text" class="span12" value="<?=set_value('cantidad')?>" name="cantidad" required>
+                                    <span class="help-inline"><?=form_error('cantidad', '<div class="alert alert-danger">', '</div>')?></span>
+                                </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Artículo</label>
-                                <select name="articulo" class="select2 input-xlarge">
-                                    <?php foreach($articulos as $articulo) { ?>
-                                    <option value="<?=$articulo['idarticulo']?>"><?=$articulo['producto']?> <?=$articulo['articulo']?></option>
-                                    <?php } ?>
-                                </select>
+                                <div class="controls">
+                                    <select name="articulo" class="select2 span12">
+                                        <?php foreach($articulos as $articulo) { ?>
+                                        <option value="<?=$articulo['idarticulo']?>"><?=$articulo['producto']?> <?=$articulo['articulo']?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Material</label>
-                                <select name="material" class="select2 input-xlarge">
-                                    <?php foreach($materiales as $material) { ?>
-                                    <option value="<?=$material['idmaterial']?>"><?=$material['material']?></option>
-                                    <?php } ?>
-                                </select>
+                                <div class="controls">
+                                    <select name="material" class="select2 span12">
+                                        <?php foreach($materiales as $material) { ?>
+                                        <option value="<?=$material['idmaterial']?>"><?=$material['material']?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Destino</label>
-                                <select name="destino" class="select2 input-xlarge">
-                                    <?php foreach($fabricas as $fabrica) { ?>
-                                    <option value="<?=$fabrica['idfabrica']?>"><?=$fabrica['fabrica']?></option>
-                                    <?php } ?>
-                                </select>
+                                <div class="controls">
+                                    <select name="destino" class="select2 span12">
+                                        <?php foreach($fabricas as $fabrica) { ?>
+                                        <option value="<?=$fabrica['idfabrica']?>"><?=$fabrica['fabrica']?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Observaciones</label>
-                                <textarea name="observaciones" class="input-xlarge"></textarea>
+                                <div class="controls">
+                                    <textarea name="observaciones" class="span12"></textarea>
+                                </div>
                             </div>
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-success">
@@ -89,34 +101,6 @@
 
 
 
-<div class="block-flat">
-    <form role="form" method="post">
-        <div class="form-group">
-            <label>Item</label>
-            <input type="text" maxlength="11" class="form-control" value="<?=set_value('item')?>" name="item" >
-            <?=form_error('item', '<div class="alert alert-danger">', '</div>')?>
-        </div>
-        
-        <div class="form-group">
-            <label>Fecha</label>
-            <input type="text" class="form-control" id="fecha" name="fecha" readonly>
-            <?=form_error('fecha', '<div class="alert alert-danger">', '</div>')?>
-        </div>
-        
-        <div class="form-group">
-            <label>Orden de Trabajo</label>
-            <select class="select2" name="ot">
-                <option value="null">NO</option>
-                <?php foreach($ots as $ot) { ?>
-                <option value="<?=$ot['idot']?>"><?=$ot['numero_ot']?></option>
-                <?php } ?>
-            </select>
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Agregar</button>
-    </form>
-</div>
-
 <script type="text/javascript">
     function inicio() {
         $("#fecha").datepicker({
@@ -124,15 +108,13 @@
         });
         
         $("#checkbox").click(function() {
-            ot();
+            var flag = $("#checkbox").is(':checked');
+            if(flag == true) {
+                $("#selectot").fadeIn(500);
+            } else {
+                $("#selectot").fadeOut(500);
+            }
         });
     }
-
-    function ot() {
-        if($("#checkbox").is(':checked')) {
-            $("#ot").fadeOut(500);
-        } else {
-            $("#ot").fadeIn(500);
-        }
-    }
 </script>
+

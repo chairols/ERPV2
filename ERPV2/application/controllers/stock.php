@@ -126,5 +126,6 @@ class Stock extends CI_Controller {
         $this->load->view('stock/ver');
         $this->load->view('layout/footer');
     }
+    
 }
 ?>
