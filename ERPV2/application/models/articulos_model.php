@@ -97,5 +97,32 @@ class Articulos_model extends CI_Model {
         $this->db->update('articulos', $datos, $id);
     }
     
+    
+    /*
+     * stock/con_stock
+     * 
+     */
+    public function gets_con_stock() {
+        $query = $this->db->query("SELECT *
+                                    FROM
+                                        (articulos a
+                                    LEFT JOIN
+                                        planos pl
+                                    ON  
+                                        a.idplano = pl.idplano)
+                                    INNER JOIN
+                                        productos p
+                                    ON
+                                        a.idproducto = p.idproducto AND
+                                        a.activo = '1' AND
+                                        a.cantidad > 0
+                                    LEFT JOIN
+                                        medidas m
+                                    ON
+                                        a.unidad_medida = m.idmedida
+                                    ORDER BY
+                                        a.articulo");
+        return $query->result_array();
+    }
 }
 ?>

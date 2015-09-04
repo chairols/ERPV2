@@ -14,6 +14,9 @@ class Log_model extends CI_Model {
      * clientes/agregar
      * clientes/modificar
      * 
+     * fabricas/agregar
+     * fabricas/modificar
+     * 
      * insumos/agregar
      * 
      * medidas/agregar
