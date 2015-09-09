@@ -127,7 +127,8 @@ class Ots_model extends CI_Model {
                                         fabricas f
                                     WHERE 
                                         o.idfabrica = f.idfabrica AND
-                                        o.fecha_terminado IS NULL");
+                                        o.fecha_terminado IS NULL AND
+                                        o.activo = '1'");
         return $query->result_array();
     }
     

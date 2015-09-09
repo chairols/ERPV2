@@ -14,6 +14,7 @@
                 <li><a href="/stock/modificar/">Modificar Stock</a></li>
                 <li><a href="/stock/ver/">Ver Stock</a></li>
                 <li><a href="/stock/con_stock/">Listar Con Stock</a></li>
+                <li><a href="/stock/ingresar/">Ingresar Stock</a></li>
             </ul>
         </div>
         <div class="row-fluid">

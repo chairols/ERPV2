@@ -22,7 +22,7 @@ class Dashboard extends CI_Controller {
         $data['session'] = $session;
         $data['segmento'] = 'dashboard';
         
-        $data['ots_pendientes'] = $this->ots_model->gets_where(array('fecha_terminado' => null));
+        $data['ots_pendientes'] = $this->ots_model->gets_where(array('fecha_terminado' => null, 'activo' => '1'));
         $data['ots_cumplidas'] = $this->ots_model->gets_cumplidas();
         $data['ots_vencidas'] = $this->ots_model->gets_vencidas();
         

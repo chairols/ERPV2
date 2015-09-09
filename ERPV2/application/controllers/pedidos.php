@@ -142,7 +142,7 @@ class Pedidos extends CI_Controller {
                 'idtabla' => $idpedido,
                    'texto' => 'Se agregó: <br>'
                  . 'cantidad: '.$this->input->post('cantidad').'<br>'
-                 . 'articulo: '.$producto['producto'].' '.$articulo['articulo'].' '.$articulo['plano'].'<br>'
+                 . 'articulo: '.$producto['producto'].' '.$articulo['articulo'].'<br>'
                  . 'precio: '.number_format($this->input->post('precio'), 2),
                 'tipo' => 'add',
                 'idusuario' => $session['SID']

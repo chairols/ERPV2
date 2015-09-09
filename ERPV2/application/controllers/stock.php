@@ -141,5 +141,20 @@ class Stock extends CI_Controller {
         $this->load->view('stock/con_stock');
         $this->load->view('layout/footer');
     }
+    
+    public function ingresar() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Ingresar Stock';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        
+        $data['articulos'] = $this->articulos_model->gets();
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('stock/ingresar');
+        $this->load->view('layout/footer');
+    }
 }
 ?>
