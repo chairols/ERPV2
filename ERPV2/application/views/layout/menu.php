@@ -21,7 +21,7 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="sub-menu<?=($segmento=='articulos'||$segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='materiales'||$segmento=='monedas'||$segmento=='planos'||$segmento=='productos'||$segmento=='proveedores'||$segmento=='provincias'||$segmento=='roles'||$segmento=='stock'||$segmento=='medidas')?" active":""?>">
+            <li class="sub-menu<?=($segmento=='articulos'||$segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='marcas'||$segmento=='materiales'||$segmento=='monedas'||$segmento=='planos'||$segmento=='productos'||$segmento=='proveedores'||$segmento=='provincias'||$segmento=='roles'||$segmento=='stock'||$segmento=='medidas')?" active":""?>">
                 <a href="javascript:;" class="">
                     <i class="icon-file"></i>
                     <span>Maestros</span>
@@ -32,6 +32,7 @@
                     <li<?=($segmento=='clientes')?" class='active'":""?>><a class="" href="/clientes/">Clientes</a></li>
                     <li<?=($segmento=='fabricas')?" class='active'":""?>><a class="" href="/fabricas/">Fábricas</a></li>
                     <li<?=($segmento=='insumos')?" class='active'":""?>><a class="" href="/insumos/">Insumos</a></li>
+                    <li<?=($segmento=='marcas')?" class='active'":""?>><a class="" href="/marcas/">Marcas</a></li>
                     <li<?=($segmento=='materiales')?" class='active'":""?>><a class="" href="/materiales/">Materiales</a></li>
                     <li<?=($segmento=='monedas')?" class='active'":""?>><a class="" href="/monedas/">Monedas</a></li>
                     <li<?=($segmento=='planos')?" class='active'":""?>><a class="" href="/planos/">Planos</a></li>
