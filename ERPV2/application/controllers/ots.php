@@ -477,10 +477,10 @@ class Ots extends CI_Controller {
         
         $data['ots'] = $this->ots_model->gets_vencidas();
         
-        $this->load->view('layout/header_datatable', $data);
+        $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('ots/vencidas');
-        $this->load->view('layout/footer_datatable');
+        $this->load->view('layout/footer');
     }
     
     public function pendientes() {
