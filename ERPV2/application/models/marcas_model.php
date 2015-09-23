@@ -20,5 +20,26 @@ class Marcas_model extends CI_Model {
                                         marca");
         return $query->result_array();
     }
+    
+    /*
+     * 
+     *  marcas/agregar
+     * 
+     */
+    public function get_where($where) {
+        $query = $this->db->get_where('marcas', $where);
+        
+        return $query->row_array();
+    }
+    
+    
+    /*
+     * 
+     * marcas/agregar
+     * 
+     */
+    public function set($datos) {
+        $this->db->insert('marcas', $datos);
+    }
 }
 ?>
