@@ -33,11 +33,19 @@
                             <div class="control-group">
                                 <label class="control-label">Artículo</label>
                                 <div class="controls">
-                                    <select name="articulo" class="span12 select2">
+                                    <select name="articulo" class="span12 select2" id="articulo">
                                         <?php foreach($articulos as $articulo) { ?>
                                         <option value="<?=$articulo['idarticulo']?>"><?=$articulo['producto']?> <?=$articulo['articulo']?> Pos <?=$articulo['posicion']?></option>
                                         <?php } ?>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Marca</label>
+                                <div class="controls">
+                                    <div id="marca">
+                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -56,3 +64,14 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    
+    
+    function inicio() {
+        $("#articulo").change(function() {
+            idarticulo = $("#articulo").val();
+            alert(idarticulo);
+        });
+    }
+</script>

@@ -66,6 +66,26 @@
                                 </div>
                             </div>
                             <div class="control-group">
+                                <label class="control-label">Padres</label>
+                                <div class="controls">
+                                    <select name="padres[]" class="select2 span12" multiple="multiple">
+                                        <?php foreach($articulos as $articulo) { ?>
+                                        <option value="<?=$articulo['idarticulo']?>"><?=$articulo['producto']?> <?=$articulo['articulo']?> Rev <?=$articulo['revision']?> Pos <?=$articulo['posicion']?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Hijos</label>
+                                <div class="controls">
+                                    <select name="hijos[]" class="select2 span12" multiple="multiple">
+                                        <?php foreach($articulos as $articulo) { ?>
+                                        <option value="<?=$articulo['idarticulo']?>"><?=$articulo['producto']?> <?=$articulo['articulo']?> Rev <?=$articulo['revision']?> Pos <?=$articulo['posicion']?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
                                 <label class="control-label">Observaciones</label>
                                 <div class="controls">
                                     <textarea name="observaciones" class="span12"><?=set_value('observaciones')?></textarea>

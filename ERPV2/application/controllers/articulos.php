@@ -15,7 +15,8 @@ class Articulos extends CI_Controller {
             'articulos_model',
             'productos_model',
             'log_model',
-            'planos_model'
+            'planos_model',
+            'articulos_jerarquias_model'
         ));
     }
     
@@ -44,6 +45,7 @@ class Articulos extends CI_Controller {
         
         $data['productos'] = $this->productos_model->gets();
         $data['planos'] = $this->planos_model->gets();
+        $data['articulos'] = $this->articulos_model->gets();
         
         $this->form_validation->set_rules('articulo', 'Artículo', 'required');
         $this->form_validation->set_rules('producto', 'Producto', 'required');
@@ -56,7 +58,7 @@ class Articulos extends CI_Controller {
             );
             $resultado = $this->articulos_model->get_where($datos);
             
-            if(count($resultado) == 0 || 1 == 1) {   //  Salteo el if
+            if(count($resultado) == 0) {
                 $datos = array(
                     'articulo' => $this->input->post('articulo'),
                     'idproducto' => $this->input->post('producto'),
@@ -82,9 +84,26 @@ class Articulos extends CI_Controller {
                     . 'observaciones: '.$this->input->post('observaciones').'<br>',
                    'tipo' => 'add',
                    'idusuario' => $session['SID']
-               );
+                );
                 
-                $this->log_model->set($log);
+                
+                
+                foreach($this->input->post('padres') as $padre) {
+                    $datos = array(
+                        'idarticulo_padre' => $padre,
+                        'idarticulo_hijo' => $id
+                    );
+                    $this->articulos_jerarquias_model->set($datos);
+                }
+                
+                foreach($this->input->post('hijos') as $hijo) {
+                    $datos = array(
+                        'idarticulo_padre' => $id,
+                        'idarticulo_hijo' => $hijo
+                    );
+                    $this->articulos_jerarquias_model->set($datos);
+                }
+                
                 
                 redirect('/articulos/', 'refresh');
             }

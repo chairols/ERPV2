@@ -18,6 +18,7 @@ class Articulos_model extends CI_Model {
     /*
      * 
      * articulos/index
+     * articulos/agregar
      * 
      * ots/agregar
      * ots/modificar
@@ -40,10 +41,6 @@ class Articulos_model extends CI_Model {
                                     ON
                                         a.idproducto = p.idproducto AND
                                         a.activo = '1'
-                                    LEFT JOIN
-                                        medidas m
-                                    ON
-                                        a.unidad_medida = m.idmedida
                                     ORDER BY
                                         a.articulo");
         return $query->result_array();
