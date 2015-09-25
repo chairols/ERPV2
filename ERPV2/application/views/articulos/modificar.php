@@ -66,6 +66,26 @@
                                 </div>
                             </div>
                             <div class="control-group">
+                                <label class="control-label">Padres</label>
+                                <div class="controls">
+                                    <select name="padres[]" class="select2 span12" multiple="multiple">
+                                        <?php foreach($padres as $padre) { ?>
+                                        <option value="<?=$padre['idarticulo']?>"<?=($padre['idarticulo_hijo']==$articulo['idarticulo'])?" selected":""?>><?=$padre['producto']?> <?=$padre['articulo']?> Rev <?=$padre['revision']?> Pos <?=$padre['posicion']?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Hijos</label>
+                                <div class="controls">
+                                    <select name="hijos[]" class="select2 span12" multiple="multiple">
+                                        <?php foreach($hijos as $hijo) { ?>
+                                        <option value="<?=$hijo['idarticulo']?>"<?=($hijo['idarticulo_padre']==$articulo['idarticulo'])?" selected":""?>><?=$hijo['producto']?> <?=$hijo['articulo']?> Rev <?=$hijo['revision']?> Pos <?=$hijo['posicion']?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
                                 <label class="control-label">Observaciones</label>
                                 <div class="controls">
                                     <textarea name="observaciones" class="input-xlarge"><?=$articulo['observaciones']?></textarea>

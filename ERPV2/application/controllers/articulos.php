@@ -135,6 +135,8 @@ class Articulos extends CI_Controller {
         
         $data['productos'] = $this->productos_model->gets();
         
+        
+        
         $this->form_validation->set_rules('articulo', 'Artículo', 'required');
         $this->form_validation->set_rules('producto', 'Producto', 'required');
         
@@ -174,10 +176,31 @@ class Articulos extends CI_Controller {
                 'idusuario' => $session['SID']
             );
 
-             $this->log_model->set($log);
+            $this->log_model->set($log);
+            
+            $this->articulos_jerarquias_model->borrar_jerarquias($idarticulo);
+            
+            foreach($this->input->post('padres') as $padre) {
+                $datos = array(
+                    'idarticulo_padre' => $padre,
+                    'idarticulo_hijo' => $idarticulo
+                );
+                $this->articulos_jerarquias_model->set($datos);
+            }
 
-             redirect('/articulos/', 'refresh');
+            foreach($this->input->post('hijos') as $hijo) {
+                $datos = array(
+                    'idarticulo_padre' => $idarticulo,
+                    'idarticulo_hijo' => $hijo
+                );
+                $this->articulos_jerarquias_model->set($datos);
+            }
+            
+            redirect('/articulos/', 'refresh');
         }
+        
+        $data['padres'] = $this->articulos_jerarquias_model->gets_combo_padre($idarticulo);
+        $data['hijos'] = $this->articulos_jerarquias_model->gets_combo_hijo($idarticulo);
         
         $this->load->view('layout/header_form', $data);
         $this->load->view('layout/menu');
