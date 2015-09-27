@@ -4,6 +4,7 @@ var Script = function () {
         $('#sample_1').dataTable({
             "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
             "sPaginationType": "bootstrap",
+            "fnSort": [ 0, "desc"],
             "oLanguage": {
                 "sLengthMenu": "_MENU_ registros por página",
                 "oPaginate": {
@@ -17,6 +18,9 @@ var Script = function () {
             }]
         });
 
+        var sample_1_desc = $('#sample_1_desc').dataTable();
+        sample_1_desc.fnSort( [ [0, 'desc'] ])
+        
         jQuery('#sample_1 .group-checkable').change(function () {
             var set = jQuery(this).attr("data-set");
             var checked = jQuery(this).is(":checked");
