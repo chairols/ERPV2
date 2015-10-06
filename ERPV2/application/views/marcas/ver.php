@@ -11,9 +11,9 @@
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li><a href="/marcas/">Listar Marcas</a></li>
-                <li class="active"><a href="/marcas/agregar/">Agregar Marca</a></li>
+                <li><a href="/marcas/agregar/">Agregar Marca</a></li>
                 <li><a href="/marcas/modificar/">Modificar Marca</a></li>
-                <li><a href="/marcas/ver/">Ver Marca</a></li>
+                <li class="active"><a href="/marcas/ver/">Ver Marca</a></li>
                 <li><a href="/marcas/borradas/">Marcas Borradas</a></li>
             </ul>
         </div>
@@ -33,18 +33,8 @@
                             <div class="control-group">
                                 <label class="control-label">Marca</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('marca')?>" name="marca" required autofocus>
-                                    <?=form_error('marca', '<div class="alert alert-danger">', '</div>')?>
-                                    <?=$alerta?>
+                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=$marca['marca']?>" readonly>
                                 </div>
-                            </div>
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="icon-save"></i> Guardar
-                                </button>
-                                <button type="reset" class="btn btn-danger">
-                                    <i class="icon-remove"></i> Limpiar
-                                </button>
                             </div>
                         </form>
                     </div>

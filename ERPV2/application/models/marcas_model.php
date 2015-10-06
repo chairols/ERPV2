@@ -24,6 +24,7 @@ class Marcas_model extends CI_Model {
     /*
      * 
      *  marcas/agregar
+     *  marcas/ver
      * 
      */
     public function get_where($where) {
@@ -40,6 +41,7 @@ class Marcas_model extends CI_Model {
      */
     public function set($datos) {
         $this->db->insert('marcas', $datos);
+        return $this->db->insert_id();
     }
 }
 ?>

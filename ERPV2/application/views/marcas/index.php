@@ -12,6 +12,9 @@
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li class="active"><a href="/marcas/">Listar Marcas</a></li>
                 <li><a href="/marcas/agregar/">Agregar Marca</a></li>
+                <li><a href="/marcas/modificar/">Modificar Marca</a></li>
+                <li><a href="/marcas/ver/">Ver Marca</a></li>
+                <li><a href="/marcas/borradas/">Marcas Borradas</a></li>
             </ul>
         </div>
         <div class="row-fluid">
@@ -37,9 +40,18 @@
                                 <tr>
                                     <td><?=$marca['marca']?></td>
                                     <td>
-                                        <a href="#" class="label label-default"><i class="icon-edit"></i></a> 
-                                        <a href="#" class="label label-important"><i class="icon-remove"></i></a>
-                                        <a href="/log/ver/marcas/<?=$marca['idmarca']?>/" class="label label-info"><i class="icon-time"></i></a>
+                                        <a href="/marcas/ver/<?=$marca['idmarca']?>">
+                                            <i class="alert-success icon-eye-open tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver"></i>
+                                        </a>
+                                        <a href="/marcas/modificar/<?=$marca['idmarca']?>">
+                                            <i class="alert-info icon-edit tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Editar"></i>
+                                        </a> 
+                                        <a href="/marcas/borrar/<?=$marca['idmarca']?>">
+                                            <i class="alert-danger icon-remove tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar"></i>
+                                        </a>
+                                        <a href="/log/ver/marcas/<?=$marca['idmarca']?>">
+                                            <i class="alert-info icon-time tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log"></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php } ?>
