@@ -86,26 +86,28 @@ class Articulos extends CI_Controller {
                    'idusuario' => $session['SID']
                 );
                 
+                if($this->input->post('padres')) {
+                    foreach($this->input->post('padres') as $padre) {
+                        $datos = array(
+                            'idarticulo_padre' => $padre,
+                            'idarticulo_hijo' => $id
+                        );
+                        $this->articulos_jerarquias_model->set($datos);
+                    }
+                }
+                  
                 
-                
-                foreach($this->input->post('padres') as $padre) {
-                    $datos = array(
-                        'idarticulo_padre' => $padre,
-                        'idarticulo_hijo' => $id
-                    );
-                    $this->articulos_jerarquias_model->set($datos);
+                if($this->input->post('hijos')) {
+                    foreach($this->input->post('hijos') as $hijo) {
+                        $datos = array(
+                            'idarticulo_padre' => $id,
+                            'idarticulo_hijo' => $hijo
+                        );
+                        $this->articulos_jerarquias_model->set($datos);
+                    }
                 }
                 
-                foreach($this->input->post('hijos') as $hijo) {
-                    $datos = array(
-                        'idarticulo_padre' => $id,
-                        'idarticulo_hijo' => $hijo
-                    );
-                    $this->articulos_jerarquias_model->set($datos);
-                }
-                
-                
-                redirect('/articulos/', 'refresh');
+                //redirect('/articulos/', 'refresh');
             }
         }
         
@@ -180,20 +182,24 @@ class Articulos extends CI_Controller {
             
             $this->articulos_jerarquias_model->borrar_jerarquias($idarticulo);
             
-            foreach($this->input->post('padres') as $padre) {
-                $datos = array(
-                    'idarticulo_padre' => $padre,
-                    'idarticulo_hijo' => $idarticulo
-                );
-                $this->articulos_jerarquias_model->set($datos);
+            if($this->input->post('padres')) {
+                foreach($this->input->post('padres') as $padre) {
+                    $datos = array(
+                        'idarticulo_padre' => $padre,
+                        'idarticulo_hijo' => $idarticulo
+                    );
+                    $this->articulos_jerarquias_model->set($datos);
+                }
             }
-
-            foreach($this->input->post('hijos') as $hijo) {
-                $datos = array(
-                    'idarticulo_padre' => $idarticulo,
-                    'idarticulo_hijo' => $hijo
-                );
-                $this->articulos_jerarquias_model->set($datos);
+            
+            if($this->input->post('hijos')) {
+                foreach($this->input->post('hijos') as $hijo) {
+                    $datos = array(
+                        'idarticulo_padre' => $idarticulo,
+                        'idarticulo_hijo' => $hijo
+                    );
+                    $this->articulos_jerarquias_model->set($datos);
+                }
             }
             
             redirect('/articulos/', 'refresh');
