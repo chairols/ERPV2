@@ -466,7 +466,7 @@ class Ots extends CI_Controller {
         }
         
         
-        $this->pdf->Output('Orden de Trabajo '.$ot['numero_ot'], 'I');
+        $this->pdf->Output('Orden de Trabajo '.$ot['numero_ot'].'.pdf', 'I');
     }
     
     public function vencidas() {

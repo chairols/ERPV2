@@ -21,13 +21,14 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="sub-menu<?=($segmento=='articulos'||$segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='marcas'||$segmento=='materiales'||$segmento=='monedas'||$segmento=='planos'||$segmento=='productos'||$segmento=='proveedores'||$segmento=='provincias'||$segmento=='roles'||$segmento=='stock'||$segmento=='medidas')?" active":""?>">
+            <li class="sub-menu<?=($segmento=='almacenes'||$segmento=='articulos'||$segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='marcas'||$segmento=='materiales'||$segmento=='monedas'||$segmento=='planos'||$segmento=='productos'||$segmento=='proveedores'||$segmento=='provincias'||$segmento=='roles'||$segmento=='stock'||$segmento=='medidas')?" active":""?>">
                 <a href="javascript:;" class="">
                     <i class="icon-file"></i>
                     <span>Maestros</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub">
+                    <li<?=($segmento=='almacenes')?" class='active'":""?>><a class="" href="/almacenes/">Almacenes</a></li>
                     <li<?=($segmento=='articulos')?" class='active'":""?>><a class="" href="/articulos/">Artículos</a></li>
                     <li<?=($segmento=='clientes')?" class='active'":""?>><a class="" href="/clientes/">Clientes</a></li>
                     <li<?=($segmento=='fabricas')?" class='active'":""?>><a class="" href="/fabricas/">Fábricas</a></li>
