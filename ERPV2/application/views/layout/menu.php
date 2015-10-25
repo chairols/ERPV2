@@ -21,28 +21,58 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="sub-menu<?=($segmento=='almacenes'||$segmento=='articulos'||$segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='marcas'||$segmento=='materiales'||$segmento=='monedas'||$segmento=='planos'||$segmento=='productos'||$segmento=='proveedores'||$segmento=='provincias'||$segmento=='roles'||$segmento=='stock'||$segmento=='medidas')?" active":""?>">
+            <li class="sub-menu<?=($segmento=='almacenes'||$segmento=='marcas'||$segmento=='stock')?" active":""?>">
+                <a href="javascript:;" class="">
+                    <i class="icon-archive"></i>
+                    <span>Almacenes</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                    <li<?=($segmento=='almacenes')?" class='active'":""?>><a class="" href="/almacenes/">Almacenes</a></li>
+                    <li<?=($segmento=='marcas')?" class='active'":""?>><a class="" href="/marcas/">Marcas</a></li>
+                    <li<?=($segmento=='stock')?" class='active'":""?>><a class="" href="/stock/">Stock</a></li>
+                    
+                </ul>
+            </li>
+            <li class="sub-menu<?=($segmento=='articulos'||$segmento=='planos'||$segmento=='productos'||$segmento=='medidas')?" active":""?>">
+                <a href="javascript:;" class="">
+                    <i class="icon-book"></i>
+                    <span>Artículos</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                    <li<?=($segmento=='articulos')?" class='active'":""?>><a class="" href="/articulos/">Artículos</a></li>
+                    <li<?=($segmento=='planos')?" class='active'":""?>><a class="" href="/planos/">Planos</a></li>
+                    <li<?=($segmento=='productos')?" class='active'":""?>><a class="" href="/productos/">Productos</a></li>
+                    <li<?=($segmento=='medidas')?" class='active'":""?>><a class="" href="/medidas/">Unidades de Medida</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu<?=($segmento=='ocs'||$segmento=='proveedores'||$segmento=='rfqs')?" active":""?>">
+                <a href="javascript:;" class="">
+                    <i class="icon-dollar"></i>
+                    <span>Compras</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                    <li<?=($segmento=='ocs')?" class='active'":""?>><a class="" href="/ocs/">Órdenes de Compra</a></li>
+                    <li<?=($segmento=='proveedores')?" class='active'":""?>><a class="" href="/proveedores/">Proveedores</a></li>
+                    <li<?=($segmento=='rfqs')?" class='active'":""?>><a class="" href="/rfqs">RFQ's</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu<?=($segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='materiales'||$segmento=='monedas'||$segmento=='provincias'||$segmento=='roles')?" active":""?>">
                 <a href="javascript:;" class="">
                     <i class="icon-file"></i>
                     <span>Maestros</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub">
-                    <li<?=($segmento=='almacenes')?" class='active'":""?>><a class="" href="/almacenes/">Almacenes</a></li>
-                    <li<?=($segmento=='articulos')?" class='active'":""?>><a class="" href="/articulos/">Artículos</a></li>
                     <li<?=($segmento=='clientes')?" class='active'":""?>><a class="" href="/clientes/">Clientes</a></li>
                     <li<?=($segmento=='fabricas')?" class='active'":""?>><a class="" href="/fabricas/">Fábricas</a></li>
                     <li<?=($segmento=='insumos')?" class='active'":""?>><a class="" href="/insumos/">Insumos</a></li>
-                    <li<?=($segmento=='marcas')?" class='active'":""?>><a class="" href="/marcas/">Marcas</a></li>
                     <li<?=($segmento=='materiales')?" class='active'":""?>><a class="" href="/materiales/">Materiales</a></li>
                     <li<?=($segmento=='monedas')?" class='active'":""?>><a class="" href="/monedas/">Monedas</a></li>
-                    <li<?=($segmento=='planos')?" class='active'":""?>><a class="" href="/planos/">Planos</a></li>
-                    <li<?=($segmento=='productos')?" class='active'":""?>><a class="" href="/productos/">Productos</a></li>
-                    <li<?=($segmento=='proveedores')?" class='active'":""?>><a class="" href="/proveedores/">Proveedores</a></li>
                     <li<?=($segmento=='provincias')?" class='active'":""?>><a class="" href="/provincias/">Provincias</a></li>
                     <li<?=($segmento=='roles')?" class='active'":""?>><a class="" href="/roles/">Roles</a></li>
-                    <li<?=($segmento=='stock')?" class='active'":""?>><a class="" href="/stock/">Stock</a></li>
-                    <li<?=($segmento=='medidas')?" class='active'":""?>><a class="" href="/medidas/">Unidades de Medida</a></li>
                 </ul>
             </li>
             <li class="sub-menu<?=($segmento=='ots'||$segmento=='pedidos')?" active":""?>">
@@ -56,17 +86,7 @@
                     <li<?=($segmento=='pedidos')?" class='active'":""?>><a class="" href="/pedidos/">Pedidos</a></li>
                 </ul>
             </li>
-            <li class="sub-menu<?=($segmento=='ocs'||$segmento=='rfqs')?" active":""?>">
-                <a href="javascript:;" class="">
-                    <i class="icon-dollar"></i>
-                    <span>Compras</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub">
-                    <li<?=($segmento=='ocs')?" class='active'":""?>><a class="" href="/ocs/">Órdenes de Compra</a></li>
-                    <li<?=($segmento=='rfqs')?" class='active'":""?>><a class="" href="/rfqs">RFQ's</a></li>
-                </ul>
-            </li>
+            
               <?php
                         break;
 

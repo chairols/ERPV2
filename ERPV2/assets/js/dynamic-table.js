@@ -23,7 +23,15 @@ var Script = function () {
             }]
         });
 
-        var sample_1_desc = $('#sample_1_desc').dataTable();
+        var sample_1_desc = $('#sample_1_desc').dataTable({
+            "oLanguage": {
+                "sLengthMenu": "_MENU_ registros por página",
+                "oPaginate": {
+                    "sPrevious": "Anterior",
+                    "sNext": "Siguiente"
+                }
+            }
+        });
         sample_1_desc.fnSort( [ [0, 'desc'] ])
         
         jQuery('#sample_1 .group-checkable').change(function () {
