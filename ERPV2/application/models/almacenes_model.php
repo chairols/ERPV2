@@ -20,5 +20,26 @@ class Almacenes_model extends CI_Model {
                                         almacen");
         return $query->result_array();
     }
+    
+    
+    /*
+     * almacenes/agregar
+     * 
+     */
+    public function get_where($where) {
+        $query = $this->db->get_where('almacenes', $where);
+        
+        return $query->row_array();
+    }
+    
+    
+    /*
+     * almacenes/agregar
+     * 
+     */
+    public function set($datos) {
+        $this->db->insert('almacenes', $datos);
+        return $this->db->insert_id();
+    }
 }
 ?>

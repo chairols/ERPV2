@@ -5,10 +5,15 @@ class Almacenes extends CI_Controller {
         parent::__construct();
         $this->load->library(array(
             'session',
-            'r_session'
+            'r_session',
+            'form_validation'
         ));
         $this->load->model(array(
-            'almacenes_model'
+            'almacenes_model',
+            'log_model'
+        ));
+        $this->load->helper(array(
+            'url'
         ));
     }
     
@@ -24,6 +29,53 @@ class Almacenes extends CI_Controller {
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('almacenes/index', $data);
+        $this->load->view('layout/footer');
+    }
+    
+    
+    public function agregar() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Agregar Almacén';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['alerta'] = '';  // Se utiliza si existe el material repetido
+        
+        $this->form_validation->set_rules('almacen', 'Almacén', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'almacen' => $this->input->post('almacen')
+            );
+            $resultado = $this->almacenes_model->get_where($datos);
+                    
+            if(count($resultado) == 0) {
+                $datos = array(
+                    'almacen' => $this->input->post('almacen')
+                );
+
+               $id = $this->almacenes_model->set($datos); 
+
+               $log = array(
+                   'tabla' => 'almacenes',
+                   'idtabla' => $id,
+                   'texto' => 'Se agregó el almacén '.$this->input->post('almacen'),
+                   'tipo' => 'add',
+                   'idusuario' => $session['SID']
+               );
+               $this->log_model->set($log);
+               
+               redirect('/almacenes/', 'refresh');
+            } else {
+                $data['alerta'] = '<div class="alert alert-danger">El almacén ya existe</div>';
+            }
+        }
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('almacenes/agregar');
         $this->load->view('layout/footer');
     }
 }
