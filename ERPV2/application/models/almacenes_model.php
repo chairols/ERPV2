@@ -24,6 +24,7 @@ class Almacenes_model extends CI_Model {
     
     /*
      * almacenes/agregar
+     * almacenes/modificar
      * 
      */
     public function get_where($where) {
@@ -40,6 +41,15 @@ class Almacenes_model extends CI_Model {
     public function set($datos) {
         $this->db->insert('almacenes', $datos);
         return $this->db->insert_id();
+    }
+    
+    /*
+     * almacenes/modificar
+     * 
+     */
+    public function update($datos, $id) {
+        $array = array('idalmacen' => $id);
+        $this->db->update('almacenes', $datos, $array);
     }
 }
 ?>

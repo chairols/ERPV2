@@ -78,5 +78,57 @@ class Almacenes extends CI_Controller {
         $this->load->view('almacenes/agregar');
         $this->load->view('layout/footer');
     }
+    
+    public function modificar($idalmacen = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if($idalmacen == null) {
+            redirect('/almacenes/', 'refresh');
+        }
+        $data['title'] = 'Modificar Almacén';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['alerta'] = '';  // Se utiliza si existe el almacén repetido
+        
+        $this->form_validation->set_rules('almacen', 'Almacén', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'almacen' => $this->input->post('almacen')
+            );
+            $resultado = $this->almacenes_model->get_where($datos);
+                    
+            if(count($resultado) == 0) {
+                $datos = array(
+                    'almacen' => $this->input->post('almacen')
+                );
+                $this->almacenes_model->update($datos, $idalmacen);
+                
+                $log = array(
+                    'tabla' => 'almacenes',
+                    'idtabla' => $idalmacen,
+                    'texto' => "Se modificó: <br>"
+                    . "Almacén: ".$this->input->post('almacen'),
+                    'tipo' => 'edit',
+                    'idusuario' => $session['SID']
+                );
+                $this->log_model->set($log);
+
+
+                redirect('/almacenes/', 'refresh');
+            } else {
+                $data['alerta'] = '<div class="alert alert-danger">El almacén ya existe</div>';
+            }
+        }
+        
+        $data['almacen'] = $this->almacenes_model->get_where(array('idalmacen' => $idalmacen));
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('almacenes/modificar');
+        $this->load->view('layout/footer');
+    }
 }
 ?>

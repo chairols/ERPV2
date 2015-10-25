@@ -6,6 +6,8 @@ class Log_model extends CI_Model {
     }
     
     /*
+     * almacenes/agregar
+     * almacenes/modificar
      * 
      * articulos/agregar
      * articulos/modificar
