@@ -13,6 +13,7 @@
                 <li class="active"><a href="/almacenes/">Listar Almacenes</a></li>
                 <li><a href="/almacenes/agregar/">Agregar Almacén</a></li>
                 <li><a href="/almacenes/modificar/">Modificar Almacén</a></li>
+                <li><a href="/almacenes/ver/">Ver Almacén</a></li>
             </ul>
             
             <div class="row-fluid">
@@ -40,6 +41,9 @@
                                         <td><?=$almacen['idalmacen']?></td>
                                         <td><?=$almacen['almacen']?></td>
                                         <td>
+                                            <a href="/almacenes/ver/<?=$almacen['idalmacen']?>/">
+                                                <i class="alert-success icon-eye-open tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver"></i>
+                                            </a>
                                             <a href="/almacenes/modificar/<?=$almacen['idalmacen']?>/">
                                                 <i class="alert-info icon-edit tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Editar"></i>
                                             </a> 

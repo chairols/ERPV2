@@ -25,6 +25,7 @@ class Almacenes_model extends CI_Model {
     /*
      * almacenes/agregar
      * almacenes/modificar
+     * almacenes/ver
      * 
      */
     public function get_where($where) {

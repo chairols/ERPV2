@@ -21,7 +21,7 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="sub-menu<?=($segmento=='almacenes'||$segmento=='marcas'||$segmento=='stock')?" active":""?>">
+            <li class="sub-menu<?=($segmento=='almacenes'||$segmento=='stock')?" active":""?>">
                 <a href="javascript:;" class="">
                     <i class="icon-archive"></i>
                     <span>Almacenes</span>
@@ -29,12 +29,11 @@
                 </a>
                 <ul class="sub">
                     <li<?=($segmento=='almacenes')?" class='active'":""?>><a class="" href="/almacenes/">Almacenes</a></li>
-                    <li<?=($segmento=='marcas')?" class='active'":""?>><a class="" href="/marcas/">Marcas</a></li>
                     <li<?=($segmento=='stock')?" class='active'":""?>><a class="" href="/stock/">Stock</a></li>
                     
                 </ul>
             </li>
-            <li class="sub-menu<?=($segmento=='articulos'||$segmento=='planos'||$segmento=='productos'||$segmento=='medidas')?" active":""?>">
+            <li class="sub-menu<?=($segmento=='articulos'||$segmento=='marcas'||$segmento=='planos'||$segmento=='productos'||$segmento=='medidas')?" active":""?>">
                 <a href="javascript:;" class="">
                     <i class="icon-book"></i>
                     <span>Artículos</span>
@@ -42,6 +41,7 @@
                 </a>
                 <ul class="sub">
                     <li<?=($segmento=='articulos')?" class='active'":""?>><a class="" href="/articulos/">Artículos</a></li>
+                    <li<?=($segmento=='marcas')?" class='active'":""?>><a class="" href="/marcas/">Marcas</a></li>
                     <li<?=($segmento=='planos')?" class='active'":""?>><a class="" href="/planos/">Planos</a></li>
                     <li<?=($segmento=='productos')?" class='active'":""?>><a class="" href="/productos/">Productos</a></li>
                     <li<?=($segmento=='medidas')?" class='active'":""?>><a class="" href="/medidas/">Unidades de Medida</a></li>

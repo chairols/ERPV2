@@ -13,6 +13,7 @@
                 <li><a href="/almacenes/">Listar Almacenes</a></li>
                 <li><a href="/almacenes/agregar/">Agregar Almacén</a></li>
                 <li class="active"><a href="/almacenes/modificar/">Modificar Almacén</a></li>
+                <li><a href="/almacenes/ver/">Ver Almacén</a></li>
             </ul>
         </div>
         
