@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>AddPage</h1>
-<code>AddPage([<b>string</b> orientation [, <b>mixed</b> size]])</code>
+<code>AddPage([<b>string</b> orientation [, <b>mixed</b> size [, <b>int</b> rotation]]])</code>
 <h2>Descripción</h2>
 Añade una nueva página al documento. Si la página ya está presente, el método Footer() es invocado primero para producir
 el pie de página. Entonces es añadida la página, la posición actual se establece en la esquina superior izquierda de
@@ -40,12 +40,17 @@ o un array conteniendo el ancho y el alto (en unidades definidas por el usuario)
 <br>
 El valor por defecto es el que fue pasado al constructor.
 </dd>
+<dt><code>rotation</code></dt>
+<dd>
+Ángulo por el cual rotar la página. Debe ser un múltiplo de 90; valores positivos rotan
+la página en el sentido de las agujas del reloj. El valor por defecto es <code>0</code>.
+</dd>
 </dl>
 <h2>Vea además</h2>
-<a href="fpdf.htm">FPDF()</a>,
-<a href="header.htm">Header()</a>,
-<a href="footer.htm">Footer()</a>,
-<a href="setmargins.htm">SetMargins()</a>.
+<a href="__construct.htm">__construct</a>,
+<a href="header.htm">Header</a>,
+<a href="footer.htm">Footer</a>,
+<a href="setmargins.htm">SetMargins</a>
 <hr style="margin-top:1.5em">
 <div style="text-align:center"><a href="index.htm">Inicio</a></div>
 </body>

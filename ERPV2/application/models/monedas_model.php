@@ -37,6 +37,8 @@ class Monedas_model extends CI_Model {
      * 
      * monedas/agregar
      * 
+     * ocs/pdf
+     * 
      * pedidos/agregar
      * pedidos/agregar_items
      * 

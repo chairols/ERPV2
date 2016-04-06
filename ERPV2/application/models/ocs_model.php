@@ -21,7 +21,7 @@ class Ocs_model extends CI_Model {
     /*
      * 
      * ocs/agregar_items
-     * 
+     * ocs/pdf
      */
     public function get_where($where) {
         $query = $this->db->get_where('ocs', $where);
@@ -37,6 +37,28 @@ class Ocs_model extends CI_Model {
         $this->db->insert('ocs_items', $item);
         
         return $this->db->insert_id();
+    }
+    
+    
+    /*
+     *  ocs/index
+     */
+    public function gets() {
+        $query = $this->db->query("SELECT o.*, m.simbolo, p.proveedor, oi.cantidad, med.medida_corta, a.articulo
+                                    FROM
+                                        ocs o,
+                                        monedas m,
+                                        proveedores p,
+                                        ocs_items oi,
+                                        medidas med,
+                                        articulos a
+                                    WHERE
+                                        o.idproveedor = p.idproveedor AND
+                                        o.idmoneda = m.idmoneda AND
+                                        o.idoc = oi.idoc AND
+                                        oi.idmedida = med.idmedida AND
+                                        oi.idarticulo = a.idarticulo");
+        return $query->result_array();
     }
     
     /*

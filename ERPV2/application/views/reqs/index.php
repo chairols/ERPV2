@@ -10,8 +10,8 @@
         
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
-                <li class="active"><a href="/rfqs/">Listar RFQ's</a></li>
-                <li><a href="/rfqs/agregar/">Agregar RFQ</a></li>
+                <li class="active"><a href="/reqs/">Listar REQ's</a></li>
+                <li><a href="/reqs/agregar/">Agregar REQ</a></li>
             </ul>
         </div>
         
@@ -19,7 +19,7 @@
             <div class="span12">
                 <div class="widget blue">
                     <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> RFQ's</h4>
+                        <h4><i class="icon-reorder"></i> REQ's</h4>
                         <span class="tools">
                             <a href="javascript:;" class="icon-chevron-down"></a>
                             <a href="javascript:;" class="icon-remove"></a>
@@ -38,13 +38,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($rfqs as $rfq) { ?>
+                                <?php foreach($reqs as $req) { ?>
                                 <tr>
-                                    <td><?=($rfq['numero_ot']==null)?"Sin OT":$rfq['numero_ot']?></td>
-                                    <td><?=$rfq['cantidad']?></td>
-                                    <td><?=$rfq['producto']?> <?=$rfq['articulo']?></td>
-                                    <td><?=$rfq['material']?></td>
-                                    <td><?=$rfq['fabrica']?></td>
+                                    <td><?=($req['numero_ot']==null)?"Sin OT":$req['numero_ot']?></td>
+                                    <td><?=$req['cantidad']?></td>
+                                    <td><?=$req['producto']?> <?=$req['articulo']?></td>
+                                    <td><?=$req['material']?></td>
+                                    <td><?=$req['fabrica']?></td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <?php } ?>

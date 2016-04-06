@@ -1,17 +1,17 @@
 <?php
 
-class Rfqs_model extends CI_Model {
+class Reqs_model extends CI_Model {
     public function __construct() {
         $this->load->database();
     }
     
     /*
      * 
-     * rfqs/agregar
+     * reqs/agregar
      * 
      */
     public function set($datos) {
-        $this->db->insert('rfqs', $datos);
+        $this->db->insert('reqs', $datos);
         return $this->db->insert_id();
     }
     
@@ -22,7 +22,7 @@ class Rfqs_model extends CI_Model {
      */
     public function gets() {
         $query = $this->db->query("SELECT r.*, p.producto, a.articulo, m.material, f.fabrica, o.numero_ot
-                                    FROM (((((rfqs r inner join articulos a on r.idarticulo = a.idarticulo)
+                                    FROM (((((reqs r inner join articulos a on r.idarticulo = a.idarticulo)
                                     inner join materiales m on r.idmaterial = m.idmaterial)
                                     inner join fabricas f on r.idfabrica = f.idfabrica)
                                     inner join productos p on a.idproducto = p.idproducto)
@@ -31,7 +31,7 @@ class Rfqs_model extends CI_Model {
     }
     
     public function get_where($where) {
-        $query = $this->db->get_where('rfqs', $where);
+        $query = $this->db->get_where('reqs', $where);
         
         return $query->row_array();
     }

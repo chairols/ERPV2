@@ -24,7 +24,6 @@
                     <dd><?=$item['producto']?> <?=$item['articulo']?></dd>
                 </dl>
             </blockquote>
-            <?php var_dump($item); ?>
         </div>
         
         <div class="row-fluid">
@@ -38,7 +37,7 @@
                         </span>
                     </div>
                     <div class="widget-body">
-                        <table class="table table-condensed table-hover table-responsive" id="sample_1">
+                        <table class="table table-condensed table-hover table-responsive" id="sample_1_desc">
                             <thead>
                                 <tr>
                                     <th>O.T.</th>

@@ -40,6 +40,8 @@ class Provincias_model extends CI_Model {
      * clientes/agregar
      * clientes/modificar
      * 
+     * ocs/pdf
+     * 
      * pedidos/agregar_items
      * 
      * proveedores/agregar

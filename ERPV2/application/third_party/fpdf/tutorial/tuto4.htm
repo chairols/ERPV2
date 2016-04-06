@@ -15,12 +15,10 @@ en varias columnas.
 
 class </span>PDF <span class="kw">extends </span>FPDF
 <span class="kw">{
-</span><span class="cmt">// Columna actual
-</span><span class="kw">var </span>$col <span class="kw">= </span>0<span class="kw">;
-</span><span class="cmt">// Ordenada de comienzo de la columna
-</span><span class="kw">var </span>$y0<span class="kw">;
+protected </span>$col <span class="kw">= </span>0<span class="kw">; </span><span class="cmt">// Columna actual
+</span><span class="kw">protected </span>$y0<span class="kw">;      </span><span class="cmt">// Ordenada de comienzo de la columna
 
-function </span>Header<span class="kw">()
+</span><span class="kw">function </span>Header<span class="kw">()
 {
     </span><span class="cmt">// Cabacera
     </span><span class="kw">global </span>$title<span class="kw">;

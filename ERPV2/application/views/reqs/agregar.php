@@ -10,8 +10,8 @@
         
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
-                <li><a href="/rfqs/">Listar RFQ's</a></li>
-                <li class="active"><a href="/rfqs/agregar/">Agregar RFQ</a></li>
+                <li><a href="/reqs/">Listar REQ's</a></li>
+                <li class="active"><a href="/reqs/agregar/">Agregar REQ</a></li>
             </ul>
         </div>
         
@@ -19,7 +19,7 @@
             <div class="span6">
                 <div class="widget blue">
                     <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> Agregar RFQ</h4>
+                        <h4><i class="icon-reorder"></i> Agregar REQ</h4>
                         <span class="tools">
                             <a href="javascript:;" class="icon-chevron-down"></a>
                             <a href="javascript:;" class="icon-remove"></a>

@@ -9,7 +9,7 @@
 <h1>SetFont</h1>
 <code>SetFont(<b>string</b> family [, <b>string</b> style [, <b>float</b> size]])</code>
 <h2>Descripción</h2>
-Establece la fuente usada para imprimir cadenas de carácteres. Es obligatorio invocar este método por lo menos una vez antes de imprimir texto o el documento resultante no será válido.<br>
+Establece la fuente usada para imprimir cadenas de carácteres. Es obligatorio invocar este método por lo menos una vez antes de imprimir texto.<br>
 La fuente puede ser una estándar o una adicionada via el método AddFont(). La fuentes estándar usan codificación cp1252 (Western Europe) de Windows.<br>
 El método puede ser invocado antes que la primera página sea creada y es mantenido de página a página.<br>
 Si sólo desea cambiar el tamaño de la fuente actual, es más simple invocar SetFontSize().<br>
@@ -72,11 +72,11 @@ $pdf-&gt;SetFont('');
 $pdf-&gt;SetFont('Times','BIU');</code></pre>
 </div>
 <h2>Vea además</h2>
-<a href="addfont.htm">AddFont()</a>,
-<a href="setfontsize.htm">SetFontSize()</a>,
-<a href="cell.htm">Cell()</a>,
-<a href="multicell.htm">MultiCell()</a>,
-<a href="write.htm">Write()</a>.
+<a href="addfont.htm">AddFont</a>,
+<a href="setfontsize.htm">SetFontSize</a>,
+<a href="cell.htm">Cell</a>,
+<a href="multicell.htm">MultiCell</a>,
+<a href="write.htm">Write</a>
 <hr style="margin-top:1.5em">
 <div style="text-align:center"><a href="index.htm">Inicio</a></div>
 </body>

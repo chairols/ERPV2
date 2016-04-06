@@ -19,6 +19,8 @@ class Clientes_model extends CI_Model {
      * 
      * clientes/index
      * 
+     * contratos/agregar
+     * 
      * pedidos/agregar
      * 
      */
@@ -50,6 +52,8 @@ class Clientes_model extends CI_Model {
      * 
      * clientes/agregar
      * clientes/modificar
+     * 
+     * contratos/agregar
      * 
      * pedidos/agregar
      * pedidos/agregar_items

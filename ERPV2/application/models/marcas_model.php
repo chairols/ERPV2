@@ -9,6 +9,8 @@ class Marcas_model extends CI_Model {
      * 
      * marcas/index
      * 
+     * stock/agregar
+     * 
      */
     public function gets() {
         $query = $this->db->query("SELECT *

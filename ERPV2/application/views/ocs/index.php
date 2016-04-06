@@ -26,15 +26,26 @@
                         </span>
                     </div>
                     <div class="widget-body">
-                        <table class="table table-hover table-bordered table-condensed" id="sample_1">
+                        <table class="table table-hover table-bordered table-condensed" id="sample_1_desc">
                             <thead>
                                 <tr>
                                     <th>O.C.</th>
                                     <th>Proveedor</th>
+                                    <th>Cantidad</th>
+                                    <th>Artículo</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                <?php foreach($ocs as $oc) { ?>
+                                <tr>
+                                    <td><?=$oc['idoc']?></td>
+                                    <td><?=$oc['proveedor']?></td>
+                                    <td><?=$oc['cantidad']?> <?=$oc['medida_corta']?></td>
+                                    <td><?=$oc['articulo']?></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>

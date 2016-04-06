@@ -27,6 +27,8 @@ class Articulos_model extends CI_Model {
      * 
      * rfqs/agregar
      * 
+     * stock/agregar
+     * 
      */
     public function gets() {
         $query = $this->db->query("SELECT *
@@ -75,6 +77,8 @@ class Articulos_model extends CI_Model {
      * articulos/ver
      * 
      * ots/pdf
+     * 
+     * stock/agregar
      * 
      */
     public function get_where($where) {

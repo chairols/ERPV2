@@ -9,10 +9,13 @@ class Stock extends CI_Controller {
             'form_validation'
         ));
         $this->load->model(array(
+            'almacenes_model',
             'articulos_model',
             'productos_model',
+            'marcas_model',
             'medidas_model',
-            'log_model'
+            'log_model',
+            'stock_model'
         ));
         $this->load->helper(array(
             'url'
@@ -26,7 +29,7 @@ class Stock extends CI_Controller {
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
-        $data['articulos'] = $this->articulos_model->gets();
+        $data['stock'] = $this->stock_model->gets();
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
@@ -34,16 +37,101 @@ class Stock extends CI_Controller {
         $this->load->view('layout/footer');
     }
     
-    public function modificar($idarticulo = null) {
+    public function agregar() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        if($idarticulo == null) {
+        $data['title'] = 'Agregar Stock';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        
+        $this->form_validation->set_rules('articulo', 'Articulo', 'required');
+        $this->form_validation->set_rules('marca', 'Marca', 'required');
+        $this->form_validation->set_rules('medida', 'Unidad de Medida', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'idarticulo' => $this->input->post('articulo'),
+                'idmarca' => $this->input->post('marca')
+            );
+            $resultado = $this->stock_model->get_where($datos);
+            
+            if(count($resultado) == 0) {
+                $datos = array(
+                    'idmedida' => $this->input->post('medida'),
+                    'idmarca' => $this->input->post('marca'),
+                    'idarticulo' => $this->input->post('articulo'),
+                    'url' => $this->input->post('url'),
+                    'observaciones' => $this->input->post('observaciones')
+                );
+                
+                $id = $this->stock_model->set($datos);
+                
+                $articulo = $this->articulos_model->get_where(array('idarticulo' => $this->input->post('articulo')));
+                $marca = $this->marcas_model->get_where(array('idmarca' => $this->input->post('marca')));
+                $medida = $this->medidas_model->get_where(array('idmedida' => $this->input->post('medida')));
+                $producto = $this->productos_model->get_where(array('idproducto' => $articulo['idproducto']));
+                
+                $log = array(
+                   'tabla' => 'stock',
+                   'idtabla' => $id,
+                   'texto' => 'Se agregó el stock de <br>'.
+                   'Articulo: '.$producto['producto'].' '.$articulo['articulo']."<br>".
+                   'Marca: '.$marca['marca']."<br>".
+                   'Unidad de Medida: '.$medida['medida_larga']."<br>".
+                   'URL: '.$this->input->post('url')."<br>".
+                   'Observaciones: '.$this->input->post('observaciones'),
+                   'tipo' => 'add',
+                   'idusuario' => $session['SID']
+               );
+               $this->log_model->set($log);
+               
+               redirect('/stock/', 'refresh');
+            }
+        }
+        
+        $data['articulos'] = $this->articulos_model->gets();
+        $data['marcas'] = $this->marcas_model->gets();
+        $data['medidas'] = $this->medidas_model->gets();
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('stock/agregar');
+        $this->load->view('layout/footer');
+    }
+    
+    public function modificar($idstock = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if($idstock == null) {
             redirect('/stock/', 'refresh');
         }
         $data['title'] = 'Modificar Stock';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
+        $this->form_validation->set_rules('cantidad', 'Cantidad', 'required|numeric');
+        $this->form_validation->set_rules('ubicacion', 'Ubicacion', 'required');
+        $this->form_validation->set_rules('almacen', 'Almacen', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'cantidad' => $this->input->post('cantidad'),
+                'ubicacion' => $this->input->post('ubicacion'),
+                'idstock' => $this->input->post('idstock'),
+                'idalmacen' => $this->input->post('almacen'),
+                'observaciones' => $this->input->post('observaciones')
+            );
+            
+            $id = $this->stock_model->set_stock_almacen($datos);
+            
+            
+        }
+        
+        /*
         $this->form_validation->set_rules('cantidad', 'Cantidad', 'required|numeric');
         $this->form_validation->set_rules('unidad_medida', 'Unidad de Medida', 'required');
         
@@ -89,6 +177,16 @@ class Stock extends CI_Controller {
         $data['producto'] = $this->productos_model->get_where($datos);
         
         $data['medidas'] = $this->medidas_model->gets();
+        */
+        
+        $data['stock'] = $this->stock_model->get_where(array('idstock' => $idstock));
+        $data['articulo'] = $this->articulos_model->get_where(array('idarticulo' => $data['stock']['idarticulo']));
+        $data['producto'] = $this->productos_model->get_where(array('idproducto' => $data['articulo']['idproducto']));
+        $data['medida'] = $this->medidas_model->get_where(array('idmedida' => $data['stock']['idmedida']));
+        
+        $data['almacenes'] = $this->almacenes_model->gets();
+        
+        $data['stock_existente'] = $this->stock_model->gets_stock_existente($idstock);
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');

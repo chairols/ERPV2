@@ -47,7 +47,7 @@
                     <li<?=($segmento=='medidas')?" class='active'":""?>><a class="" href="/medidas/">Unidades de Medida</a></li>
                 </ul>
             </li>
-            <li class="sub-menu<?=($segmento=='ocs'||$segmento=='proveedores'||$segmento=='rfqs')?" active":""?>">
+            <li class="sub-menu<?=($segmento=='ocs'||$segmento=='proveedores'||$segmento=='reqs')?" active":""?>">
                 <a href="javascript:;" class="">
                     <i class="icon-dollar"></i>
                     <span>Compras</span>
@@ -56,7 +56,7 @@
                 <ul class="sub">
                     <li<?=($segmento=='ocs')?" class='active'":""?>><a class="" href="/ocs/">Órdenes de Compra</a></li>
                     <li<?=($segmento=='proveedores')?" class='active'":""?>><a class="" href="/proveedores/">Proveedores</a></li>
-                    <li<?=($segmento=='rfqs')?" class='active'":""?>><a class="" href="/rfqs">RFQ's</a></li>
+                    <li<?=($segmento=='reqs')?" class='active'":""?>><a class="" href="/reqs">REQ's</a></li>
                 </ul>
             </li>
             <li class="sub-menu<?=($segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='materiales'||$segmento=='monedas'||$segmento=='provincias'||$segmento=='roles')?" active":""?>">
@@ -75,13 +75,14 @@
                     <li<?=($segmento=='roles')?" class='active'":""?>><a class="" href="/roles/">Roles</a></li>
                 </ul>
             </li>
-            <li class="sub-menu<?=($segmento=='ots'||$segmento=='pedidos')?" active":""?>">
+            <li class="sub-menu<?=($segmento=='contratos'||$segmento=='ots'||$segmento=='pedidos')?" active":""?>">
                 <a href="javascript:;" class="">
                     <i class="icon-gears"></i>
                     <span>Producción</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub">
+                    <li<?=($segmento=='contratos')?" class='active'":""?>><a class="" href="/contratos/">Contratos</a></li>
                     <li<?=($segmento=='ots')?" class='active'":""?>><a class="" href="/ots/">Órdenes de Trabajo</a></li>
                     <li<?=($segmento=='pedidos')?" class='active'":""?>><a class="" href="/pedidos/">Pedidos</a></li>
                 </ul>

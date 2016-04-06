@@ -1,6 +1,6 @@
 <?php
 
-class Rfqs extends CI_Controller {
+class Reqs extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library(array(
@@ -9,7 +9,7 @@ class Rfqs extends CI_Controller {
             'form_validation'
         ));
         $this->load->model(array(
-            'rfqs_model',
+            'reqs_model',
             'ots_model',
             'articulos_model',
             'materiales_model',
@@ -24,15 +24,15 @@ class Rfqs extends CI_Controller {
     public function index() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        $data['title'] = "Listar RFQ's";
+        $data['title'] = "Listar REQ's";
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
-        $data['rfqs'] = $this->rfqs_model->gets();
+        $data['reqs'] = $this->reqs_model->gets();
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
-        $this->load->view('rfqs/index');
+        $this->load->view('reqs/index');
         $this->load->view('layout/footer');
     }
     
@@ -41,7 +41,7 @@ class Rfqs extends CI_Controller {
         $this->r_session->check($session);
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
-        $data['title'] = 'Agregar RFQ';
+        $data['title'] = 'Agregar REQ';
         
         $this->form_validation->set_rules('cantidad', 'Cantidad', 'required|numeric');
         
@@ -61,12 +61,12 @@ class Rfqs extends CI_Controller {
                 $datos['idot'] = null;
             }
             
-            $id = $this->rfqs_model->set($datos);
+            $id = $this->reqs_model->set($datos);
             
             $log = array(
-                'tabla' => 'rfqs',
+                'tabla' => 'reqs',
                 'idtabla' => $id,
-                'texto' => 'Se agregó la RFQ<br>'
+                'texto' => 'Se agregó la REQ<br>'
                 . 'ID Orden de Trabajo: '.$datos['idot'].'<br>'
                 . 'Cantidad: '.$datos['cantidad'].'<br>'
                 . 'ID Artículo: '.$datos['idarticulo'].'<br>'
@@ -78,7 +78,7 @@ class Rfqs extends CI_Controller {
             );
             $this->log_model->set($log);
             
-            redirect('/rfqs/', 'refresh');
+            redirect('/reqs/', 'refresh');
 
         }
         
@@ -89,7 +89,7 @@ class Rfqs extends CI_Controller {
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
-        $this->load->view('rfqs/agregar');
+        $this->load->view('reqs/agregar');
         $this->load->view('layout/footer');
     }
     
