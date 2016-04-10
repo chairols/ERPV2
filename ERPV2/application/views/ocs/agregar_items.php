@@ -65,7 +65,7 @@
                                     <div class="control-group">
                                         <label class="control-label">Cantidad</label>
                                         <div class="controls controls-row">
-                                            <input type="text" class="input-block-level span12" name="cantidad" required>
+                                            <input type="text" class="input-block-level span12" name="cantidad" required autofocus>
                                         </div>
                                     </div>
                                 </div>
@@ -93,24 +93,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="span1">
+                                <div class="span2">
                                     <div class="control-group">
                                         <label class="control-label">Precio</label>
                                         <div class="controls controls-row">
                                             <input type="text" name="precio" class="input-block-level span12" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="span1">
-                                    <div class="control-group">
-                                        <label class="control-label">O.T.</label>
-                                        <div class="controls controls-row">
-                                            <select name="ot" class="select2 span12">
-                                                <option value="0">N/A</option>
-                                                <?php foreach($ots as $ot) { ?>
-                                                <option value="<?=$ot['idot']?>"><?=$ot['numero_ot']?></option>
-                                                <?php } ?>
-                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -135,7 +122,6 @@
                                         <th><strong>Artículo</strong></th>
                                         <th><strong><div class="text-right">Precio Unitario</div></strong></th>
                                         <th><strong><div class="text-right">Precio Total</div></strong></th>
-                                        <th><strong>O.T.</strong></th>
                                         <th><strong>Acción</strong></th>
                                     </tr>
                                 </thead>
@@ -148,7 +134,6 @@
                                         <td><?=$item['producto']?> <?=$item['articulo']?></td>
                                         <td><div class="text-right"><?=$item['precio'];?></div></td>
                                         <td><div class="text-right"><?=number_format($item['cantidad'] * $item['precio'], 2);?></div></td>
-                                        <td><?=$item['numero_ot']?></td>
                                         <td>
                                             <a href="/ocs/editar_item/<?=$item['idoc_item']?>/">
                                                 <i class="alert-info icon-edit tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Editar"></i>
@@ -184,7 +169,7 @@
                             <a class="btn btn-success btn-large hidden-print" href="#">
                                 Finalizar <i class="icon-check"></i>
                             </a>
-                            <a class="btn btn-inverse btn-large hidden-print" onclick="#">
+                            <a class="btn btn-inverse btn-large hidden-print" href="/ocs/pdf/<?=$oc['idoc']?>/" target="_blank">
                                 Generar PDF <i class="icon-file-text"></i>
                             </a>
                         </div>

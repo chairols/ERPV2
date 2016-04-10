@@ -20,6 +20,9 @@ class Articulos_model extends CI_Model {
      * articulos/index
      * articulos/agregar
      * 
+     * ocs/agregar_item
+     * ocs/editar_item
+     * 
      * ots/agregar
      * ots/modificar
      * 

@@ -98,7 +98,7 @@ class Ocs extends CI_Controller {
         $this->form_validation->set_rules('medida', 'Medida', 'required|integer');
         $this->form_validation->set_rules('articulo', 'Artículo', 'required|integer');
         $this->form_validation->set_rules('precio', 'Precio', 'required|numeric');
-        $this->form_validation->set_rules('ot', 'Orden de Compra', 'required|integer');
+        //$this->form_validation->set_rules('ot', 'Orden de Compra', 'required|integer');
         
         if($this->form_validation->run() == FALSE) {
             
@@ -110,19 +110,21 @@ class Ocs extends CI_Controller {
                 'idarticulo' => $this->input->post('articulo'),
                 'precio' => $this->input->post('precio')
             );
-            if($this->input->post('ot') == '0') {
+            /*if($this->input->post('ot') == '0') {
                 $datos['idot'] = null;
             } else {
                 $datos['idot'] = $this->input->post('ot');
-            }
+            }*/
             
             $iditem = $this->ocs_model->set_item($datos);
             
             $medida = $this->medidas_model->get_where(array('idmedida' => $this->input->post('medida')));
             $articulo = $this->articulos_model->get_where(array('idarticulo' => $this->input->post('articulo')));
             $producto = $this->productos_model->get_where(array('idproducto' => $articulo['idproducto']));
-            if($datos['idot'])
+            /*if($datos['idot'])
                 $ot = $this->ots_model->get_where(array('idot' => $this->input->post('ot')));
+             * 
+             */
              
             /*
              * 
@@ -137,7 +139,7 @@ class Ocs extends CI_Controller {
         $data['moneda'] = $this->monedas_model->get_where(array('idmoneda' => $data['oc']['idmoneda']));
         $data['medidas'] = $this->medidas_model->gets();
         $data['articulos'] = $this->articulos_model->gets();
-        $data['ots'] = $this->ots_model->gets();
+        //$data['ots'] = $this->ots_model->gets();
         $data['ocs_items'] = $this->ocs_model->gets_items($idoc);
          
         $this->load->view('layout/header', $data);
@@ -260,7 +262,7 @@ class Ocs extends CI_Controller {
         foreach($items as $item) {
             $this->pdf->Cell(16, 6, $item['cantidad'], 0, 0, 'R');
             $this->pdf->Cell(14, 6, $item['medida_corta'], 0, 0, 'C');
-            $this->pdf->Cell(100, 6, $item['articulo'], 0, 0, 'L');
+            $this->pdf->Cell(100, 6, utf8_decode($item['articulo']), 0, 0, 'L');
             $this->pdf->Cell(30, 6, $moneda['simbolo'].' '.$item['precio'], 0, 0, 'R');
             $this->pdf->Cell(30, 6, $moneda['simbolo'].' '.number_format($item['precio']*$item['cantidad'], 2), 0, 0, 'R');
             $subtotal+=$item['cantidad']*$item['precio'];
@@ -289,6 +291,48 @@ class Ocs extends CI_Controller {
         var_dump($moneda);
         var_dump($provincia);
         var_dump($items);
+    }
+    
+    public function editar_item($idoc_item = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Editar Item de Orden de Compra';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        
+        $this->form_validation->set_rules('cantidad', 'Cantidad', 'required');
+        $this->form_validation->set_rules('medida', 'Unidad de Medida', 'required');
+        $this->form_validation->set_rules('articulo', 'Articulo', 'required');
+        $this->form_validation->set_rules('precio', 'Precio', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+             
+        } else {
+            $datos = array(
+                'cantidad' => $this->input->post('cantidad'),
+                'idmedida' => $this->input->post('medida'),
+                'idarticulo' => $this->input->post('articulo'),
+                'precio' => $this->input->post('precio')
+            );
+            
+            $this->ocs_model->update_item($datos, $idoc_item);
+            
+            $datos = array(
+                'idoc_item' => $idoc_item
+            );
+            $data['item'] = $this->ocs_model->get_item_where($datos);
+            
+            redirect('/ocs/agregar_items/'.$data['item']['idoc'].'/', 'refresh');
+        }
+        
+        $data['item'] = $this->ocs_model->get_item_where(array('idoc_item' => $idoc_item));
+        $data['medidas'] = $this->medidas_model->gets();
+        $data['articulos'] = $this->articulos_model->gets();
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('ocs/editar_item');
+        $this->load->view('layout/footer');
     }
 }
 ?>

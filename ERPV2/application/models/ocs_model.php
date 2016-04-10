@@ -57,7 +57,8 @@ class Ocs_model extends CI_Model {
                                         o.idmoneda = m.idmoneda AND
                                         o.idoc = oi.idoc AND
                                         oi.idmedida = med.idmedida AND
-                                        oi.idarticulo = a.idarticulo");
+                                        oi.idarticulo = a.idarticulo AND
+                                        oi.activo = 1");
         return $query->result_array();
     }
     
@@ -66,12 +67,11 @@ class Ocs_model extends CI_Model {
      * 
      */
     public function gets_items($idoc) {
-        $query = $this->db->query("SELECT oi.*, m.medida_corta, a.articulo, p.producto, o.numero_ot 
+        $query = $this->db->query("SELECT oi.*, m.medida_corta, a.articulo, p.producto
                                     FROM 
-                                        ((((ocs_items oi inner join medidas m on oi.idmedida = m.idmedida)
+                                        (((ocs_items oi inner join medidas m on oi.idmedida = m.idmedida)
                                         inner join articulos a on oi.idarticulo = a.idarticulo)
                                         inner join productos p on a.idproducto = p.idproducto)
-                                        left join ots o on oi.idot = o.idot)
                                     WHERE 
                                         oi.idoc = '$idoc' AND
                                         oi.activo = '1'");
@@ -81,6 +81,7 @@ class Ocs_model extends CI_Model {
     
     /*
      *  ocs/borrar_item
+     *  ocs/editar_item
      */
     public function get_item_where($where) {
         $query = $this->db->get_where('ocs_items', $where);
@@ -90,6 +91,7 @@ class Ocs_model extends CI_Model {
     
     /*
      *  ocs/borrar_item
+     *  ocs/editar_item
      */
     public function update_item($datos, $id) {
         $array = array('idoc_item' => $id);

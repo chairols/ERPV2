@@ -43,7 +43,11 @@
                                     <td><?=$oc['proveedor']?></td>
                                     <td><?=$oc['cantidad']?> <?=$oc['medida_corta']?></td>
                                     <td><?=$oc['articulo']?></td>
-                                    <td>&nbsp;</td>
+                                    <td>
+                                        <a href="/ocs/agregar_items/<?=$oc['idoc']?>/">
+                                            <i class="alert-info icon-edit tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <?php } ?>
                             </tbody>

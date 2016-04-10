@@ -17,6 +17,7 @@ class Medidas_model extends CI_Model {
     /*
      * 
      * medidas/index
+     * medidas/editar_item
      * 
      * stock/agregar
      * 
