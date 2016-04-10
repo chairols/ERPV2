@@ -17,6 +17,8 @@ class Ots_model extends CI_Model {
     
     /*
      * 
+     * ocs/asociar_ot
+     * 
      * ots/index
      * 
      */

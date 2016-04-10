@@ -141,6 +141,9 @@
                                             <a href="/ocs/borrar_item/<?=$item['idoc_item']?>/">
                                                 <i class="alert-danger icon-remove tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar"></i>
                                             </a>
+                                            <a href="/ocs/asociar_ot/<?=$item['idoc_item']?>/">
+                                                <i class="alert-success icon-plus tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Asociar Orden de Trabajo"></i>
+                                            </a>
                                         </td>
                                         <?php $subtotal += $item['cantidad'] * $item['precio']; ?>
                                     </tr>

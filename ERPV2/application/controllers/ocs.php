@@ -334,5 +334,53 @@ class Ocs extends CI_Controller {
         $this->load->view('ocs/editar_item');
         $this->load->view('layout/footer');
     }
+    
+    public function asociar_ot($idoc_item = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Asociar Orden de Compra';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        
+        $this->form_validation->set_rules('ot', 'Orden de Trabajo', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'idoc_item' => $idoc_item,
+                'idot' => $this->input->post('ot')
+            );
+            
+            $resultado = $this->ocs_model->get_asociar_ot_where($datos);
+            if(!$resultado) {
+                $this->ocs_model->asociar_ot($datos);
+            }
+        }
+        
+        $data['item'] = $this->ocs_model->get_item_where(array('idoc_item' => $idoc_item));
+        $data['articulo'] = $this->articulos_model->get_where(array('idarticulo' => $data['item']['idarticulo']));
+        $data['producto'] = $this->productos_model->get_where(array('idproducto' => $data['articulo']['idproducto']));
+        $data['ots'] = $this->ots_model->gets();
+        $data['ots_asociadas'] = $this->ocs_model->gets_ots_asociadas($idoc_item);
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('ocs/asociar_ot');
+        $this->load->view('layout/footer');
+    }
+    
+    public function desasociar_ot($idoc_item = null, $idot = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $datos = array(
+            'idoc_item' => $idoc_item,
+            'idot' => $idot
+        );
+        $this->ocs_model->desasociar_ot($datos);
+        
+        redirect('/ocs/asociar_ot/'.$idoc_item.'/', 'refresh');
+    }
 }
 ?>
