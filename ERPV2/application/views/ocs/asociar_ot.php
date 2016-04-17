@@ -41,7 +41,7 @@
                             </div>
                             <hr>
                             <div class="control-group">
-                                <label class="control-label">Órden de Trabajo</label>
+                                <label class="control-label">Orden de Trabajo</label>
                                 <div class="controls">
                                     <select name="ot" class="select2 span12">
                                         <?php foreach($ots as $ot) { ?>

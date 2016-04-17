@@ -179,14 +179,43 @@ class Pedidos extends CI_Controller {
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
+        $this->form_validation->set_rules('ot', 'Orden de Trabajo', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'idpedido_item' => $idpedido_item,
+                'idot' => $this->input->post('ot')
+            );
+            
+            $resultado = $this->pedidos_model->get_asociar_ot_where($datos);
+            if(!$resultado) {
+                $this->pedidos_model->asociar_ot($datos);
+            }
+        }
         
         $data['item'] = $this->pedidos_model->get_item_where($idpedido_item);
-        $data['ots'] = $this->ots_model->gets_ots_sin_pedidos_por_articulo($data['item']['idarticulo']);
+        $data['ots'] = $this->ots_model->gets();
+        $data['ots_asociadas'] = $this->pedidos_model->gets_ots_asociadas($idpedido_item);
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('pedidos/asociar_ot');
         $this->load->view('layout/footer');
+    }
+    
+    public function desasociar_ot($idpedido_item = null, $idot = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $datos = array(
+            'idpedido_item' => $idpedido_item,
+            'idot' => $idot
+        );
+        $this->pedidos_model->desasociar_ot($datos);
+        
+        redirect('/pedidos/asociar_ot/'.$idpedido_item.'/', 'refresh');
     }
 }
 

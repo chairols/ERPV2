@@ -114,7 +114,6 @@
                                             <th><strong>Precio Unitario</strong></th>
                                             <th><strong>Precio Total</strong></th>
                                             <th><strong>Acción</strong></th>
-                                            <th><strong>O.T.</strong></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -128,13 +127,7 @@
                                             <td>
                                                 <a href="/pedidos/modificar_item/<?=$item['idpedido_item']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="label label-info tooltips"><i class="icon-edit"></i></a>
                                                 <a href="/pedidos/borrar_item/<?=$item['idpedido_item']?>"><i class="alert-danger icon-remove tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar"></i></a>
-                                            </td>
-                                            <td>
-                                                <?php if($item['idot'] == null) { ?>
                                                 <a href="/pedidos/asociar_ot/<?=$item['idpedido_item']?>/"><i class="alert-success icon-plus tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Asociar Orden de Trabajo"></i></a>
-                                                <?php } else {?>
-                                                <a href="/ots/ver/<?=$item['idot']?>/"><i class="alert-info icon-eye-open tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Orden de Trabajo"></i></a>
-                                                <?php } ?>
                                             </td>
                                         </tr>
                                         <?php $subtotal += ($item['cantidad'] * $item['precio']); ?>

@@ -562,6 +562,37 @@ class Ots extends CI_Controller {
         $this->load->view('ots/borradas');
         $this->load->view('layout/footer');
     }
+    
+    public function trazabilidad($idot = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Trazabilidad';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        
+        if(!$idot)
+            redirect('/ots/', 'refresh');
+        
+        
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('ots/trazabilidad');
+        $this->load->view('layout/footer');
+    }
+    
+    public function get_ot_ajax($idot = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if(!$idot)
+            redirect('/ots/', 'refresh');
+        
+        $data['ot'] = $this->ots_model->get_where(array('idot' => $idot));
+        $data['articulo'] = $this->articulos_model->get_where(array('idarticulo' => $data['ot']['idarticulo']));
+        $data['producto'] = $this->productos_model->get_where(array('idproducto' => $data['articulo']['idproducto']));
+        
+        $this->load->view('ots/get_ot_ajax', $data);
+    }
 }
 
 ?>

@@ -30,47 +30,100 @@
             <div class="span6">
                 <div class="widget blue">
                     <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> Posibles OTS</h4>
+                        <h4><i class="icon-reorder"></i> Asociar Orden de Trabajo</h4>
                         <span class="tools">
                             <a href="javascript:;" class="icon-chevron-down"></a>
                             <a href="javascript:;" class="icon-remove"></a>
                         </span>
                     </div>
                     <div class="widget-body">
-                        <table class="table table-condensed table-hover table-responsive" id="sample_1_desc">
+                        <form method="POST" class="form-horizontal">
+                            <div class="control-group">
+                                <label class="control-label">Orden de Trabajo</label>
+                                <div class="controls">
+                                    <select name="ot" class="select2 span12" onchange="cambiar();" id="ot">
+                                        <?php foreach($ots as $ot) { ?>
+                                        <option value="<?=$ot['idot']?>"><?=$ot['numero_ot']?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="control-group">
+                                <div id="resultado"></div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="icon-save"></i> Asociar
+                                </button>
+                                <button type="reset" class="btn btn-danger">
+                                    <i class="icon-remove"></i> Limpiar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="span6">
+                <div class="widget blue">
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i> Órdenes de Trabajo Asociadas</h4>
+                        <span class="tools">
+                            <a href="javascript:;" class="icon-chevron-down"></a>
+                            <a href="javascript:;" class="icon-remove"></a>
+                        </span>
+                    </div>
+                    <div class="widget-body">
+                        <table class="table table-hover table-bordered table-condensed">
                             <thead>
                                 <tr>
-                                    <th>O.T.</th>
-                                    <th>Fábrica</th>
-                                    <th>Cantidad</th>
+                                    <th>Orden de Trabajo</th>
                                     <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($ots as $ot) { ?>
+                                <?php foreach($ots_asociadas as $ot) { ?>
                                 <tr>
-                                    <td><?=$ot['numero_ot']?></td>
-                                    <td><?=$ot['fabrica']?></td>
-                                    <td><?=$ot['cantidad']?></td>
-                                    <td><?php if($item['idot'] == $ot['idot']) {?>
-                                        <i class="alert-success icon-check tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Asociada a esta Orden de Trabajo"></i>
-                                        <a href="#">
-                                            <i class="alert-error icon-remove tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar Asociación a esta Orden de Trabajo"></i>
+                                    <td>
+                                        <strong><?=$ot['fabrica']?> <?=$ot['numero_ot']?></strong>
+                                        <br>
+                                        <?=$ot['cantidad']?> - <?=$ot['producto']?> <?=$ot['articulo']?>
+                                    </td>
+                                    <td>
+                                        <a href="/pedidos/desasociar_ot/<?=$ot['idpedido_item']?>/<?=$ot['idot']?>">
+                                            <i class="alert-danger icon-remove tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Desasociar Orden de Trabajo"></i>
                                         </a>
-                                        <?php } else {?>
-                                        <a href="#">
-                                            <i class="alert-success icon-plus tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Asociar a esta Orden de Trabajo"></i>
-                                        </a>
-                                        <?php } ?>
                                     </td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
                         </table>
-                        <?php var_dump($ots); ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function inicio() {
+        cambiar();
+    }
+    
+    function limpiar_campo(campo) {
+        $("#"+campo).val("");
+    }
+    
+    function cambiar() {
+        $.ajax({
+            type: 'GET',
+            url: '/ots/get_ot_ajax/'+$("#ot").val(),
+            beforeSend: function() {
+                $("#resultado").html('<img src="/assets/img/ajax-loader.gif">');
+            },
+            success: function(data) {
+                $("#resultado").html(data);
+            }
+        });
+    }
+</script>

@@ -63,6 +63,9 @@
                                             <a href="/ots/modificar/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="label label-default tooltips"><i class="icon-edit"></i></a> 
                                             <a href="/ots/borrar/<?=$ot['idot']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar" class="label label-important tooltips"><i class="icon-remove"></i></a>
                                             <a href="/log/ver/ots/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Historial" class="label label-info tooltips"><i class="icon-time"></i></a>
+                                            <a href="/ots/trazabilidad/<?=$ot['idot']?>/">
+                                                <i class="icon-exchange alert-success tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Trazabilidad"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php } ?>

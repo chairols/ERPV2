@@ -21,6 +21,8 @@ class Ots_model extends CI_Model {
      * 
      * ots/index
      * 
+     * pedidos/asociar_ot
+     * 
      */
     public function gets() {
         $query = $this->db->query("SELECT o.*, f.fabrica, p.producto, a.articulo
@@ -156,7 +158,7 @@ class Ots_model extends CI_Model {
     
     /*
      * 
-     * pedidos/asociar_ot
+     * 
      * 
      */
     public function gets_ots_sin_pedidos_por_articulo($idarticulo) {

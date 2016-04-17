@@ -3,7 +3,7 @@
 class Ocs extends CI_Controller {
     public function __construct() {
         parent::__construct();
-        $this->load->library(array(
+        $desathis->load->library(array(
             'session',
             'r_session',
             'form_validation',
@@ -262,7 +262,7 @@ class Ocs extends CI_Controller {
         foreach($items as $item) {
             $this->pdf->Cell(16, 6, $item['cantidad'], 0, 0, 'R');
             $this->pdf->Cell(14, 6, $item['medida_corta'], 0, 0, 'C');
-            $this->pdf->Cell(100, 6, utf8_decode($item['articulo']), 0, 0, 'L');
+            $this->pdf->Cell(100, 6, utf8_decode($item['producto'].' '.$item['articulo']), 0, 0, 'L');
             $this->pdf->Cell(30, 6, $moneda['simbolo'].' '.$item['precio'], 0, 0, 'R');
             $this->pdf->Cell(30, 6, $moneda['simbolo'].' '.number_format($item['precio']*$item['cantidad'], 2), 0, 0, 'R');
             $subtotal+=$item['cantidad']*$item['precio'];

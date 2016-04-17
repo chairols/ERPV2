@@ -33,6 +33,7 @@
                                     <th>Proveedor</th>
                                     <th>Cantidad</th>
                                     <th>Artículo</th>
+                                    <th>O.T.</th>
                                     <th>Acción</th>
                                 </tr>
                             </thead>
@@ -42,7 +43,8 @@
                                     <td><?=$oc['idoc']?></td>
                                     <td><?=$oc['proveedor']?></td>
                                     <td><?=$oc['cantidad']?> <?=$oc['medida_corta']?></td>
-                                    <td><?=$oc['articulo']?></td>
+                                    <td><?=$oc['producto']?> <?=$oc['articulo']?></td>
+                                    <td>&nbsp;</td>
                                     <td>
                                         <a href="/ocs/agregar_items/<?=$oc['idoc']?>/">
                                             <i class="alert-info icon-edit tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>

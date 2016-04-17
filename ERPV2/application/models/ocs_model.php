@@ -44,20 +44,22 @@ class Ocs_model extends CI_Model {
      *  ocs/index
      */
     public function gets() {
-        $query = $this->db->query("SELECT o.*, m.simbolo, p.proveedor, oi.cantidad, med.medida_corta, a.articulo
+        $query = $this->db->query("SELECT o.*, m.simbolo, p.proveedor, oi.cantidad, med.medida_corta, a.articulo, prod.producto
                                     FROM
                                         ocs o,
                                         monedas m,
                                         proveedores p,
                                         ocs_items oi,
                                         medidas med,
-                                        articulos a
+                                        articulos a,
+                                        productos prod
                                     WHERE
                                         o.idproveedor = p.idproveedor AND
                                         o.idmoneda = m.idmoneda AND
                                         o.idoc = oi.idoc AND
                                         oi.idmedida = med.idmedida AND
                                         oi.idarticulo = a.idarticulo AND
+                                        a.idproducto = prod.idproducto AND
                                         oi.activo = 1");
         return $query->result_array();
     }
@@ -148,5 +150,7 @@ class Ocs_model extends CI_Model {
     public function desasociar_ot($datos) {
         $this->db->delete('ocs_items_ots', $datos);
     }
+    
+    
 }
 ?>

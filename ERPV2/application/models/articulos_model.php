@@ -82,6 +82,7 @@ class Articulos_model extends CI_Model {
      * ocs/asociar_ot
      * 
      * ots/pdf
+     * ots/get_ot_ajax
      * 
      * stock/agregar
      * 

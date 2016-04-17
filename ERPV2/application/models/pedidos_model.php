@@ -91,5 +91,56 @@ class Pedidos_model extends CI_Model {
                                         pi.idpedido_item = $idpedido_item");
         return $query->row_array();
     }
+    
+    /*
+     *  pedidos/asociar_ot
+     */
+    public function get_asociar_ot_where($datos) {
+        $query = $this->db->get_where('pedidos_items_ots', $datos);
+        
+        return $query->row_array();
+    }
+    
+    /*
+     * 
+     *  pedidos/asociar_ot
+     * 
+     */
+    public function asociar_ot($datos) {
+        $this->db->insert('pedidos_items_ots', $datos);
+    }
+    
+    
+    /*
+     *  pedidos/asociar_ot
+     */
+    public function gets_ots_asociadas($idpedido_item) {
+        $query = $this->db->query("SELECT pio.*, f.fabrica, o.numero_ot, o.cantidad, a.articulo, p.producto
+                                    FROM
+                                        pedidos_items_ots pio,
+                                        ots o,
+                                        fabricas f,
+                                        articulos a,
+                                        productos p
+                                    WHERE
+                                        pio.idpedido_item = '$idpedido_item' AND
+                                        pio.idot = o.idot AND
+                                        o.idfabrica = f.idfabrica AND
+                                        o.idarticulo = a.idarticulo AND
+                                        a.idproducto = p.idproducto
+                                    ORDER BY
+                                        o.idot DESC");
+        
+        return $query->result_array();
+    }
+    
+    /*
+     * 
+     *  pedidos/desasociar_ot
+     * 
+     */
+    public function desasociar_ot($datos) {
+        $this->db->delete('pedidos_items_ots', $datos);
+    }
 }
 ?>
