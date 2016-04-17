@@ -573,7 +573,8 @@ class Ots extends CI_Controller {
         if(!$idot)
             redirect('/ots/', 'refresh');
         
-        
+        $data['pedidos'] = $this->ots_model->gets_pedidos_asociados($idot);
+        $data['ocs'] = $this->ots_model->gets_ocs_asociadas($idot);
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');

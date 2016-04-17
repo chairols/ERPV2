@@ -169,5 +169,53 @@ class Ots_model extends CI_Model {
        
        return $query->result_array();
     }
+    
+    /*
+     *  ots/trazabilidad
+     */
+    public function gets_pedidos_asociados($idot) {
+        $query = $this->db->query("SELECT pi.cantidad, pr.producto, a.articulo, m.simbolo, pi.precio, p.ordendecompra, p.adjunto, c.cliente
+                                    FROM
+                                        pedidos_items_ots pio,
+                                        pedidos_items pi,
+                                        pedidos p,
+                                        articulos a,
+                                        productos pr,
+                                        monedas m,
+                                        clientes c
+                                    WHERE
+                                        pio.idot = $idot AND
+                                        pio.idpedido_item = pi.idpedido_item AND
+                                        p.idpedido = pi.idpedido AND
+                                        pi.idarticulo = a.idarticulo AND
+                                        a.idproducto = pr.idproducto AND
+                                        p.idmoneda = m.idmoneda AND
+                                        p.idcliente = c.idcliente");
+        return $query->result_array();
+    }
+    
+    /*
+     *  ots/trazabilidad
+     */
+    public function gets_ocs_asociadas($idot) {
+        $query = $this->db->query("SELECT oi.cantidad, p.producto, a.articulo, m.simbolo, oi.precio, o.idoc, pr.proveedor
+                                    FROM
+                                        ocs_items_ots oio,
+                                        ocs_items oi,
+                                        articulos a,
+                                        productos p,
+                                        monedas m,
+                                        ocs o,
+                                        proveedores pr
+                                    WHERE
+                                        oio.idot = $idot AND
+                                        oio.idoc_item = oi.idoc_item AND
+                                        oi.idarticulo = a.idarticulo AND
+                                        a.idproducto = p.idproducto AND
+                                        o.idoc = oi.idoc AND
+                                        o.idmoneda = m.idmoneda AND
+                                        o.idproveedor = pr.idproveedor");
+        return $query->result_array();
+    }
 }
 ?>

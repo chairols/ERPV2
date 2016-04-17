@@ -3,7 +3,7 @@
 class Ocs extends CI_Controller {
     public function __construct() {
         parent::__construct();
-        $desathis->load->library(array(
+        $this->load->library(array(
             'session',
             'r_session',
             'form_validation',
