@@ -17,11 +17,41 @@
         <div class="row-fluid">
             <blockquote class="alert-success">
                 <dl>
+                    <dt><h1>Orden de Trabajo</h1></dt>
+                </dl>
+            </blockquote>
+        </div>
+        <div class="row-fluid">
+            <table class="table table-condensed table-responsive table-striped">
+                <thead>
+                    <tr>
+                        <th>Orden de Trabajo</th>
+                        <th>Cantidad</th>
+                        <th>Artículo</th>
+                        <th>Fecha O.T.</th>
+                        <th>Fecha Necesidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><?=$fabrica['fabrica']?> <?=$ot['numero_ot']?></td>
+                        <td><?=$ot['cantidad']?></td>
+                        <td><?=$producto['producto']?> <?=$articulo['articulo']?></td>
+                        <td><?=strftime('%d/%m/%Y', strtotime($ot['timestamp']))?></td>
+                        <td><?=strftime('%d/%m/%Y', strtotime($ot['fecha_necesidad']))?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        
+        <div class="row-fluid">
+            <blockquote class="alert-success">
+                <dl>
                     <dt><h1>Pedidos</h1></dt>
                 </dl>
             </blockquote>
         </div>
-        
         <div class="row-fluid">
             <table class="table table-condensed table-responsive table-striped">
                 <thead>
@@ -29,6 +59,7 @@
                         <th>Cantidad</th>
                         <th>Artículo</th>
                         <th>Precio Unitario</th>
+                        <th>Precio Total</th>
                         <th>Pedido</th>
                         <th>Cliente</th>
                     </tr>
@@ -38,7 +69,8 @@
                     <tr>
                         <td><?=$pedido['cantidad']?></td>
                         <td><?=$pedido['producto']?> <?=$pedido['articulo']?></td>
-                        <td><?=$pedido['simbolo']?> <?=$pedido['precio']?></td>
+                        <td><?=$pedido['simbolo']?> <?=number_format($pedido['precio'], 2)?></td>
+                        <td><?=$pedido['simbolo']?> <?=number_format($pedido['cantidad']*$pedido['precio'], 2)?></td>
                         <td>
                             <?=$pedido['ordendecompra']?>
                             <?php if($pedido['adjunto'] != '') { ?>
@@ -63,22 +95,26 @@
         </div>
         
         <div class="row-fluid">
-            <table class="table table-condensed table-responsive table-striped">
+            <table class="table table-condensed table-responsive table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>Cantidad</th>
                         <th>Artículo</th>
                         <th>Precio Unitario</th>
+                        <th>Precio Total</th>
                         <th>Orden de Compra</th>
                         <th>Proveedor</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $total = 0; ?>
+                    <?php $moneda = null; ?>
                     <?php foreach($ocs as $oc) { ?>
                     <tr>
                         <td><?=$oc['cantidad']?></td>
                         <td><?=$oc['producto']?> <?=$oc['articulo']?></td>
-                        <td><?=$oc['simbolo']?> <?=$oc['precio']?></td>
+                        <td><?=$oc['simbolo']?> <?=number_format($oc['precio'], 2)?></td>
+                        <td><?=$oc['simbolo']?> <?=number_format($oc['cantidad']*$oc['precio'], 2)?></td>
                         <td>
                             <?=$oc['idoc']?>
                             <a href="/ocs/pdf/<?=$oc['idoc']?>/" target="_blank">
@@ -86,8 +122,18 @@
                             </a>
                         </td>
                         <td><?=$oc['proveedor']?></td>
+                        <?php $total+= ($oc['cantidad']*$oc['precio']); ?>
+                        <?php $moneda = $oc['simbolo']; ?>
                     </tr>
                     <?php } ?>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>Total</td>
+                        <td class="alert-success bold"><?=$moneda.' '.number_format($total, 2)?></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

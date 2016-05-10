@@ -263,8 +263,8 @@ class Ocs extends CI_Controller {
             $this->pdf->Cell(16, 6, $item['cantidad'], 0, 0, 'R');
             $this->pdf->Cell(14, 6, $item['medida_corta'], 0, 0, 'C');
             $this->pdf->Cell(100, 6, utf8_decode($item['producto'].' '.$item['articulo']), 0, 0, 'L');
-            $this->pdf->Cell(30, 6, $moneda['simbolo'].' '.$item['precio'], 0, 0, 'R');
-            $this->pdf->Cell(30, 6, $moneda['simbolo'].' '.number_format($item['precio']*$item['cantidad'], 2), 0, 0, 'R');
+            $this->pdf->Cell(30, 6, utf8_decode($moneda['simbolo']).' '.$item['precio'], 0, 0, 'R');
+            $this->pdf->Cell(30, 6, utf8_decode($moneda['simbolo']).' '.number_format($item['precio']*$item['cantidad'], 2), 0, 0, 'R');
             $subtotal+=$item['cantidad']*$item['precio'];
             $this->pdf->Ln(5);
         }
@@ -277,9 +277,9 @@ class Ocs extends CI_Controller {
         $this->pdf->Cell(60, 6, 'IVA:', 1, 0, 'L');
         $this->pdf->Cell(65, 6, 'TOTAL', 1, 0, 'L');
         $this->pdf->SetX(10);
-        $this->pdf->Cell(65, 6, $moneda['simbolo'].' '.number_format($subtotal, 2), 0, 0, 'R');
-        $this->pdf->Cell(60, 6, $moneda['simbolo'].' '.number_format($subtotal*0.21, 2), 0, 0, 'R');
-        $this->pdf->Cell(65, 6, $moneda['simbolo'].' '.number_format($subtotal*1.21, 2), 0, 0, 'R');
+        $this->pdf->Cell(65, 6, utf8_decode($moneda['simbolo']).' '.number_format($subtotal, 2), 0, 0, 'R');
+        $this->pdf->Cell(60, 6, utf8_decode($moneda['simbolo']).' '.number_format($subtotal*0.21, 2), 0, 0, 'R');
+        $this->pdf->Cell(65, 6, utf8_decode($moneda['simbolo']).' '.number_format($subtotal*1.21, 2), 0, 0, 'R');
         
         
         

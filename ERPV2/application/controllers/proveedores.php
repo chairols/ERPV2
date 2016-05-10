@@ -61,6 +61,7 @@ class Proveedores extends CI_Controller {
                     'localidad' => $this->input->post('localidad'),
                     'idprovincia' => $this->input->post('provincia'),
                     'contacto' => $this->input->post('contacto'),
+                    'correo' => $this->input->post('correo'),
                     'observaciones' => $this->input->post('observaciones')
                 );
 
@@ -77,6 +78,7 @@ class Proveedores extends CI_Controller {
                    . 'localidad: '.$this->input->post('localidad').'<br>'
                    . 'provincia: '.$provincia['provincia'].'<br>'
                    . 'contacto: '.$this->input->post('contacto').'<br>'
+                   . 'correo: '.$this->input->post('correo').'<br>'
                    . 'observaciones: '.$this->input->post('observaciones'),
                    'tipo' => 'add',
                    'idusuario' => $session['SID']

@@ -573,6 +573,12 @@ class Ots extends CI_Controller {
         if(!$idot)
             redirect('/ots/', 'refresh');
         
+        $data['ot'] = $this->ots_model->get_where(array('idot' => $idot));
+        $data['articulo'] = $this->articulos_model->get_where(array('idarticulo' => $data['ot']['idarticulo']));
+        $data['producto'] = $this->productos_model->get_where(array('idproducto' => $data['articulo']['idproducto']));
+        $data['fabrica'] = $this->fabricas_model->get_where(array('idfabrica' => $data['ot']['idfabrica']));
+        $data['plano'] = $this->planos_model->get_where(array('idplano' => $data['articulo']['idplano']));
+        
         $data['pedidos'] = $this->ots_model->gets_pedidos_asociados($idot);
         $data['ocs'] = $this->ots_model->gets_ocs_asociadas($idot);
         
