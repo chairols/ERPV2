@@ -16,6 +16,14 @@
         </div>
         
         <div class="row-fluid">
+            <a href="/pedidos/agregar_items/<?=$item['idpedido']?>/">
+                <button class="btn btn-success">
+                    <i class="icon-chevron-left"></i> Volver al Pedido
+                </button>
+            </a>
+        </div>
+        
+        <div class="row-fluid">
             <blockquote>
                 <dl>
                     <dt>Cantidad</dt>
