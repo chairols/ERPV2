@@ -358,6 +358,7 @@ class Ocs extends CI_Controller {
             }
         }
         
+        
         $data['item'] = $this->ocs_model->get_item_where(array('idoc_item' => $idoc_item));
         $data['articulo'] = $this->articulos_model->get_where(array('idarticulo' => $data['item']['idarticulo']));
         $data['producto'] = $this->productos_model->get_where(array('idproducto' => $data['articulo']['idproducto']));
