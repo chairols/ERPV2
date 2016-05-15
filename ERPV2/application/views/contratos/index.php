@@ -50,7 +50,11 @@
                                     <td><?=$contrato['vigencia_desde']?></td>
                                     <td><?=$contrato['vigencia_hasta']?></td>
                                     <td><?=(time()>=strtotime($contrato['vigencia_desde']) && time()<=strtotime($contrato['vigencia_hasta']))?"<div class='label label-success'><strong>VIGENTE</strong></div>":"<div class='label label-important'><strong>VENCIDO</strong></div>"?></td>
-                                    <td></td>
+                                    <td>
+                                        <a href="<?=$contrato['adjunto']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Adjunto" class="tooltips" target="_blank">
+                                            <i class="icon-file"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
