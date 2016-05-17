@@ -29,6 +29,7 @@ class Marcas_model extends CI_Model {
      *  marcas/ver
      * 
      *  stock/almacenes
+     *  stock/editar
      * 
      */
     public function get_where($where) {

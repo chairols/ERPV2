@@ -30,6 +30,7 @@ class Almacenes_model extends CI_Model {
      * almacenes/ver
      * 
      * stock/almacenes
+     * stock/editar
      * 
      */
     public function get_where($where) {

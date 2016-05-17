@@ -84,6 +84,7 @@
                                 <tr>
                                     <th>Almacén</th>
                                     <th>Cantidad</th>
+                                    <th>Ubicación</th>
                                     <th>Acción</th>
                                 </tr>
                             </thead>
@@ -92,6 +93,7 @@
                                 <tr>
                                     <td><?=$sa['almacen']?></td>
                                     <td><?=$sa['cantidad']?></td>
+                                    <td><?=$sa['ubicacion']?></td>
                                     <td>
                                         <a href="/stock/editar/<?=$sa['idstock_almacen']?>/">
                                             <i class="icon-edit tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i> 

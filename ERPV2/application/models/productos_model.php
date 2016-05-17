@@ -41,6 +41,7 @@ class Productos_model extends CI_Model {
      * productos/agregar
      * 
      * stock/almacenes
+     * stock/editar
      * 
      */
     public function get_where($where) {

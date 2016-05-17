@@ -37,6 +37,7 @@ class Medidas_model extends CI_Model {
     /*
      *  stock/almacenes
      *  stock/modificar
+     *  stock/editar
      */
     public function get_where($where) {
         $query = $this->db->get_where('medidas', $where);

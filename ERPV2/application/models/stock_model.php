@@ -8,6 +8,7 @@ class Stock_model extends CI_Model {
     /*
      * stock/agregar
      * stock/almacenes
+     * stock/editar
      * stock/modificar
      * 
      */
@@ -89,12 +90,18 @@ class Stock_model extends CI_Model {
         return $query->result_array();
     }
     
+    /*
+     * stock/editar x 2
+     */
     public function get_where_stock_almacenes($where) {
         $query = $this->db->get_where('stock_almacenes', $where);
         
         return $query->row_array();
     }
     
+    /*
+     * stock/editar
+     */
     public function update_stock_almacen($datos, $idstock_almacen) {
         $id = array('idstock_almacen' => $idstock_almacen);
         $this->db->update('stock_almacenes', $datos, $id);
