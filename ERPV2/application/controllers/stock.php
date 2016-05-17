@@ -309,5 +309,53 @@ class Stock extends CI_Controller {
         $this->load->view('stock/almacenes');
         $this->load->view('layout/footer');
     }
+    
+    public function editar($idstock_almacen = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if($idstock_almacen == null) {
+            redirect('/stock/', 'refresh');
+        }
+        $data['title'] = 'Modificar Stock Almacén';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        
+        $this->form_validation->set_rules('cantidad', 'Cantidad', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'cantidad' => $this->input->post('cantidad'),
+                'ubicacion' => $this->input->post('ubicacion'),
+                'observaciones' => $this->input->post('observaciones')
+            );
+            
+            $this->stock_model->update_stock_almacen($datos, $idstock_almacen);
+            
+            $datos = array(
+                'idstock_almacen' => $idstock_almacen
+            );
+            $data['stock_almacen'] = $this->stock_model->get_where_stock_almacenes($datos);
+            
+            redirect('/stock/almacenes/'.$data['stock_almacen']['idstock'].'/', 'refresh');
+        }
+        
+        $datos = array(
+            'idstock_almacen' => $idstock_almacen
+        );
+        $data['stock_almacen'] = $this->stock_model->get_where_stock_almacenes($datos);
+        $data['stock_almacen']['almacen'] = $this->almacenes_model->get_where(array('idalmacen' => $data['stock_almacen']['idalmacen']));
+        $data['stock'] = $this->stock_model->get_where(array('idstock' => $data['stock_almacen']['idstock']));
+        $data['stock']['articulo'] = $this->articulos_model->get_where(array('idarticulo' => $data['stock']['idarticulo']));
+        $data['stock']['producto'] = $this->productos_model->get_where(array('idproducto' => $data['stock']['articulo']['idproducto']));
+        $data['stock']['marca'] = $this->marcas_model->get_where(array('idmarca' => $data['stock']['idmarca']));
+        $data['stock']['medida'] = $this->medidas_model->get_where(array('idmedida' => $data['stock']['idmedida']));
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('stock/editar');
+        $this->load->view('layout/footer');
+    }
 }
 ?>

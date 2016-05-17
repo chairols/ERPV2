@@ -95,5 +95,9 @@ class Stock_model extends CI_Model {
         return $query->row_array();
     }
     
+    public function update_stock_almacen($datos, $idstock_almacen) {
+        $id = array('idstock_almacen' => $idstock_almacen);
+        $this->db->update('stock_almacenes', $datos, $id);
+    }
 }
 ?>
