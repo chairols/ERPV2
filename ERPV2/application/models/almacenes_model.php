@@ -9,6 +9,8 @@ class Almacenes_model extends CI_Model {
      *  
      * almacenes/index
      * 
+     * stock/almacenes
+     * 
      */
     public function gets() {
         $query = $this->db->query("SELECT *
@@ -26,6 +28,8 @@ class Almacenes_model extends CI_Model {
      * almacenes/agregar
      * almacenes/modificar
      * almacenes/ver
+     * 
+     * stock/almacenes
      * 
      */
     public function get_where($where) {

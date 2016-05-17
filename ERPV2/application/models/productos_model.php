@@ -40,6 +40,8 @@ class Productos_model extends CI_Model {
      * 
      * productos/agregar
      * 
+     * stock/almacenes
+     * 
      */
     public function get_where($where) {
         $query = $this->db->get_where('productos', $where);

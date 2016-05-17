@@ -33,7 +33,6 @@
                             <thead>
                                 <tr>
                                     <th><strong>Artículo</strong></th>
-                                    <th><strong>Producto</strong></th>
                                     <th><strong>Posición</strong></th>
                                     <th><strong>Cantidad</strong></th>
                                     <th><strong>Unidad de Medida</strong></th>
@@ -43,12 +42,15 @@
                             <tbody>
                                 <?php foreach($stock as $s) { ?>
                                 <tr>
-                                    <td><?=$s['articulo']?></td>
-                                    <td><?=$s['producto']?></td>
+                                    <td><?=$s['producto']?> <?=$s['articulo']?></td>
                                     <td><?=$s['posicion']?></td>
                                     <td><?=$s['cantidad']?></td>
                                     <td><?=$s['medida_larga']?></td>
-                                    <td>&nbsp;</td>
+                                    <td>
+                                        <a href="/stock/almacenes/<?=$s['idstock']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
+                                            <i class="icon-edit"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <?php } ?>
                             </tbody>

@@ -57,6 +57,8 @@ class Stock extends CI_Controller {
             );
             $resultado = $this->stock_model->get_where($datos);
             
+            $idstock = null;
+            
             if(count($resultado) == 0) {
                 $datos = array(
                     'idmedida' => $this->input->post('medida'),
@@ -66,7 +68,7 @@ class Stock extends CI_Controller {
                     'observaciones' => $this->input->post('observaciones')
                 );
                 
-                $id = $this->stock_model->set($datos);
+                $idstock = $this->stock_model->set($datos);
                 
                 $articulo = $this->articulos_model->get_where(array('idarticulo' => $this->input->post('articulo')));
                 $marca = $this->marcas_model->get_where(array('idmarca' => $this->input->post('marca')));
@@ -75,7 +77,7 @@ class Stock extends CI_Controller {
                 
                 $log = array(
                    'tabla' => 'stock',
-                   'idtabla' => $id,
+                   'idtabla' => $idstock,
                    'texto' => 'Se agregó el stock de <br>'.
                    'Articulo: '.$producto['producto'].' '.$articulo['articulo']."<br>".
                    'Marca: '.$marca['marca']."<br>".
@@ -87,8 +89,12 @@ class Stock extends CI_Controller {
                );
                $this->log_model->set($log);
                
-               redirect('/stock/', 'refresh');
+               
+            } else {
+                $idstock = $resultado['idstock'];
             }
+            
+            redirect('/stock/almacenes/'.$idstock.'/', 'refresh');
         }
         
         $data['articulos'] = $this->articulos_model->gets();
@@ -252,6 +258,55 @@ class Stock extends CI_Controller {
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('stock/ingresar');
+        $this->load->view('layout/footer');
+    }
+    
+    public function almacenes($idstock = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if($idstock == null) {
+            redirect('/stock/', 'refresh');
+        }
+        $data['title'] = 'Stock Almacenes';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        
+        $this->form_validation->set_rules('almacen', 'Almacén', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'idstock' => $idstock,
+                'idalmacen' => $this->input->post('almacen')
+            );
+            $resultado = $this->stock_model->get_where_stock_almacenes($datos);
+            
+            if(!count($resultado)) {
+                $datos = array(
+                    'idstock' => $idstock,
+                    'idalmacen' => $this->input->post('almacen')
+                );
+                $id = $this->stock_model->set_stock_almacen($datos);
+                
+            } 
+        }
+        
+        
+        $datos = array(
+            'idstock' => $idstock
+        );
+        $data['stock'] = $this->stock_model->get_where($datos);
+        $data['stock']['articulo'] = $this->articulos_model->get_where(array('idarticulo' => $data['stock']['idarticulo']));
+        $data['stock']['producto'] = $this->productos_model->get_where(array('idproducto' => $data['stock']['articulo']['idproducto']));
+        $data['stock']['marca'] = $this->marcas_model->get_where(array('idmarca' => $data['stock']['idmarca']));
+        $data['stock']['medida'] = $this->medidas_model->get_where(array('idmedida' => $data['stock']['idmedida']));
+        $data['almacenes'] = $this->almacenes_model->gets();
+        $data['stock_almacenes'] = $this->stock_model->gets_stock_almacenes_por_stock($idstock);
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('stock/almacenes');
         $this->load->view('layout/footer');
     }
 }

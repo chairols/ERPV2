@@ -7,6 +7,7 @@ class Stock_model extends CI_Model {
     
     /*
      * stock/agregar
+     * stock/almacenes
      * stock/modificar
      * 
      */
@@ -25,7 +26,7 @@ class Stock_model extends CI_Model {
     }
     
     public function gets() {
-        $query = $this->db->query("SELECT s.*, SUM(sa.cantidad) as cantidad, a.articulo, p.producto, a.posicion, m.medida_larga
+        /*$query = $this->db->query("SELECT s.*, SUM(sa.cantidad) as cantidad, a.articulo, p.producto, a.posicion, m.medida_larga
                                     FROM 
                                         ((((stock s 
                                     LEFT JOIN 
@@ -43,7 +44,21 @@ class Stock_model extends CI_Model {
                                     INNER JOIN
                                         medidas m
                                     ON
-                                        s.idmedida = m.idmedida)");
+                                        s.idmedida = m.idmedida)");*/
+        $query = $this->db->query("SELECT SUM(sa.cantidad) as cantidad, sa.idstock, a.articulo, p.producto, a.posicion, m.medida_larga
+                                    FROM 
+                                        stock s,
+                                        stock_almacenes sa,
+                                        articulos a,
+                                        productos p,
+                                        medidas m
+                                    WHERE
+                                        s.idstock = sa.idstock AND
+                                        s.idarticulo = a.idarticulo AND
+                                        a.idproducto = p.idproducto AND
+                                        s.idmedida = m.idmedida
+                                    GROUP BY
+                                        sa.idstock");
         return $query->result_array();
     }
     
@@ -62,5 +77,23 @@ class Stock_model extends CI_Model {
         $this->db->insert('stock_almacenes', $datos);
         return $this->db->insert_id();
     }
+    
+    public function gets_stock_almacenes_por_stock($idstock) {
+        $query = $this->db->query("SELECT sa.*, a.* 
+                                    FROM
+                                        stock_almacenes sa, 
+                                        almacenes a
+                                    WHERE
+                                        a.idalmacen = sa.idalmacen AND
+                                        sa.idstock = '$idstock'");
+        return $query->result_array();
+    }
+    
+    public function get_where_stock_almacenes($where) {
+        $query = $this->db->get_where('stock_almacenes', $where);
+        
+        return $query->row_array();
+    }
+    
 }
 ?>

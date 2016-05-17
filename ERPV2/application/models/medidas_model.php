@@ -35,7 +35,7 @@ class Medidas_model extends CI_Model {
     
     
     /*
-     * 
+     *  stock/almacenes
      *  stock/modificar
      */
     public function get_where($where) {
