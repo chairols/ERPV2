@@ -271,7 +271,7 @@ class Ocs extends CI_Controller {
         
         
         $this->pdf->Ln(10);
-        $this->pdf->Cell(190, 6, 'MONEDA: '.$moneda['moneda'], 1, 0, 'L');
+        $this->pdf->Cell(190, 6, 'MONEDA: '.utf8_decode($moneda['moneda']), 1, 0, 'L');
         $this->pdf->Ln();
         $this->pdf->Cell(65, 6, 'SUBTOTAL:', 1, 0, 'L');
         $this->pdf->Cell(60, 6, 'IVA:', 1, 0, 'L');
