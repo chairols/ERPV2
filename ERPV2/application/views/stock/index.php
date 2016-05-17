@@ -33,7 +33,6 @@
                             <thead>
                                 <tr>
                                     <th><strong>Artículo</strong></th>
-                                    <th><strong>Posición</strong></th>
                                     <th><strong>Cantidad</strong></th>
                                     <th><strong>Unidad de Medida</strong></th>
                                     <th><strong>Acción</strong></th>
@@ -43,7 +42,6 @@
                                 <?php foreach($stock as $s) { ?>
                                 <tr>
                                     <td><?=$s['producto']?> <?=$s['articulo']?></td>
-                                    <td><?=$s['posicion']?></td>
                                     <td><?=$s['cantidad']?></td>
                                     <td><?=$s['medida_larga']?></td>
                                     <td>
