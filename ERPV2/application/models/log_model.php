@@ -46,7 +46,10 @@ class Log_model extends CI_Model {
      * 
      * roles/agregar
      * 
+     * stock/almacenes
+     * stock/editar
      * stock/modificar
+     * 
      * 
      */
     public function set($array) {

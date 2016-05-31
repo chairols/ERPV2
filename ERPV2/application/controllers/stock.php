@@ -344,6 +344,18 @@ class Stock extends CI_Controller {
             
             $this->stock_model->update_stock_almacen($datos, $idstock_almacen);
             
+            $log = array(
+                'tabla' => 'stock_almacenes',
+                'idtabla' => $idstock_almacen,
+                'texto' => 'Se modificó <br>'.
+                'Cantidad: '.$this->input->post('cantidad').'<br>'.
+                'Ubicación: '.$this->input->post('ubicacion').'<br>'.
+                'Observaciones: '.$this->input->post('observaciones'),
+                'tipo' => 'edit',
+                'idusuario' => $session['SID']
+            );
+            $this->log_model->set($log);
+            
             $datos = array(
                 'idstock_almacen' => $idstock_almacen
             );

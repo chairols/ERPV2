@@ -98,6 +98,9 @@
                                         <a href="/stock/editar/<?=$sa['idstock_almacen']?>/">
                                             <i class="icon-edit tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i> 
                                         </a>
+                                        <a href="/log/ver/stock_almacenes/<?=$sa['idstock_almacen']?>/">
+                                            <i class="icon-time tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Log"></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php } ?>
