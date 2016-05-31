@@ -82,8 +82,8 @@
                         <table class="table table-hover table-bordered table-condensed">
                             <thead>
                                 <tr>
-                                    <th>Almacén</th>
                                     <th>Cantidad</th>
+                                    <th>Almacén</th>
                                     <th>Ubicación</th>
                                     <th>Acción</th>
                                 </tr>
@@ -91,8 +91,8 @@
                             <tbody>
                                 <?php foreach($stock_almacenes as $sa) { ?>
                                 <tr>
-                                    <td><?=$sa['almacen']?></td>
                                     <td><?=$sa['cantidad']?></td>
+                                    <td><?=$sa['almacen']?></td>
                                     <td><?=$sa['ubicacion']?></td>
                                     <td>
                                         <a href="/stock/editar/<?=$sa['idstock_almacen']?>/">

@@ -289,6 +289,17 @@ class Stock extends CI_Controller {
                 );
                 $id = $this->stock_model->set_stock_almacen($datos);
                 
+                $almacen = $this->almacenes_model->get_where(array('idalmacen' => $this->input->post('almacen')));
+                
+                $log = array(
+                   'tabla' => 'stock',
+                   'idtabla' => $idstock,
+                   'texto' => 'Se agregó el Almacén <br>'.
+                   'Almacén: '.$almacen['almacen'],
+                   'tipo' => 'add',
+                   'idusuario' => $session['SID']
+               );
+               $this->log_model->set($log);
             } 
         }
         
