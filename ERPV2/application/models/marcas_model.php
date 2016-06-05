@@ -48,5 +48,13 @@ class Marcas_model extends CI_Model {
         $this->db->insert('marcas', $datos);
         return $this->db->insert_id();
     }
+    
+    /*
+     *  marcas/modificar
+     */
+    public function update($datos, $idmarca) {
+        $id = array('idmarca' => $idmarca);
+        $this->db->update('marcas', $datos, $id);
+    }
 }
 ?>

@@ -33,7 +33,7 @@
                             <div class="control-group">
                                 <label class="control-label">Marca</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=$marca['marca']?>" readonly>
+                                    <input type="text" maxlength="100" class="span12" value="<?=$marca['marca']?>" readonly>
                                 </div>
                             </div>
                         </form>

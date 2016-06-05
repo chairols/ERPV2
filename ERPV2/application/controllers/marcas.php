@@ -106,6 +106,31 @@ class Marcas extends CI_Controller {
             redirect('/marcas/', 'refresh');
         }
         
+        $this->form_validation->set_rules('marca', 'Marca', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'marca' => $this->input->post('marca')
+            );
+            
+            $this->marcas_model->update($datos, $idmarca);
+            
+            $log = array(
+                'tabla' => 'marcas',
+                'idtabla' => $idmarca,
+                'texto' => 'Se modificó: <br>'
+                 . 'marca: '.$this->input->post('marca'),
+                'tipo' => 'edit',
+                'idusuario' => $session['SID']
+            );
+
+            $this->log_model->set($log);
+            
+            redirect('/marcas/', 'refresh');
+        }
+        
         $data['marca'] = $this->marcas_model->get_where(array('idmarca' => $idmarca));
         
         $this->load->view('layout/header', $data);
