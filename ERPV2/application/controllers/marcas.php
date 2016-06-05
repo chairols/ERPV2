@@ -95,5 +95,23 @@ class Marcas extends CI_Controller {
         $this->load->view('marcas/ver');
         $this->load->view('layout/footer');
     }
+    
+    public function modificar($idmarca = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Modificar Marca';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        if($idmarca == null) {
+            redirect('/marcas/', 'refresh');
+        }
+        
+        $data['marca'] = $this->marcas_model->get_where(array('idmarca' => $idmarca));
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('marcas/modificar');
+        $this->load->view('layout/footer');
+    }
 }
 ?>

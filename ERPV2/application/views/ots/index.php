@@ -58,11 +58,19 @@
                                             <?php } ?>
                                         </td>
                                         <td>
-                                            <a href="/ots/ver/<?=$ot['idot']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Ver" class="label label-success tooltips"><i class="icon-eye-open"></i></a>
+                                            <a href="/ots/ver/<?=$ot['idot']?>/">
+                                                <i class="icon-eye-open alert-success tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver"></i>
+                                            </a>
                                             <a href="/ots/pdf/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Generar Carátula" class="tooltips" target="_blank"><i class="icon-file"></i></a>
-                                            <a href="/ots/modificar/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="label label-default tooltips"><i class="icon-edit"></i></a> 
-                                            <a href="/ots/borrar/<?=$ot['idot']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar" class="label label-important tooltips"><i class="icon-remove"></i></a>
-                                            <a href="/log/ver/ots/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Historial" class="label label-info tooltips"><i class="icon-time"></i></a>
+                                            <a href="/ots/modificar/<?=$ot['idot']?>/">
+                                                <i class="icon-edit alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>
+                                            </a>
+                                            <a href="/ots/borrar/<?=$ot['idot']?>/">
+                                                <i class="icon-remove alert-danger tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar"></i>
+                                            </a>
+                                            <a href="/log/ver/ots/<?=$ot['idot']?>/">
+                                                <i class="icon-time alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Historial"></i>
+                                            </a>
                                             <a href="/ots/trazabilidad/<?=$ot['idot']?>/">
                                                 <i class="icon-exchange alert-success tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Trazabilidad"></i>
                                             </a>
