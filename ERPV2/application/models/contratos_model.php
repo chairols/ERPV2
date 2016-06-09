@@ -40,5 +40,17 @@ class Contratos_model extends CI_Model {
                                         co.activo = '1'");
         return $query->result_array();
     }
+    
+    
+    public function gets_contratos_vigentes() {
+        $query = $this->db->query("SELECT * 
+                                    FROM 
+                                        contratos
+                                    WHERE 
+                                        vigencia_hasta > '".date("Y-m-d", mktime())."' AND
+                                        vigencia_desde < '".date("Y-m-d", mktime())."' AND 
+                                            activo = '1'");
+        return $query->result_array();
+    }
 }
 ?>

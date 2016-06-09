@@ -11,7 +11,8 @@ class Dashboard extends CI_Controller {
             'url'
         ));
         $this->load->model(array(
-            'ots_model'
+            'ots_model',
+            'contratos_model'
         ));
     }
     
@@ -25,6 +26,7 @@ class Dashboard extends CI_Controller {
         $data['ots_pendientes'] = $this->ots_model->gets_where(array('fecha_terminado' => null, 'activo' => '1'));
         $data['ots_cumplidas'] = $this->ots_model->gets_cumplidas();
         $data['ots_vencidas'] = $this->ots_model->gets_vencidas();
+        $data['contratos_vigentes'] = $this->contratos_model->gets_contratos_vigentes();
         
         
         $this->load->view('layout/header', $data);

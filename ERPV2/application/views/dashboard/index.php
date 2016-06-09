@@ -37,6 +37,15 @@
                         </span>
                     </a>
                 </div>
+                <div class="metro-nav-block nav-block-yellow double">
+                    <a data-original-title="" href="#">
+                        <span class="value">
+                            <i class="icon-table"></i>
+                            <div class="info"><?=count($contratos_vigentes)?></div>
+                            <div class="status">Contratos Vigentes</div>
+                        </span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
