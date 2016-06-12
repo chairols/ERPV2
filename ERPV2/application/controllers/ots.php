@@ -16,6 +16,7 @@ class Ots extends CI_Controller {
             'productos_model',
             'fabricas_model',
             'planos_model',
+            'monedas_model',
             'log_model'
         ));
         $this->load->helper(array(
@@ -580,7 +581,12 @@ class Ots extends CI_Controller {
         $data['plano'] = $this->planos_model->get_where(array('idplano' => $data['articulo']['idplano']));
         
         $data['pedidos'] = $this->ots_model->gets_pedidos_asociados($idot);
-        $data['ocs'] = $this->ots_model->gets_ocs_asociadas($idot);
+        //$data['ocs'] = $this->ots_model->gets_ocs_asociadas($idot);
+        
+        $monedas = $this->monedas_model->gets();
+        foreach ($monedas as $key => $value) {
+            $data['ocs'][] = $this->ots_model->gets_ocs_asociadas_por_monedas($idot, $value['idmoneda']);
+        }
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');

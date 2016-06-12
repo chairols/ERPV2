@@ -95,6 +95,7 @@
         </div>
         
         <div class="row-fluid">
+            <?php foreach ($ocs as $oc) { ?>
             <table class="table table-condensed table-responsive table-striped table-bordered">
                 <thead>
                     <tr>
@@ -109,21 +110,21 @@
                 <tbody>
                     <?php $total = 0; ?>
                     <?php $moneda = null; ?>
-                    <?php foreach($ocs as $oc) { ?>
+                    <?php foreach($oc as $o) { ?>
                     <tr>
-                        <td><?=$oc['cantidad']?></td>
-                        <td><?=$oc['producto']?> <?=$oc['articulo']?></td>
-                        <td><?=$oc['simbolo']?> <?=number_format($oc['precio'], 2)?></td>
-                        <td><?=$oc['simbolo']?> <?=number_format($oc['cantidad']*$oc['precio'], 2)?></td>
+                        <td><?=$o['cantidad']?></td>
+                        <td><?=$o['producto']?> <?=$o['articulo']?></td>
+                        <td><?=$o['simbolo']?> <?=number_format($o['precio'], 2)?></td>
+                        <td><?=$o['simbolo']?> <?=number_format($o['cantidad']*$o['precio'], 2)?></td>
                         <td>
-                            <?=$oc['idoc']?>
-                            <a href="/ocs/pdf/<?=$oc['idoc']?>/" target="_blank">
+                            <?=$o['idoc']?>
+                            <a href="/ocs/pdf/<?=$o['idoc']?>/" target="_blank">
                                 <i class="icon-file"></i>
                             </a>
                         </td>
-                        <td><?=$oc['proveedor']?></td>
-                        <?php $total+= ($oc['cantidad']*$oc['precio']); ?>
-                        <?php $moneda = $oc['simbolo']; ?>
+                        <td><?=$o['proveedor']?></td>
+                        <?php $total+= ($o['cantidad']*$o['precio']); ?>
+                        <?php $moneda = $o['simbolo']; ?>
                     </tr>
                     <?php } ?>
                     <tr>
@@ -136,6 +137,7 @@
                     </tr>
                 </tbody>
             </table>
+            <?php } ?>
         </div>
         
     </div>

@@ -41,7 +41,9 @@ class Contratos_model extends CI_Model {
         return $query->result_array();
     }
     
-    
+    /*
+     *  dashboard/index
+     */
     public function gets_contratos_vigentes() {
         $query = $this->db->query("SELECT * 
                                     FROM 
