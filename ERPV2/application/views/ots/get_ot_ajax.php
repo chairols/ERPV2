@@ -7,6 +7,6 @@
 <div class="control-group">
     <label class="control-label">Artículo</label>
     <div class="controls">
-        <input type="text" value="<?=$producto['producto']?> <?=$articulo['articulo']?>" class="span12" disabled>
+        <textarea class="span12" disabled><?=$producto['producto']?> <?=$articulo['articulo']?></textarea>
     </div>
 </div>
