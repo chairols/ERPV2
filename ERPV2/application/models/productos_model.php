@@ -49,5 +49,14 @@ class Productos_model extends CI_Model {
         
         return $query->row_array();
     }
+    
+    
+    /*
+     *  productos/modificar
+     */
+    public function update($datos, $idproducto) {
+        $id = array('idproducto' => $idproducto);
+        $this->db->update('productos', $datos, $id);
+    }
 }
 ?>

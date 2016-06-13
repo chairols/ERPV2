@@ -12,6 +12,7 @@
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li class="active"><a href="/productos/">Listar Productos</a></li>
                 <li><a href="/productos/agregar/">Agregar Producto</a></li>
+                <li><a href="/productos/modificar/">Modificar Producto</a></li>
             </ul>
             
             <div class="row-fluid">
@@ -37,9 +38,15 @@
                                     <tr>
                                         <td><?=$producto['producto']?></td>
                                         <td>
-                                            <a href="#" class="label label-default"><i class="icon-edit"></i></a> 
+                                            <a href="#">
+                                                <i class="alert-success icon-eye-open tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver"></i>
+                                            </a>
+                                            <a href="/productos/modificar/<?=$producto['idproducto']?>"> 
+                                                <i class="alert-info icon-edit tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Editar"></i>
+                                            </a> 
                                             <a href="#" class="label label-important"><i class="icon-remove"></i></a>
-                                            <a href="/log/ver/productos/<?=$producto['idproducto']?>/" class="label label-info"><i class="icon-time"></i></a>
+                                            <a href="/log/ver/productos/<?=$producto['idproducto']?>/">
+                                                <i class="alert-info icon-time tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Log"></i></a>
                                         </td>
                                     </tr>
                                     <?php } ?>

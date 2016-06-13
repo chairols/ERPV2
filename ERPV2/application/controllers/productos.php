@@ -12,7 +12,8 @@ class Productos extends CI_Controller {
             'url'
         ));
         $this->load->model(array(
-            'productos_model'
+            'productos_model',
+            'log_model'
         ));
     }
     
@@ -66,6 +67,49 @@ class Productos extends CI_Controller {
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('productos/agregar');
+        $this->load->view('layout/footer');
+    }
+    
+    public function modificar($idproducto = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Modificar Producto';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        if($idproducto == null) {
+            redirect('/productos/', 'refresh');
+        }
+        
+        $this->form_validation->set_rules('producto', 'Producto', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'producto' => $this->input->post('producto')
+            );
+            
+            $this->productos_model->update($datos, $idproducto);
+            
+            $log = array(
+                'tabla' => 'productos',
+                'idtabla' => $idproducto,
+                'texto' => 'Se modificó: <br>'
+                 . 'producto: '.$this->input->post('producto'),
+                'tipo' => 'edit',
+                'idusuario' => $session['SID']
+            );
+
+            $this->log_model->set($log);
+            
+            redirect('/productos/', 'refresh');
+        }
+        
+        $data['producto'] = $this->productos_model->get_where(array('idproducto' => $idproducto));
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('productos/modificar');
         $this->load->view('layout/footer');
     }
 }
