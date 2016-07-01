@@ -96,6 +96,7 @@
         
         <div class="row-fluid">
             <?php foreach ($ocs as $oc) { ?>
+            <?php if(count($oc) > 0) { // Compruebo que no se muestren tablas vacías por las distintas monedas ?>
             <table class="table table-condensed table-responsive table-striped table-bordered">
                 <thead>
                     <tr>
@@ -137,6 +138,7 @@
                     </tr>
                 </tbody>
             </table>
+            <?php } ?>
             <?php } ?>
         </div>
         
