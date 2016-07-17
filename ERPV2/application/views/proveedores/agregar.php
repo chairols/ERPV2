@@ -30,7 +30,7 @@
                             <div class="control-group">
                                 <label class="control-label">Proveedor</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('proveedor')?>" name="proveedor" autofocus required>
+                                    <input type="text" maxlength="100" class="span12" value="<?=set_value('proveedor')?>" name="proveedor" autofocus required>
                                     <span class="help-inline">
                                         <?=form_error('proveedor', '<div class="alert alert-danger">', '</div>')?>
                                         <?=$alerta?>
@@ -40,7 +40,7 @@
                             <div class="control-group">
                                 <label class="control-label">Domicilio</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('domicilio')?>" name="domicilio">
+                                    <input type="text" maxlength="100" class="span12" value="<?=set_value('domicilio')?>" name="domicilio">
                                     <span class="help-inline">
                                         <?=form_error('domicilio', '<div class="alert alert-danger">', '</div>')?>
                                     </span>
@@ -58,7 +58,7 @@
                             <div class="control-group">
                                 <label class="control-label">Teléfono</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('telefono')?>" name="telefono">
+                                    <input type="text" maxlength="100" class="span12" value="<?=set_value('telefono')?>" name="telefono">
                                     <span class="help-inline">
                                         <?=form_error('telefono', '<div class="alert alert-danger">', '</div>')?>
                                     </span>
@@ -67,7 +67,7 @@
                             <div class="control-group">
                                 <label class="control-label">Localidad</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('localidad')?>" name="localidad">
+                                    <input type="text" maxlength="100" class="span12" value="<?=set_value('localidad')?>" name="localidad">
                                     <span class="help-inline">
                                         <?=form_error('localidad', '<div class="alert alert-danger">', '</div>')?>
                                     </span>
@@ -76,7 +76,7 @@
                             <div class="control-group">
                                 <label class="control-label">Provincia</label>
                                 <div class="controls">
-                                    <select name="provincia" class="select2 input-xlarge">
+                                    <select name="provincia" class="select2 span12">
                                         <?php foreach($provincias as $provincia) { ?>
                                         <option value="<?=$provincia['idprovincia']?>"><?=$provincia['provincia']?></option>
                                         <?php } ?>
@@ -86,7 +86,7 @@
                             <div class="control-group">
                                 <label class="control-label">Contacto</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('contacto')?>" name="contacto">
+                                    <input type="text" maxlength="100" class="span12" value="<?=set_value('contacto')?>" name="contacto">
                                     <span class="help-inline">
                                         <?=form_error('contacto', '<div class="alert alert-danger">', '</div>')?>
                                     </span>
@@ -95,7 +95,7 @@
                             <div class="control-group">
                                 <label class="control-label">Correo</label>
                                 <div class="controls">
-                                    <input type="email" maxlength="100" class="input-xlarge" value="<?=set_value('correo')?>" name="correo">
+                                    <input type="email" maxlength="100" class="span12" value="<?=set_value('correo')?>" name="correo">
                                     <span class="help-inline">
                                         <?=form_error('correo', '<div class="alert alert-danger">', '</div>')?>
                                     </span>
@@ -104,7 +104,7 @@
                             <div class="control-group">
                                 <label class="control-label">Observaciones</label>
                                 <div class="controls">
-                                    <textarea class="input-xlarge" name="observaciones"><?=set_value('observaciones')?></textarea>
+                                    <textarea class="span12" name="observaciones"><?=set_value('observaciones')?></textarea>
                                 </div>
                             </div>
                             <div class="form-actions">
