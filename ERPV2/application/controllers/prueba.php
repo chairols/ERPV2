@@ -9,6 +9,7 @@ class Prueba extends CI_Controller {
         $this->load->helper(array(
             'url'
         ));
+        
     }
     
     public function index() {
@@ -83,6 +84,36 @@ class Prueba extends CI_Controller {
         // Fin de datos del segundo cuadro
         
         $this->pdf->Output('Orden de Trabajo '.$ot['numero_ot'], 'I');
+    }
+    
+    public function padron() {
+        $this->load->model(array(
+            'padron_model'
+        ));
+        
+        $this->padron_model->conectar();
+        $this->padron_model->limpiar_base();
+        
+        $fp = fopen(base_url()."upload/Padron.txt", "r");
+        $inicio = time();
+        while(!feof($fp)) {
+            $linea = fgets($fp);
+            $explode = explode(";", $linea);
+            $datos = array(
+                'emision' => $explode[1],
+                'desde' => $explode[2],
+                'hasta' => $explode[3],
+                'cuit' => $explode[4],
+                'porcentaje' => str_replace(",", ".", $explode[8])
+            );
+            $id = $this->padron_model->set($datos);
+            $tiempo = time();
+            if(($id%10000) == 0) {
+                var_dump($tiempo-$inicio);
+            }
+        }
+        fclose($fp);
+        
     }
 }
 ?>

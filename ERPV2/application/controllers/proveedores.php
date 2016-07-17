@@ -57,6 +57,7 @@ class Proveedores extends CI_Controller {
                 $datos = array(
                     'proveedor' => $this->input->post('proveedor'),
                     'domicilio' => $this->input->post('domicilio'),
+                    'cuit' => $this->input->post('cuit'),
                     'telefono' => $this->input->post('telefono'),
                     'localidad' => $this->input->post('localidad'),
                     'idprovincia' => $this->input->post('provincia'),
@@ -74,6 +75,7 @@ class Proveedores extends CI_Controller {
                    'idtabla' => $id,
                    'texto' => 'Se agregó el proveedor '.$this->input->post('proveedor').'<br>'
                    . 'domicilio: '.$this->input->post('domicilio').'<br>'
+                   . 'cuit: '.$this->input->post('cuit').'<br>'
                    . 'telefono: '.$this->input->post('telefono').'<br>'
                    . 'localidad: '.$this->input->post('localidad').'<br>'
                    . 'provincia: '.$provincia['provincia'].'<br>'

@@ -47,6 +47,15 @@
                                 </div>
                             </div>
                             <div class="control-group">
+                                <label class="control-label">CUIT</label>
+                                <div class="controls">
+                                    <input type="text" maxlength="11" class="span12" value="<?=set_value('cuit')?>" name="cuit">
+                                    <span class="help-inline">
+                                        <?=form_error('cuit', '<div class="alert alert-danger">', '</div>')?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="control-group">
                                 <label class="control-label">Teléfono</label>
                                 <div class="controls">
                                     <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('telefono')?>" name="telefono">
