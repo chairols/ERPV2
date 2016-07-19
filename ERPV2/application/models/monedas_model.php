@@ -21,6 +21,9 @@ class Monedas_model extends CI_Model {
      * 
      * pedidos/agregar
      * 
+     * retenciones/agregar
+     * retenciones/agregar_items
+     * 
      */
     public function gets() {
         $query = $this->db->query("SELECT *

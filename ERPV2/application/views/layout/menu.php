@@ -47,7 +47,7 @@
                     <li<?=($segmento=='medidas')?" class='active'":""?>><a class="" href="/medidas/">Unidades de Medida</a></li>
                 </ul>
             </li>
-            <li class="sub-menu<?=($segmento=='ocs'||$segmento=='proveedores'||$segmento=='reqs')?" active":""?>">
+            <li class="sub-menu<?=($segmento=='ocs'||$segmento=='proveedores'||$segmento=='reqs'||$segmento=='retenciones')?" active":""?>">
                 <a href="javascript:;" class="">
                     <i class="icon-dollar"></i>
                     <span>Compras</span>
@@ -57,6 +57,7 @@
                     <li<?=($segmento=='ocs')?" class='active'":""?>><a class="" href="/ocs/">Órdenes de Compra</a></li>
                     <li<?=($segmento=='proveedores')?" class='active'":""?>><a class="" href="/proveedores/">Proveedores</a></li>
                     <li<?=($segmento=='reqs')?" class='active'":""?>><a class="" href="/reqs">REQ's</a></li>
+                    <li<?=($segmento=='retenciones')?" class='active'":""?>><a class="" href="/retenciones/">Retenciones</a></li>
                 </ul>
             </li>
             <li class="sub-menu<?=($segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='materiales'||$segmento=='monedas'||$segmento=='provincias'||$segmento=='roles')?" active":""?>">

@@ -19,12 +19,25 @@ class Padron_model extends CI_Model {
         return $this->db->insert_id();
     }
     
+    /*
+     *  retenciones/agregar_items
+     */
     public function get_where($where) {
         $query = $this->db->query("SELECT *
                                     FROM
                                         padron
                                     WHERE
                                         cuit like '%$where%'");
+        
+        return $query->result_array();
+    }
+    
+    public function get_where_exacto($where) {
+        $query = $this->db->query("SELECT *
+                                    FROM
+                                        padron
+                                    WHERE
+                                        cuit like '$where'");
         
         return $query->result_array();
     }

@@ -18,6 +18,7 @@ class Proveedores_model extends CI_Model {
     /*
      * 
      * proveedores/index
+     * retenciones/agregar
      * 
      */
     public function gets() {
@@ -34,6 +35,7 @@ class Proveedores_model extends CI_Model {
      * 
      * proveedores/agregar
      * 
+     * retenciones/agregar_items
      */
     public function get_where($where) {
         $query = $this->db->get_where('proveedores', $where);
