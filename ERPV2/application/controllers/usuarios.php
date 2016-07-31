@@ -58,8 +58,34 @@ class Usuarios extends CI_Controller {
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
+        $this->form_validation->set_rules('nombre', 'Nombre', 'required');
+        $this->form_validation->set_rules('apellido', 'Apellido', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $usuario = $this->usuarios_model->get($session['SID']);
+            
+            $datos = array(
+                'nombre' => $this->input->post('nombre'),
+                'apellido' => $this->input->post('apellido'),
+                'correo' => $this->input->post('correo')
+            );
+            
+            if($usuario['password'] == $this->input->post('passactual')) {
+                if($this->input->post('password') == $this->input->post('password2')) {
+                    $datos['password'] = $this->input->post('password');
+                }
+            }
+            
+            $this->usuarios_model->update($datos, $session['SID']);
+        }
+        
+        $data['usuario'] = $this->usuarios_model->get($session['SID']);
+        
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
+        $this->load->view('usuarios/perfil');
         $this->load->view('layout/footer');
     }
 }

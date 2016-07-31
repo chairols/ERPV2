@@ -21,6 +21,9 @@ class Usuarios_model extends CI_Model {
         return $query->row_array();
     }
     
+    /*
+     *  usuarios/perfil
+     */
     public function get($idusuario) {
         $query = $this->db->query("SELECT *
                                     FROM
@@ -28,6 +31,14 @@ class Usuarios_model extends CI_Model {
                                     WHERE
                                         idusuario = '$idusuario'");
         return $query->row_array();
+    }
+    
+    /*
+     * usuarios/perfil
+     */
+    public function update($datos, $idusuario) {
+        $id = array('idusuario' => $idusuario);
+        $this->db->update('usuarios', $datos, $id);
     }
 }
 ?>
