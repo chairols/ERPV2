@@ -21,6 +21,7 @@ class Provincias_model extends CI_Model {
      * clientes/modificar
      * 
      * proveedores/agregar
+     * proveedores/modificar
      * 
      * provincias/index
      * 

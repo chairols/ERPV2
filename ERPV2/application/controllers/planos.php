@@ -220,7 +220,7 @@ class Planos extends CI_Controller {
 
             if($adjunto != null) {
                 $datos['planofile'] = '/upload/planos/'.$adjunto['upload_data']['file_name'];
-            }
+            } 
             
             $this->planos_model->update($datos, $idplano);
             

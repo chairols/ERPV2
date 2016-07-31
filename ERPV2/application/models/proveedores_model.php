@@ -34,6 +34,7 @@ class Proveedores_model extends CI_Model {
      * ocs/pdf
      * 
      * proveedores/agregar
+     * proveedores/modificar
      * 
      * retenciones/agregar_items
      */
@@ -41,6 +42,16 @@ class Proveedores_model extends CI_Model {
         $query = $this->db->get_where('proveedores', $where);
         
         return $query->row_array();
+    }
+    
+    
+    /*
+     * proveedores/modificar
+     * 
+     */
+    public function update($datos, $idproveedor) {
+        $id = array('idproveedor' => $idproveedor);
+        $this->db->update('proveedores', $datos, $id);
     }
 }
 ?>

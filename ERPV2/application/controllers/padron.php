@@ -31,6 +31,8 @@ class Padron extends CI_Controller {
             
             if(isset($resultadopadron[0]['porcentaje'])) {
                 echo "<input class='span12' type='text' value='".$resultadopadron[0]['porcentaje']."' name='porcentaje' required>";
+                echo "<br>";
+                echo "Desde: ".$resultadopadron[0]['desde']." - Hasta: ".$resultadopadron[0]['hasta'];
             } else {
                 echo "<input class='span12' type='text' name='porcentaje' required>";
             }

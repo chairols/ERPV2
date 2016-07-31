@@ -39,7 +39,9 @@
                                         <td><?=$proveedor['idproveedor']?></td>
                                         <td><?=$proveedor['proveedor']?></td>
                                         <td>
-                                            <a href="#" class="label label-default"><i class="icon-edit"></i></a> 
+                                            <a href="/proveedores/modificar/<?=$proveedor['idproveedor']?>/">
+                                                <i class="icon-edit alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>
+                                            </a> 
                                             <a href="#" class="label label-important"><i class="icon-remove"></i></a>
                                             <a href="/log/ver/proveedores/<?=$proveedor['idproveedor']?>/" class="label label-info"><i class="icon-time"></i></a>
                                         </td>

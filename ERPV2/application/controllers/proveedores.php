@@ -98,5 +98,48 @@ class Proveedores extends CI_Controller {
         $this->load->view('proveedores/agregar');
         $this->load->view('layout/footer');
     }
+    
+    public function modificar($idproveedor = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Agregar Proveedor';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        if($idproveedor == null) {
+            redirect('/proveedores/', 'refresh');
+        }
+        
+        $this->form_validation->set_rules('proveedor', 'Proveedor', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'proveedor' => $this->input->post('proveedor'),
+                'domicilio' => $this->input->post('domicilio'),
+                'cuit' => $this->input->post('cuit'),
+                'telefono' => $this->input->post('telefono'),
+                'localidad' => $this->input->post('localidad'),
+                'idprovincia' => $this->input->post('provincia'),
+                'contacto' => $this->input->post('contacto'),
+                'correo' => $this->input->post('correo'),
+                'observaciones' => $this->input->post('observaciones')
+            );
+            
+            $this->proveedores_model->update($datos, $idproveedor);
+            
+        }
+        
+        $datos = array(
+            'idproveedor' => $idproveedor
+        );
+        $data['proveedor'] = $this->proveedores_model->get_where($datos);
+        $data['provincias'] = $this->provincias_model->gets();
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('proveedores/modificar');
+        $this->load->view('layout/footer');
+    }
 }
 ?>

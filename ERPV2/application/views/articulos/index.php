@@ -36,7 +36,6 @@
                                         <th><strong>Plano</strong></th>
                                         <th><strong>Revisión</strong></th>
                                         <th><strong>Posición</strong></th>
-                                        <th><strong>Plano</strong></th>
                                         <th><strong>Acción</strong></th>
                                     </tr>
                                 </thead>
@@ -45,10 +44,9 @@
                                     <tr>
                                         <td><?=$articulo['articulo']?></td>
                                         <td><?=$articulo['producto']?></td>
-                                        <td><?=$articulo['plano']?></td>
+                                        <td><?=($articulo['planofile']!='')?"<a href='".$articulo['planofile']."' target='_blank'>".$articulo['plano']."</a>":""?></td>
                                         <td><?=$articulo['revision']?></td>
                                         <td><?=$articulo['posicion']?></td>
-                                        <td><?=($articulo['planofile']!='')?"<a href='".$articulo['planofile']."' target='_blank'><i class='icon-file'></i></a>":""?></td>
                                         <td>
                                             <a href="/articulos/ver/<?=$articulo['idarticulo']?>/"><i class="alert-success icon-eye-open tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver"></i></a>
                                             <a href="/articulos/modificar/<?=$articulo['idarticulo']?>/" class="label label-default"><i class="icon-edit"></i></a> 
