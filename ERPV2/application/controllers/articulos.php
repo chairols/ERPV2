@@ -53,62 +53,57 @@ class Articulos extends CI_Controller {
         if($this->form_validation->run() == FALSE) {
             
         } else {
-            $datos = array(
-                'articulo' => $this->input->post('articulo')
-            );
-            $resultado = $this->articulos_model->get_where($datos);
             
-            if(count($resultado) == 0) {
-                $datos = array(
-                    'articulo' => $this->input->post('articulo'),
-                    'idproducto' => $this->input->post('producto'),
-                    'posicion' => $this->input->post('posicion'),
-                    'observaciones' => $this->input->post('observaciones')
-                );
-                if($this->input->post('checkbox') == 'on') {
-                    $datos['idplano'] = $this->input->post('plano');
-                } else {
-                    $datos['idplano'] = 0;
-                }
-                
-                
-                $id = $this->articulos_model->set($datos);
-                
-                $log = array(
-                   'tabla' => 'articulos',
-                   'idtabla' => $id,
-                   'texto' => 'Se agregó: <br>'
-                    . 'articulo: '.$this->input->post('articulo').'<br>'
-                    . 'idplano: '.$this->input->post('idplano').'<br>'
-                    . 'posicion: '.$this->input->post('posicion').'<br>'
-                    . 'observaciones: '.$this->input->post('observaciones').'<br>',
-                   'tipo' => 'add',
-                   'idusuario' => $session['SID']
-                );
-                
-                if($this->input->post('padres')) {
-                    foreach($this->input->post('padres') as $padre) {
-                        $datos = array(
-                            'idarticulo_padre' => $padre,
-                            'idarticulo_hijo' => $id
-                        );
-                        $this->articulos_jerarquias_model->set($datos);
-                    }
-                }
-                  
-                
-                if($this->input->post('hijos')) {
-                    foreach($this->input->post('hijos') as $hijo) {
-                        $datos = array(
-                            'idarticulo_padre' => $id,
-                            'idarticulo_hijo' => $hijo
-                        );
-                        $this->articulos_jerarquias_model->set($datos);
-                    }
-                }
-                
-                //redirect('/articulos/', 'refresh');
+            $datos = array(
+                'articulo' => $this->input->post('articulo'),
+                'idproducto' => $this->input->post('producto'),
+                'posicion' => $this->input->post('posicion'),
+                'observaciones' => $this->input->post('observaciones')
+            );
+            if($this->input->post('checkbox') == 'on') {
+                $datos['idplano'] = $this->input->post('plano');
+            } else {
+                $datos['idplano'] = 0;
             }
+
+
+            $id = $this->articulos_model->set($datos);
+
+            $log = array(
+               'tabla' => 'articulos',
+               'idtabla' => $id,
+               'texto' => 'Se agregó: <br>'
+                . 'articulo: '.$this->input->post('articulo').'<br>'
+                . 'idplano: '.$this->input->post('idplano').'<br>'
+                . 'posicion: '.$this->input->post('posicion').'<br>'
+                . 'observaciones: '.$this->input->post('observaciones').'<br>',
+               'tipo' => 'add',
+               'idusuario' => $session['SID']
+            );
+
+            if($this->input->post('padres')) {
+                foreach($this->input->post('padres') as $padre) {
+                    $datos = array(
+                        'idarticulo_padre' => $padre,
+                        'idarticulo_hijo' => $id
+                    );
+                    $this->articulos_jerarquias_model->set($datos);
+                }
+            }
+
+
+            if($this->input->post('hijos')) {
+                foreach($this->input->post('hijos') as $hijo) {
+                    $datos = array(
+                        'idarticulo_padre' => $id,
+                        'idarticulo_hijo' => $hijo
+                    );
+                    $this->articulos_jerarquias_model->set($datos);
+                }
+            }
+                
+            redirect('/articulos/', 'refresh');
+            
         }
         
         $this->load->view('layout/header', $data);

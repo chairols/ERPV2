@@ -17,7 +17,8 @@ class Ots extends CI_Controller {
             'fabricas_model',
             'planos_model',
             'monedas_model',
-            'log_model'
+            'log_model',
+            'numeros_serie_model'
         ));
         $this->load->helper(array(
             'url'
@@ -175,12 +176,7 @@ class Ots extends CI_Controller {
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         
-        $data['articulos'] = $this->articulos_model->gets();
         
-        
-        $data['ot'] = $this->ots_model->get_where(array('idot' => $idot));
-        $data['fabrica'] = $this->fabricas_model->get_where(array('idfabrica' => $data['ot']['idfabrica']));
-
         
         $this->form_validation->set_rules('articulo', 'Articulo', 'required|integer');
         $this->form_validation->set_rules('cantidad', 'Cantidad', 'required|numeric');
@@ -188,6 +184,9 @@ class Ots extends CI_Controller {
         if($this->form_validation->run() == FALSE) {
             
         } else {
+            $data['ot'] = $this->ots_model->get_where(array('idot' => $idot));
+            $data['fabrica'] = $this->fabricas_model->get_where(array('idfabrica' => $data['ot']['idfabrica']));
+            
             $datos = array(
                 'cantidad' => $this->input->post('cantidad'),
                 'idarticulo' => $this->input->post('articulo'),
@@ -218,7 +217,18 @@ class Ots extends CI_Controller {
                 $datos['idpedido'] = $this->input->post('pedido');
             }
             
-            $this->ots_model->update($datos, $data['ot']['idot']);
+            $this->ots_model->update($datos, $idot);
+            
+            $this->numeros_serie_model->borrar_por_ot($idot);
+            
+            $numeros_serie = explode(",", $this->input->post('numero_serie'));
+            foreach($numeros_serie as $ns) {
+                $num_serie = array(
+                    'numero_serie' => $ns,
+                    'idot' => $idot
+                );
+                $this->numeros_serie_model->set($num_serie);
+            }
             
             $log = array(
                'tabla' => 'ots',
@@ -238,8 +248,16 @@ class Ots extends CI_Controller {
 
             $this->log_model->set($log);
             
-            redirect('/ots/', 'refresh');
+            //redirect('/ots/', 'refresh');
+            
         }
+        
+        $data['articulos'] = $this->articulos_model->gets();
+        
+        $data['ot'] = $this->ots_model->get_where(array('idot' => $idot));
+        $data['fabrica'] = $this->fabricas_model->get_where(array('idfabrica' => $data['ot']['idfabrica']));
+        
+        $data['numeros_serie'] = $this->numeros_serie_model->gets_por_ot($idot);
         
         $this->load->view('layout/header_form', $data);
         $this->load->view('layout/menu');

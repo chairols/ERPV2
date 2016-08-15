@@ -81,6 +81,12 @@
                                     <textarea class="form-control input-xlarge" rows="5" name="observaciones"><?=$ot['observaciones']?></textarea>
                                 </div>
                             </div>
+                            <div class="control-group">
+                                <label class="control-label">Número de Serie</label>
+                                <div class="controls">
+                                    <input type="text" id="tags_1" class="tags input-xlarge" name="numero_serie" value="<?php foreach($numeros_serie as $ns) { echo $ns['numero_serie'].","; } ?>">
+                                </div>
+                            </div>
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-success">
                                     <i class="icon-save"></i> Guardar

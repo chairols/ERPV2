@@ -31,7 +31,7 @@
                             <div class="control-group">
                                 <label class="control-label">Artículo</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=$articulo['articulo']?>" name="articulo" required autofocus>
+                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=htmlentities($articulo['articulo'])?>" name="articulo" required autofocus>
                                 </div>
                             </div>
                             <div class="control-group">

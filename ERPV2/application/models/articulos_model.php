@@ -75,7 +75,6 @@ class Articulos_model extends CI_Model {
     
     /*
      * 
-     * articulos/agregar
      * articulos/modificar
      * articulos/ver
      * 
