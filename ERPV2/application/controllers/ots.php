@@ -133,6 +133,18 @@ class Ots extends CI_Controller {
                 }
                 
                 $id = $this->ots_model->set($datos);
+                
+                $this->numeros_serie_model->borrar_por_ot($id);
+            
+                $numeros_serie = explode(",", $this->input->post('numero_serie'));
+                foreach($numeros_serie as $ns) {
+                    $num_serie = array(
+                        'numero_serie' => $ns,
+                        'idot' => $id
+                    );
+                    $this->numeros_serie_model->set($num_serie);
+                }
+                
                 $fabrica = $this->fabricas_model->get_where(array('idfabrica' => $this->input->post('fabrica')));
                 
                 $log = array(
@@ -153,7 +165,7 @@ class Ots extends CI_Controller {
                 
                 $this->log_model->set($log);
                 
-                redirect('/ots/', 'refresh');
+                //redirect('/ots/', 'refresh');
             } else {
                 $data['alerta'] = '<div class="alert alert-danger">La Orden de Trabajo ya existe</div>';
             }
@@ -248,7 +260,7 @@ class Ots extends CI_Controller {
 
             $this->log_model->set($log);
             
-            //redirect('/ots/', 'refresh');
+            redirect('/ots/', 'refresh');
             
         }
         

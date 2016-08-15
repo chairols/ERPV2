@@ -29,6 +29,10 @@ class Numeros_serie_model extends CI_Model {
                                         idot = '$idot'");
     }
     
+    /*
+     *  ots/modificar
+     * 
+     */
     public function set($datos) {
         $this->db->insert('numeros_serie', $datos);
     }
