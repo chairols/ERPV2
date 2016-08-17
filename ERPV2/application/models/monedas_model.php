@@ -19,6 +19,10 @@ class Monedas_model extends CI_Model {
      * 
      * monedas/index
      * 
+     * numeroserie/trazabilidad
+     * 
+     * ots/trazabilidad
+     * 
      * pedidos/agregar
      * 
      * retenciones/agregar

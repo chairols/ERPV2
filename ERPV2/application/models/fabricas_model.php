@@ -38,6 +38,8 @@ class Fabricas_model extends CI_Model {
      * fabricas/agregar 
      * fabricas/modificar
      * 
+     * numeroserie/trazabilidad
+     * 
      * ots/modificar
      * ots/pdf
      * ots/ver

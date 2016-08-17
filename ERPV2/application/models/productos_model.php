@@ -34,6 +34,9 @@ class Productos_model extends CI_Model {
     /*
      * 
      * articulos/ver
+     * 
+     * numeroserie/trazabilidad
+     * 
      * ocs/asociar_ot
      * ots/pdf
      * ots/get_ot_ajax

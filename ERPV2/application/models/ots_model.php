@@ -73,6 +73,7 @@ class Ots_model extends CI_Model {
     }
     
     /*
+     * numeroserie/trazabilidad
      * 
      * ots/agregar
      * ots/modificar
@@ -217,7 +218,11 @@ class Ots_model extends CI_Model {
     }
     
      /*
-     *  ots/trazabilidad
+      * 
+      * numeroserie/trazabilidad
+      * 
+      * ots/trazabilidad
+      * 
      */
     public function gets_ocs_asociadas_por_monedas($idot, $idmoneda) {
         $query = $this->db->query("SELECT oi.cantidad, p.producto, a.articulo, m.simbolo, oi.precio, o.idoc, pr.proveedor

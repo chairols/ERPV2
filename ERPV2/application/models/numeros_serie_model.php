@@ -6,6 +6,7 @@ class Numeros_serie_model extends CI_Model {
     }
     
     /*
+     *  ots/agregar
      *  ots/modificar
      */
     public function gets_por_ot($idot) {
@@ -18,6 +19,7 @@ class Numeros_serie_model extends CI_Model {
     }
     
     /*
+     *  ots/agregar
      *  ots/modificar
      * 
      */
@@ -30,11 +32,42 @@ class Numeros_serie_model extends CI_Model {
     }
     
     /*
+     *  ots/agregar
      *  ots/modificar
      * 
      */
     public function set($datos) {
         $this->db->insert('numeros_serie', $datos);
+    }
+    
+    
+    /*
+     *  numeroserie/index
+     */
+    public function gets() {
+        $query = $this->db->query("SELECT ns.numero_serie, f.fabrica, o.idot, o.numero_ot, p.producto, a.articulo
+                                    FROM
+                                        numeros_serie ns,
+                                        ots o,
+                                        fabricas f,
+                                        articulos a,
+                                        productos p
+                                    WHERE
+                                        ns.idot = o.idot AND
+                                        o.idfabrica = f.idfabrica AND
+                                        o.idarticulo = a.idarticulo AND
+                                        a.idproducto = p.idproducto");
+        
+        return $query->result_array();
+    }
+    
+    /*
+     *  numeroserie/trazabilidad
+     */
+    public function get_where($where) {
+        $query = $this->db->get_where('numeros_serie', $where);
+        
+        return $query->row_array();
     }
 }
 ?>

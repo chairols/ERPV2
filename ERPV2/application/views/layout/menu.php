@@ -76,7 +76,7 @@
                     <li<?=($segmento=='roles')?" class='active'":""?>><a class="" href="/roles/">Roles</a></li>
                 </ul>
             </li>
-            <li class="sub-menu<?=($segmento=='contratos'||$segmento=='ots'||$segmento=='pedidos')?" active":""?>">
+            <li class="sub-menu<?=($segmento=='contratos'||$segmento=='numeroserie'||$segmento=='ots'||$segmento=='pedidos')?" active":""?>">
                 <a href="javascript:;" class="">
                     <i class="icon-gears"></i>
                     <span>Producción</span>
@@ -84,6 +84,7 @@
                 </a>
                 <ul class="sub">
                     <li<?=($segmento=='contratos')?" class='active'":""?>><a class="" href="/contratos/">Contratos</a></li>
+                    <li<?=($segmento=='numeroserie')?" class='active'":""?>><a class="" href="/numeroserie/">Números de Serie</a></li>
                     <li<?=($segmento=='ots')?" class='active'":""?>><a class="" href="/ots/">Órdenes de Trabajo</a></li>
                     <li<?=($segmento=='pedidos')?" class='active'":""?>><a class="" href="/pedidos/">Pedidos</a></li>
                 </ul>
