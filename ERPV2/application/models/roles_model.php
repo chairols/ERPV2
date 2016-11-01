@@ -7,6 +7,7 @@ class Roles_model extends CI_Model {
     
     /*
      *  roles/agregar
+     *  roles/menu
      */
     public function get_where($where) {
         $query = $this->db->get_where('roles', $where);

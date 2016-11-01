@@ -12,6 +12,7 @@
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li class="active"><a href="/roles/">Listar Roles</a></li>
                 <li><a href="/roles/agregar/">Agregar Rol</a></li>
+                <li><a href="/roles/menu/">Roles-Menú</a></li>
             </ul>
             
             <div class="row-fluid">
@@ -37,7 +38,12 @@
                                     <tr>
                                         <td><?=$rol['rol']?></td>
                                         <td>
-                                            <a href="/log/ver/roles/<?=$rol['idrol']?>/" class="label label-info"><i class="icon-time"></i></a>
+                                            <a href="/roles/menu/<?=$rol['idrol']?>/">
+                                                <i class="icon-edit alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>
+                                            </a>
+                                            <a href="/log/ver/roles/<?=$rol['idrol']?>/">
+                                                <i class="icon-time alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Historial"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                     <?php } ?>

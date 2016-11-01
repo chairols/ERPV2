@@ -12,6 +12,7 @@
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li><a href="/roles/">Listar Roles</a></li>
                 <li class="active"><a href="/roles/agregar/">Agregar Rol</a></li>
+                <li><a href="/roles/menu/">Roles-Menú</a></li>
             </ul>
         </div>
         

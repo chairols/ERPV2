@@ -120,7 +120,7 @@ class Ots extends CI_Controller {
                     $datos['fecha_terminado'] = $this->input->post('fecha_terminado');
                 } 
                 
-                if($this->input->post('numero_serie') == '') {
+                if(strlen($this->input->post('numero_serie')) == 0) {
                     $datos['numero_serie'] = NULL;
                 } else {
                     $datos['numero_serie'] = $this->input->post('numero_serie');
@@ -135,14 +135,16 @@ class Ots extends CI_Controller {
                 $id = $this->ots_model->set($datos);
                 
                 $this->numeros_serie_model->borrar_por_ot($id);
-            
-                $numeros_serie = explode(",", $this->input->post('numero_serie'));
-                foreach($numeros_serie as $ns) {
-                    $num_serie = array(
-                        'numero_serie' => $ns,
-                        'idot' => $id
-                    );
-                    $this->numeros_serie_model->set($num_serie);
+                
+                if(!is_null($datos['numero_serie'])) {
+                    $numeros_serie = explode(",", $datos['numero_serie']);
+                    foreach($numeros_serie as $ns) {
+                        $num_serie = array(
+                            'numero_serie' => $ns,
+                            'idot' => $id
+                        );
+                        $this->numeros_serie_model->set($num_serie);
+                    }
                 }
                 
                 $fabrica = $this->fabricas_model->get_where(array('idfabrica' => $this->input->post('fabrica')));
@@ -165,7 +167,7 @@ class Ots extends CI_Controller {
                 
                 $this->log_model->set($log);
                 
-                //redirect('/ots/', 'refresh');
+                redirect('/ots/', 'refresh');
             } else {
                 $data['alerta'] = '<div class="alert alert-danger">La Orden de Trabajo ya existe</div>';
             }
@@ -217,7 +219,7 @@ class Ots extends CI_Controller {
                 $datos['fecha_terminado'] = $this->input->post('fecha_terminado');
             } 
 
-            if($this->input->post('numero_serie') == '') {
+            if(strlen($this->input->post('numero_serie')) == 0) {
                 $datos['numero_serie'] = NULL;
             } else {
                 $datos['numero_serie'] = $this->input->post('numero_serie');
@@ -232,14 +234,15 @@ class Ots extends CI_Controller {
             $this->ots_model->update($datos, $idot);
             
             $this->numeros_serie_model->borrar_por_ot($idot);
-            
-            $numeros_serie = explode(",", $this->input->post('numero_serie'));
-            foreach($numeros_serie as $ns) {
-                $num_serie = array(
-                    'numero_serie' => $ns,
-                    'idot' => $idot
-                );
-                $this->numeros_serie_model->set($num_serie);
+            if(!is_null($datos['numero_serie'])) {
+                $numeros_serie = explode(",", $this->input->post('numero_serie'));
+                foreach($numeros_serie as $ns) {
+                    $num_serie = array(
+                        'numero_serie' => $ns,
+                        'idot' => $idot
+                    );
+                    $this->numeros_serie_model->set($num_serie);
+                }
             }
             
             $log = array(

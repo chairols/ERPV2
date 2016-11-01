@@ -13,6 +13,18 @@ class Menu_model extends CI_Model {
         return $this->db->insert_id();
     }
     
+    public function obtener_menu_por_padre($idpadre) {
+        $query = $this->db->query("SELECT * 
+                                    FROM
+                                        menu
+                                    WHERE
+                                        padre = '$idpadre' AND
+                                        visible = '1'
+                                    ORDER BY
+                                        orden" );
+        return $query->result_array();
+    }
+    
     /*
      *  menu/agregar
      * 

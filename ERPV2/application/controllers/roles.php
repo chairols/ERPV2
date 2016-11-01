@@ -13,7 +13,8 @@ class Roles extends CI_Controller {
         ));
         $this->load->model(array(
             'roles_model',
-            'log_model'
+            'log_model',
+            'menu_model'
         ));
     }
     
@@ -77,6 +78,29 @@ class Roles extends CI_Controller {
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('roles/agregar');
+        $this->load->view('layout/footer');
+    }
+    
+    public function menu($idrol = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Roles-Menú';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        if($idrol == null) {
+            redirect('/roles/', 'refresh');
+        }
+        
+        
+        $data['rol'] = $this->roles_model->get_where(array('idrol' => $idrol));
+        
+        $data['menu'] = $this->menu_model->obtener_menu_por_padre(0);
+        foreach ($data['menu'] as $key => $value) {
+            $data['menu'][$key]['submenu'] = $this->menu_model->obtener_menu_por_padre($value['idmenu']);
+        }
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('roles/menu');
         $this->load->view('layout/footer');
     }
 }

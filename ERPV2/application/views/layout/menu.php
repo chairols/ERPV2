@@ -60,7 +60,7 @@
                     <li<?=($segmento=='retenciones')?" class='active'":""?>><a class="" href="/retenciones/">Retenciones</a></li>
                 </ul>
             </li>
-            <li class="sub-menu<?=($segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='materiales'||$segmento=='monedas'||$segmento=='provincias'||$segmento=='roles')?" active":""?>">
+            <li class="sub-menu<?=($segmento=='clientes'||$segmento=='fabricas'||$segmento=='insumos'||$segmento=='materiales'||$segmento=='menu'||$segmento=='monedas'||$segmento=='plantillas'||$segmento=='provincias'||$segmento=='roles')?" active":""?>">
                 <a href="javascript:;" class="">
                     <i class="icon-file"></i>
                     <span>Maestros</span>
@@ -71,7 +71,9 @@
                     <li<?=($segmento=='fabricas')?" class='active'":""?>><a class="" href="/fabricas/">Fábricas</a></li>
                     <li<?=($segmento=='insumos')?" class='active'":""?>><a class="" href="/insumos/">Insumos</a></li>
                     <li<?=($segmento=='materiales')?" class='active'":""?>><a class="" href="/materiales/">Materiales</a></li>
+                    <li<?=($segmento=='menu')?" class='active'":""?>><a class="" href="/menu/">Menú</a></li>
                     <li<?=($segmento=='monedas')?" class='active'":""?>><a class="" href="/monedas/">Monedas</a></li>
+                    <li<?=($segmento=='plantillas')?" class='active'":""?>><a class="" href="/plantillas/">Plantillas</a></li>
                     <li<?=($segmento=='provincias')?" class='active'":""?>><a class="" href="/provincias/">Provincias</a></li>
                     <li<?=($segmento=='roles')?" class='active'":""?>><a class="" href="/roles/">Roles</a></li>
                 </ul>

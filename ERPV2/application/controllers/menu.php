@@ -77,5 +77,21 @@ class Menu extends CI_Controller {
         $this->load->view('menu/agregar');
         $this->load->view('layout/footer');
     }
+    
+    public function roles($idmenu = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Asociar Menu';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        if($idmenu == null) {
+            redirect('/menu/', 'refresh');
+        }
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('menu/roles');
+        $this->load->view('layout/footer');
+    }
 }
 ?>
