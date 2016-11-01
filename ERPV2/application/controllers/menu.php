@@ -52,6 +52,7 @@ class Menu extends CI_Controller {
             
         } else {
             $datos = array(
+                'icono' => $this->input->post('icono'),
                 'menu' => $this->input->post('menu'),
                 'href' => $this->input->post('href'),
                 'orden' => $this->input->post('orden'),

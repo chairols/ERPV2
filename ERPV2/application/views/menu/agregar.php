@@ -28,9 +28,18 @@
                     <div class="widget-body">
                         <form method="POST" class="form-horizontal">
                             <div class="control-group">
+                                <label class="control-label">Ícono</label>
+                                <div class="controls">
+                                    <input type="text" maxlength="50" class="span12" value="<?=set_value('icono')?>" name="icono" autofocus>
+                                    <span class="help-inline">
+                                        <?=form_error('icono', '<div class="alert alert-danger', '</div>')?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="control-group">
                                 <label class="control-label">Menú</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="50" class="input-xlarge" value="<?=set_value('menu')?>" name="menu" autofocus required>
+                                    <input type="text" maxlength="50" class="span12" value="<?=set_value('menu')?>" name="menu" required>
                                     <span class="help-inline">
                                         <?=form_error('menu', '<div class="alert alert-danger">', '</div>')?>
                                     </span>
@@ -39,7 +48,7 @@
                             <div class="control-group">
                                 <label class="control-label">Href</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('href')?>" name="href" required>
+                                    <input type="text" maxlength="100" class="span12" value="<?=set_value('href')?>" name="href" required>
                                     <span class="help-inline">
                                         <?=form_error('href', '<div class="alert alert-danger">', '</div>')?>
                                     </span>
@@ -48,7 +57,7 @@
                             <div class="control-group">
                                 <label class="control-label">Orden</label>
                                 <div class="controls">
-                                    <input type="number" maxlength="11" class="input-xlarge" value="<?=set_value('orden')?>" name="orden" required>
+                                    <input type="number" maxlength="11" class="span12" value="<?=set_value('orden')?>" name="orden" required>
                                     <span class="help-inline">
                                         <?=form_error('href', '<div class="alert alert-danger">', '</div>')?>
                                     </span>
@@ -57,7 +66,7 @@
                             <div class="control-group">
                                 <label class="control-label">Padre</label>
                                 <div class="controls">
-                                    <select name="padre" class="select2 input-xlarge">
+                                    <select name="padre" class="select2 span12">
                                         <option value="0" selected>--- No tiene ---</option>
                                         <?php foreach($padres as $padre) { ?>
                                         <option value="<?=$padre['idmenu']?>"><?=$padre['menu']?></option>
