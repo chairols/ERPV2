@@ -30,8 +30,15 @@
                         <div class="offset1 span11">
                             <div class="control-group">
                                 <div class="controls checkbox">
-                                    <input type="checkbox" name="checkbox-<?=$m['idmenu']?>">
-                                    <label class="control-label"><strong><?=$m['menu']?></strong></label>
+                                    <?php if($m['idrol']) {
+                                        $valor = 'desasociar';
+                                    } else {
+                                        $valor = 'asociar';
+                                    } ?>
+                                    <input type="checkbox" <?=($m['idrol'])?"checked":""?> disabled>
+                                    <a href="/roles/<?=$valor?>/<?=$rol['idrol']?>/<?=$m['idmenu']?>/">
+                                        <label class="control-label"><strong><i class="<?=$m['icono']?>"></i> <?=$m['menu']?></strong></label>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -40,8 +47,15 @@
                         <div class="offset2 span10">
                             <div class="control-group">
                                 <div class="controls checkbox">
-                                    <input type="checkbox" name="checkbox-<?=$submenu['idmenu']?>">
-                                    <label class="control-label"><?=$submenu['menu']?></label>
+                                    <?php if($submenu['idrol']) {
+                                        $valor = 'desasociar';
+                                    } else {
+                                        $valor = 'asociar';
+                                    } ?>
+                                    <input type="checkbox" <?=($submenu['idrol'])?"checked":""?> disabled>
+                                    <a href="/roles/<?=$valor?>/<?=$rol['idrol']?>/<?=$submenu['idmenu']?>/">
+                                        <label class="control-label"><?=$submenu['menu']?></label>
+                                    </a>
                                 </div>
                             </div>
                         </div>

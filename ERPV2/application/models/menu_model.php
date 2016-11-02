@@ -13,15 +13,21 @@ class Menu_model extends CI_Model {
         return $this->db->insert_id();
     }
     
+    /*
+     *  roles/menu
+     */
     public function obtener_menu_por_padre($idpadre) {
-        $query = $this->db->query("SELECT * 
+        $query = $this->db->query("SELECT m.*, rm.idrol 
                                     FROM
-                                        menu
+                                        menu m
+                                    LEFT JOIN
+                                        roles_menu rm
+                                    ON
+                                        m.idmenu = rm.idmenu
                                     WHERE
-                                        padre = '$idpadre' AND
-                                        visible = '1'
+                                        m.padre = '$idpadre'
                                     ORDER BY
-                                        orden" );
+                                        m.orden" );
         return $query->result_array();
     }
     
