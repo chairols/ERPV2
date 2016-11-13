@@ -57,6 +57,7 @@ class Usuarios extends CI_Controller {
         $data['title'] = 'Perfil';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('nombre', 'Nombre', 'required');
         $this->form_validation->set_rules('apellido', 'Apellido', 'required');

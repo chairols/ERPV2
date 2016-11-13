@@ -23,6 +23,7 @@ class Planos extends CI_Controller {
         $data['title'] = 'Listar Planos';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['planos'] = $this->planos_model->gets();
         
@@ -38,6 +39,7 @@ class Planos extends CI_Controller {
         $data['title'] = 'Agregar Plano';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('plano', 'Plano', 'required');
         
@@ -114,6 +116,7 @@ class Planos extends CI_Controller {
         $data['title'] = 'Ver Plano';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         if($idplano == null) {
             redirect('/planos/', 'refresh');
@@ -162,6 +165,7 @@ class Planos extends CI_Controller {
         $data['title'] = 'Listar Planos Borrados';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $datos = array(
             'activo' => '0'
@@ -184,6 +188,7 @@ class Planos extends CI_Controller {
         $data['title'] = 'Modificar Plano';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';
         
         

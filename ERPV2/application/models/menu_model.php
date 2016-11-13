@@ -27,7 +27,7 @@ class Menu_model extends CI_Model {
                                     WHERE
                                         m.padre = '$idpadre'
                                     ORDER BY
-                                        m.orden" );
+                                        m.orden, m.menu" );
         return $query->result_array();
     }
     
@@ -61,6 +61,37 @@ class Menu_model extends CI_Model {
                         menu");
         return $query->result_array();
                     
+    }
+    
+    /*
+     *  roles/desasociar
+     */
+    public function desasociar_rol($datos) {
+        $this->db->delete('roles_menu', $datos);
+    }
+    
+    /*
+     *  roles/asociar
+     */
+    public function asociar_rol($datos) {
+        $this->db->insert('roles_menu', $datos);
+    }
+    
+    
+    /*
+     *  Libraries/r_session/comprobar_accesos
+     */
+    public function get_rol_menu($idrol, $menu) {
+        $query = $this->db->query("SELECT * 
+                                    FROM
+                                        menu m,
+                                        roles_menu rm
+                                    WHERE
+                                        m.href = '$menu' AND
+                                        rm.idrol = '$idrol' AND
+                                        m.idmenu = rm.idmenu");
+        
+        return $query->result_array();
     }
 }
 ?>

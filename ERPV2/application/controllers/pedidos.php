@@ -30,6 +30,7 @@ class Pedidos extends CI_Controller {
         $data['title'] = 'Listar Pedidos';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['pedidos'] = $this->pedidos_model->gets();
         
@@ -45,6 +46,7 @@ class Pedidos extends CI_Controller {
         $data['title'] = 'Agregar Pedido';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['clientes'] = $this->clientes_model->gets();
         $data['monedas'] = $this->monedas_model->gets();
@@ -113,6 +115,7 @@ class Pedidos extends CI_Controller {
         $data['title'] = 'Agregar Item a Pedido';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         if($idpedido == null) {
             redirect('/pedidos/', 'refresh');
@@ -178,6 +181,7 @@ class Pedidos extends CI_Controller {
         $data['title'] = 'Asociar Orden de Trabajo a Pedido';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('ot', 'Orden de Trabajo', 'required');
         

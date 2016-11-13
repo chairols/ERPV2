@@ -22,13 +22,14 @@ class Menu extends CI_Controller {
         $data['title'] = 'Listar Menú';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
-        $data['menu'] = $this->menu_model->gets();
-        foreach ($data['menu'] as $key => $value) {
+        $data['mmenu'] = $this->menu_model->gets();
+        foreach ($data['mmenu'] as $key => $value) {
             $datos = array(
                 'idmenu' => $value['padre']
             );
-            $data['menu'][$key]['padre'] = $this->menu_model->get_where($datos);
+            $data['mmenu'][$key]['padre'] = $this->menu_model->get_where($datos);
         }
         
         $this->load->view('layout/header', $data);
@@ -43,6 +44,7 @@ class Menu extends CI_Controller {
         $data['title'] = 'Agregar Menú';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('menu', 'Menu', 'required');
         $this->form_validation->set_rules('href', 'HREF', 'required');
@@ -85,6 +87,7 @@ class Menu extends CI_Controller {
         $data['title'] = 'Asociar Menu';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         if($idmenu == null) {
             redirect('/menu/', 'refresh');
         }

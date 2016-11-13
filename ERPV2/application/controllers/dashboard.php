@@ -22,12 +22,12 @@ class Dashboard extends CI_Controller {
         $data['title'] = 'Dashboard';
         $data['session'] = $session;
         $data['segmento'] = 'dashboard';
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['ots_pendientes'] = $this->ots_model->gets_where(array('fecha_terminado' => null, 'activo' => '1'));
         $data['ots_cumplidas'] = $this->ots_model->gets_cumplidas();
         $data['ots_vencidas'] = $this->ots_model->gets_vencidas();
         $data['contratos_vigentes'] = $this->contratos_model->gets_contratos_vigentes();
-        
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');

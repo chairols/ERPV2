@@ -18,14 +18,15 @@ class Articulos extends CI_Controller {
             'planos_model',
             'articulos_jerarquias_model'
         ));
+        $this->r_session->check($this->session->all_userdata());
     }
     
     public function index() {
         $session = $this->session->all_userdata();
-        $this->r_session->check($session);
         $data['title'] = 'Listar Artículos';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['articulos'] = $this->articulos_model->gets();
         
@@ -37,10 +38,10 @@ class Articulos extends CI_Controller {
     
     public function agregar() {
         $session = $this->session->all_userdata();
-        $this->r_session->check($session);
         $data['title'] = 'Agregar Artículo';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';  // Se utiliza cuando se repite un artículo ya existente
         
         $data['productos'] = $this->productos_model->gets();
@@ -114,13 +115,13 @@ class Articulos extends CI_Controller {
     
     public function modificar($idarticulo = null) {
         $session = $this->session->all_userdata();
-        $this->r_session->check($session);
         if($idarticulo == null) {
             redirect('/articulos/', 'refresh');
         }
         $data['title'] = 'Modificar Artículo';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';
         
         $datos = array(
@@ -211,10 +212,10 @@ class Articulos extends CI_Controller {
     
     public function borrados() {
         $session = $this->session->all_userdata();
-        $this->r_session->check($session);
         $data['title'] = 'Artículos Borrados';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['articulos'] = $this->articulos_model->gets_inactivos();
         
@@ -226,7 +227,6 @@ class Articulos extends CI_Controller {
     
     public function borrar($idarticulo = null) {
         $session = $this->session->all_userdata();
-        $this->r_session->check($session);
         
         if($idarticulo == null) {
             redirect('/articulos/', 'refresh');
@@ -253,13 +253,13 @@ class Articulos extends CI_Controller {
     
     public function ver($idarticulo = null) {
         $session = $this->session->all_userdata();
-        $this->r_session->check($session);
         if($idarticulo == null) {
             redirect('/articulos/', 'refresh');
         }
         $data['title'] = 'Ver Artículo';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['articulo'] = $this->articulos_model->get_where(array('idarticulo' => $idarticulo));
         $data['articulo']['producto'] = $this->productos_model->get_where(array('idproducto' => $data['articulo']['idproducto']));

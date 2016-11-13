@@ -31,6 +31,7 @@ class Ocs extends CI_Controller {
         $data['title'] = 'Listar Órdenes de Compra';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['ocs'] = $this->ocs_model->gets();
         
@@ -46,6 +47,7 @@ class Ocs extends CI_Controller {
         $data['title'] = 'Agregar Orden de Compra';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('proveedor', 'Proveedor', 'required');
         $this->form_validation->set_rules('moneda', 'Moneda', 'required');
@@ -93,6 +95,7 @@ class Ocs extends CI_Controller {
         $data['title'] = 'Agregar Orden de Compra';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('cantidad', 'Cantidad', 'required|numeric');
         $this->form_validation->set_rules('medida', 'Medida', 'required|integer');
@@ -299,6 +302,7 @@ class Ocs extends CI_Controller {
         $data['title'] = 'Editar Item de Orden de Compra';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('cantidad', 'Cantidad', 'required');
         $this->form_validation->set_rules('medida', 'Unidad de Medida', 'required');
@@ -341,6 +345,7 @@ class Ocs extends CI_Controller {
         $data['title'] = 'Asociar Orden de Compra';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('ot', 'Orden de Trabajo', 'required');
         

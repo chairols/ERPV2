@@ -48,5 +48,13 @@
                 </div>
             </div>
         </div>
+        <div class="row-fluid">
+            <pre>
+            <?php foreach($menu as $m) {
+            print_r($m);
+            }
+            ?>
+            </pre>
+        </div>
     </div>
 </div>

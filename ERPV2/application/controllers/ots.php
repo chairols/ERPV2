@@ -34,6 +34,7 @@ class Ots extends CI_Controller {
         $data['title'] = 'Listar Órdenes de Trabajo';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['ots'] = $this->ots_model->gets();
         
@@ -52,6 +53,7 @@ class Ots extends CI_Controller {
         $data['title'] = 'Ver Orden de Trabajo';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $datos = array(
             'idot' => $idot
@@ -80,6 +82,7 @@ class Ots extends CI_Controller {
         $data['title'] = 'Agregar O.T.';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';   //  Se utiliza para cuando la OT ya existe
         
         $data['articulos'] = $this->articulos_model->gets();
@@ -189,6 +192,7 @@ class Ots extends CI_Controller {
         $data['title'] = 'Modificar O.T.';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         
         
@@ -508,6 +512,7 @@ class Ots extends CI_Controller {
         $this->r_session->check($session);
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['ots'] = $this->ots_model->gets_vencidas();
         
@@ -523,6 +528,7 @@ class Ots extends CI_Controller {
         $data['title'] = 'Órdenes de Trabajo Pendientes';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['ots'] = $this->ots_model->gets_pendientes();
         
@@ -537,6 +543,7 @@ class Ots extends CI_Controller {
         $this->r_session->check($session);
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['articulos'] = $this->articulos_model->gets();
         $articulosoptions = '';
@@ -588,6 +595,7 @@ class Ots extends CI_Controller {
         $data['title'] = 'Listar Órdenes de Trabajo';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['ots'] = $this->ots_model->gets_borradas();
         
@@ -603,6 +611,7 @@ class Ots extends CI_Controller {
         $data['title'] = 'Trazabilidad';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         if(!$idot)
             redirect('/ots/', 'refresh');

@@ -23,6 +23,7 @@ class Medidas extends CI_Controller {
         $data['title'] = 'Listar Unidades de Medida';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['medidas'] = $this->medidas_model->gets();
         
@@ -38,6 +39,7 @@ class Medidas extends CI_Controller {
         $data['title'] = 'Agregar Unidad de Medida';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('medida_corta', 'Descripción Corta', 'required');
         $this->form_validation->set_rules('medida_larga', 'Descripción Larga', 'required');

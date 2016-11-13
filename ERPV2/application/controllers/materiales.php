@@ -22,6 +22,7 @@ class Materiales extends CI_Controller {
         $data['title'] = 'Listar Materiales';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['materiales'] = $this->materiales_model->gets();
         
@@ -37,6 +38,7 @@ class Materiales extends CI_Controller {
         $data['title'] = 'Agregar Material';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';  // Se utiliza si existe el material repetido
         
         $this->form_validation->set_rules('material', 'Material', 'required');

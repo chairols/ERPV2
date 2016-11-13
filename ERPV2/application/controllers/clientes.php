@@ -24,6 +24,7 @@ class Clientes extends CI_Controller {
         $data['title'] = 'Listar Clientes';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['clientes'] = $this->clientes_model->gets();
         
@@ -39,6 +40,7 @@ class Clientes extends CI_Controller {
         $data['title'] = 'Agregar Cliente';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';  // Se utiliza si existe el proveedor repetida
         
         $data['provincias'] = $this->provincias_model->gets();
@@ -107,6 +109,7 @@ class Clientes extends CI_Controller {
         $data['title'] = 'Modificar Cliente';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';
         
         $this->form_validation->set_rules('cliente', 'Cliente', 'required');
@@ -171,6 +174,7 @@ class Clientes extends CI_Controller {
         $data['title'] = 'Listar Clientes';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['clientes'] = $this->clientes_model->gets_inactivos();
         

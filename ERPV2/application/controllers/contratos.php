@@ -25,6 +25,7 @@ class Contratos extends CI_Controller {
         $data['title'] = 'Listar Contratos';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['contratos'] = $this->contratos_model->gets();
         
@@ -40,6 +41,7 @@ class Contratos extends CI_Controller {
         $data['title'] = 'Agregar Contrato';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('cliente', 'Cliente', 'required');
         $this->form_validation->set_rules('numero_contrato', 'Número de Contrato', 'required');

@@ -24,6 +24,7 @@ class Roles extends CI_Controller {
         $data['title'] = 'Listar Roles';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['roles'] = $this->roles_model->gets();
         
@@ -39,6 +40,7 @@ class Roles extends CI_Controller {
         $data['title'] = 'Agregar Rol';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['alerta'] = '';  // Se utiliza si existe el rol repetido
         
@@ -87,6 +89,7 @@ class Roles extends CI_Controller {
         $data['title'] = 'Roles-Menú';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         if($idrol == null) {
             redirect('/roles/', 'refresh');
         }
@@ -94,14 +97,42 @@ class Roles extends CI_Controller {
         
         $data['rol'] = $this->roles_model->get_where(array('idrol' => $idrol));
         
-        $data['menu'] = $this->menu_model->obtener_menu_por_padre(0);
-        foreach ($data['menu'] as $key => $value) {
-            $data['menu'][$key]['submenu'] = $this->menu_model->obtener_menu_por_padre($value['idmenu']);
+        $data['mmenu'] = $this->menu_model->obtener_menu_por_padre(0);
+        foreach ($data['mmenu'] as $key => $value) {
+            $data['mmenu'][$key]['submenu'] = $this->menu_model->obtener_menu_por_padre($value['idmenu']);
         }
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('roles/menu');
         $this->load->view('layout/footer');
+    }
+    
+    public function desasociar($idrol, $idmenu) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $datos = array(
+            'idrol' => $idrol,
+            'idmenu' => $idmenu
+        );
+        
+        $this->menu_model->desasociar_rol($datos);
+        
+        redirect('/roles/menu/'.$idrol.'/');
+    }
+    
+    public function asociar($idrol, $idmenu) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $datos = array(
+            'idrol' => $idrol,
+            'idmenu' => $idmenu
+        );
+        
+        $this->menu_model->asociar_rol($datos);
+        
+        redirect('/roles/menu/'.$idrol.'/');
     }
 }
 

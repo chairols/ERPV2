@@ -23,6 +23,7 @@ class Plantillas extends CI_Controller {
         $data['title'] = 'Listar Plantillas';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
@@ -36,6 +37,7 @@ class Plantillas extends CI_Controller {
         $data['title'] = 'Agregar Plantilla';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('titulo', 'Título', 'required');
         $this->form_validation->set_rules('plantilla', 'Plantilla', 'required');

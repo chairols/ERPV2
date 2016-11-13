@@ -38,7 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($menu as $m) { ?>
+                                    <?php foreach($mmenu as $m) { ?>
                                     <tr>
                                         <td><?=$m['idmenu']?></td>
                                         <td><?=$m['menu']?></td>

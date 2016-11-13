@@ -24,6 +24,7 @@ class Proveedores extends CI_Controller {
         $data['title'] = 'Listar Proveedores';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['proveedores'] = $this->proveedores_model->gets();
         
@@ -39,6 +40,7 @@ class Proveedores extends CI_Controller {
         $data['title'] = 'Agregar Proveedor';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['alerta'] = '';  // Se utiliza si existe el proveedor repetida
         $data['provincias'] = $this->provincias_model->gets();
@@ -105,6 +107,7 @@ class Proveedores extends CI_Controller {
         $data['title'] = 'Agregar Proveedor';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         if($idproveedor == null) {
             redirect('/proveedores/', 'refresh');
         }

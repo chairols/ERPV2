@@ -28,6 +28,7 @@ class Stock extends CI_Controller {
         $data['title'] = 'Listar Stock';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['stock'] = $this->stock_model->gets();
         
@@ -43,6 +44,7 @@ class Stock extends CI_Controller {
         $data['title'] = 'Agregar Stock';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('articulo', 'Articulo', 'required');
         $this->form_validation->set_rules('marca', 'Marca', 'required');
@@ -116,6 +118,7 @@ class Stock extends CI_Controller {
         $data['title'] = 'Modificar Stock';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('cantidad', 'Cantidad', 'required|numeric');
         $this->form_validation->set_rules('ubicacion', 'Ubicacion', 'required');
@@ -209,6 +212,7 @@ class Stock extends CI_Controller {
         $data['title'] = 'Ver Stock';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $datos = array(
             'idarticulo' => $idarticulo
@@ -237,6 +241,7 @@ class Stock extends CI_Controller {
         $data['title'] = 'Listar Artículos con Stock';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['articulos'] = $this->articulos_model->gets_con_stock();
         
@@ -252,6 +257,7 @@ class Stock extends CI_Controller {
         $data['title'] = 'Ingresar Stock';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['articulos'] = $this->articulos_model->gets();
         
@@ -270,6 +276,7 @@ class Stock extends CI_Controller {
         $data['title'] = 'Stock Almacenes';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('almacen', 'Almacén', 'required');
         
@@ -330,6 +337,7 @@ class Stock extends CI_Controller {
         $data['title'] = 'Modificar Stock Almacén';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('cantidad', 'Cantidad', 'required');
         

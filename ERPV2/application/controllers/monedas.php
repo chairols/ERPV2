@@ -23,6 +23,7 @@ class Monedas extends CI_Controller {
         $data['title'] = 'Listar Monedas';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['monedas'] = $this->monedas_model->gets();
         
@@ -38,6 +39,7 @@ class Monedas extends CI_Controller {
         $data['title'] = 'Agregar Moneda';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';  // Se utiliza si existe el insumo repetido
         
         $this->form_validation->set_rules('moneda', 'Moneda', 'required');

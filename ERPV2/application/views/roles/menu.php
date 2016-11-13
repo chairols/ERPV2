@@ -26,7 +26,7 @@
 
         <div class="row-fluid">
             <br>    
-                <?php foreach($menu as $m) { ?>
+                <?php foreach($mmenu as $m) { ?>
                         <div class="offset1 span11">
                             <div class="control-group">
                                 <div class="controls checkbox">
@@ -37,7 +37,7 @@
                                     } ?>
                                     <input type="checkbox" <?=($m['idrol'])?"checked":""?> disabled>
                                     <a href="/roles/<?=$valor?>/<?=$rol['idrol']?>/<?=$m['idmenu']?>/">
-                                        <label class="control-label"><strong><i class="<?=$m['icono']?>"></i> <?=$m['menu']?></strong></label>
+                                        <label class="control-label"><strong><i class="<?=$m['icono']?>"></i> <?=$m['menu']?> <i class="icon-eye-<?=($m['visible']==1)?"open":"close"?>"></i></strong></label>
                                     </a>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                     } ?>
                                     <input type="checkbox" <?=($submenu['idrol'])?"checked":""?> disabled>
                                     <a href="/roles/<?=$valor?>/<?=$rol['idrol']?>/<?=$submenu['idmenu']?>/">
-                                        <label class="control-label"><?=$submenu['menu']?></label>
+                                        <label class="control-label"><?=$submenu['menu']?> <i class="icon-eye-<?=($submenu['visible']==1)?"open":"close"?>"></i></label>
                                     </a>
                                 </div>
                             </div>

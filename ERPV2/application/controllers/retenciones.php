@@ -26,6 +26,7 @@ class Retenciones extends CI_Controller {
         $data['title'] = 'Listar Retenciones';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
@@ -39,6 +40,7 @@ class Retenciones extends CI_Controller {
         $data['title'] = 'Agregar Retención';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('proveedor', 'Proveedor', 'required');
         $this->form_validation->set_rules('moneda', 'Moneda', 'required');
@@ -92,6 +94,7 @@ class Retenciones extends CI_Controller {
         $data['title'] = 'Agregar Retención';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('punto_de_venta', 'Punto de Venta', 'integer');
         $this->form_validation->set_rules('factura', 'Factura', 'required|integer');

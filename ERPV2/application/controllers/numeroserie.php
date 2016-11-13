@@ -26,6 +26,7 @@ class Numeroserie extends CI_Controller {
         $data['title'] = 'Listar Números de Serie';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['numeroserie'] = $this->numeros_serie_model->gets();
         
@@ -41,6 +42,7 @@ class Numeroserie extends CI_Controller {
         $data['title'] = 'Trazabilidad';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         /*
          * Número de Serie

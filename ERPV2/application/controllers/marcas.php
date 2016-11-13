@@ -23,6 +23,7 @@ class Marcas extends CI_Controller {
         $data['title'] = 'Listar Marcas';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['marcas'] = $this->marcas_model->gets();
         
@@ -38,6 +39,7 @@ class Marcas extends CI_Controller {
         $data['title'] = 'Agregar Marca';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';  // Se utiliza si existe el material repetido
         
         $this->form_validation->set_rules('marca', 'Marca', 'required');
@@ -84,6 +86,7 @@ class Marcas extends CI_Controller {
         $data['title'] = 'Ver Marca';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         if($idmarca == null) {
             redirect('/marcas/', 'refresh');
         }
@@ -102,6 +105,7 @@ class Marcas extends CI_Controller {
         $data['title'] = 'Modificar Marca';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         if($idmarca == null) {
             redirect('/marcas/', 'refresh');
         }

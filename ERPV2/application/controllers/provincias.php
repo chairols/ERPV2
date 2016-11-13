@@ -25,6 +25,7 @@ class Provincias extends CI_Controller {
         $data['title'] = 'Listar Provincias';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['provincias'] = $this->provincias_model->gets();
         
@@ -40,6 +41,7 @@ class Provincias extends CI_Controller {
         $data['title'] = 'Agregar Provincia';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['alerta'] = '';  // Se utiliza si existe la provincia repetida
         
@@ -90,6 +92,7 @@ class Provincias extends CI_Controller {
         $data['title'] = 'Modificar Provincia';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $this->form_validation->set_rules('provincia', 'Provincia', 'required');
         

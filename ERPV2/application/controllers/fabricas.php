@@ -23,6 +23,7 @@ class Fabricas extends CI_Controller {
         $data['title'] = 'Listar Fábricas';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['fabricas'] = $this->fabricas_model->gets();
         
@@ -38,6 +39,7 @@ class Fabricas extends CI_Controller {
         $data['title'] = 'Agregar Fábrica';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';  // Se utiliza si existe la fábrica repetida
         
         $this->form_validation->set_rules('fabrica', 'Fábrica', 'required');
@@ -96,6 +98,7 @@ class Fabricas extends CI_Controller {
         $data['title'] = 'Modificar Fábrica';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';  // Se utiliza si existe la fábrica repetida
         
         $this->form_validation->set_rules('fabrica', 'Fábrica', 'required');

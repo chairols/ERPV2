@@ -27,6 +27,7 @@ class Reqs extends CI_Controller {
         $data['title'] = "Listar REQ's";
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['reqs'] = $this->reqs_model->gets();
         
@@ -41,6 +42,7 @@ class Reqs extends CI_Controller {
         $this->r_session->check($session);
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['title'] = 'Agregar REQ';
         
         $this->form_validation->set_rules('cantidad', 'Cantidad', 'required|numeric');

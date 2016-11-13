@@ -23,6 +23,7 @@ class Insumos extends CI_Controller {
         $data['title'] = 'Listar Insumos';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['insumos'] = $this->insumos_model->gets();
         
@@ -38,6 +39,7 @@ class Insumos extends CI_Controller {
         $data['title'] = 'Agregar Insumo';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';  // Se utiliza si existe el insumo repetido
         
         $this->form_validation->set_rules('insumo', 'Insumo', 'required');

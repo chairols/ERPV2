@@ -24,6 +24,7 @@ class Productos extends CI_Controller {
         $data['title'] = 'Listar Productos';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['productos'] = $this->productos_model->gets();
         
@@ -39,6 +40,7 @@ class Productos extends CI_Controller {
         $data['title'] = 'Agregar Producto';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';  // Se utiliza si existe la sucursal repetida
         
         $this->form_validation->set_rules('producto', 'Producto', 'required');
@@ -76,6 +78,7 @@ class Productos extends CI_Controller {
         $data['title'] = 'Modificar Producto';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         if($idproducto == null) {
             redirect('/productos/', 'refresh');
         }

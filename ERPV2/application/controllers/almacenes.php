@@ -1,6 +1,7 @@
 <?php
 
 class Almacenes extends CI_Controller {
+    
     public function __construct() {
         parent::__construct();
         $this->load->library(array(
@@ -15,14 +16,16 @@ class Almacenes extends CI_Controller {
         $this->load->helper(array(
             'url'
         ));
+        
+        $this->r_session->check($this->session->all_userdata());
     }
     
     public function index() {
         $session = $this->session->all_userdata();
-        $this->r_session->check($session);
         $data['title'] = 'Listar Almacenes';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['almacenes'] = $this->almacenes_model->gets();
         
@@ -35,10 +38,10 @@ class Almacenes extends CI_Controller {
     
     public function agregar() {
         $session = $this->session->all_userdata();
-        $this->r_session->check($session);
         $data['title'] = 'Agregar Almacén';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';  // Se utiliza si existe el material repetido
         
         $this->form_validation->set_rules('almacen', 'Almacén', 'required');
@@ -81,13 +84,13 @@ class Almacenes extends CI_Controller {
     
     public function modificar($idalmacen = null) {
         $session = $this->session->all_userdata();
-        $this->r_session->check($session);
         if($idalmacen == null) {
             redirect('/almacenes/', 'refresh');
         }
         $data['title'] = 'Modificar Almacén';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         $data['alerta'] = '';  // Se utiliza si existe el almacén repetido
         
         $this->form_validation->set_rules('almacen', 'Almacén', 'required');
@@ -133,13 +136,13 @@ class Almacenes extends CI_Controller {
     
     public function ver($idalmacen = null) {
         $session = $this->session->all_userdata();
-        $this->r_session->check($session);
         if($idalmacen == null) {
             redirect('/almacenes/', 'refresh');
         }
         $data['title'] = 'Modificar Almacén';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['almacen'] = $this->almacenes_model->get_where(array('idalmacen' => $idalmacen));
         

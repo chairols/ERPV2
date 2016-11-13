@@ -23,6 +23,7 @@ class Log extends CI_Controller {
         $data['title'] = 'Log';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
         $data['logs'] = $this->log_model->gets($tabla, $idtabla);
         
