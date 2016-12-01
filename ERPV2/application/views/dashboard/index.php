@@ -9,6 +9,14 @@
         </div>
         
         <div class="row-fluid">
+            <div class="span12">
+                <pre>
+                <?php print_r($menu); ?>
+                </pre>
+            </div>
+        </div>
+        
+        <div class="row-fluid">
             <div class="metro-nav metro-fix-view">
                 <div class="metro-nav-block nav-block-purple double">
                     <a data-original-title="" href="/ots/pendientes/">

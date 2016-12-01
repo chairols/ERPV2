@@ -46,19 +46,26 @@ class R_session {
         $this->CI->load->helper(array(
             'url'
         ));
+        $this->CI->load->library(array(
+            'session'
+        ));
+        $session = $this->CI->session->all_userdata();
         
         $string = '/'.$this->CI->uri->segment(1).'/';
         if($this->CI->uri->segment(2))
             $string .= $this->CI->uri->segment(2).'/';
         
-        $data['menu'] = $this->CI->menu_model->obtener_menu_por_padre(0);
+        
+        
+        $data['menu'] = $this->CI->menu_model->obtener_menu_por_padre(0, $session['tipo_usuario']);
         foreach ($data['menu'] as $key => $value) {
-            $data['menu'][$key]['submenu'] = $this->CI->menu_model->obtener_menu_por_padre($value['idmenu']);
+            $data['menu'][$key]['submenu'] = $this->CI->menu_model->obtener_menu_por_padre($value['idmenu'], $session['tipo_usuario']);
             if($value['href'] == $string) {
                 $data['menu'][$key]['active'] = true;
             } else {
                 $data['menu'][$key]['active'] = false;
             }
+            
         }
         
         return $data;

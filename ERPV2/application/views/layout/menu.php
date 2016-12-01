@@ -12,7 +12,7 @@
                 
                 <?php foreach($menu as $m) { ?>
                     <?php foreach($m as $mm) { ?>
-                    <?php if($mm['visible'] == 1) { ?>
+                    <?php if($mm['visible'] == 1 && $mm['idrol']) { ?>
                     <?php $aux = false;
                         foreach($mm['submenu'] as $submenu) {
                             if('/'.$segmento.'/' == $submenu['href']) {
@@ -27,7 +27,7 @@
                     </a>
                     <ul class="sub">
                     <?php foreach($mm['submenu'] as $submenu) { ?>
-                        <?php if($submenu['visible'] == 1) { ?>
+                        <?php if($submenu['visible'] == 1 && $submenu['idrol']) { ?>
                         <?php $aux = '/'.$segmento.'/'; ?>
                         <li<?=($submenu['href']==$aux)?" class='active'":""?>><a href="<?=$submenu['href']?>"><?=$submenu['menu']?></a></li>
                         <?php } ?>

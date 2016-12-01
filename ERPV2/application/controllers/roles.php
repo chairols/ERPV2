@@ -97,9 +97,9 @@ class Roles extends CI_Controller {
         
         $data['rol'] = $this->roles_model->get_where(array('idrol' => $idrol));
         
-        $data['mmenu'] = $this->menu_model->obtener_menu_por_padre(0);
+        $data['mmenu'] = $this->menu_model->obtener_menu_por_padre(0, $idrol);
         foreach ($data['mmenu'] as $key => $value) {
-            $data['mmenu'][$key]['submenu'] = $this->menu_model->obtener_menu_por_padre($value['idmenu']);
+            $data['mmenu'][$key]['submenu'] = $this->menu_model->obtener_menu_por_padre($value['idmenu'], $idrol);
         }
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
