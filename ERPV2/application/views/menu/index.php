@@ -46,7 +46,11 @@
                                         <td><?=$m['orden']?></td>
                                         <td><?=(count($m['padre']))?$m['padre']['menu']:"-- No tiene --"?></td>
                                         <td><?=($m['visible'])?"Si":"No"?></td>
-                                        <td></td>
+                                        <td>
+                                            <a href="/menu/modificar/<?=$m['idmenu']?>">
+                                                <i class="icon-edit alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>

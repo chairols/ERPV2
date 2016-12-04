@@ -40,5 +40,18 @@ class Usuarios_model extends CI_Model {
         $id = array('idusuario' => $idusuario);
         $this->db->update('usuarios', $datos, $id);
     }
+    
+    /*
+     *  usuarios
+     */
+    public function gets() {
+        $query = $this->db->query("SELECT *
+                                    FROM
+                                        usuarios u,
+                                        roles r
+                                    WHERE
+                                        u.tipo_usuario = r.idrol");
+        return $query->result_array();
+    }
 }
 ?>

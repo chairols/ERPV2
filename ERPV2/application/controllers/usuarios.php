@@ -14,6 +14,24 @@ class Usuarios extends CI_Controller {
         $this->load->helper(array(
             'url'
         ));
+        
+        
+    }
+    
+    public function index() {
+        $session = $this->session->all_userdata();
+        $data['title'] = 'Listar Usuarios';
+        $data['session'] = $session;
+        $this->r_session->check($this->session->all_userdata());
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $data['usuarios'] = $this->usuarios_model->gets();
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('usuarios/index');
+        $this->load->view('layout/footer');
     }
     
     public function login() {

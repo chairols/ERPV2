@@ -110,5 +110,13 @@ class Menu_model extends CI_Model {
         
         return $query->result_array();
     }
+    
+    /*
+     *  menu/modificar
+     */
+    public function update($datos, $id) {
+        $array = array('idmenu' => $id);
+        $this->db->update('menu', $datos, $array);
+    }
 }
 ?>

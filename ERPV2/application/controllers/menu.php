@@ -14,11 +14,12 @@ class Menu extends CI_Controller {
         $this->load->helper(array(
             'url'
         ));
+        
+        $this->r_session->check($this->session->all_userdata());
     }
     
     public function index() {
         $session = $this->session->all_userdata();
-        $this->r_session->check($session);
         $data['title'] = 'Listar Menú';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
@@ -38,9 +39,60 @@ class Menu extends CI_Controller {
         $this->load->view('layout/footer');
     }
     
+    public function modificar($idmenu = null) {
+        $session = $this->session->all_userdata();
+        $data['title'] = 'Modificar Menú';
+        $data['session'] = $session;
+        if($idmenu == null) {
+            redirect('/menu/', 'refresh');
+        }
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $this->form_validation->set_rules('menu', 'Menú', 'required');
+        $this->form_validation->set_rules('href', 'HREF', 'required');
+        $this->form_validation->set_rules('orden', 'Orden', 'required|integer');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'icono' => $this->input->post('icono'),
+                'menu' => $this->input->post('menu'),
+                'href' => $this->input->post('href'),
+                'orden' => $this->input->post('orden'),
+                'padre' => $this->input->post('padre')
+            );
+            if($this->input->post('visible') == 'on') {
+                $datos['visible'] = 1;
+            } else {
+                $datos['visible'] = 0;
+            }
+            
+            $this->menu_model->update($datos, $idmenu);
+            
+            redirect('/menu/', 'refresh');
+        }
+        
+        $datos = array(
+            'padre' => '0',
+            'visible' => '1'
+        );
+        $data['padres'] = $this->menu_model->gets_where($datos);
+        
+        $datos = array(
+            'idmenu' => $idmenu
+        );
+        $data['mmenu'] = $this->menu_model->get_where($datos);
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('menu/modificar');
+        $this->load->view('layout/footer');
+    }
+    
     public function agregar() {
         $session = $this->session->all_userdata();
-        $this->r_session->check($session);
         $data['title'] = 'Agregar Menú';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
@@ -83,7 +135,6 @@ class Menu extends CI_Controller {
     
     public function roles($idmenu = null) {
         $session = $this->session->all_userdata();
-        $this->r_session->check($session);
         $data['title'] = 'Asociar Menu';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
