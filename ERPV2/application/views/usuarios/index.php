@@ -12,6 +12,8 @@
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li class="active"><a href="/usuarios/">Listar Usuarios</a></li>
+                <li><a href="/usuarios/agregar/">Agregar Usuario</a></li>
+                <li><a href="/usuarios/modificar/">Modificar Usuario</a></li>
             </ul>
         </div>
 
@@ -43,7 +45,11 @@
                                     <td><?=$usuario['nombre']?> <?=$usuario['apellido']?></td>
                                     <td><?=$usuario['correo']?></td>
                                     <td><?=$usuario['rol']?></td>
-                                    <td>&nbsp;</td>
+                                    <td>
+                                        <a href="/usuarios/modificar/<?=$usuario['idusuario']?>">
+                                            <i class="icon-edit alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -52,9 +58,5 @@
                 </div>
             </div>
         </div>
-    
     </div>
-    <pre>
-        <?php print_r($usuarios); ?>
-    </pre>
 </div>

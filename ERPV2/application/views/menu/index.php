@@ -12,6 +12,7 @@
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li class="active"><a href="/menu/">Listar Menú</a></li>
                 <li><a href="/menu/agregar/">Agregar Menú</a></li>
+                <li><a href="/menu/modificar/">Modificar Menú</a></li>
             </ul>
             
             <div class="row-fluid">

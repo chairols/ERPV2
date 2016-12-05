@@ -9,7 +9,8 @@ class Usuarios extends CI_Controller {
             'r_session'
         ));
         $this->load->model(array(
-            'usuarios_model'
+            'usuarios_model',
+            'roles_model'
         ));
         $this->load->helper(array(
             'url'
@@ -33,6 +34,73 @@ class Usuarios extends CI_Controller {
         $this->load->view('usuarios/index');
         $this->load->view('layout/footer');
     }
+    
+    public function agregar() {
+        $session = $this->session->all_userdata();
+        $data['title'] = 'Agregar Usuario';
+        $data['session'] = $session;
+        $this->r_session->check($this->session->all_userdata());
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $this->form_validation->set_rules('nombre', 'Nombre', 'required');
+        $this->form_validation->set_rules('apellido', 'Apellido', 'required');
+        $this->form_validation->set_rules('usuario', 'Usuario', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'usuario' => $this->input->post('usuario')
+            );
+            $usuario = $this->usuarios_model->get_where($datos);
+            
+            if(count($usuario) == 0) {
+                $datos = array(
+                    'nombre' => $this->input->post('nombre'),
+                    'apellido' => $this->input->post('apellido'),
+                    'correo' => $this->input->post('correo'),
+                    'usuario' => $this->input->post('usuario'),
+                    'password' => $this->input->post('password'),
+                    'tipo_usuario' => $this->input->post('rol')
+                );
+                $this->usuarios_model->set($datos);
+                
+                redirect('/usuarios/', 'refresh');
+            }
+            
+        }
+        
+        $data['roles'] = $this->roles_model->gets();
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('usuarios/agregar');
+        $this->load->view('layout/footer');
+    }
+    
+    public function modificar($idusuario = null) {
+        $session = $this->session->all_userdata();
+        $data['title'] = 'Listar Usuarios';
+        $data['session'] = $session;
+        $this->r_session->check($this->session->all_userdata());
+        if($idusuario == null) {
+            redirect('/usuarios/', 'refresh');
+        }
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        
+        
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('usuarios/modificar');
+        $this->load->view('layout/footer');
+    }
+    
+    
     
     public function login() {
         $this->form_validation->set_rules('usuario', 'Usuario', 'required');

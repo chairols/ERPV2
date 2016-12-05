@@ -27,9 +27,11 @@ class Usuarios_model extends CI_Model {
     public function get($idusuario) {
         $query = $this->db->query("SELECT *
                                     FROM
-                                        usuarios
+                                        usuarios u,
+                                        roles r
                                     WHERE
-                                        idusuario = '$idusuario'");
+                                        u.idusuario = '$idusuario' AND
+                                        u.tipo_usuario = r.idrol");
         return $query->row_array();
     }
     
@@ -52,6 +54,23 @@ class Usuarios_model extends CI_Model {
                                     WHERE
                                         u.tipo_usuario = r.idrol");
         return $query->result_array();
+    }
+    
+    /*
+     *  usuarios/agregar
+     */
+    public function get_where($where) {
+        $query = $this->db->get_where('usuarios', $where);
+        
+        return $query->row_array();
+    }
+    
+    /*
+     *  usuarios/agregar
+     */
+    public function set($datos) {
+        $this->db->insert('usuarios', $datos);
+        return $this->db->insert_id();
     }
 }
 ?>
