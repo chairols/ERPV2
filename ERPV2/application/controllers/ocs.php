@@ -134,7 +134,8 @@ class Ocs extends CI_Controller {
                 'idoc_item' => $iditem,
                 'cantidadpendiente' => $this->input->post('cantidad'),
                 'cantidadrecepcionado' => 0,
-                'pendiente' => true
+                'pendiente' => true,
+                'activo' => true
             );
             
             $idpendiente_irm = $this->irm_model->set_pendienteirm($datos);
@@ -173,6 +174,8 @@ class Ocs extends CI_Controller {
             'activo' => 0
         );
         $this->ocs_model->update_item($datos, $idoc_item);
+        
+        $this->irm_model->update_itempendienteirm($datos, $idoc_item);
         
         redirect('/ocs/agregar_items/'.$data['item']['idoc'].'/', 'refresh');
         
