@@ -27,6 +27,7 @@ class Roles_model extends CI_Model {
      *  roles/index
      *  
      *  usuarios/agregar
+     *  usuarios/modificar
      */
     public function gets() {
         $query = $this->db->query("SELECT *

@@ -17,6 +17,7 @@ class Ocs extends CI_Controller {
             'articulos_model',
             'medidas_model',
             'ots_model',
+            'irm_model',
             'productos_model',
             'provincias_model'
         ));
@@ -101,7 +102,6 @@ class Ocs extends CI_Controller {
         $this->form_validation->set_rules('medida', 'Medida', 'required|integer');
         $this->form_validation->set_rules('articulo', 'Artículo', 'required|integer');
         $this->form_validation->set_rules('precio', 'Precio', 'required|numeric');
-        //$this->form_validation->set_rules('ot', 'Orden de Compra', 'required|integer');
         
         if($this->form_validation->run() == FALSE) {
             
@@ -113,21 +113,12 @@ class Ocs extends CI_Controller {
                 'idarticulo' => $this->input->post('articulo'),
                 'precio' => $this->input->post('precio')
             );
-            /*if($this->input->post('ot') == '0') {
-                $datos['idot'] = null;
-            } else {
-                $datos['idot'] = $this->input->post('ot');
-            }*/
             
             $iditem = $this->ocs_model->set_item($datos);
             
             $medida = $this->medidas_model->get_where(array('idmedida' => $this->input->post('medida')));
             $articulo = $this->articulos_model->get_where(array('idarticulo' => $this->input->post('articulo')));
             $producto = $this->productos_model->get_where(array('idproducto' => $articulo['idproducto']));
-            /*if($datos['idot'])
-                $ot = $this->ots_model->get_where(array('idot' => $this->input->post('ot')));
-             * 
-             */
              
             /*
              * 
@@ -135,6 +126,24 @@ class Ocs extends CI_Controller {
              * 
              */
             
+            /*
+             *  agregar a pendientes de IRM
+             */
+            
+            $datos = array(
+                'idoc_item' => $iditem,
+                'cantidadpendiente' => $this->input->post('cantidad'),
+                'cantidadrecepcionado' => 0,
+                'pendiente' => true
+            );
+            
+            $idpendiente_irm = $this->irm_model->set_pendienteirm($datos);
+            
+            /*
+             * 
+             *  FALTA DESARROLLAR LOG
+             * 
+             */
         }
         
         $data['oc'] = $this->ocs_model->get_where(array('idoc' => $idoc));

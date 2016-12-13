@@ -58,6 +58,7 @@ class Usuarios_model extends CI_Model {
     
     /*
      *  usuarios/agregar
+     *  usuarios/modificar
      */
     public function get_where($where) {
         $query = $this->db->get_where('usuarios', $where);

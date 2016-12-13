@@ -115,5 +115,9 @@ class Prueba extends CI_Controller {
         fclose($fp);
         
     }
+    
+    public function ajax() {
+        $this->load->view("prueba/ajax");
+    }
 }
 ?>

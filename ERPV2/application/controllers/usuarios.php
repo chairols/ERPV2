@@ -91,8 +91,17 @@ class Usuarios extends CI_Controller {
         $data['segmento'] = $this->uri->segment(1);
         $data['menu'] = $this->r_session->get_menu();
         
+        $this->form_validation->set_rules('nombre', 'Nombre', 'required');
+        $this->form_validation->set_rules('apellido', 'Apellido', 'required');
+        $this->form_validation->set_rules('usuario', 'Usuario', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
         
+        $datos = array(
+            'idusuario' => $idusuario
+        );
+        $data['usuario'] = $this->usuarios_model->get_where($datos);
         
+        $data['roles'] = $this->roles_model->gets();
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
