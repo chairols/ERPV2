@@ -62,9 +62,9 @@
         $.ajax({
             type: 'GET',
             url: '/controles/ajax_check_control/'+$("#control").val(),
-            /*beforeSend: function() {
+            beforeSend: function() {
                 $("#resultado").html('<img src="/assets/img/ajax-loader.gif">');
-            },*/
+            },
             success: function(data) {
                 $("#resultado").html(data);
             }

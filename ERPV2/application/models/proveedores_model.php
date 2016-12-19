@@ -17,6 +17,7 @@ class Proveedores_model extends CI_Model {
     
     /*
      * 
+     * irm/agregar
      * proveedores/index
      * retenciones/agregar
      * 

@@ -10,9 +10,9 @@
         
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
-                <li class="active"><a href="/irm/">Listar I.R.M.</a></li>
+                <li><a href="/irm/">Listar I.R.M.</a></li>
                 <li><a href="/irm/agregar/">Agregar I.R.M.</a></li>
-                <li><a href="/irm/pendientes/">Pendientes</a></li>
+                <li class="active"><a href="/irm/pendientes/">Pendientes</a></li>
             </ul>
         </div>
         
@@ -27,14 +27,24 @@
                         </span>
                     </div>
                     <div class="widget-body">
-                        <table class="table table-hover table-bordered table-condensed" id="sample_1_desc">
+                        <table class="table table-hover table-bordered table-condensed" id="sample_1">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <th>Fecha de Compra</th>
+                                    <th>Cantidad Pendiente</th>
+                                    <th>Artículo</th>
+                                    <th>Proveedor</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                <?php foreach($pendientes as $pendiente) { ?>
+                                <tr>
+                                    <td><?=strftime('%Y-%m-%d', strtotime($pendiente['fecha']))?></td>
+                                    <td><?=$pendiente['cantidadpendiente']?></td>
+                                    <td><?=$pendiente['articulo']?></td>
+                                    <td><?=$pendiente['proveedor']?></td>
+                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>

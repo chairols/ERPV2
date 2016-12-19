@@ -12,6 +12,7 @@
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li><a href="/irm/">Listar I.R.M.</a></li>
                 <li class="active"><a href="/irm/agregar/">Agregar I.R.M.</a></li>
+                <li><a href="/irm/pendientes/">Pendientes</a></li>
             </ul>
         </div>
         
@@ -28,9 +29,13 @@
                     <div class="widget-body">
                         <form method="POST" class="form-horizontal">
                             <div class="control-group">
-                                <label class="control-label">I.R.M. #</label>
+                                <label class="control-label">Proveedor</label>
                                 <div class="controls">
-                                    
+                                    <select name="proveedor" class="span12 select2">
+                                        <?php foreach($proveedores as $proveedor) { ?>
+                                        <option value="<?=$proveedor['idproveedor']?>"><?=$proveedor['proveedor']?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-actions">
