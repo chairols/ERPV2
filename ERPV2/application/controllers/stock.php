@@ -388,5 +388,33 @@ class Stock extends CI_Controller {
         $this->load->view('stock/editar');
         $this->load->view('layout/footer');
     }
+    
+    public function por_almacen() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Modificar Stock Almacén';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $this->form_validation->set_rules('almacen', 'Almacen', 'required');
+        
+        $data['stock'] = array();
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $data['stock'] = $this->stock_model->gets_stock_por_almacen($this->input->post('almacen'));
+            $data['almacen_seleccionado'] = $this->input->post('almacen');
+        }
+        
+        
+        $data['almacenes'] = $this->almacenes_model->gets();
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('stock/por_almacen');
+        $this->load->view('layout/footer');
+    }
 }
 ?>

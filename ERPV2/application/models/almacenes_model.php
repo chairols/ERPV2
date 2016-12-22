@@ -10,6 +10,7 @@ class Almacenes_model extends CI_Model {
      * almacenes/index
      * 
      * stock/almacenes
+     * stock/por_almacen
      * 
      */
     public function gets() {

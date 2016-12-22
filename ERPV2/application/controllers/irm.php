@@ -57,7 +57,7 @@ class irm extends CI_Controller {
             redirect('/irm/agregar_items/'.$idirm.'/', 'refresh');
         }
         
-        $data['proveedores'] = $this->proveedores_model->gets();
+        $data['proveedores'] = $this->irm_model->gets_proveedores_con_irm_pendientes();
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
@@ -78,6 +78,23 @@ class irm extends CI_Controller {
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('irm/pendientes');
+        $this->load->view('layout/footer');
+    }
+    
+    public function agregar_items($idirm = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Agregar Orden de Compra';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        if($idirm == null) {
+            redirect('/irm/', 'refresh');
+        }
+        
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/menu');
+        $this->load->view('irm/agregar_items');
         $this->load->view('layout/footer');
     }
 }

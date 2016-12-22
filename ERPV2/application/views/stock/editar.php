@@ -14,6 +14,7 @@
                 <li><a href="/stock/agregar/">Agregar Stock</a></li>
                 <li class="active"><a href="/stock/modificar/">Modificar Stock</a></li>
                 <li><a href="/stock/ver/">Ver Stock</a></li>
+                <li><a href="/stock/por_almacen/">Stock Por Almacén</a></li>
                 <li><a href="/stock/con_stock/">Listar Con Stock</a></li>
                 <li><a href="/stock/ingresar/">Ingresar Stock</a></li>
             </ul>

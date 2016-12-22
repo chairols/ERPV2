@@ -65,6 +65,32 @@ class Stock_model extends CI_Model {
         return $query->result_array();
     }
     
+    /*
+     *  stock/por_almacen
+     */
+    public function gets_stock_por_almacen($idalmacen) {
+        $query = $this->db->query("SELECT SUM(sa.cantidad) as cantidad, al.almacen, sa.idstock, sa.ubicacion, a.articulo, p.producto, a.posicion, m.medida_larga, mar.marca
+                                    FROM 
+                                        stock s,
+                                        stock_almacenes sa,
+                                        almacenes al,
+                                        articulos a,
+                                        productos p,
+                                        medidas m,
+                                        marcas mar
+                                    WHERE
+                                        s.idstock = sa.idstock AND
+                                        sa.idalmacen = al.idalmacen AND
+                                        s.idarticulo = a.idarticulo AND
+                                        a.idproducto = p.idproducto AND
+                                        s.idmedida = m.idmedida AND
+                                        s.idmarca = mar.idmarca AND
+                                        al.idalmacen = '$idalmacen'
+                                    GROUP BY
+                                        sa.idstock");
+        return $query->result_array();
+    }
+    
     public function gets_stock_existente($idstock) {
         $query = $this->db->query("SELECT sa.*, a.almacen 
                                     FROM
