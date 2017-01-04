@@ -52,6 +52,7 @@
                                     <th><strong>Marca</strong></th>
                                     <th><strong>Cantidad</strong></th>
                                     <th><strong>Unidad de Medida</strong></th>
+                                    <th><strong>Almacén</strong></th>
                                     <th><strong>Ubicación</strong></th>
                                     <th><strong>Acción</strong></th>
                                 </tr>
@@ -63,6 +64,7 @@
                                     <td><?=$s['marca']?></td>
                                     <td><?=$s['cantidad']?></td>
                                     <td><?=$s['medida_larga']?></td>
+                                    <td><?=$s['almacen']?></td>
                                     <td><?=$s['ubicacion']?></td>
                                     <td>
                                         <a href="/stock/almacenes/<?=$s['idstock']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">

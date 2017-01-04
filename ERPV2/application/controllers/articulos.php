@@ -6,7 +6,8 @@ class Articulos extends CI_Controller {
         $this->load->library(array(
             'session',
             'r_session',
-            'form_validation'
+            'form_validation',
+            'beans'
         ));
         $this->load->helper(array(
             'url'
@@ -30,6 +31,20 @@ class Articulos extends CI_Controller {
         
         $data['articulos'] = $this->articulos_model->gets();
         
+        $articulos = array();
+        foreach($data['articulos'] as $a) {
+            $articulo = new ArticulosBean();
+            $articulo->setId($a['idarticulo']);
+            $articulo->armarArticuloPorID();
+            
+            $articulos[] = $articulo;
+        }
+        $data['articulos'] = $articulos;
+        /*
+        echo "<br><br><br><pre>";
+        print_r($articulos[0]->getArticulo());
+        echo "</pre>";
+        */
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');
         $this->load->view('articulos/index');

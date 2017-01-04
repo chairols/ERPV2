@@ -30,6 +30,7 @@
                             <thead>
                                 <tr>
                                     <th>O.C.</th>
+                                    <th>Fecha</th>
                                     <th>Proveedor</th>
                                     <th>Cantidad</th>
                                     <th>Artículo</th>
@@ -41,6 +42,7 @@
                                 <?php foreach($ocs as $oc) { ?>
                                 <tr>
                                     <td><?=$oc['idoc']?></td>
+                                    <td><?=date('d/m/Y' , strtotime($oc['timestamp']))?></td>
                                     <td><?=$oc['proveedor']?></td>
                                     <td><?=$oc['cantidad']?> <?=$oc['medida_corta']?></td>
                                     <td><?=$oc['producto']?> <?=$oc['articulo']?></td>

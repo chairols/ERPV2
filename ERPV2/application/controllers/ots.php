@@ -8,7 +8,8 @@ class Ots extends CI_Controller {
             'r_session',
             'form_validation',
             'pdf_ot',
-            'uri'
+            'uri',
+            'beans'
         ));
         $this->load->model(array(
             'ots_model',
@@ -615,6 +616,22 @@ class Ots extends CI_Controller {
         
         if(!$idot)
             redirect('/ots/', 'refresh');
+        
+        $trazabilidad = new TrazabilidadBean();
+        $trazabilidad->setIdot($idot);
+        $trazabilidad->armarTrazabilidadPorOt();
+        
+        /*
+        echo "<br><br><br></pre>";
+        var_dump($trazabilidad->getOt()->getFabrica()->getFabrica());
+        var_dump($trazabilidad->getOt()->getNumeroOrdenDeTrabajo());
+        var_dump($trazabilidad->getOt()->getArticulo()->getProducto()->getProducto());
+        var_dump($trazabilidad->getOt()->getArticulo()->getArticulo());
+        var_dump($trazabilidad->getOt()->getTimestamp());
+        echo "</pre>";
+        */
+        
+        
         
         $data['ot'] = $this->ots_model->get_where(array('idot' => $idot));
         $data['articulo'] = $this->articulos_model->get_where(array('idarticulo' => $data['ot']['idarticulo']));

@@ -71,5 +71,14 @@ class Irm_model extends CI_Model {
                                         p.idproveedor");
         return $query->result_array();
     }
+    
+    /*
+     *  beans/irmBean
+     */
+    public function get_where($where) {
+        $query = $this->db->get_where('irm', $where);
+        
+        return $query->row_array();
+    }
 }
 ?>

@@ -6,7 +6,8 @@ class irm extends CI_Controller {
         $this->load->library(array(
             'session',
             'r_session',
-            'form_validation'
+            'form_validation',
+            'beans'
         ));
         $this->load->model(array(
             'irm_model',
@@ -84,13 +85,19 @@ class irm extends CI_Controller {
     public function agregar_items($idirm = null) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        $data['title'] = 'Agregar Orden de Compra';
+        $data['title'] = 'Agregar IRM';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         $data['menu'] = $this->r_session->get_menu();
         if($idirm == null) {
             redirect('/irm/', 'refresh');
         }
+        
+        $data['irm'] = new IrmBean();
+        $data['irm']->setId($idirm);
+        $data['irm']->armarIRMporID();
+        
+        
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');

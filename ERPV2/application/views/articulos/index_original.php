@@ -42,16 +42,16 @@
                                 <tbody>
                                     <?php foreach($articulos as $articulo) { ?>
                                     <tr>
-                                        <td><?=$articulo->getArticulo()?></td>
-                                        <td><?=$articulo->getProducto()->getProducto()?></td>
-                                        <td><?=($articulo->getPlano()->getUrlDelPlano()!='')?"<a href='".$articulo->getPlano()->getUrlDelPlano()."' target='_blank'>".$articulo->getPlano()->getPlano()."</a>":""?></td>
-                                        <td><?=$articulo->getPlano()->getRevision()?></td>
-                                        <td><?=$articulo->getPosicion()?></td>
+                                        <td><?=$articulo['articulo']?></td>
+                                        <td><?=$articulo['producto']?></td>
+                                        <td><?=($articulo['planofile']!='')?"<a href='".$articulo['planofile']."' target='_blank'>".$articulo['plano']."</a>":""?></td>
+                                        <td><?=$articulo['revision']?></td>
+                                        <td><?=$articulo['posicion']?></td>
                                         <td>
-                                            <a href="/articulos/ver/<?=$articulo->getId()?>/"><i class="alert-success icon-eye-open tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver"></i></a>
-                                            <a href="/articulos/modificar/<?=$articulo->getId()?>/" class="label label-default"><i class="icon-edit"></i></a> 
-                                            <a href="/articulos/borrar/<?=$articulo->getId()?>" class="label label-important"><i class="icon-remove"></i></a>
-                                            <a href="/log/ver/articulos/<?=$articulo->getId()?>/" class="label label-info"><i class="icon-time"></i></a>
+                                            <a href="/articulos/ver/<?=$articulo['idarticulo']?>/"><i class="alert-success icon-eye-open tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver"></i></a>
+                                            <a href="/articulos/modificar/<?=$articulo['idarticulo']?>/" class="label label-default"><i class="icon-edit"></i></a> 
+                                            <a href="/articulos/borrar/<?=$articulo['idarticulo']?>" class="label label-important"><i class="icon-remove"></i></a>
+                                            <a href="/log/ver/articulos/<?=$articulo['idarticulo']?>/" class="label label-info"><i class="icon-time"></i></a>
                                         </td>
                                     </tr>
                                     <?php } ?>

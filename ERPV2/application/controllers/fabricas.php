@@ -6,7 +6,8 @@ class Fabricas extends CI_Controller {
         $this->load->library(array(
             'form_validation',
             'session',
-            'r_session'
+            'r_session',
+            'beans'
         ));
         $this->load->model(array(
             'fabricas_model',
@@ -138,6 +139,16 @@ class Fabricas extends CI_Controller {
             'idfabrica' => $idfabrica
         );
         $data['fabrica'] = $this->fabricas_model->get_where($datos);
+        
+        $fabrica = new FabricasBean();
+        $fabrica->setId($idfabrica);
+        $fabrica->armarFabricaPorID();
+        
+        /*
+        echo "<br><br><br><pre>";
+        print_r($fabrica);
+        echo "</pre>";
+        */
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');

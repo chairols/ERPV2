@@ -400,6 +400,7 @@ class Stock extends CI_Controller {
         $this->form_validation->set_rules('almacen', 'Almacen', 'required');
         
         $data['stock'] = array();
+        $data['almacen_seleccionado'] = 0;
         
         if($this->form_validation->run() == FALSE) {
             
