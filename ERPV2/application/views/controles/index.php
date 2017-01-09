@@ -28,7 +28,7 @@
                         </span>
                     </div>
                     <div class="widget-body">
-                        <table class="table table-hover table-bordered table-condensed" id="sample_1_desc">
+                        <table class="table table-hover table-bordered table-condensed" id="sample_1">
                             <thead>
                                 <tr>
                                     <th>Controles</th>

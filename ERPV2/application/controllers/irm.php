@@ -11,7 +11,9 @@ class irm extends CI_Controller {
         ));
         $this->load->model(array(
             'irm_model',
-            'proveedores_model'
+            'controles_model',
+            'proveedores_model',
+            'ocs_model'
         ));
         $this->load->helper(array(
             'url'
@@ -93,16 +95,111 @@ class irm extends CI_Controller {
             redirect('/irm/', 'refresh');
         }
         
+        $this->form_validation->set_rules('pendienteirm', 'Artículo', 'required');
+        $this->form_validation->set_rules('cantidad', 'Cantidad', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            /*
+             * Guardar en irm_items
+             */
+            $where = array(
+                'idpendienteirm' => $this->input->post('pendienteirm')
+            );
+            $pendienteirm = $this->irm_model->get_where_pendienteirm($where);
+            
+            $datos = array(
+                'idirm' => $idirm,
+                'idoc_item' => $pendienteirm['idoc_item'],
+                'cantidad' => $this->input->post('cantidad'),
+                'idusuario' => $session['SID']
+            );
+            
+            $config['upload_path'] = "./upload/certificados/";
+            $config['allowed_types'] = '*';
+            $config['encrypt_name'] = true;
+            $config['remove_spaces'] = true;
+
+            $this->load->library('upload', $config);
+            $adjunto = null;
+
+            if(!$this->upload->do_upload('certificado')) {
+                $error = array('error' => $this->upload->display_errors());
+            } else {
+                $adjunto = array('upload_data' => $this->upload->data());
+            }
+
+            if($adjunto != null) {
+                $datos['certificado'] = '/upload/certificados/'.$adjunto['upload_data']['file_name'];
+            }
+            
+            $this->irm_model->set_irm_item($datos);
+            
+            /*
+             *  Modificar los pendientes
+             */
+            $update = array(
+                'cantidadpendiente' => $pendienteirm['cantidadpendiente']-$this->input->post('cantidad'),
+                'cantidadrecepcionado' => $this->input->post('cantidad')
+            );
+            if($pendienteirm['cantidadpendiente'] <= $this->input->post('cantidad')) {
+                $update['pendiente'] = 0;
+            }
+            
+            $this->irm_model->update_pendientesirm($update, $this->input->post('pendienteirm'));
+            
+        }
+        
         $data['irm'] = new IrmBean();
         $data['irm']->setId($idirm);
         $data['irm']->armarIRMporID();
         
         
+        $data['items'] = $this->irm_model->gets_items_pendientes_por_proveedor($data['irm']->getProveedor()->getId());
         
-        $this->load->view('layout/header', $data);
+        
+        $data['controles'] = $this->controles_model->gets();
+        
+        $this->load->view('layout/header_form', $data);
         $this->load->view('layout/menu');
         $this->load->view('irm/agregar_items');
-        $this->load->view('layout/footer');
+        $this->load->view('layout/footer_form');
+    }
+    
+    public function cantidad($idpendienteirm) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $where = array(
+            'idpendienteirm' => $idpendienteirm
+        );
+        
+        $data['pendienteirm'] = $this->irm_model->get_where_pendienteirm($where);
+        
+        $this->load->view('irm/cantidad', $data);
+    }
+    
+    public function unidaddemedida($idpendienteirm) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $where = array(
+            'idpendienteirm' => $idpendienteirm
+        );
+        
+        $pendienteirm = $this->irm_model->get_where_pendienteirm($where);
+        
+        $datos = array(
+            'idoc_item' => $pendienteirm['idoc_item']
+        );
+        $oc_item = $this->ocs_model->get_item_where($datos);
+        
+        $data['um'] = new UnidadesDeMedidaBean();
+        $data['um']->setId($oc_item['idmedida']);
+        $data['um']->armarUnidadDeMedidaPorID();
+        
+        $this->load->view('irm/unidaddemedida', $data);
     }
 }
 ?>

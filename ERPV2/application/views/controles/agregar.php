@@ -32,7 +32,7 @@
                             <div class="control-group">
                                 <label class="control-label">Control</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" onkeyup="prueba();" class="span12" id="control" name="control" autofocus required>
+                                    <input type="text" maxlength="100" onkeyup="checkcontrol();" class="span12" id="control" name="control" autofocus required>
                                     <div id="resultado">
                                         <span class="help-inline" style="display: none;">El control ya existe.</span>
                                     </div>
@@ -58,7 +58,7 @@
         
     }
     
-    function prueba() {
+    function checkcontrol() {
         $.ajax({
             type: 'GET',
             url: '/controles/ajax_check_control/'+$("#control").val(),

@@ -16,11 +16,18 @@ class Irm_model extends CI_Model {
     /*
      *  ocs/borrar_item
      */
-    public function update_itempendienteirm($datos, $id) {
+    public function update_itempendienteirm_por_idoc_item($datos, $id) {
         $array = array('idoc_item' => $id);
         $this->db->update('pendientesirm', $datos, $array);
     }
     
+    /*
+     *  irm/agregar_items
+     */
+    public function update_pendientesirm($datos, $id) {
+        $array = array('idpendienteirm' => $id);
+        $this->db->update('pendientesirm', $datos, $array);
+    }
     /*
      * irm/agregar
      */
@@ -77,6 +84,57 @@ class Irm_model extends CI_Model {
      */
     public function get_where($where) {
         $query = $this->db->get_where('irm', $where);
+        
+        return $query->row_array();
+    }
+    
+    
+    public function gets_items_pendientes_por_proveedor($idproveedor) {
+        $query = $this->db->query("SELECT pi.*, a.articulo, p.producto
+                                    FROM
+                                        pendientesirm pi,
+                                        ocs_items oi,
+                                        ocs o,
+                                        articulos a,
+                                        productos p
+                                    WHERE
+                                        pi.idoc_item = oi.idoc_item AND
+                                        oi.idarticulo = a.idarticulo AND
+                                        a.idproducto = p.idproducto AND
+                                        pi.pendiente = '1' AND
+                                        pi.activo = '1' AND
+                                        oi.idoc = o.idoc AND
+                                        o.idproveedor = '$idproveedor'");
+        
+        return $query->result_array();
+    }
+    
+    
+    public function get_where_pendienteirm($where) {
+        $query = $this->db->get_where('pendientesirm', $where);
+        
+        return $query->row_array();
+    }
+    
+    /*
+     *  irm/agregar_items
+     */
+    public function set_irm_item($datos) {
+        $this->db->insert('irm_items', $datos);
+        return $this->db->insert_id();
+    }
+    
+    /*
+     * irm/agregar_items
+     */
+    public function gets_items_irm($where) {
+        $query = $this->db->get_where('irm_items', $where);
+        
+        return $query->result_array();
+    }
+    
+    public function get_where_item_irm($where) {
+        $query = $this->db->get_where('irm_items', $where);
         
         return $query->row_array();
     }

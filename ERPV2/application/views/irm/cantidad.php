@@ -1,0 +1,1 @@
+<input type="text" value="<?=$pendienteirm['cantidadpendiente']?>" class="input-block-level span12" name="cantidad" required autofocus>

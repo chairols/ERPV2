@@ -6,6 +6,7 @@ class IrmBean {
     private $proveedor;
     private $usuario;
     private $timestamp;
+    private $items = array();
     
     public function __construct() {
         $this->CI =& get_instance();
@@ -29,6 +30,10 @@ class IrmBean {
     public function getTimestamp() {
         return $this->timestamp;
     }
+    
+    public function getItems() {
+        return $this->items;
+    }
 
     public function setId($id) {
         $this->id = $id;
@@ -45,7 +50,12 @@ class IrmBean {
     public function setTimestamp($timestamp) {
         $this->timestamp = $timestamp;
     }
+    
+    public function setItems($items) {
+        $this->items[] = $items;
+    }
 
+    
     public function armarIRMporID() {
         $where = array(
             'idirm' => $this->getId()
@@ -56,6 +66,18 @@ class IrmBean {
         $this->proveedor->setId($datos['idproveedor']);
         $this->proveedor->armarProveedorPorID();
         
+        $where = array(
+            'idirm' => $this->id
+        );
+        $items = $this->CI->irm_model->gets_items_irm($where);
+        
+        foreach($items as $item) {
+            $itemirm = new irmItemBean();
+            $itemirm->setId($item['idirm_item']);
+            $itemirm->armarIrmItemPorID();
+            
+            $this->items[] = $itemirm;
+        }
     }
 }
 ?>

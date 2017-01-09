@@ -175,7 +175,7 @@ class Ocs extends CI_Controller {
         );
         $this->ocs_model->update_item($datos, $idoc_item);
         
-        $this->irm_model->update_itempendienteirm($datos, $idoc_item);
+        $this->irm_model->update_itempendienteirm_por_idoc_item($datos, $idoc_item);
         
         redirect('/ocs/agregar_items/'.$data['item']['idoc'].'/', 'refresh');
         

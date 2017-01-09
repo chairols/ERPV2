@@ -1,0 +1,1 @@
+<input type="text" value="<?=$um->getMedidaCorta()?>" class="input-block-level span12" name="um" disabled>
