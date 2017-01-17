@@ -28,6 +28,7 @@ class irm extends CI_Controller {
         $data['segmento'] = $this->uri->segment(1);
         $data['menu'] = $this->r_session->get_menu();
         
+        $data['irms'] = $this->irm_model->gets();
         
         
         $this->load->view('layout/header', $data);
@@ -200,6 +201,26 @@ class irm extends CI_Controller {
         $data['um']->armarUnidadDeMedidaPorID();
         
         $this->load->view('irm/unidaddemedida', $data);
+    }
+    
+    public function ots($idpendienteirm) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $where = array(
+            'idpendienteirm' => $idpendienteirm
+        );
+        
+        $pendienteirm = $this->irm_model->get_where_pendienteirm($where);
+        
+        $datos = array(
+            'idoc_item' => $pendienteirm['idoc_item']
+        );
+        $oc_item = $this->ocs_model->get_item_where($datos);
+        
+        $data['ots'] = $this->ocs_model->gets_ots_asociadas($oc_item['idoc_item']);
+        
+        $this->load->view('irm/ots', $data);
     }
 }
 ?>

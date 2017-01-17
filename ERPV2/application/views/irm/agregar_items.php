@@ -119,7 +119,7 @@
 
                                     </div>
                                 </div>
-                                <div class="span4">
+                                <div class="span2">
                                     <div class="control-group">
                                         <label class="control-label"><strong>Controles</strong></label>
                                         <div class="controls">
@@ -131,9 +131,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="span4">
+                                <div class="span6">
                                     <div class="control-group">
                                         <label class="control-label"><strong>Órdenes de Trabajo</strong></label>
+                                        <div class="controls controls-row" id="ots">
+                                        </div>
                                     </div>
                                 </div>
                             </div>    
@@ -193,6 +195,7 @@
     function cambiar() {
         cantidad();
         unidaddemedida();
+        ots();
     }
     
     function cantidad() {
@@ -217,6 +220,19 @@
             },
             success: function(data) {
                 $("#um").html(data);
+            }    
+        });
+    }
+    
+    function ots() {
+        $.ajax({
+            type: 'GET',
+            url: '/irm/ots/'+$("#articulo").val(),
+            beforeSend: function() {
+                $("#ots").html('<img src="/assets/img/ajax-loader.gif">');
+            },
+            success: function(data) {
+                $("#ots").html(data);
             }    
         });
     }

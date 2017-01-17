@@ -30,13 +30,32 @@
                         <table class="table table-hover table-bordered table-condensed" id="sample_1_desc">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <th>IRM</th>
+                                    <th>Cantidad</th>
+                                    <th>Artículo</th>
+                                    <th>Proveedor</th>
+                                    <th>Recepcionado</th>
+                                    <th>Fecha</th>
+                                    <th>Controles</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                <?php foreach($irms as $irm) { ?>
+                                <tr>
+                                    <td><?=$irm['idirm']?></td>
+                                    <td><?=$irm['cantidad']?></td>
+                                    <td><?=$irm['producto']?> <?=$irm['articulo']?></td>
+                                    <td><?=$irm['proveedor']?></td>
+                                    <td><?=$irm['nombre']?> <?=$irm['apellido']?></td>
+                                    <td><?=$irm['timestamp']?></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
+                        <pre><?php print_r($irms)?></pre>
                     </div>
                 </div>
             </div>
