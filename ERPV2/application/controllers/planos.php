@@ -213,10 +213,18 @@ class Planos extends CI_Controller {
                 'revision' => $this->input->post('revision'),
                 'observaciones' => $this->input->post('observaciones')
             );
-            if($this->input->post('propio') == 'on') {
-                $datos['propio'] = '1';
+            
+            $cliente = null;
+            if($this->input->post('checkbox') == 'on') {
+                $datos['idcliente'] = $this->input->post('cliente');
+                $where = array(
+                    'idcliente' => $this->input->post('cliente')
+                );
+                $c = $this->clientes_model->get_where($where);
+                $cliente = $c['cliente'];
             } else {
-                $datos['propio'] = '0';
+                $datos['idcliente'] = '0';
+                $cliente = 'No especifica';
             }
             
             $config['upload_path'] = "./upload/planos/";
@@ -233,9 +241,10 @@ class Planos extends CI_Controller {
                 $adjunto = array('upload_data' => $this->upload->data());
             }
 
+            $datos['planofile'] = '';
             if($adjunto != null) {
                 $datos['planofile'] = '/upload/planos/'.$adjunto['upload_data']['file_name'];
-            } 
+            }
             
             $this->planos_model->update($datos, $idplano);
             
@@ -245,20 +254,23 @@ class Planos extends CI_Controller {
                 'texto' => 'Se modificó: <br>'
                  . 'plano: '.$this->input->post('plano').'<br>'
                  . 'revisión: '.$this->input->post('revision').'<br>'
-                 . 'plano propio: '.($datos['propio'])?"SI":"NO".'<br>'
-                 . 'archivo: '.($datos['planofile'])?$datos['planofile']:"".'<br>'
+                 . 'cliente: '.$cliente.'<br>'
+                 . 'archivo: '.$datos['planofile'].'<br>'
                  . 'observaciones: '.$this->input->post('observaciones').'<br>',
                 'tipo' => 'edit',
                 'idusuario' => $session['SID']
             );
             
             $this->log_model->set($log);
+            
+            redirect('/planos/', 'refresh');
         }
         
         $datos = array(
             'idplano' => $idplano
         );
         $data['plano'] = $this->planos_model->get_where($datos);
+        $data['clientes'] = $this->clientes_model->gets();
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');

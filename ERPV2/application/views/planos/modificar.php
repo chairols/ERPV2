@@ -31,19 +31,26 @@
                             <div class="control-group">
                                 <label class="control-label">Plano</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" name="plano" value="<?=$plano['plano']?>" required autofocus>
+                                    <input type="text" maxlength="100" class="span12" name="plano" value="<?=$plano['plano']?>" required autofocus>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Revisión</label>
                                 <div class="controls">
-                                    <input type="number" maxlength="11" class="input-xlarge" name="revision" value="<?=$plano['revision']?>">
+                                    <input type="number" maxlength="11" class="span12" name="revision" value="<?=$plano['revision']?>">
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Cliente</label>
-                                <div class="controls">
-                                    <input type="checkbox" name="propio" <?=($plano['propio']=='1')?"checked":""?>>
+                                <div class="controls checkbox">
+                                    <input type="checkbox" name="checkbox" <?=($plano['idcliente']>'0')?"checked":""?> id="checkbox">
+                                    <div id="selectcliente" style="display: none;">
+                                        <select name="cliente" class="select2 span12">
+                                            <?php foreach($clientes as $cliente) { ?>
+                                            <option value="<?=$cliente['idcliente']?>"<?=($cliente['idcliente']==$plano['idcliente'])?" selected":""?>><?=$cliente['cliente']?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -59,7 +66,7 @@
                             <div class="control-group">
                                 <label class="control-label">Observaciones</label>
                                 <div class="controls">
-                                    <textarea name="observaciones" class="input-xlarge" rows="6"><?=$plano['observaciones']?></textarea>
+                                    <textarea name="observaciones" class="span12" rows="6"><?=$plano['observaciones']?></textarea>
                                 </div>
                             </div>
                             <div class="form-actions">
@@ -77,3 +84,26 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function inicio() {
+        //$("#selectplano").hide();
+        var flag = $("#checkbox").is(':checked');
+        if(flag == true) {
+            $("#selectcliente").fadeIn(500);
+        } else {
+            $("#selectcliente").fadeOut(500);
+        }
+        
+        $("#checkbox").click(function() {
+            var flag = $("#checkbox").is(':checked');
+            if(flag == true) {
+                $("#selectcliente").fadeIn(500);
+            } else {
+                $("#selectcliente").fadeOut(500);
+            }
+        });
+    };
+    
+    
+</script>
