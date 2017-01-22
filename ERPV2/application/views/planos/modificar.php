@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Plano Propio</label>
+                                <label class="control-label">Cliente</label>
                                 <div class="controls">
                                     <input type="checkbox" name="propio" <?=($plano['propio']=='1')?"checked":""?>>
                                 </div>

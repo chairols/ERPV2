@@ -34,7 +34,7 @@
                                         <th><strong>Plano</strong></th>
                                         <th><strong>ID</strong></th>
                                         <th><strong>Revisión</strong></th>
-                                        <th><strong>Documento</strong></th>
+                                        <th><strong>Cliente</strong></th>
                                         <th><strong>Plano</strong></th>
                                         <th><strong>Acción</strong></th>
                                     </tr>
@@ -45,7 +45,11 @@
                                         <td><?=$plano['plano']?></td>
                                         <td><?=$plano['idplano']?></td>
                                         <td><?=$plano['revision']?></td>
-                                        <td><?=($plano['propio'])?"INTERNO":"EXTERNO"?></td>
+                                        <td>
+                                            <a href="/clientes/ver/<?=$plano['idcliente']?>/">
+                                                <?=$plano['cliente']?>
+                                            </a>
+                                        </td>
                                         <td>
                                         <?php if($plano['planofile'] != '') { ?>
                                             <a href="<?=$plano['planofile']?>" target="_blank">
@@ -54,17 +58,25 @@
                                         <?php } ?>
                                         </td>
                                         <td>
-                                            <a href="/planos/ver/<?=$plano['idplano']?>" class="label label-success">
-                                                <i class="icon-eye-open"></i>
+                                            <a href="/planos/ver/<?=$plano['idplano']?>/">
+                                                <button class="btn btn-success">
+                                                    <i class="icon-eye-open tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver"></i>
+                                                </button>
                                             </a>
-                                            <a href="/planos/modificar/<?=$plano['idplano']?>" class="label label-default">
-                                                <i class="icon-edit"></i>
+                                            <a href="/planos/modificar/<?=$plano['idplano']?>/">
+                                                <button class="btn btn-warning">
+                                                    <i class="icon-edit tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>
+                                                </button>
                                             </a>
-                                            <a href="/planos/borrar/<?=$plano['idplano']?>" class="label label-important">
-                                                <i class="icon-remove"></i>
+                                            <a href="/planos/borrar/<?=$plano['idplano']?>/">
+                                                <button class="btn btn-danger">
+                                                    <i class="icon-remove tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Eliminar"></i>
+                                                </button>
                                             </a>
-                                            <a href="/log/ver/planos/<?=$plano['idplano']?>" class="label label-info">
-                                                <i class="icon-time"></i>
+                                            <a href="/log/ver/planos/<?=$plano['idplano']?>/">
+                                                <button class="btn btn-info">
+                                                    <i class="icon-time tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log"></i>
+                                                </button>
                                             </a>
                                         </td>
                                     </tr>

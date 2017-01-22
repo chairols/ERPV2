@@ -12,11 +12,15 @@ class Planos_model extends CI_Model {
      *  planos/index
      */
     public function gets() {
-        $query = $this->db->query("SELECT *
+        $query = $this->db->query("SELECT p.*, c.cliente
                                     FROM
-                                        planos
+                                        planos p
+                                    LEFT JOIN
+                                        clientes c
+                                    ON  
+                                        p.idcliente = c.idcliente
                                     WHERE
-                                        activo = '1'");
+                                        p.activo = '1'");
         return $query->result_array();
     }
     
