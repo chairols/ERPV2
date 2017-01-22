@@ -139,6 +139,16 @@
                                     </div>
                                 </div>
                             </div>    
+                            <div class="row-fluid">
+                                <pre>
+                                    <?php foreach ($post as $key => $value) {
+                                        $array = explode('-', $key);
+                                        if($array[0] == 'control') {
+                                            var_dump($array[1]);
+                                        }
+                                    }?>
+                                </pre>
+                            </div>
                         </form>
                     </div>
                 </div>

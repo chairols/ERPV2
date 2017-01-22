@@ -135,7 +135,10 @@ class irm extends CI_Controller {
                 $datos['certificado'] = '/upload/certificados/'.$adjunto['upload_data']['file_name'];
             }
             
-            $this->irm_model->set_irm_item($datos);
+            /*
+             * Volver a poner esto
+             */
+            //$this->irm_model->set_irm_item($datos);
             
             /*
              *  Modificar los pendientes
@@ -148,9 +151,14 @@ class irm extends CI_Controller {
                 $update['pendiente'] = 0;
             }
             
-            $this->irm_model->update_pendientesirm($update, $this->input->post('pendienteirm'));
+            /*
+             * Volver a poner esto
+             */
+            //$this->irm_model->update_pendientesirm($update, $this->input->post('pendienteirm'));
             
         }
+        
+        $data['post'] = $this->input->post();
         
         $data['irm'] = new IrmBean();
         $data['irm']->setId($idirm);

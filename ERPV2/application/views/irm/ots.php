@@ -1,3 +1,4 @@
+<?php if(count($ots) > 0) { ?>
 <table class="table table-condensed table-bordered">
     <tr>
         <th>O.T.</th>
@@ -12,3 +13,6 @@
     </tr>
     <?php } ?>
 </table>
+<?php } else { ?>
+<span class="badge badge-important">No hay Órdenes de Trabajo Asociadas</span>
+<?php } ?>

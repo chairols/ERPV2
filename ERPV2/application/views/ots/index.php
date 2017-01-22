@@ -66,7 +66,9 @@
                                                 <i class="icon-edit alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>
                                             </a>
                                             <a href="/ots/borrar/<?=$ot['idot']?>/">
-                                                <i class="icon-remove alert-danger tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar"></i>
+                                                <button class="btn btn-danger btn-mini">
+                                                    <i class="icon-trash tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar"></i>
+                                                </button>
                                             </a>
                                             <a href="/log/ver/ots/<?=$ot['idot']?>/">
                                                 <i class="icon-time alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Historial"></i>

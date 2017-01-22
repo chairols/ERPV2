@@ -10,7 +10,8 @@ class Planos extends CI_Controller {
         ));
         $this->load->model(array(
             'planos_model',
-            'log_model'
+            'log_model',
+            'clientes_model'
         ));
         $this->load->helper(array(
             'url'
@@ -51,6 +52,7 @@ class Planos extends CI_Controller {
                  'revision' => $this->input->post('revision')
             );
             $resultado = $this->planos_model->get_where($datos);
+            $cliente = null;
             
             if(count($resultado) == 0) {
                 $datos = array(
@@ -59,10 +61,16 @@ class Planos extends CI_Controller {
                     'observaciones' => $this->input->post('observaciones'),
                     'activo' => '1'
                 );
-                if($this->input->post('propio') == 'on') {
-                    $datos['propio'] = '1';
+                if($this->input->post('checkbox') == 'on') {
+                    $datos['idcliente'] = $this->input->post('cliente');
+                    $where = array(
+                        'idcliente' => $this->input->post('cliente')
+                    );
+                    $c = $this->clientes_model->get_where($where);
+                    $cliente = $c['cliente'];
                 } else {
-                    $datos['propio'] = '0';
+                    $datos['idcliente'] = '0';
+                    $cliente = 'No especifica';
                 }
                 
                 $config['upload_path'] = "./upload/planos/";
@@ -91,7 +99,7 @@ class Planos extends CI_Controller {
                    'texto' => 'Se agregó: <br>'
                     . 'plano: '.$this->input->post('plano').'<br>'
                     . 'revision: '.$this->input->post('revision').'<br>'
-                    . 'plano propio '.$datos['propio'].'<br>'
+                    . 'cliente: '.$cliente.'<br>'
                     . 'observaciones: '.$this->input->post('observaciones').'<br>'
                     . 'adjunto: '.'/upload/planos/'.$adjunto['upload_data']['file_name'],
                    'tipo' => 'add',
@@ -103,6 +111,8 @@ class Planos extends CI_Controller {
                 redirect('/planos/', 'refresh');
             }
         }
+        
+        $data['clientes'] = $this->clientes_model->gets();
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');

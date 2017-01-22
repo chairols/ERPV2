@@ -31,31 +31,38 @@
                             <div class="control-group">
                                 <label class="control-label">Plano</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" name="plano" required autofocus>
+                                    <input type="text" maxlength="100" class="span12" name="plano" required autofocus>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Revisión</label>
                                 <div class="controls">
-                                    <input type="number" maxlength="11" class="input-xlarge" name="revision">
+                                    <input type="number" maxlength="11" class="span12" name="revision">
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Plano Propio</label>
-                                <div class="controls">
-                                    <input type="checkbox" name="propio">
+                                <label class="control-label">Cliente</label>
+                                <div class="controls checkbox">
+                                    <input type="checkbox" name="checkbox" id="checkbox">
+                                    <div id="selectcliente" style="display: none;">
+                                        <select name="cliente" class="select2 span12">
+                                            <?php foreach($clientes as $cliente) { ?>
+                                            <option value="<?=$cliente['idcliente']?>"><?=$cliente['cliente']?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Archivo del Plano</label>
                                 <div class="controls">
-                                    <input type="file" class="input-xlarge" name="planofile">
+                                    <input type="file" class="span12" name="planofile">
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Observaciones</label>
                                 <div class="controls">
-                                    <textarea name="observaciones" class="input-xlarge" rows="6"></textarea>
+                                    <textarea name="observaciones" class="span12" rows="6"></textarea>
                                 </div>
                             </div>
                             <div class="form-actions">
@@ -73,3 +80,20 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function inicio() {
+        //$("#selectplano").hide();
+        
+        $("#checkbox").click(function() {
+            var flag = $("#checkbox").is(':checked');
+            if(flag == true) {
+                $("#selectcliente").fadeIn(500);
+            } else {
+                $("#selectcliente").fadeOut(500);
+            }
+        });
+    };
+    
+    
+</script>
