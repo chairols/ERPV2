@@ -6,7 +6,8 @@ class Planos extends CI_Controller {
         $this->load->library(array(
             'session',
             'r_session',
-            'form_validation'
+            'form_validation',
+            'beans'
         ));
         $this->load->model(array(
             'planos_model',
@@ -131,10 +132,16 @@ class Planos extends CI_Controller {
         if($idplano == null) {
             redirect('/planos/', 'refresh');
         }
+        /*
         $datos = array(
             'idplano' => $idplano
         );
         $data['plano'] = $this->planos_model->get_where($datos);
+        */
+        $data['plano'] = new PlanosBean();
+        $data['plano']->setId($idplano);
+        $data['plano']->armarPlanoPorID();
+        
         
         $this->load->view('layout/header', $data);
         $this->load->view('layout/menu');

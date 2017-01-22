@@ -4,6 +4,7 @@ class Beans {
     public function __construct() {
         require_once 'beans/almacenesBean.php';
         require_once 'beans/articulosBean.php';
+        require_once 'beans/clientesBean.php';
         require_once 'beans/controlesBean.php';
         require_once 'beans/fabricasBean.php';
         require_once 'beans/irmBean.php';

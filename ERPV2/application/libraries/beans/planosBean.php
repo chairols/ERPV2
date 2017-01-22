@@ -6,7 +6,7 @@ class PlanosBean {
     private $plano;
     private $urlDelPlano;
     private $revision;
-    private $propio;
+    private $cliente;
     private $observaciones;
     private $activo;
     
@@ -32,9 +32,9 @@ class PlanosBean {
     public function getRevision() {
         return $this->revision;
     }
-
-    public function getPropio() {
-        return $this->propio;
+    
+    public function getCliente() {
+        return $this->cliente;
     }
 
     public function getObservaciones() {
@@ -60,9 +60,9 @@ class PlanosBean {
     public function setRevision($revision) {
         $this->revision = $revision;
     }
-
-    public function setPropio($propio) {
-        $this->propio = $propio;
+    
+    public function setCliente($cliente) {
+        $this->cliente = $cliente;
     }
 
     public function setObservaciones($observaciones) {
@@ -80,14 +80,19 @@ class PlanosBean {
         $datos = $this->CI->planos_model->get_where($where);
         
         if($this->getId() != 0) {
-            $this->setId($datos['idplano']);
-            $this->setPlano($datos['plano']);
-            $this->setUrlDelPlano($datos['planofile']);
-            $this->setRevision($datos['revision']);
-            $this->setPropio($datos['propio']);
-            $this->setObservaciones($datos['observaciones']);
-            $this->setActivo($datos['activo']);
+            $this->plano = $datos['plano'];
+            $this->urlDelPlano = $datos['planofile'];
+            $this->revision = $datos['revision'];
+            
+            $this->cliente = new ClientesBean();
+            $this->cliente->setId($datos['idcliente']);
+            $this->cliente->armarClientePorID();
+            
+            $this->observaciones = $datos['observaciones'];
+            $this->activo = $datos['activo'];
         }
+        
+        
     }
 }
 ?>

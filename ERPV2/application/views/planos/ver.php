@@ -31,31 +31,31 @@
                             <div class="control-group">
                                 <label class="control-label">Plano</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" name="plano" value="<?=$plano['plano']?>" disabled>
+                                    <input type="text" maxlength="100" class="span12" name="plano" value="<?=$plano->getPlano()?>" disabled>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Revisión</label>
                                 <div class="controls">
-                                    <input type="number" maxlength="11" class="input-xlarge" name="revision" value="<?=$plano['revision']?>" disabled>
+                                    <input type="number" maxlength="11" class="span12" name="revision" value="<?=$plano->getRevision()?>" disabled>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Plano Propio</label>
+                                <label class="control-label">Cliente</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=($plano['propio']=='1')?"SI":"NO"?>" disabled>
+                                    <input type="text" maxlength="100" class="span12" value="<?=$plano->getCliente()->getCliente()?>" disabled>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Archivo del Plano</label>
                                 <div class="controls">
-                                    <div class="control-label"><?=($plano['planofile']=="")?"No tiene plano":"<a href='".$plano['planofile']."' target='_blank'>Ver Plano</a>"?></div>
+                                    <div class="control-label"><?=($plano->getUrlDelPlano()=="")?"No tiene plano":"<a href='".$plano->getUrlDelPlano()."' target='_blank'>Ver Plano</a>"?></div>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Observaciones</label>
                                 <div class="controls">
-                                    <textarea name="observaciones" class="input-xlarge" rows="6" disabled><?=$plano['observaciones']?></textarea>
+                                    <textarea name="observaciones" class="span12" rows="6" disabled><?=$plano->getObservaciones()?></textarea>
                                 </div>
                             </div>
                         </form>
