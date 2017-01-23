@@ -48,8 +48,10 @@
                                         <td><?=(count($m['padre']))?$m['padre']['menu']:"-- No tiene --"?></td>
                                         <td><?=($m['visible'])?"Si":"No"?></td>
                                         <td>
-                                            <a href="/menu/modificar/<?=$m['idmenu']?>">
-                                                <i class="icon-edit alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>
+                                            <a href="/menu/modificar/<?=$m['idmenu']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
+                                                <button class="btn btn-warning">
+                                                    <i class="icon-edit"></i>
+                                                </button>
                                             </a>
                                         </td>
                                     </tr>

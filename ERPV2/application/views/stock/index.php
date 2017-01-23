@@ -49,10 +49,14 @@
                                     <td><?=$s['medida_larga']?></td>
                                     <td>
                                         <a href="/stock/almacenes/<?=$s['idstock']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
-                                            <i class="icon-edit"></i>
+                                            <button class="btn btn-warning">
+                                                <i class="icon-edit"></i>
+                                            </button>
                                         </a>
-                                        <a href="/log/ver/stock/<?=$s['idstock']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Log" class="tooltips">
-                                            <i class="icon-time"></i>
+                                        <a href="/log/ver/stock/<?=$s['idstock']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log" class="tooltips">
+                                            <button class="btn btn-info">
+                                                <i class="icon-time"></i>
+                                            </button>
                                         </a>
                                     </td>
                                 </tr>

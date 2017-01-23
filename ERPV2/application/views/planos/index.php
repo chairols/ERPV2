@@ -58,24 +58,24 @@
                                         <?php } ?>
                                         </td>
                                         <td>
-                                            <a href="/planos/ver/<?=$plano['idplano']?>/">
+                                            <a href="/planos/ver/<?=$plano['idplano']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver" class="tooltips">
                                                 <button class="btn btn-success">
-                                                    <i class="icon-eye-open tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver"></i>
+                                                    <i class="icon-eye-open"></i>
                                                 </button>
                                             </a>
-                                            <a href="/planos/modificar/<?=$plano['idplano']?>/">
+                                            <a href="/planos/modificar/<?=$plano['idplano']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
                                                 <button class="btn btn-warning">
-                                                    <i class="icon-edit tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>
+                                                    <i class="icon-edit"></i>
                                                 </button>
                                             </a>
-                                            <a href="/planos/borrar/<?=$plano['idplano']?>/">
+                                            <a href="/planos/borrar/<?=$plano['idplano']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar" class="tooltips">
                                                 <button class="btn btn-danger">
-                                                    <i class="icon-remove tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Eliminar"></i>
+                                                    <i class="icon-trash"></i>
                                                 </button>
                                             </a>
-                                            <a href="/log/ver/planos/<?=$plano['idplano']?>/">
+                                            <a href="/log/ver/planos/<?=$plano['idplano']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Historial" class="tooltips">
                                                 <button class="btn btn-info">
-                                                    <i class="icon-time tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log"></i>
+                                                    <i class="icon-time"></i>
                                                 </button>
                                             </a>
                                         </td>

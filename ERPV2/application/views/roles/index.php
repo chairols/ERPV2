@@ -38,11 +38,15 @@
                                     <tr>
                                         <td><?=$rol['rol']?></td>
                                         <td>
-                                            <a href="/roles/menu/<?=$rol['idrol']?>/">
-                                                <i class="icon-edit alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>
+                                            <a href="/roles/menu/<?=$rol['idrol']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
+                                                <button class="btn btn-warning">
+                                                    <i class="icon-edit"></i>
+                                                </button>
                                             </a>
-                                            <a href="/log/ver/roles/<?=$rol['idrol']?>/">
-                                                <i class="icon-time alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Historial"></i>
+                                            <a href="/log/ver/roles/<?=$rol['idrol']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log" class="tooltips">
+                                                <button class="btn btn-info">
+                                                    <i class="icon-time"></i>
+                                                </button>
                                             </a>
                                         </td>
                                     </tr>

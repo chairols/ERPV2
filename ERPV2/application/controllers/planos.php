@@ -248,13 +248,16 @@ class Planos extends CI_Controller {
                 $adjunto = array('upload_data' => $this->upload->data());
             }
 
-            $datos['planofile'] = '';
             if($adjunto != null) {
                 $datos['planofile'] = '/upload/planos/'.$adjunto['upload_data']['file_name'];
-            }
-            
+            } 
+
             $this->planos_model->update($datos, $idplano);
             
+            $plano = '';
+            if(isset($datos['planofile'])) {
+                $plano = $datos['planofile'];
+            }
             $log = array(
                 'tabla' => 'planos',
                 'idtabla' => $idplano,
@@ -262,7 +265,7 @@ class Planos extends CI_Controller {
                  . 'plano: '.$this->input->post('plano').'<br>'
                  . 'revisión: '.$this->input->post('revision').'<br>'
                  . 'cliente: '.$cliente.'<br>'
-                 . 'archivo: '.$datos['planofile'].'<br>'
+                 . 'archivo: '.$plano.'<br>'
                  . 'observaciones: '.$this->input->post('observaciones').'<br>',
                 'tipo' => 'edit',
                 'idusuario' => $session['SID']

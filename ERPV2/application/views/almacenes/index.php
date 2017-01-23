@@ -41,14 +41,20 @@
                                         <td><?=$almacen['idalmacen']?></td>
                                         <td><?=$almacen['almacen']?></td>
                                         <td>
-                                            <a href="/almacenes/ver/<?=$almacen['idalmacen']?>/">
-                                                <i class="alert-success icon-eye-open tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver"></i>
+                                            <a href="/almacenes/ver/<?=$almacen['idalmacen']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver" class="tooltips">
+                                                <button class="btn btn-success">
+                                                    <i class="icon-eye-open"></i>
+                                                </button>
                                             </a>
-                                            <a href="/almacenes/modificar/<?=$almacen['idalmacen']?>/">
-                                                <i class="alert-info icon-edit tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Editar"></i>
+                                            <a href="/almacenes/modificar/<?=$almacen['idalmacen']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
+                                                <button class="btn btn-warning">
+                                                    <i class="icon-edit"></i>
+                                                </button>
                                             </a> 
-                                            <a href="/log/ver/almacenes/<?=$almacen['idalmacen']?>/">
-                                                <i class="alert-block icon-time tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log"></i> 
+                                            <a href="/log/ver/almacenes/<?=$almacen['idalmacen']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log" class="tooltips">
+                                                <button class="btn btn-info">
+                                                    <i class="icon-time"></i> 
+                                                </button>
                                             </a>
                                         </td>
                                     </tr>

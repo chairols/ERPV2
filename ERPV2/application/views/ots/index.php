@@ -58,23 +58,35 @@
                                             <?php } ?>
                                         </td>
                                         <td>
-                                            <a href="/ots/ver/<?=$ot['idot']?>/">
-                                                <i class="icon-eye-open alert-success tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver"></i>
-                                            </a>
-                                            <a href="/ots/pdf/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Generar Carátula" class="tooltips" target="_blank"><i class="icon-file"></i></a>
-                                            <a href="/ots/modificar/<?=$ot['idot']?>/">
-                                                <i class="icon-edit alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>
-                                            </a>
-                                            <a href="/ots/borrar/<?=$ot['idot']?>/">
-                                                <button class="btn btn-danger btn-mini">
-                                                    <i class="icon-trash tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar"></i>
+                                            <a href="/ots/ver/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver" class="tooltips">
+                                                <button class="btn btn-success">
+                                                <i class="icon-eye-open"></i>
                                                 </button>
                                             </a>
-                                            <a href="/log/ver/ots/<?=$ot['idot']?>/">
-                                                <i class="icon-time alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Historial"></i>
+                                            <a href="/ots/pdf/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Generar Carátula" class="tooltips" target="_blank">
+                                                <button class="btn">
+                                                    <i class="icon-file"></i>
+                                                </button>
                                             </a>
-                                            <a href="/ots/trazabilidad/<?=$ot['idot']?>/">
-                                                <i class="icon-exchange alert-success tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Trazabilidad"></i>
+                                            <a href="/ots/modificar/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
+                                                <button class="btn btn-warning">
+                                                <i class="icon-edit"></i>
+                                                </button>
+                                            </a>
+                                            <a href="/ots/borrar/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar" class="tooltips">
+                                                <button class="btn btn-danger">
+                                                    <i class="icon-trash"></i>
+                                                </button>
+                                            </a>
+                                            <a href="/log/ver/ots/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Historial" class="tooltips">
+                                                <button class="btn btn-info">
+                                                <i class="icon-time"></i>
+                                                </button>
+                                            </a>
+                                            <a href="/ots/trazabilidad/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Trazabilidad" class="tooltips">
+                                                <button class="btn btn-success">
+                                                <i class="icon-exchange"></i>
+                                                </button>
                                             </a>
                                         </td>
                                     </tr>

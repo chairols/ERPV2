@@ -46,8 +46,10 @@
                                     <td><?=$usuario['correo']?></td>
                                     <td><?=$usuario['rol']?></td>
                                     <td>
-                                        <a href="/usuarios/modificar/<?=$usuario['idusuario']?>">
-                                            <i class="icon-edit alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>
+                                        <a href="/usuarios/modificar/<?=$usuario['idusuario']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
+                                            <button class="btn btn-warning">
+                                                <i class="icon-edit"></i>
+                                            </button>
                                         </a>
                                     </td>
                                 </tr>

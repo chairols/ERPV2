@@ -48,10 +48,26 @@
                                         <td><?=$articulo->getPlano()->getRevision()?></td>
                                         <td><?=$articulo->getPosicion()?></td>
                                         <td>
-                                            <a href="/articulos/ver/<?=$articulo->getId()?>/"><i class="alert-success icon-eye-open tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver"></i></a>
-                                            <a href="/articulos/modificar/<?=$articulo->getId()?>/" class="label label-default"><i class="icon-edit"></i></a> 
-                                            <a href="/articulos/borrar/<?=$articulo->getId()?>" class="label label-important"><i class="icon-remove"></i></a>
-                                            <a href="/log/ver/articulos/<?=$articulo->getId()?>/" class="label label-info"><i class="icon-time"></i></a>
+                                            <a href="/articulos/ver/<?=$articulo->getId()?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver" class="tooltips">
+                                                <button class="btn btn-success">
+                                                    <i class="icon-eye-open"></i>
+                                                </button>
+                                            </a>
+                                            <a href="/articulos/modificar/<?=$articulo->getId()?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
+                                                <button class="btn btn-warning">
+                                                    <i class="icon-edit"></i>
+                                                </button>
+                                            </a> 
+                                            <a href="/articulos/borrar/<?=$articulo->getId()?>" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar" class="tooltips">
+                                                <button class="btn btn-danger">
+                                                    <i class="icon-trash"></i>
+                                                </button>
+                                            </a>
+                                            <a href="/log/ver/articulos/<?=$articulo->getId()?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log" class="tooltips">
+                                                <button class="btn btn-info">
+                                                    <i class="icon-time"></i>
+                                                </button>
+                                            </a>
                                         </td>
                                     </tr>
                                     <?php } ?>
