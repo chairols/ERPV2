@@ -119,5 +119,14 @@ class Prueba extends CI_Controller {
     public function ajax() {
         $this->load->view("prueba/ajax");
     }
+    
+    
+    public function alela() {
+        
+        $this->load->view('layout_alela/header');
+        $this->load->view('layout_alela/menu');
+        $this->load->view('prueba/alela');
+        $this->load->view('layout_alela/footer');
+    }
 }
 ?>
