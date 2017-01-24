@@ -30,7 +30,7 @@
                             <div class="control-group">
                                 <label class="control-label">Cliente</label>
                                 <div class="controls">
-                                    <select name="cliente" class="select2 input-xlarge">
+                                    <select name="cliente" class="select2 span12">
                                         <?php foreach($clientes as $cliente) { ?>
                                         <option value="<?=$cliente['idcliente']?>"><?=$cliente['cliente']?></option>
                                         <?php } ?>
@@ -40,7 +40,7 @@
                             <div class="control-group">
                                 <label class="control-label">Moneda</label>
                                 <div class="controls">
-                                    <select name="moneda" class="select2 input-xlarge">
+                                    <select name="moneda" class="select2 span12">
                                         <?php foreach($monedas as $moneda) { ?>
                                         <option value="<?=$moneda['idmoneda']?>"><?=$moneda['moneda']?></option>
                                         <?php } ?>
@@ -50,13 +50,13 @@
                             <div class="control-group">
                                 <label class="control-label">Órden de Compra</label>
                                 <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('ordendecompra')?>" name="ordendecompra">
+                                    <input type="text" maxlength="100" class="span12" value="<?=set_value('ordendecompra')?>" name="ordendecompra">
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Adjunto</label>
                                 <div class="controls">
-                                    <input type="file" class="input-xlarge" name="adjunto">
+                                    <input type="file" class="span12" name="adjunto">
                                 </div>
                             </div>
                             <div class="form-actions">
