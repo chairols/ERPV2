@@ -59,32 +59,32 @@
                                         </td>
                                         <td>
                                             <a href="/ots/ver/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver" class="tooltips">
-                                                <button class="btn btn-success">
+                                                <button class="btn btn-success btn-small">
                                                 <i class="icon-eye-open"></i>
                                                 </button>
                                             </a>
                                             <a href="/ots/pdf/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Generar Carátula" class="tooltips" target="_blank">
-                                                <button class="btn">
+                                                <button class="btn btn-small">
                                                     <i class="icon-file"></i>
                                                 </button>
                                             </a>
                                             <a href="/ots/modificar/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
-                                                <button class="btn btn-warning">
+                                                <button class="btn btn-warning btn-small">
                                                 <i class="icon-edit"></i>
                                                 </button>
                                             </a>
                                             <a href="/ots/borrar/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar" class="tooltips">
-                                                <button class="btn btn-danger">
+                                                <button class="btn btn-danger btn-small">
                                                     <i class="icon-trash"></i>
                                                 </button>
                                             </a>
                                             <a href="/log/ver/ots/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Historial" class="tooltips">
-                                                <button class="btn btn-info">
-                                                <i class="icon-time"></i>
+                                                <button class="btn btn-info btn-small">
+                                                    <i class="icon-time"></i>
                                                 </button>
                                             </a>
                                             <a href="/ots/trazabilidad/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Trazabilidad" class="tooltips">
-                                                <button class="btn btn-success">
+                                                <button class="btn btn-success btn-small">
                                                 <i class="icon-exchange"></i>
                                                 </button>
                                             </a>
