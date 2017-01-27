@@ -157,5 +157,23 @@ class Irm_model extends CI_Model {
         
         return $query->row_array();
     }
+    
+    
+    public function set_irm_item_control($datos) {
+        $this->db->insert('irm_items_controles', $datos);
+        return $this->db->insert_id();
+    }
+    
+    public function gets_controles_por_idirm_item($idirm_item) {
+        $query = $this->db->query("SELECT *
+                                    FROM
+                                        irm_items_controles i,
+                                        controles c
+                                    WHERE
+                                        i.idirm_item = '$idirm_item' AND
+                                        i.idcontrol = c.idcontrol");
+        
+        return $query->result_array();
+    }
 }
 ?>

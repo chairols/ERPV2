@@ -1,10 +1,10 @@
         <!-- footer content -->
-        <footer>
+        <!--<footer>
           <div class="pull-right">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
+          </div>-->
           <div class="clearfix"></div>
-        </footer>
+        </footer> 
         <!-- /footer content -->
       </div>
     </div>
@@ -25,6 +25,23 @@
     <script src="/assets/gentelella-master/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
     <script src="/assets/gentelella-master/vendors/iCheck/icheck.min.js"></script>
+    
+    <!-- Datatables -->
+    <script src="/assets/gentelella-master/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/assets/gentelella-master/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="/assets/gentelella-master/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/assets/gentelella-master/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="/assets/gentelella-master/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="/assets/gentelella-master/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/assets/gentelella-master/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/assets/gentelella-master/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="/assets/gentelella-master/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="/assets/gentelella-master/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/assets/gentelella-master/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="/assets/gentelella-master/vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
+    <script src="/assets/gentelella-master/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="/assets/gentelella-master/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/assets/gentelella-master/vendors/pdfmake/build/vfs_fonts.js"></script>
     <!-- Skycons -->
     <script src="/assets/gentelella-master/vendors/skycons/skycons.js"></script>
     <!-- Flot -->
@@ -47,8 +64,13 @@
     <script src="/assets/gentelella-master/vendors/moment/min/moment.min.js"></script>
     <script src="/assets/gentelella-master/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
+    <!-- Select2 -->
+    <script src="/assets/gentelella-master/vendors/select2/dist/js/select2.full.min.js"></script>
+    
+    
     <!-- Custom Theme Scripts -->
-    <script src="/assets/gentelella-master/build/js/custom.min.js"></script>
+    <script src="/assets/gentelella-master/build/js/custom.js"></script>
 	
+    
   </body>
 </html>

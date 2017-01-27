@@ -139,16 +139,6 @@
                                     </div>
                                 </div>
                             </div>    
-                            <div class="row-fluid">
-                                <pre>
-                                    <?php foreach ($post as $key => $value) {
-                                        $array = explode('-', $key);
-                                        if($array[0] == 'control') {
-                                            var_dump($array[1]);
-                                        }
-                                    }?>
-                                </pre>
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -174,6 +164,8 @@
                                     <th>Certificado</th>
                                     <th>Usuario</th>
                                     <th>Fecha</th>
+                                    <th>Controles</th>
+                                    <th>O.T.</th>
                                     <th>Acción</th>
                                 </tr>
                             </thead>
@@ -185,6 +177,15 @@
                                     <td><?=$item->getCertificado()?></td>
                                     <td><?=$item->getUsuario()->getNombre()?> <?=$item->getUsuario()->getApellido()?></td>
                                     <td><?=$item->getTimestamp()?></td>
+                                    <td><?php
+                                        foreach($item->getControles() as $control) { ?>
+                                            <div class="label label-inverse"><?=$control->getControl()?></div>
+                                        <?php } ?></td>
+                                    <td><?php
+                                        foreach($item->getOts() as $ot) { ?>
+                                        <div class="label label-inverse"><?=$ot->getFabrica()->getFabrica()?> <?=$ot->getNumeroOrdenDeTrabajo()?></div>
+                                        <?php } ?>
+                                    </td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <?php } ?>

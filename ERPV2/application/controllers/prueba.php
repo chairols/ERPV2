@@ -4,7 +4,9 @@ class Prueba extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library(array(
-            'form_validation'
+            'form_validation',
+            'session',
+            'r_session'
         ));
         $this->load->helper(array(
             'url'
@@ -122,10 +124,92 @@ class Prueba extends CI_Controller {
     
     
     public function alela() {
+        $this->load->model(array(
+            'articulos_model'
+        ));
+        $session = $this->session->all_userdata();
+        $data['title'] = 'Listar Artículos';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
-        $this->load->view('layout_alela/header');
+        $data['articulos'] = $this->articulos_model->gets();
+        
+        $this->load->view('layout_alela/header', $data);
         $this->load->view('layout_alela/menu');
         $this->load->view('prueba/alela');
+        $this->load->view('layout_alela/footer');
+    }
+    
+    public function pedidos() {
+        $this->load->library(array(
+            'session',
+            'r_session',
+            'form_validation',
+            'uri'
+        ));
+        $this->load->helper(array(
+            'url'
+        ));
+        $this->load->model(array(
+            'clientes_model',
+            'monedas_model',
+            'pedidos_model',
+            'provincias_model',
+            'log_model',
+            'articulos_model',
+            'productos_model',
+            'ots_model'
+        ));
+        
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Listar Pedidos';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $data['pedidos'] = $this->pedidos_model->gets();
+        
+        $this->load->view('layout_alela/header', $data);
+        $this->load->view('layout_alela/menu');
+        $this->load->view('prueba/pedidos');
+        $this->load->view('layout_alela/footer');
+    }
+    
+    public function ots() {
+        $this->load->library(array(
+            'session',
+            'r_session',
+            'form_validation',
+            'uri'
+        ));
+        $this->load->helper(array(
+            'url'
+        ));
+        $this->load->model(array(
+            'clientes_model',
+            'monedas_model',
+            'pedidos_model',
+            'provincias_model',
+            'log_model',
+            'articulos_model',
+            'productos_model',
+            'ots_model'
+        ));
+        
+        $session = $this->session->all_userdata();
+        //$this->r_session->check($session);
+        $data['title'] = 'Listar Pedidos';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $data['ots'] = $this->ots_model->gets();
+        
+        $this->load->view('layout_alela/header', $data);
+        $this->load->view('layout_alela/menu');
+        $this->load->view('prueba/ots');
         $this->load->view('layout_alela/footer');
     }
 }

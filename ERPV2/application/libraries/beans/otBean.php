@@ -14,7 +14,9 @@ class otBean {
     
     public function __construct() {
         $this->CI =& get_instance();
-        
+        $this->CI->load->model(array(
+            'ots_model'
+        ));
     }
     
     public function getId() {

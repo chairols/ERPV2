@@ -134,31 +134,51 @@ class irm extends CI_Controller {
             if($adjunto != null) {
                 $datos['certificado'] = '/upload/certificados/'.$adjunto['upload_data']['file_name'];
             }
-            
-            /*
-             * Volver a poner esto
-             */
-            //$this->irm_model->set_irm_item($datos);
-            
-            /*
-             *  Modificar los pendientes
-             */
-            $update = array(
-                'cantidadpendiente' => $pendienteirm['cantidadpendiente']-$this->input->post('cantidad'),
-                'cantidadrecepcionado' => $this->input->post('cantidad')
-            );
-            if($pendienteirm['cantidadpendiente'] <= $this->input->post('cantidad')) {
-                $update['pendiente'] = 0;
+            $post = $this->input->post();
+            $controles = array();
+            foreach ($post as $key => $value) {
+                $array = explode('-', $key);
+                if($array[0] == 'control') {
+                    $controles[] = $array[1];
+                }
             }
             
             /*
-             * Volver a poner esto
+             *  Si hay controles
              */
-            //$this->irm_model->update_pendientesirm($update, $this->input->post('pendienteirm'));
+            if(count($controles)) {
+                $idirm_item = $this->irm_model->set_irm_item($datos);
+                
+                /*
+                 * Agrego controles
+                 */
+                foreach($controles as $control) {
+                    $datos = array(
+                        'idirm_item' => $idirm_item,
+                        'idcontrol' => $control
+                    );
+                    $this->irm_model->set_irm_item_control($datos);
+                }
+                /*
+                 *  Modificar los pendientes
+                 */
+                $update = array(
+                    'cantidadpendiente' => $pendienteirm['cantidadpendiente']-$this->input->post('cantidad'),
+                    'cantidadrecepcionado' => $this->input->post('cantidad')
+                );
+                if($pendienteirm['cantidadpendiente'] <= $this->input->post('cantidad')) {
+                    $update['pendiente'] = 0;
+                }
+                $this->irm_model->update_pendientesirm($update, $this->input->post('pendienteirm'));
+            } else { 
+                /*
+                 *  Poner alerta de que no existen controles
+                 */
+            }
+            
+
             
         }
-        
-        $data['post'] = $this->input->post();
         
         $data['irm'] = new IrmBean();
         $data['irm']->setId($idirm);
@@ -166,7 +186,6 @@ class irm extends CI_Controller {
         
         
         $data['items'] = $this->irm_model->gets_items_pendientes_por_proveedor($data['irm']->getProveedor()->getId());
-        
         
         $data['controles'] = $this->controles_model->gets();
         

@@ -9,6 +9,9 @@ class Beans {
         require_once 'beans/fabricasBean.php';
         require_once 'beans/irmBean.php';
         require_once 'beans/irmItemBean.php';
+        require_once 'beans/monedasBean.php';
+        require_once 'beans/ocsBean.php';
+        require_once 'beans/ocsItemsBean.php';
         require_once 'beans/otBean.php';
         require_once 'beans/planosBean.php';
         require_once 'beans/productosBean.php';

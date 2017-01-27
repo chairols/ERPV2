@@ -6,6 +6,8 @@ class irmItemBean {
     private $articulo;
     private $cantidad;
     private $certificado;
+    private $controles = array();
+    private $ots = array();
     private $usuario;
     private $timestamp;
     
@@ -33,6 +35,14 @@ class irmItemBean {
         return $this->certificado;
     }
 
+    public function getControles() {
+        return $this->controles;
+    }
+
+    public function getOts() {
+        return $this->ots;
+    }
+
     public function getUsuario() {
         return $this->usuario;
     }
@@ -57,6 +67,14 @@ class irmItemBean {
         $this->certificado = $certificado;
     }
 
+    public function setControles($controles) {
+        $this->controles[] = $controles;
+    }
+
+    public function setOts($ots) {
+        $this->ots[] = $ots;
+    }
+        
     public function setUsuario($usuario) {
         $this->usuario = $usuario;
     }
@@ -82,6 +100,27 @@ class irmItemBean {
         
         $this->cantidad = $item['cantidad'];
         $this->certificado = $item['certificado'];
+        
+        $resultado = $this->CI->irm_model->gets_controles_por_idirm_item($this->id);
+        foreach($resultado as $res) {
+            $control = new ControlesBean();
+            $control->setId($res['idcontrol']);
+            $control->setControl($res['control']);
+            $control->setActivo($res['activo']);
+            
+            $this->controles[] = $control;
+        }
+        
+        $ots = $this->CI->ocs_model->gets_ots_asociadas($oc_item['idoc_item']);
+        
+        foreach($ots as $ot) {
+            $orden = new otBean();
+            $orden->setId($ot['idot']);
+            $orden->armarOTporID();
+            
+            $this->ots[] = $orden;
+        }
+        
         
         $this->usuario = new usuariosBean();
         $this->usuario->setId($item['idusuario']);
