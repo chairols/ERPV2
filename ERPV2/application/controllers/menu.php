@@ -85,10 +85,10 @@ class Menu extends CI_Controller {
         );
         $data['mmenu'] = $this->menu_model->get_where($datos);
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_alela/header', $data);
+        $this->load->view('layout_alela/menu');
         $this->load->view('menu/modificar');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_alela/footer');
     }
     
     public function agregar() {

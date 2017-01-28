@@ -1,100 +1,90 @@
-<div id="main-content">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
-                <h3 class="page-title">
-                    <?=$title?>
-                </h3>
-            </div>
+<div class="right_col" role="main">
+    <div class="page-title">
+        <div class="title_left">
+            <h3><?=$title?></h3>
         </div>
-        
-        <div class="row-fluid">
-            <ul class="nav nav-tabs nav-tabs-justified">
-                <li><a href="/menu/">Listar Menú</a></li>
-                <li><a href="/menu/agregar/">Agregar Menú</a></li>
-                <li class="active"><a href="/menu/modificar/">Modificar Menú</a></li>
-            </ul>
-        </div>
-        
-        <div class="row-fluid">
-            <div class="span6">
-                <div class="widget blue">
-                    <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> Modificar Menú</h4>
-                        <span class="tools">
-                            <a href="javascript:;" class="icon-chevron-down"></a>
-                            <a href="javascript:;" class="icon-remove"></a>
-                        </span>
-                    </div>
-                    <div class="widget-body">
-                        <form method="POST" class="form-horizontal">
-                            <div class="control-group">
-                                <label class="control-label">Ícono</label>
-                                <div class="controls">
-                                    <input type="text" maxlength="50" class="span12" value="<?=$mmenu['icono']?>" name="icono" autofocus>
-                                    <span class="help-inline">
-                                        <?=form_error('icono', '<div class="alert alert-danger', '</div>')?>
-                                    </span>
-                                </div>
+    </div>
+    
+    <div class="clearfix"></div>
+    
+    <div class="row">
+        <ul class="nav nav-tabs bar_tabs nav-tabs-justified">
+            <li><a href="/menu/">Listar Menú</a></li>
+            <li><a href="/menu/agregar/">Agregar Menú</a></li>
+            <li class="active"><a href="/menu/modificar/">Modificar Menú</a></li>
+        </ul>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Agregar Menú</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form method="POST" class="form-horizontal form-label-left">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-sx-12">Ícono</label>
+                            <div class="col-md-6 col-sm-6 col-sx-12">
+                                <input type="text" maxlength="50" class="form-control" value="<?=$mmenu['icono']?>" name="icono" autofocus>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Menú</label>
-                                <div class="controls">
-                                    <input type="text" maxlength="50" class="span12" value="<?=$mmenu['menu']?>" name="menu" required>
-                                    <span class="help-inline">
-                                        <?=form_error('menu', '<div class="alert alert-danger">', '</div>')?>
-                                    </span>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-sx-12">Menú</label>
+                            <div class="col-md-6 col-sm-6 col-sx-12">
+                                <input type="text" maxlength="50" class="form-control" value="<?=$mmenu['menu']?>" name="menu" required>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Href</label>
-                                <div class="controls">
-                                    <input type="text" maxlength="100" class="span12" value="<?=$mmenu['href']?>" name="href" required>
-                                    <span class="help-inline">
-                                        <?=form_error('href', '<div class="alert alert-danger">', '</div>')?>
-                                    </span>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-sx-12">Href</label>
+                            <div class="col-md-6 col-sm-6 col-sx-12">
+                                <input type="text" maxlength="100" class="form-control" value="<?=$mmenu['href']?>" name="href" required>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Orden</label>
-                                <div class="controls">
-                                    <input type="number" maxlength="11" class="span12" value="<?=$mmenu['orden']?>" name="orden" required>
-                                    <span class="help-inline">
-                                        <?=form_error('href', '<div class="alert alert-danger">', '</div>')?>
-                                    </span>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-sx-12">Orden</label>
+                            <div class="col-md-6 col-sm-6 col-sx-12">
+                                <input type="number" maxlength="11" class="form-control" value="<?=$mmenu['orden']?>" name="orden" required>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Padre</label>
-                                <div class="controls">
-                                    <select name="padre" class="select2 span12">
-                                        <option value="0"<?=($mmenu['padre']==0)?" selected":""?>>--- No tiene ---</option>
-                                        <?php foreach($padres as $padre) { ?>
-                                        <option value="<?=$padre['idmenu']?>"<?=($mmenu['padre']==$padre['idmenu'])?" selected":""?>><?=$padre['menu']?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-sx-12">Padre</label>
+                            <div class="col-md-6 col-sm-6 col-sx-12">
+                                <select name="padre" id="select2" class="form-control">
+                                    <option value="0" selected>--- No tiene ---</option>
+                                    <?php foreach($padres as $padre) { ?>
+                                    <option value="<?=$padre['idmenu']?>"<?=($mmenu['padre']==$padre['idmenu'])?" selected":""?>><?=$padre['menu']?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Visible</label>
-                                <div class="controls">
-                                    <div class="checker">
-                                        <input type="checkbox" name="visible"<?=($mmenu['visible']=='1')?" checked":""?>> 
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-sx-12">Visible</label>
+                            <div class="col-md-6 col-sm-6 col-sx-12">
+                                <input type="checkbox" class="flat" name="visible"<?=($mmenu['visible']=='1')?" checked":""?>>
                             </div>
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="icon-save"></i> Guardar
-                                </button>
-                                <button type="reset" class="btn btn-danger">
-                                    <i class="icon-remove"></i> Limpiar
-                                </button>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button type="submit" class="btn btn-success">Agregar</button>
+                                <button type="reset" class="btn btn-primary">Limpiar</button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function inicio() {
+        $("#select2").select2();
+    }
+</script>
