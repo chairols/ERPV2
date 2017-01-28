@@ -12,7 +12,7 @@
                                         }
                                     }
                                 ?>
-                                <li>
+                                <li<?=($mm['active'])?' class="current-page"':''?>>
                                     <a href="<?=$mm['href']?>"><i class="<?=$mm['icono']?>"></i> <?=$mm['menu']?> <?=(count($mm['submenu']))?" <span class='fa fa-chevron-down'></span>":""?></a>
                                     <ul class="nav child_menu">
                                         <?php foreach($mm['submenu'] as $submenu) { ?>
