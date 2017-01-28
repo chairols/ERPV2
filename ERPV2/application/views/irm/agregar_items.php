@@ -174,7 +174,15 @@
                                 <tr>
                                     <td><?=$item->getCantidad()?></td>
                                     <td><?=$item->getArticulo()->getProducto()->getProducto()?> <?=$item->getArticulo()->getArticulo()?></td>
-                                    <td><?=$item->getCertificado()?></td>
+                                    <td>
+                                        <?php if($item->getCertificado() != null) {?>
+                                        <a href="<?=$item->getCertificado()?>" target="_blank" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Certificado" class="tooltips">
+                                            <button class="btn btn-small">
+                                                <i class="icon-file"></i>
+                                            </button>
+                                        </a>
+                                        <?php } ?>
+                                    </td>
                                     <td><?=$item->getUsuario()->getNombre()?> <?=$item->getUsuario()->getApellido()?></td>
                                     <td><?=$item->getTimestamp()?></td>
                                     <td><?php

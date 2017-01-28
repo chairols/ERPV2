@@ -198,56 +198,63 @@ class irm extends CI_Controller {
     public function cantidad($idpendienteirm) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
+        if($idpendienteirm != 'null') {
+            $where = array(
+                'idpendienteirm' => $idpendienteirm
+            );
+
+            $data['pendienteirm'] = $this->irm_model->get_where_pendienteirm($where);
+            
+            $this->load->view('irm/cantidad', $data);
+        } 
         
-        $where = array(
-            'idpendienteirm' => $idpendienteirm
-        );
-        
-        $data['pendienteirm'] = $this->irm_model->get_where_pendienteirm($where);
-        
-        $this->load->view('irm/cantidad', $data);
     }
     
     public function unidaddemedida($idpendienteirm) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
         
-        $where = array(
-            'idpendienteirm' => $idpendienteirm
-        );
         
-        $pendienteirm = $this->irm_model->get_where_pendienteirm($where);
         
-        $datos = array(
-            'idoc_item' => $pendienteirm['idoc_item']
-        );
-        $oc_item = $this->ocs_model->get_item_where($datos);
-        
-        $data['um'] = new UnidadesDeMedidaBean();
-        $data['um']->setId($oc_item['idmedida']);
-        $data['um']->armarUnidadDeMedidaPorID();
-        
-        $this->load->view('irm/unidaddemedida', $data);
+        if($idpendienteirm != 'null') {
+            $where = array(
+                'idpendienteirm' => $idpendienteirm
+            );
+            $pendienteirm = $this->irm_model->get_where_pendienteirm($where);
+
+            $datos = array(
+                'idoc_item' => $pendienteirm['idoc_item']
+            );
+            $oc_item = $this->ocs_model->get_item_where($datos);
+
+            $data['um'] = new UnidadesDeMedidaBean();
+            $data['um']->setId($oc_item['idmedida']);
+            $data['um']->armarUnidadDeMedidaPorID();
+
+            $this->load->view('irm/unidaddemedida', $data);
+        }
     }
     
     public function ots($idpendienteirm) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
         
-        $where = array(
-            'idpendienteirm' => $idpendienteirm
-        );
-        
-        $pendienteirm = $this->irm_model->get_where_pendienteirm($where);
-        
-        $datos = array(
-            'idoc_item' => $pendienteirm['idoc_item']
-        );
-        $oc_item = $this->ocs_model->get_item_where($datos);
-        
-        $data['ots'] = $this->ocs_model->gets_ots_asociadas($oc_item['idoc_item']);
-        
-        $this->load->view('irm/ots', $data);
+        if($idpendienteirm != 'null') {
+            $where = array(
+                'idpendienteirm' => $idpendienteirm
+            );
+
+            $pendienteirm = $this->irm_model->get_where_pendienteirm($where);
+
+            $datos = array(
+                'idoc_item' => $pendienteirm['idoc_item']
+            );
+            $oc_item = $this->ocs_model->get_item_where($datos);
+
+            $data['ots'] = $this->ocs_model->gets_ots_asociadas($oc_item['idoc_item']);
+
+            $this->load->view('irm/ots', $data);
+        }
     }
 }
 ?>

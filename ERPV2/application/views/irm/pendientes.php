@@ -27,7 +27,7 @@
                         </span>
                     </div>
                     <div class="widget-body">
-                        <table class="table table-hover table-bordered table-condensed" id="sample_1">
+                        <table class="table table-hover table-bordered table-condensed" id="sample_1_desc">
                             <thead>
                                 <tr>
                                     <th>Fecha de Compra</th>

@@ -96,6 +96,13 @@
         </div>
     </div>
     
+    <div class="row">
+        <div class="col-md-6">
+            <input id="tags_1" type="text" class="tags form-control" value="pepe, le, pu" />
+            
+        </div>
+    </div>
+    
 </div>
 
 

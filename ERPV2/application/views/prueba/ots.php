@@ -50,9 +50,9 @@
                             <td><?=$ot['fecha_terminado']?></td>
                             <td>
                                 <?php if($ot['fecha_terminado'] == null) { ?>
-                                <div class="btn btn-danger btn-xs">PENDIENTE</div>
+                                <div class="badge bg-red">PENDIENTE</div>
                                 <?php } else { ?>
-                                <div class="btn btn-success btn-xs">CUMPLIDA</div>
+                                <div class="badge bg-green">CUMPLIDA</div>
                                 <?php } ?>
                             </td>
                             <td>

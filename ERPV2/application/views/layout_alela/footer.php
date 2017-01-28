@@ -23,6 +23,8 @@
     <script src="/assets/gentelella-master/vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
     <script src="/assets/gentelella-master/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="/assets/gentelella-master/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
     <!-- iCheck -->
     <script src="/assets/gentelella-master/vendors/iCheck/icheck.min.js"></script>
     
