@@ -1,45 +1,53 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
-<!-- BEGIN HEAD -->
-<head>
-   <meta charset="utf-8" />
-   <title>404 Page</title>
-   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-   <meta content="" name="description" />
-   <meta content="" name="author" />
-   <link href="/assets/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-   <link href="/assets/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
-   <link href="/assets/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-   <link href="/assets/css/style.css" rel="stylesheet" />
-   <link href="/assets/css/style-responsive.css" rel="stylesheet" />
-   <link href="/assets/css/style-default.css" rel="stylesheet" id="style_color" />
-</head>
-<!-- END HEAD -->
-<!-- BEGIN BODY -->
-<body class="error-404">
-    <div class="error-wrap error-wrap-404">
-        <div class="metro big terques">
-           <span> UPS! </span>
-        </div>
-        <div class="metro green">
-            <span> 4 </span>
-        </div>
-        <div class="metro yellow">
-            <span> 0 </span>
-        </div>
-        <div class="metro purple">
-            <span> 4 </span>
-        </div>
-        <div class="metro double red">
-            <span class="page-txt"> Página No Encontrada </span>
-        </div>
-        <div class="metro gray">
-            <a href="/" class="home"><i class="icon-home"></i> </a>
-        </div>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>ERROR </title>
+
+    <!-- Bootstrap -->
+    <link href="/assets/gentelella-master/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/assets/gentelella-master/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/assets/gentelella-master/vendors/nprogress/nprogress.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="/assets/gentelella-master/build/css/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <!-- page content -->
+        <div class="col-md-12">
+          <div class="col-middle">
+            <div class="text-center text-center">
+              <h1 class="error-number">404</h1>
+              <h2>No se puede encontrar la página</h2>
+              <p>La página que intentas acceder no existe o no tienes acceso
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+      </div>
     </div>
-</body>
-<!-- END BODY -->
+
+    <!-- jQuery -->
+    <script src="/assets/gentelella-master/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/assets/gentelella-master/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="/assets/gentelella-master/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="/assets/gentelella-master/vendors/nprogress/nprogress.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="/assets/gentelella-master/build/js/custom.min.js"></script>
+  </body>
 </html>
