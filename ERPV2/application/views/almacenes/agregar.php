@@ -1,54 +1,48 @@
-<div id="main-content">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
-                <h3 class="page-title">
-                    <?=$title?>
-                </h3>
-            </div>
+<div class="right_col" role="main">
+    <div class="page-title">
+        <div class="title_left">
+            <h3><?=$title?></h3>
         </div>
-        
-        <div class="row-fluid">
-            <ul class="nav nav-tabs nav-tabs-justified">
-                <li><a href="/almacenes/">Listar Almacenes</a></li>
-                <li class="active"><a href="/almacenes/agregar/">Agregar Almacén</a></li>
-                <li><a href="/almacenes/modificar/">Modificar Almacén</a></li>
-                <li><a href="/almacenes/ver/">Ver Almacén</a></li>
-            </ul>
-        </div>
-        
-        <div class="row-fluid">
-            <div class="span6">
-                <div class="widget blue">
-                    <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> Agregar Almacén</h4>
-                        <span class="tools">
-                            <a href="javascript:;" class="icon-chevron-down"></a>
-                            <a href="javascript:;" class="icon-remove"></a>
-                        </span>
-                    </div>
-                    <div class="widget-body">
-                        <form method="POST" class="form-horizontal">
-                            <div class="control-group">
-                                <label class="control-label">Almacén</label>
-                                <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('almacen')?>" name="almacen" autofocus required>
-                                    <span class="help-inline">
-                                        <?=form_error('almacen', '<div class="alert alert-danger">', '</div>')?>
-                                        <?=$alerta?>
-                                    </span>
-                                </div>
+    </div>
+    
+    <div class="clearfix"></div>
+    
+    <div class="row">
+        <ul class="nav nav-tabs bar_tabs nav-tabs-justified">
+            <li><a href="/almacenes/">Listar Almacenes</a></li>
+            <li class="active"><a href="/almacenes/agregar/">Agregar Almacén</a></li>
+            <li><a href="/almacenes/modificar/">Modificar Almacén</a></li>
+            <li><a href="/almacenes/ver/">Ver Almacén</a></li>
+        </ul>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Agregar Almacén</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form method="POST" class="form-horizontal form-label-left">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-sx-12">Almacén</label>
+                            <div class="col-md-6 col-sm-6 col-sx-12">
+                                <input type="text" maxlength="100" class="form-control" value="<?=set_value('almacen')?>" name="almacen" required autofocus>
                             </div>
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="icon-save"></i> Guardar
-                                </button>
-                                <button type="reset" class="btn btn-danger">
-                                    <i class="icon-remove"></i> Limpiar
-                                </button>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button type="submit" class="btn btn-success">Agregar</button>
+                                <button type="reset" class="btn btn-primary">Limpiar</button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
