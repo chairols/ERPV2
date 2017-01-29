@@ -139,17 +139,17 @@ class Almacenes extends CI_Controller {
         if($idalmacen == null) {
             redirect('/almacenes/', 'refresh');
         }
-        $data['title'] = 'Modificar Almacén';
+        $data['title'] = 'Ver Almacén';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         $data['menu'] = $this->r_session->get_menu();
         
         $data['almacen'] = $this->almacenes_model->get_where(array('idalmacen' => $idalmacen));
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_alela/header', $data);
+        $this->load->view('layout_alela/menu');
         $this->load->view('almacenes/ver');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_alela/footer');
     }
 }
 ?>
