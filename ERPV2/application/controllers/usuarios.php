@@ -74,10 +74,10 @@ class Usuarios extends CI_Controller {
         
         $data['roles'] = $this->roles_model->gets();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_alela/header', $data);
+        $this->load->view('layout_alela/menu');
         $this->load->view('usuarios/agregar');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_alela/footer');
     }
     
     public function modificar($idusuario = null) {
@@ -95,6 +95,10 @@ class Usuarios extends CI_Controller {
         $this->form_validation->set_rules('apellido', 'Apellido', 'required');
         $this->form_validation->set_rules('usuario', 'Usuario', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
+        
+        /*
+         *  desarrollar
+         */
         
         $datos = array(
             'idusuario' => $idusuario
