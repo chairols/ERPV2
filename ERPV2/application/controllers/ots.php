@@ -39,10 +39,10 @@ class Ots extends CI_Controller {
         
         $data['ots'] = $this->ots_model->gets();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_alela/header', $data);
+        $this->load->view('layout_alela/menu');
         $this->load->view('ots/index');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_alela/footer');
     }
     
     public function ver($idot = null) {
