@@ -103,10 +103,10 @@ class Stock extends CI_Controller {
         $data['marcas'] = $this->marcas_model->gets();
         $data['medidas'] = $this->medidas_model->gets();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_alela/header', $data);
+        $this->load->view('layout_alela/menu');
         $this->load->view('stock/agregar');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_alela/footer');
     }
     
     public function modificar($idstock = null) {
