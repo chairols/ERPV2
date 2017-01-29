@@ -29,10 +29,10 @@ class Usuarios extends CI_Controller {
         
         $data['usuarios'] = $this->usuarios_model->gets();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_alela/header', $data);
+        $this->load->view('layout_alela/menu');
         $this->load->view('usuarios/index');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_alela/footer');
     }
     
     public function agregar() {
