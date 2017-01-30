@@ -392,7 +392,7 @@ class Stock extends CI_Controller {
     public function por_almacen() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        $data['title'] = 'Modificar Stock Almacén';
+        $data['title'] = 'Listar Stock por Almacén';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         $data['menu'] = $this->r_session->get_menu();
@@ -412,10 +412,10 @@ class Stock extends CI_Controller {
         
         $data['almacenes'] = $this->almacenes_model->gets();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_alela/header', $data);
+        $this->load->view('layout_alela/menu');
         $this->load->view('stock/por_almacen');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_alela/footer');
     }
 }
 ?>
