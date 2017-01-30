@@ -383,10 +383,10 @@ class Stock extends CI_Controller {
         $data['stock']['marca'] = $this->marcas_model->get_where(array('idmarca' => $data['stock']['idmarca']));
         $data['stock']['medida'] = $this->medidas_model->get_where(array('idmedida' => $data['stock']['idmedida']));
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_alela/header', $data);
+        $this->load->view('layout_alela/menu');
         $this->load->view('stock/editar');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_alela/footer');
     }
     
     public function por_almacen() {
