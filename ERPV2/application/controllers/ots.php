@@ -80,7 +80,7 @@ class Ots extends CI_Controller {
     public function agregar() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        $data['title'] = 'Agregar O.T.';
+        $data['title'] = 'Agregar Orden de Trabajo';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         $data['menu'] = $this->r_session->get_menu();
@@ -124,11 +124,6 @@ class Ots extends CI_Controller {
                     $datos['fecha_terminado'] = $this->input->post('fecha_terminado');
                 } 
                 
-                if(strlen($this->input->post('numero_serie')) == 0) {
-                    $datos['numero_serie'] = NULL;
-                } else {
-                    $datos['numero_serie'] = $this->input->post('numero_serie');
-                } 
                 
                 if($this->input->post('pedido') == 'null') {
                     $datos['idpedido'] = NULL;
@@ -140,16 +135,6 @@ class Ots extends CI_Controller {
                 
                 $this->numeros_serie_model->borrar_por_ot($id);
                 
-                if(!is_null($datos['numero_serie'])) {
-                    $numeros_serie = explode(",", $datos['numero_serie']);
-                    foreach($numeros_serie as $ns) {
-                        $num_serie = array(
-                            'numero_serie' => $ns,
-                            'idot' => $id
-                        );
-                        $this->numeros_serie_model->set($num_serie);
-                    }
-                }
                 
                 $fabrica = $this->fabricas_model->get_where(array('idfabrica' => $this->input->post('fabrica')));
                 
@@ -163,7 +148,6 @@ class Ots extends CI_Controller {
                     . 'Fecha de Necesidad: '.$this->input->post('fecha_necesidad').'<br>'
                     . 'Fecha de Terminado: '.$this->input->post('fecha_terminado').'<br>'
                     . 'Observaciones: '.$this->input->post('observaciones').'<br>'
-                    . 'Número de serie: '.$this->input->post('numero_serie').'<br>'
                     . 'Orden de Compra: '.$this->input->post('ordendecompra'),
                    'tipo' => 'add',
                    'idusuario' => $session['SID']
@@ -178,10 +162,12 @@ class Ots extends CI_Controller {
             
         }
         
-        $this->load->view('layout/header_form', $data);
-        $this->load->view('layout/menu');
+        $data['datos'] = $this->input->post('numero_serie');
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('ots/agregar');
-        $this->load->view('layout/footer_form');
+        $this->load->view('layout_lte/footer');
     }
     
     public function modificar($idot = null) {

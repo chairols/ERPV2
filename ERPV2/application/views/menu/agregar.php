@@ -5,7 +5,7 @@
     
     <section class="content">
         <div class="row-fluid">
-            <ul class="nav nav-tabs bar_tabs nav-tabs-justified">
+            <ul class="nav nav-tabs nav-tabs-justified">
                 <li><a href="/menu/">Listar Menú</a></li>
                 <li class="active"><a href="/menu/agregar/">Agregar Menú</a></li>
                 <li><a href="/menu/modificar/">Modificar Menú</a></li>

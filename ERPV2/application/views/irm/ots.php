@@ -14,5 +14,5 @@
     <?php } ?>
 </table>
 <?php } else { ?>
-<span class="badge badge-important">No hay Órdenes de Trabajo Asociadas</span>
+<span class="badge bg-red">No hay Órdenes de Trabajo Asociadas</span>
 <?php } ?>

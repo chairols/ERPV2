@@ -42,7 +42,7 @@
                     <div class="icon">
                         <i class="fa fa-thumbs-o-up"></i>
                     </div>
-                    <a href="/ots/vencidas/" class="small-box-footer">
+                    <a href="#" class="small-box-footer">
                         Más información <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
@@ -56,7 +56,7 @@
                     <div class="icon">
                         <i class="fa fa-table"></i>
                     </div>
-                    <a href="/ots/vencidas/" class="small-box-footer">
+                    <a href="/contratos/" class="small-box-footer">
                         Más información <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>

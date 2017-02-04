@@ -208,6 +208,8 @@
 <script src="/assets/AdminLTE-2.3.11/bootstrap/js/bootstrap.min.js"></script>
 <!-- Select2 -->
 <script src="/assets/AdminLTE-2.3.11/plugins/select2/select2.full.min.js"></script>
+<!-- bootstrap datepicker -->
+<script src="/assets/AdminLTE-2.3.11/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- iCheck 1.0.1 -->
 <script src="/assets/AdminLTE-2.3.11/plugins/iCheck/icheck.min.js"></script>
 <!-- DataTables -->
@@ -286,6 +288,9 @@
     
     // Select2
     $(".select2").select2();
+    $(".tags").select2({
+        tags: true
+    });
     // End Select2
     
     // iCheck
@@ -294,6 +299,13 @@
       radioClass: 'iradio_minimal-blue'
     });
     // End iCheck
+    
+    // Date picker
+    $('.datepicker').datepicker({
+      autoclose: true,
+      format: 'yyyy-mm-dd'
+    });
+    // En Date Picker
     
     inicio();
 </script>
