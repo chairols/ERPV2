@@ -29,12 +29,14 @@ class irm extends CI_Controller {
         $data['menu'] = $this->r_session->get_menu();
         
         $data['irms'] = $this->irm_model->gets();
+        foreach ($data['irms'] as $key => $value) {
+            $data['irms'][$key]['controles'] = $this->irm_model->gets_controles_por_idirm_item($value['idirm_item']);
+        }
         
-        
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('irm/index');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
         
     }
     

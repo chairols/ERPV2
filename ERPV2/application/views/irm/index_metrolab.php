@@ -1,9 +1,13 @@
-<div class="content-wrapper">
-    <section class="content-header">
-      <h1><?=$title?></h1>
-    </section>
-    
-    <section class="content">
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <h3 class="page-title">
+                    <?=$title?>
+                </h3>
+            </div>
+        </div>
+        
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li class="active"><a href="/irm/">Listar I.R.M.</a></li>
@@ -12,16 +16,18 @@
             </ul>
         </div>
         
-        <br>
-        
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title"><?=$title?></h3>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget blue">
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i> Informes de Recepción de Materiales</h4>
+                        <span class="tools">
+                            <a href="javascript:;" class="icon-chevron-down"></a>
+                            <a href="javascript:;" class="icon-remove"></a>
+                        </span>
                     </div>
-                    <div class="box-body">
-                        <table class="table table-hover table-bordered table-condensed" id="datatable-desc">
+                    <div class="widget-body">
+                        <table class="table table-hover table-bordered table-condensed" id="sample_1_desc">
                             <thead>
                                 <tr>
                                     <th>IRM</th>
@@ -42,20 +48,17 @@
                                     <td><?=$irm['producto']?> <?=$irm['articulo']?></td>
                                     <td><?=$irm['proveedor']?></td>
                                     <td><?=$irm['nombre']?> <?=$irm['apellido']?></td>
-                                    <td><?=date('d/m/Y', strtotime($irm['timestamp']))?></td>
-                                    <td>
-                                        <?php foreach($irm['controles'] as $control) { ?>
-                                        <span class="badge bg-green"><?=$control['control']?></span>
-                                        <?php } ?>
-                                    </td>
+                                    <td><?=$irm['timestamp']?></td>
+                                    <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
                         </table>
+                        <pre><?php print_r($irms)?></pre>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </div>
