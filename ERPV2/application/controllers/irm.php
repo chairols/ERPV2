@@ -81,10 +81,10 @@ class irm extends CI_Controller {
         
         $data['pendientes'] = $this->irm_model->gets_pendientes_de_recepcion();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('irm/pendientes');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function agregar_items($idirm = null) {

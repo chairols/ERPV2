@@ -1,9 +1,13 @@
-<div class="content-wrapper">
-    <section class="content-header">
-      <h1><?=$title?></h1>
-    </section>
-    
-    <div class="content">
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <h3 class="page-title">
+                    <?=$title?>
+                </h3>
+            </div>
+        </div>
+        
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li><a href="/irm/">Listar I.R.M.</a></li>
@@ -12,16 +16,18 @@
             </ul>
         </div>
         
-        <br>
-        
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title"><?=$title?></h3>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget blue">
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i> Informes de Recepción de Materiales</h4>
+                        <span class="tools">
+                            <a href="javascript:;" class="icon-chevron-down"></a>
+                            <a href="javascript:;" class="icon-remove"></a>
+                        </span>
                     </div>
-                    <div class="box-body">
-                        <table class="table table-hover table-bordered table-condensed" id="datatable-desc">
+                    <div class="widget-body">
+                        <table class="table table-hover table-bordered table-condensed" id="sample_1_desc">
                             <thead>
                                 <tr>
                                     <th>Fecha de Compra</th>
@@ -35,7 +41,7 @@
                                 <tr>
                                     <td><?=strftime('%Y-%m-%d', strtotime($pendiente['fecha']))?></td>
                                     <td><?=$pendiente['cantidadpendiente']?></td>
-                                    <td><?=$pendiente['producto']?> <?=$pendiente['articulo']?></td>
+                                    <td><?=$pendiente['articulo']?></td>
                                     <td><?=$pendiente['proveedor']?></td>
                                 </tr>
                                 <?php } ?>
