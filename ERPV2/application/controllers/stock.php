@@ -322,10 +322,10 @@ class Stock extends CI_Controller {
         $data['almacenes'] = $this->almacenes_model->gets();
         $data['stock_almacenes'] = $this->stock_model->gets_stock_almacenes_por_stock($idstock);
         
-        $this->load->view('layout_alela/header', $data);
-        $this->load->view('layout_alela/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('stock/almacenes');
-        $this->load->view('layout_alela/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function editar($idstock_almacen = null) {
