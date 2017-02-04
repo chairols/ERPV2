@@ -32,10 +32,10 @@ class Stock extends CI_Controller {
         
         $data['stock'] = $this->stock_model->gets();
         
-        $this->load->view('layout_alela/header', $data);
-        $this->load->view('layout_alela/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('stock/index');
-        $this->load->view('layout_alela/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function agregar() {

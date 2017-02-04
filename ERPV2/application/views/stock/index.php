@@ -1,71 +1,67 @@
-<div class="right_col" role="main">
-    <div class="page-title">
-        <div class="title_left">
-            <h3><?=$title?></h3>
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1><?=$title?></h1>
+    </section>
+    
+    <section class="content">
+        <div class="row-fluid">
+            <ul class="nav nav-tabs nav-tabs-justified">
+                <li class="active"><a href="/stock/">Listar Stock</a></li>
+                <li><a href="/stock/agregar">Agregar Stock</a></li>
+                <li><a href="/stock/modificar/">Modificar Stock</a></li>
+                <li><a href="/stock/ver/">Ver Stock</a></li>
+                <li><a href="/stock/por_almacen/">Stock Por Almacén</a></li>
+                <li><a href="/stock/con_stock/">Listar Con Stock</a></li>
+            </ul>
         </div>
-    </div>
-    
-    <div class="clearfix"></div>
-    
-    <div class="row">
-        <ul class="nav nav-tabs bar_tabs nav-tabs-justified">
-            <li class="active"><a href="/stock/">Listar Stock</a></li>
-            <li><a href="/stock/agregar">Agregar Stock</a></li>
-            <li><a href="/stock/modificar/">Modificar Stock</a></li>
-            <li><a href="/stock/ver/">Ver Stock</a></li>
-            <li><a href="/stock/por_almacen/">Stock Por Almacén</a></li>
-            <li><a href="/stock/con_stock/">Listar Con Stock</a></li>
-            <li><a href="/stock/ingresar/">Ingresar Stock</a></li>
-        </ul>
-    </div>
-    
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>Listar Stock</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <table id="datatable-responsive" class="table table-striped table-bordered table-condensed">
-                        <thead>
-                            <tr>
-                                <th><strong>Artículo</strong></th>
-                                <th><strong>Marca</strong></th>
-                                <th><strong>Cantidad</strong></th>
-                                <th><strong>Unidad de Medida</strong></th>
-                                <th><strong>Acción</strong></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($stock as $s) { ?>
-                            <tr>
-                                <td><?=$s['producto']?> <?=$s['articulo']?></td>
-                                <td><?=$s['marca']?></td>
-                                <td><?=$s['cantidad']?></td>
-                                <td><?=$s['medida_larga']?></td>
-                                <td>
-                                    <a href="/stock/almacenes/<?=$s['idstock']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
-                                        <button class="btn btn-xs btn-warning">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                    </a>
-                                    <a href="/log/ver/stock/<?=$s['idstock']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log" class="tooltips">
-                                        <button class="btn btn-xs btn-info">
-                                            <i class="fa fa-clock-o"></i>
-                                        </button>
-                                    </a>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+        
+        <br>
+        
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><?=$title?></h3>
+                    </div>
+                    <div class="box-body">
+                        <table id="datatable-desc" class="table table-striped table-bordered table-condensed">
+                            <thead>
+                                <tr>
+                                    <th><strong>Artículo</strong></th>
+                                    <th><strong>Marca</strong></th>
+                                    <th><strong>Cantidad</strong></th>
+                                    <th><strong>Unidad de Medida</strong></th>
+                                    <th><strong>Acción</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($stock as $s) { ?>
+                                <?php if($s['cantidad'] > 0) { ?>
+                                <tr>
+                                    <td><?=$s['producto']?> <?=$s['articulo']?></td>
+                                    <td><?=$s['marca']?></td>
+                                    <td><?=$s['cantidad']?></td>
+                                    <td><?=$s['medida_larga']?></td>
+                                    <td>
+                                        <a href="/stock/almacenes/<?=$s['idstock']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
+                                            <button class="btn btn-xs btn-warning">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                        </a>
+                                        <a href="/log/ver/stock/<?=$s['idstock']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log" class="tooltips">
+                                            <button class="btn btn-xs btn-info">
+                                                <i class="fa fa-clock-o"></i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>
