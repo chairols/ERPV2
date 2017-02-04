@@ -111,49 +111,6 @@
     </section>
 </div>
 
-<div id="main-content">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span8">
-                <div class="widget blue">
-                    <div class="widget-body">
-                        <form method="POST" class="form-horizontal">
-                            
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="icon-save"></i> Guardar
-                                </button>
-                                <button type="reset" class="btn btn-danger">
-                                    <i class="icon-remove"></i> Limpiar
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="block-flat">
-    <form role="form" method="post">
-        
-        <div class="form-group">
-            <label>Número de Serie</label>
-            <input type="text" class="form-control" name="numero_serie">
-        </div>
-        
-        <div class="form-group">
-            <label>Pedido</label>
-            <select name="pedido" class="select2">
-                <option value="null" selected>Ninguna</option>
-            </select>
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Agregar</button>
-    </form>
-</div>
-
 <script type="text/javascript">
     function inicio() {
         cambiar();

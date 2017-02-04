@@ -176,7 +176,7 @@ class Ots extends CI_Controller {
         if($idot == null) {
             redirect('/ots/', 'refresh');
         }
-        $data['title'] = 'Modificar O.T.';
+        $data['title'] = 'Modificar Orden de Trabajo';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         $data['menu'] = $this->r_session->get_menu();
@@ -265,10 +265,10 @@ class Ots extends CI_Controller {
         
         $data['numeros_serie'] = $this->numeros_serie_model->gets_por_ot($idot);
         
-        $this->load->view('layout/header_form', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('ots/modificar');
-        $this->load->view('layout/footer_form');
+        $this->load->view('layout_lte/footer');
     }
     
     public function ajax_fabricas($idfabrica) {
