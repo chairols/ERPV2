@@ -273,7 +273,9 @@
                             <?php foreach($mm['submenu'] as $submenu) { ?>
                                 <?php if($submenu['visible'] == 1 && $submenu['idrol']) { ?>
                             <li<?=($submenu['active']==1)?" class='active'":""?>>
-                                <a href="<?=$submenu['href']?>"><?=$submenu['menu']?></a>
+                                <a href="<?=$submenu['href']?>">
+                                    <i class="fa fa-circle-o"></i> <?=$submenu['menu']?>
+                                </a>
                             </li>
                                 <?php } ?>
                             <?php } ?>

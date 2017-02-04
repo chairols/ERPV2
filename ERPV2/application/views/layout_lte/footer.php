@@ -221,6 +221,7 @@
 </body>
 </html>
 <script type="text/javascript">
+    // DataTables
     $("#datatable").dataTable({
         language: {
             "sProcessing":     "Procesando...",
@@ -277,4 +278,5 @@
       order: [[0, "desc"]],
       responsive: true
     });
+    // End DataTables
 </script>
