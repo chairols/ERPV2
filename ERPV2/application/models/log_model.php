@@ -69,7 +69,9 @@ class Log_model extends CI_Model {
                                         log
                                     WHERE
                                         tabla = '$tabla' AND
-                                        idtabla = '$idtabla'");
+                                        idtabla = '$idtabla'
+                                    ORDER BY
+                                        fecha DESC");
         return $query->result_array();
     }
 }
