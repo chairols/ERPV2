@@ -171,10 +171,10 @@ class Prueba extends CI_Controller {
         
         $data['pedidos'] = $this->pedidos_model->gets();
         
-        $this->load->view('layout_alela/header', $data);
-        $this->load->view('layout_alela/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('prueba/pedidos');
-        $this->load->view('layout_alela/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function ots() {
@@ -199,7 +199,8 @@ class Prueba extends CI_Controller {
         ));
         
         $session = $this->session->all_userdata();
-        //$this->r_session->check($session);
+        
+        $this->r_session->check($session);
         $data['title'] = 'Listar Pedidos';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);

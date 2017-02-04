@@ -122,10 +122,10 @@ class Articulos extends CI_Controller {
             
         }
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_alela/header', $data);
+        $this->load->view('layout_alela/menu');
         $this->load->view('articulos/agregar');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_alela/footer');
     }
     
     public function modificar($idarticulo = null) {

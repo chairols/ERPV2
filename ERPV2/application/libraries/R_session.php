@@ -56,7 +56,6 @@ class R_session {
             $string .= $this->CI->uri->segment(2).'/';
         
         
-        
         $data['menu'] = $this->CI->menu_model->obtener_menu_por_padre(0, $session['tipo_usuario']);
         foreach ($data['menu'] as $key => $value) {
             $data['menu'][$key]['submenu'] = $this->CI->menu_model->obtener_menu_por_padre($value['idmenu'], $session['tipo_usuario']);
@@ -65,7 +64,15 @@ class R_session {
             } else {
                 $data['menu'][$key]['active'] = false;
             }
-            
+            foreach($data['menu'][$key]['submenu'] as $k => $v) {
+                if($v['href'] == $string) {
+                    $data['menu'][$key]['active'] = true;
+                    $data['menu'][$key]['submenu'][$k]['active'] = true;
+                } else {
+                    $data['menu'][$key]['active'] = false;
+                    $data['menu'][$key]['submenu'][$k]['active'] = false;
+                }
+            }
         }
         
         return $data;
