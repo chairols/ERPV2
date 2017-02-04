@@ -101,10 +101,10 @@ class Roles extends CI_Controller {
         foreach ($data['mmenu'] as $key => $value) {
             $data['mmenu'][$key]['submenu'] = $this->menu_model->obtener_menu_por_padre($value['idmenu'], $idrol);
         }
-        $this->load->view('layout_alela/header', $data);
-        $this->load->view('layout_alela/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('roles/menu');
-        $this->load->view('layout_alela/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function desasociar($idrol, $idmenu) {
