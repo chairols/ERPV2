@@ -30,10 +30,10 @@ class Dashboard extends CI_Controller {
         $data['contratos_vigentes'] = $this->contratos_model->gets_contratos_vigentes();
         
         
-        $this->load->view('layout_alela/header', $data);
-        $this->load->view('layout_alela/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('dashboard/index');
-        $this->load->view('layout_alela/footer');
+        $this->load->view('layout_lte/footer');
     }
 }
 

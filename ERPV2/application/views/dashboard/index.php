@@ -1,48 +1,66 @@
-<div class="right_col" role="main">
-    <div class="row top_tiles">
-        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-sx-12">
-            <a href="/ots/pendientes/">
-                <div class="tile-stats">
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1><?=$title?></h1>
+    </section>
+    
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-aqua-gradient">
+                    <div class="inner">
+                        <h3><?=count($ots_pendientes)?></h3>
+                        <p>Órdenes de Trabajo Pendientes</p>
+                    </div>
                     <div class="icon">
                         <i class="fa fa-cogs"></i>
                     </div>
-                    <div class="count"><?=count($ots_pendientes)?></div>
-                    <h3>Órdenes de Trabajo Pendientes</h3>
+                    <a href="/ots/pendientes/" class="small-box-footer">
+                        Más información <i class="fa fa-arrow-circle-right"></i>
+                    </a>
                 </div>
-            </a>
-        </div>
-        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-sx-12">
-            <a href="/ots/vencidas/">
-                <div class="tile-stats">
-                    <div class="icon">
-                        <i class="fa fa-cogs"></i>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-red-gradient">
+                    <div class="inner">
+                        <h3><?=count($ots_vencidas)?></h3>
+                        <p>Órdenes de Trabajo Vencidas</p>
                     </div>
-                    <div class="count"><?=count($ots_vencidas)?></div>
-                    <h3>Órdenes de Trabajo Vencidas</h3>
-                </div>
-            </a>
-        </div>
-        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-sx-12">
-            <a href="#">
-                <div class="tile-stats">
                     <div class="icon">
-                        <i class="fa fa-cogs"></i>
+                        <i class="fa fa-thumbs-o-down"></i>
                     </div>
-                    <div class="count"><?=count($ots_cumplidas)?></div>
-                    <h3>Órdenes de Trabajo Cumplidas</h3>
+                    <a href="/ots/vencidas/" class="small-box-footer">
+                        Más información <i class="fa fa-arrow-circle-right"></i>
+                    </a>
                 </div>
-            </a>
-        </div>
-        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-sx-12">
-            <a href="#">
-                <div class="tile-stats">
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-green-gradient">
+                    <div class="inner">
+                        <h3><?=count($ots_cumplidas)?></h3>
+                        <p>Órdenes de Trabajo Cumplidas</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-thumbs-o-up"></i>
+                    </div>
+                    <a href="/ots/vencidas/" class="small-box-footer">
+                        Más información <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-yellow-gradient">
+                    <div class="inner">
+                        <h3><?=count($contratos_vigentes)?></h3>
+                        <p>Contratos Vigentes</p>
+                    </div>
                     <div class="icon">
                         <i class="fa fa-table"></i>
                     </div>
-                    <div class="count"><?=count($contratos_vigentes)?></div>
-                    <h3>Contratos Vigentes</h3>
+                    <a href="/ots/vencidas/" class="small-box-footer">
+                        Más información <i class="fa fa-arrow-circle-right"></i>
+                    </a>
                 </div>
-            </a>
+            </div>
         </div>
-    </div>
+    </section>
 </div>
