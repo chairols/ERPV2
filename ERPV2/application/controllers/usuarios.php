@@ -183,10 +183,10 @@ class Usuarios extends CI_Controller {
         
         $data['usuario'] = $this->usuarios_model->get($session['SID']);
         
-        $this->load->view('layout_alela/header', $data);
-        $this->load->view('layout_alela/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('usuarios/perfil');
-        $this->load->view('layout_alela/footer');
+        $this->load->view('layout_lte/footer');
     }
 }
 

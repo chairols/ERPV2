@@ -33,9 +33,9 @@
                                 <tr>
                                     <td><?=$rol['rol']?></td>
                                     <td>
-                                        <a href="/roles/menu/<?=$rol['idrol']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
-                                            <button class="btn btn-xs btn-warning">
-                                                <i class="fa fa-edit"></i>
+                                        <a href="/roles/menu/<?=$rol['idrol']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Asociar" class="tooltips">
+                                            <button class="btn btn-xs btn-success">
+                                                <i class="fa fa-plus"></i>
                                             </button>
                                         </a>
                                         <a href="/log/ver/roles/<?=$rol['idrol']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log" class="tooltips">
