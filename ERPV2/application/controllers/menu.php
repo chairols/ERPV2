@@ -127,10 +127,10 @@ class Menu extends CI_Controller {
         );
         $data['padres'] = $this->menu_model->gets_where($datos);
         
-        $this->load->view('layout_alela/header', $data);
-        $this->load->view('layout_alela/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('menu/agregar');
-        $this->load->view('layout_alela/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function roles($idmenu = null) {

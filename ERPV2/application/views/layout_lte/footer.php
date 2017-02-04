@@ -206,6 +206,10 @@
 <script src="/assets/AdminLTE-2.3.11/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="/assets/AdminLTE-2.3.11/bootstrap/js/bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="/assets/AdminLTE-2.3.11/plugins/select2/select2.full.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="/assets/AdminLTE-2.3.11/plugins/iCheck/icheck.min.js"></script>
 <!-- DataTables -->
 <script src="/assets/AdminLTE-2.3.11/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/assets/AdminLTE-2.3.11/plugins/datatables/dataTables.bootstrap.min.js"></script>
@@ -279,4 +283,15 @@
       responsive: true
     });
     // End DataTables
+    
+    // Select2
+    $(".select2").select2();
+    // End Select2
+    
+    // iCheck
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass: 'iradio_minimal-blue'
+    });
+    // End iCheck
 </script>
