@@ -65,10 +65,10 @@ class irm extends CI_Controller {
         
         $data['proveedores'] = $this->irm_model->gets_proveedores_con_irm_pendientes();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('irm/agregar');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function pendientes() {
@@ -191,10 +191,10 @@ class irm extends CI_Controller {
         
         $data['controles'] = $this->controles_model->gets();
         
-        $this->load->view('layout/header_form', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('irm/agregar_items');
-        $this->load->view('layout/footer_form');
+        $this->load->view('layout_lte/footer');
     }
     
     public function cantidad($idpendienteirm) {

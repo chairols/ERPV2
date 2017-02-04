@@ -294,4 +294,6 @@
       radioClass: 'iradio_minimal-blue'
     });
     // End iCheck
+    
+    inicio();
 </script>
