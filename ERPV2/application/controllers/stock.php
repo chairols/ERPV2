@@ -109,7 +109,7 @@ class Stock extends CI_Controller {
         $this->load->view('layout_lte/footer');
     }
     
-    public function modificar($idstock = null) {
+    private function _modificar($idstock = null) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
         if($idstock == null) {
@@ -328,7 +328,7 @@ class Stock extends CI_Controller {
         $this->load->view('layout_lte/footer');
     }
     
-    public function editar($idstock_almacen = null) {
+    public function modificar($idstock_almacen = null) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
         if($idstock_almacen == null) {
@@ -383,10 +383,10 @@ class Stock extends CI_Controller {
         $data['stock']['marca'] = $this->marcas_model->get_where(array('idmarca' => $data['stock']['idmarca']));
         $data['stock']['medida'] = $this->medidas_model->get_where(array('idmedida' => $data['stock']['idmedida']));
         
-        $this->load->view('layout_alela/header', $data);
-        $this->load->view('layout_alela/menu');
-        $this->load->view('stock/editar');
-        $this->load->view('layout_alela/footer');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('stock/modificar');
+        $this->load->view('layout_lte/footer');
     }
     
     public function por_almacen() {

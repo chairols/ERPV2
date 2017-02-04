@@ -89,7 +89,7 @@
                                     <td><?=$sa['almacen']?></td>
                                     <td><?=$sa['ubicacion']?></td>
                                     <td>
-                                        <a href="/stock/editar/<?=$sa['idstock_almacen']?>/"> 
+                                        <a href="/stock/modificar/<?=$sa['idstock_almacen']?>/"> 
                                             <button class="btn btn-xs btn-warning" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar">
                                                 <i class="fa fa-edit"></i> 
                                             </button>

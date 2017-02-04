@@ -1,151 +1,79 @@
-<div id="main-content">
-    <div class="container-fluid">
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1><?=$title?></h1>
+    </section>
+    
+    <section class="content">
         <div class="row-fluid">
-            <div class="span12">
-                <h3 class="page-title">
-                    <?=$title?>
-                </h3>
-            </div>
+            <ul class="nav nav-tabs nav-tabs-justified">
+                <li><a href="/stock/">Listar Stock</a></li>
+                <li><a href="/stock/agregar">Agregar Stock</a></li>
+                <li class="active"><a href="/stock/modificar/">Modificar Stock</a></li>
+                <li><a href="/stock/ver/">Ver Stock</a></li>
+                <li><a href="/stock/por_almacen/">Stock Por Almacén</a></li>
+                <li><a href="/stock/con_stock/">Listar Con Stock</a></li>
+                <li><a href="/stock/ingresar/">Ingresar Stock</a></li>
+            </ul>
         </div>
         
-        <ul class="nav nav-tabs nav-tabs-justified">
-            <li><a href="/stock/">Listar Stock</a></li>
-            <li class="active"><a href="/stock/modificar/">Modificar Stock</a></li>
-            <li><a href="/stock/ver/">Ver Stock</a></li>
-            <li><a href="/stock/por_almacen/">Stock Por Almacén</a></li>
-            <li><a href="/stock/con_stock/">Listar Con Stock</a></li>
-            <li><a href="/stock/ingresar/">Ingresar Stock</a></li>
-        </ul>
+        <br>
         
-        <div class="row-fluid">
-            <div class="span6">
-                <div class="widget blue">
-                    <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> Artículo</h4>
-                        <span class="tools">
-                            <a href="javascript:;" class="icon-chevron-down"></a>
-                            <a href="javascript:;" class="icon-remove"></a>
-                        </span>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Artículo</h3>
                     </div>
-                    <div class="widget-body">
-                        <form method="post" class="form-horizontal">
-                            <div class="control-group">
-                                <label class="control-label">Artículo</label>
-                                <div class="controls">
-                                    <input type="text" class="span12" value="<?=$articulo['articulo']?>" readonly>
+                    <div class="box-body">
+                        <dl class="dl-horizontal">
+                            <dt>Artículo</dt>
+                            <dd><?=$stock['producto']['producto']?> <?=$stock['articulo']['articulo']?></dd>
+                            <dt>Marca</dt>
+                            <dd><?=$stock['marca']['marca']?></dd>
+                            <dt>Unidad de Medida</dt>
+                            <dd><?=$stock['medida']['medida_larga']?></dd>
+                            <dt>URL</dt>
+                            <dd><a href="<?=$stock['url']?>" target="_blank"><?=$stock['url']?></a></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Modificar Stock Almacén</h3>
+                    </div>
+                    <div class="box-body">
+                        <form method="POST" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Cantidad</label>
+                                <div class="col-md-9 col-sm-9 col-sx-12">
+                                    <input type="text" class="form-control" value="<?=$stock_almacen['cantidad']?>" name="cantidad" autofocus required>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Producto</label>
-                                <div class="controls">
-                                    <input type="text" class="span12" value="<?=$producto['producto']?>" readonly>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Ubicación</label>
+                                <div class="col-md-9 col-sm-9 col-sx-12">
+                                    <input type="text" class="form-control" value="<?=$stock_almacen['ubicacion']?>" name="ubicacion">
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Posición</label>
-                                <div class="controls">
-                                    <input type="text" class="span12" value="<?=$articulo['posicion']?>" readonly>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Observaciones</label>
+                                <div class="col-md-9 col-sm-9 col-sx-12">
+                                    <textarea class="form-control" rows="3" name="observaciones"><?=$stock_almacen['observaciones']?></textarea>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Observaciones</label>
-                                <div class="controls">
-                                    <textarea class="span12" readonly><?=$stock['observaciones']?></textarea>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <button type="submit" class="btn btn-success">Modificar</button>
+                                    <button type="reset" class="btn btn-primary">Limpiar</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="span6">
-                <div class="widget blue">
-                    <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> Agregar al Stock</h4>
-                        <span class="tools">
-                            <a href="javascript:;" class="icon-chevron-down"></a>
-                            <a href="javascript:;" class="icon-remove"></a>
-                        </span>
-                    </div>
-                    <div class="widget-body">
-                        <form method="post" class="form-horizontal">
-                            <input type="hidden" name="idstock" value="<?=$stock['idstock']?>">
-                            <div class="control-group">
-                                <label class="control-label">Cantidad</label>
-                                <div class="controls">
-                                    <input type="text" name="cantidad" class="span12" autofocus required>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Ubicación</label>
-                                <div class="controls">
-                                    <input type="text" name="ubicacion" class="span12" required>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Almacén</label>
-                                <div class="controls">
-                                    <select name="almacen" class="span12 select2">
-                                        <?php foreach($almacenes as $almacen) { ?>
-                                        <option value="<?=$almacen['idalmacen']?>"><?=$almacen['almacen']?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Observaciones</label>
-                                <div class="controls">
-                                    <textarea class="span12" name="observaciones"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="icon-save"></i> Guardar
-                                </button>
-                                <button type="reset" class="btn btn-danger">
-                                    <i class="icon-remove"></i> Limpiar
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
-        <div class="row-fluid">
-            <div class="span12">
-                <div class="widget blue">
-                    <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> Modificar Stock Existente</h4>
-                        <span class="tools">
-                            <a href="javascript:;" class="icon-chevron-down"></a>
-                            <a href="javascript:;" class="icon-remove"></a>
-                        </span>
-                    </div>
-                    <div class="widget-body">
-                        <table class="table table-bordered table-condensed table-hover" id="sample_1">
-                            <thead>
-                                <tr>
-                                    <th><strong>Cantidad</strong></th>
-                                    <th><strong>Almacén</strong></th>
-                                    <th><strong>Ubicación</strong></th>
-                                    <th><strong>Observaciones</strong></th>
-                                    <th><strong>Acción</strong></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach($stock_existente as $s) { ?>
-                                <tr>
-                                    <td><?=$s['cantidad']?></td>
-                                    <td><?=$s['almacen']?></td>
-                                    <td><?=$s['ubicacion']?></td>
-                                    <td><?=$s['observaciones']?></td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 </div>
