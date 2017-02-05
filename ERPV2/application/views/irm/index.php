@@ -48,7 +48,13 @@
                                         <span class="badge bg-green"><?=$control['control']?></span>
                                         <?php } ?>
                                     </td>
-                                    <td>&nbsp;</td>
+                                    <td>
+                                        <a href="/irm/agregar_items/<?=$irm['idirm']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
+                                            <button class="btn btn-warning btn-xs">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
