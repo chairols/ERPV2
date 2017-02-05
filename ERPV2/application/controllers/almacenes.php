@@ -146,10 +146,10 @@ class Almacenes extends CI_Controller {
         
         $data['almacen'] = $this->almacenes_model->get_where(array('idalmacen' => $idalmacen));
         
-        $this->load->view('layout_alela/header', $data);
-        $this->load->view('layout_alela/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('almacenes/ver');
-        $this->load->view('layout_alela/footer');
+        $this->load->view('layout_lte/footer');
     }
 }
 ?>
