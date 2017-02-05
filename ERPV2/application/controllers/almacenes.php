@@ -76,10 +76,10 @@ class Almacenes extends CI_Controller {
             }
         }
         
-        $this->load->view('layout_alela/header', $data);
-        $this->load->view('layout_alela/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('almacenes/agregar');
-        $this->load->view('layout_alela/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function modificar($idalmacen = null) {
