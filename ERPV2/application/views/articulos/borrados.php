@@ -1,13 +1,9 @@
-<div id="main-content">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
-                <h3 class="page-title">
-                    <?=$title?>
-                </h3>
-            </div>
-        </div>
-        
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1><?=$title?></h1>
+    </section>
+    
+    <section class="content">
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li><a href="/articulos/">Listar Artículos</a></li>
@@ -16,53 +12,65 @@
                 <li><a href="/articulos/ver/">Ver Artículo</a></li>
                 <li class="active"><a href="/articulos/borrados/">Artículos Borrados</a></li>
             </ul>
-            
-            <div class="row-fluid">
-                <div class="span12">
-                    <div class="widget blue">
-                        <div class="widget-title">
-                            <h4><i class="icon-reorder"></i> Artículos</h4>
-                            <span class="tools">
-                                <a href="javascript:;" class="icon-chevron-down"></a>
-                                <a href="javascript:;" class="icon-remove"></a>
-                            </span>
-                        </div>
-                        <div class="widget-body">
-                            <table class="table table-bordered table-condensed table-hover" id="sample_1">
-                                <thead>
-                                    <tr>
-                                        <th><strong>Artículo</strong></th>
-                                        <th><strong>Producto</strong></th>
-                                        <th><strong>Plano</strong></th>
-                                        <th><strong>Revisión</strong></th>
-                                        <th><strong>Posición</strong></th>
-                                        <th><strong>Plano</strong></th>
-                                        <th><strong>Acción</strong></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach($articulos as $articulo) { ?>
-                                    <tr>
-                                        <td><?=$articulo['articulo']?></td>
-                                        <td><?=$articulo['producto']?></td>
-                                        <td><?=$articulo['plano']?></td>
-                                        <td><?=$articulo['revision']?></td>
-                                        <td><?=$articulo['posicion']?></td>
-                                        <td><?=($articulo['planofile']!='')?"<a href='".$articulo['planofile']."' target='_blank'><i class='icon-file'></i></a>":""?></td>
-                                        <td>
-                                            <a href="/articulos/ver/<?=$articulo['idarticulo']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver" class="label label-success tooltips"><i class="icon-eye-open"></i></a>
-                                            <a href="/articulos/modificar/<?=$articulo['idarticulo']?>/" class="label label-default"><i class="icon-edit"></i></a> 
-                                            <a href="/log/ver/articulos/<?=$articulo['idarticulo']?>/" class="label label-info"><i class="icon-time"></i></a>
-                                        </td>
-                                    </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
+        </div>
+        
+        <br>
+        
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><?=$title?></h3>
+                    </div>
+                    <div class="box-body">
+                        <table id="datatable" class="table table-striped table-bordered table-condensed">
+                            <thead>
+                                <tr>
+                                    <th><strong>Artículo</strong></th>
+                                    <th><strong>Producto</strong></th>
+                                    <th><strong>Plano</strong></th>
+                                    <th><strong>Revisión</strong></th>
+                                    <th><strong>Posición</strong></th>
+                                    <th><strong>Acción</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($articulos as $articulo) { ?>
+                                <tr>
+                                    <td><?=$articulo->getArticulo()?></td>
+                                    <td><?=$articulo->getProducto()->getProducto()?></td>
+                                    <td><?=($articulo->getPlano()->getUrlDelPlano()!='')?"<a href='".$articulo->getPlano()->getUrlDelPlano()."' target='_blank'>".$articulo->getPlano()->getPlano()."</a>":""?></td>
+                                    <td><?=$articulo->getPlano()->getRevision()?></td>
+                                    <td><?=$articulo->getPosicion()?></td>
+                                    <td>
+                                        <a href="/articulos/ver/<?=$articulo->getId()?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver" class="tooltips">
+                                            <button class="btn btn-xs btn-success">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </a>
+                                        <a href="/articulos/modificar/<?=$articulo->getId()?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
+                                            <button class="btn btn-xs btn-warning">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                        </a> 
+                                        <a href="/articulos/borrar/<?=$articulo->getId()?>" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar" class="tooltips">
+                                            <button class="btn btn-xs btn-danger">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </a>
+                                        <a href="/log/ver/articulos/<?=$articulo->getId()?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log" class="tooltips">
+                                            <button class="btn btn-xs btn-info">
+                                                <i class="fa fa-clock-o"></i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
+    </section>
 </div>

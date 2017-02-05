@@ -230,10 +230,20 @@ class Articulos extends CI_Controller {
         
         $data['articulos'] = $this->articulos_model->gets_inactivos();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $articulos = array();
+        foreach($data['articulos'] as $a) {
+            $articulo = new ArticulosBean();
+            $articulo->setId($a['idarticulo']);
+            $articulo->armarArticuloPorID();
+            
+            $articulos[] = $articulo;
+        }
+        $data['articulos'] = $articulos;
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('articulos/borrados');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function borrar($idarticulo = null) {
