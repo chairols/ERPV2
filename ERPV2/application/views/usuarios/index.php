@@ -44,6 +44,11 @@
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                         </a>
+                                        <a href="/log/ver/usuarios/<?=$usuario['idusuario']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log" class="tooltips">
+                                            <button class="btn btn-xs btn-info">
+                                                <i class="fa fa-clock-o"></i>
+                                            </button>
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php } ?>

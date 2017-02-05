@@ -4,11 +4,13 @@
     </section>
     
     <section class="content">
-        <ul class="nav nav-tabs bar_tabs nav-tabs-justified">
-            <li><a href="/usuarios/">Listar Usuarios</a></li>
-            <li class="active"><a href="/usuarios/agregar/">Agregar Usuario</a></li>
-            <li><a href="/usuarios/modificar/">Modificar Usuario</a></li>
-        </ul>
+        <div class="row-fluid">
+            <ul class="nav nav-tabs nav-tabs-justified">
+                <li><a href="/usuarios/">Listar Usuarios</a></li>
+                <li class="active"><a href="/usuarios/agregar/">Agregar Usuario</a></li>
+                <li><a href="/usuarios/modificar/">Modificar Usuario</a></li>
+            </ul>
+        </div>
         
         <br>
         

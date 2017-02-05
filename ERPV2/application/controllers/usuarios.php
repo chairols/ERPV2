@@ -10,7 +10,8 @@ class Usuarios extends CI_Controller {
         ));
         $this->load->model(array(
             'usuarios_model',
-            'roles_model'
+            'roles_model',
+            'log_model'
         ));
         $this->load->helper(array(
             'url'
@@ -65,9 +66,27 @@ class Usuarios extends CI_Controller {
                     'password' => $this->input->post('password'),
                     'tipo_usuario' => $this->input->post('rol')
                 );
-                $this->usuarios_model->set($datos);
+                $id = $this->usuarios_model->set($datos);
                 
-                redirect('/usuarios/', 'refresh');
+                $where = array(
+                    'idrol' => $this->input->post('rol')
+                );
+                $rol = $this->roles_model->get_where($where);
+                
+                $log = array(
+                   'tabla' => 'usuarios',
+                   'idtabla' => $id,
+                   'texto' => 'Se agregó el usuario '.$this->input->post('usuario').'<br>'
+                   . 'nombre: '.$this->input->post('nombre').'<br>'
+                   . 'apellido: '.$this->input->post('apellido').'<br>'
+                   . 'correo: '.$this->input->post('correo').'<br>'
+                   . 'rol: '.$rol['rol'],
+                   'tipo' => 'add',
+                   'idusuario' => $session['SID']
+               );
+               $this->log_model->set($log);
+               
+               redirect('/usuarios/', 'refresh');
             }
             
         }
@@ -93,9 +112,25 @@ class Usuarios extends CI_Controller {
         
         $this->form_validation->set_rules('nombre', 'Nombre', 'required');
         $this->form_validation->set_rules('apellido', 'Apellido', 'required');
-        $this->form_validation->set_rules('usuario', 'Usuario', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
         
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'nombre' => $this->input->post('nombre'),
+                'apellido' => $this->input->post('apellido'),
+                'correo' => $this->input->post('correo'),
+                'tipo_usuario' => $this->input->post('rol')
+            );
+            
+            if(strlen($this->input->post('password')) > 0) {
+                $datos['password'] = $this->input->post('password');
+            }
+            
+            $this->usuarios_model->update($datos, $idusuario);
+            
+            redirect('/usuarios/', 'refresh');
+        }
         /*
          *  desarrollar
          */
@@ -107,10 +142,10 @@ class Usuarios extends CI_Controller {
         
         $data['roles'] = $this->roles_model->gets();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('usuarios/modificar');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     

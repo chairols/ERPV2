@@ -2,6 +2,20 @@
 if ( ! defined('BASEPATH')) exit('No se permite acceso directo al script');
 
 class R_session {
+    private $CI;
+    
+    public function __construct() {
+        $this->CI =& get_instance();
+        $this->CI->load->library(array(
+            'session'
+        ));
+        $this->CI->load->helper(array(
+            'url'
+        ));
+        $this->CI->load->model(array(
+            'menu_model'
+        ));
+    }
     
     public function check($datos) {
         if(count($datos) < 6) {
@@ -13,15 +27,6 @@ class R_session {
     
     private function comprobar_accesos() {
         $this->CI =& get_instance();
-        $this->CI->load->library(array(
-            'session'
-        ));
-        $this->CI->load->helper(array(
-            'url'
-        ));
-        $this->CI->load->model(array(
-            'menu_model'
-        ));
         
         $session = $this->CI->session->all_userdata();
         // $session['tipo_usuario']

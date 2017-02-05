@@ -53,6 +53,7 @@
                             </thead>
                             <tbody>
                                 <?php foreach($stock as $s) { ?>
+                                <?php if($s['cantidad'] > 0) { ?>
                                 <tr>
                                     <td><?=$s['producto']?> <?=$s['articulo']?></td>
                                     <td><?=$s['marca']?></td>
@@ -73,6 +74,7 @@
                                         </a>
                                     </td>
                                 </tr>
+                                <?php } ?>
                                 <?php } ?>
                             </tbody>
                         </table>
