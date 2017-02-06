@@ -84,10 +84,10 @@ class Ocs extends CI_Controller {
         $data['proveedores'] = $this->proveedores_model->gets();
         $data['monedas'] = $this->monedas_model->gets();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('ocs/agregar');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function agregar_items($idoc) {
