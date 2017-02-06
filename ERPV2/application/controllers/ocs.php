@@ -287,6 +287,8 @@ class Ocs extends CI_Controller {
             $this->pdf->Cell(30, 6, utf8_decode($moneda['simbolo']).' '.number_format($item['precio']*$item['cantidad'], 2), 0, 0, 'R');
             $subtotal+=$item['cantidad']*$item['precio'];
             $this->pdf->Ln(5);
+            $this->pdf->Cell(100, 6, 'Fecha de Entrega: '.date('d/m/Y', strtotime($item['fecha'])), 0, 0, 'C');
+            $this->pdf->Ln(10);
         }
         
         
