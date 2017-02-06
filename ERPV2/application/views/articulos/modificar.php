@@ -125,10 +125,10 @@
             var flag = $("#checkbox").is(':checked');
             if(flag == true) {
                 $("#selectplano2").hide();
-                $("#selectplano").show();
+                $("#selectplano").fadeIn(500);
             } else {
                 $("#selectplano").hide();
-                $("#selectplano2").show();
+                $("#selectplano2").fadeIn(500);
             }
         });
         
