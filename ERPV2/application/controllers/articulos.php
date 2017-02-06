@@ -286,10 +286,10 @@ class Articulos extends CI_Controller {
         $data['articulo']['producto'] = $this->productos_model->get_where(array('idproducto' => $data['articulo']['idproducto']));
         $data['articulo']['plano'] = $this->planos_model->get_where(array('idplano' => $data['articulo']['idplano']));
 
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('articulos/ver');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
         
     }
 }

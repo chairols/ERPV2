@@ -1,125 +1,82 @@
-<div id="main-content">
-    <div class="container-fluid">
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1><?=$title?></h1>
+    </section>
+    
+    <section class="content">
         <div class="row-fluid">
-            <div class="span12">
-                <h3 class="page-title">
-                    <?=$title?>
-                </h3>
-            </div>
+            <ul class="nav nav-tabs nav-tabs-justified">
+                <li><a href="/articulos/">Listar Artículos</a></li>
+                <li><a href="/articulos/agregar/">Agregar Artículos</a></li>
+                <li><a href="/articulos/modificar/">Modificar Artículo</a></li>
+                <li class="active"><a href="/articulos/ver/">Ver Artículo</a></li>
+                <li><a href="/articulos/borrados/">Artículos Borrados</a></li>
+            </ul>
         </div>
         
-        <ul class="nav nav-tabs nav-tabs-justified">
-            <li><a href="/articulos/">Listar artículos</a></li>
-            <li><a href="/articulos/agregar/">Agregar artículos</a></li>
-            <li><a href="/articulos/modificar/">Modificar artículo</a></li>
-            <li class="active"><a href="/articulos/ver/">Ver artículo</a></li>
-            <li><a href="/articulos/borrados/">Artículos borrados</a></li>
-        </ul>
+        <br>
         
-        <div class="row-fluid">
-            <div class="span6">
-                <div class="widget blue">
-                    <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> Ver Artículo</h4>
-                        <span class="tools">
-                            <a href="javascript:;" class="icon-chevron-down"></a>
-                            <a href="javascript:;" class="icon-remove"></a>
-                        </span>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><?=$title?></h3>
                     </div>
-                    <div class="widget-body">
-                        <form method="post" class="form-horizontal">
-                            <div class="control-group">
-                                <label class="control-label">Artículo</label>
-                                <input type="text" maxlength="100" class="form-control" value="<?=$articulo['articulo']?>" readonly>
+                    <div class="box-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Artículo</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <input type="text" maxlength="100" class="form-control" value="<?=$articulo['articulo']?>" readonly>
+                                </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Posición</label>
-                                <input type="text" maxlength="100" class="form-control" value="<?=$articulo['posicion']?>" readonly>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Posición</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <input type="text" maxlength="100" class="form-control" value="<?=$articulo['posicion']?>" readonly>
+                                </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Plano</label>
-                                <input type="text" maxlength="100" class="form-control" value="<?=(!empty($articulo['plano']))?$articulo['plano']['plano']:""?>" readonly>
-                                <?=(!empty($articulo['plano']))?"<a href='".$articulo['plano']['planofile']."' target='_blank'>Ver plano</a>":""?>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Plano</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <?php if(!empty($articulo['plano'])) { ?>
+                                    <div class="input-group">
+                                    <?php } ?>
+                                        <input type="text" maxlength="100" class="form-control" value="<?=(!empty($articulo['plano']))?$articulo['plano']['plano']:""?>" readonly>
+                                    <?php if(!empty($articulo['plano'])) { ?>
+                                        <span class="input-group-addon">
+                                            <a href="<?=$articulo['plano']['planofile']?>" target="_blank" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Plano" class="tooltips">
+                                                <button class="btn btn-xs btn-info">
+                                                    <i class="fa fa-file"></i>
+                                                </button>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <?php } ?>
+                                </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Revisión</label>
-                                <input type="text" maxlength="100" class="form-control" value="<?=(!empty($articulo['plano']))?$articulo['plano']['revision']:""?>" readonly>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Revisión</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <input type="text" maxlength="11" class="form-control" value="<?=(!empty($articulo['plano']))?$articulo['plano']['revision']:""?>" readonly>
+                                </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Producto</label>
-                                <input type="text" maxlength="100" class="form-control" value="<?=$articulo['producto']['producto']?>" readonly>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Producto</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <input type="text" maxlength="100" class="form-control" value="<?=$articulo['producto']['producto']?>" readonly>
+                                </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Observaciones</label>
-                                <textarea class="form-control" rows="5" readonly><?=$articulo['observaciones']?></textarea>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Observaciones</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <textarea class="form-control" rows="5" readonly><?=$articulo['observaciones']?></textarea>
+                                </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Estado</label>
-                                <?php if($articulo['activo'] == '1') { ?>
-                                <p><span class="label label-success">ACTIVO</span></p>
-                                <?php } else { ?>
-                                <p><span class="label label-important">INACTIVO</span></p>
-                                <?php } ?>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-
-
-<div class="block-flat">
-    <form role="form" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label>Artículo</label>
-            <input type="text" maxlength="100" class="form-control" value="<?=$articulo['articulo']?>" name="articulo" readonly>
-        </div>
-
-        <div class="form-group">
-            <label>Plano</label>
-            <input type="text" maxlength="100" class="form-control" value="<?=$articulo['plano']?>" name="plano" readonly>
-        </div>
-
-        <div class="form-group">
-            <label>Archivo del plano</label>
-            <?php if($articulo['planofile'] != '') { ?>
-            <p><a href="<?=$articulo['planofile']?>" target="_blank"><i class="fa fa-file fa-2x"></i></a></p>
-            <?php } else { ?>
-            <p><span class="label label-danger"><strong>NO TIENE</strong></span></p>
-            <?php } ?>
-        </div>
-
-        <div >
-            <label>Producto</label>
-            <input type="text" maxlength="100" class="form-control" value="<?=$articulo['producto']['producto']?>" name="producto" readonly>
-        </div>
-
-        <div class="form-group">
-            <label>Revisión</label>
-            <input type="number" maxlength="11" class="form-control" value="<?=$articulo['revision']?>" name="revision" readonly>
-        </div>
-
-        <div class="form-group">
-            <label>Posición</label>
-            <input type="number" maxlength="11" class="form-control" value="<?=$articulo['posicion']?>" name="posicion" readonly>
-        </div>
-
-        <div class="form-group">
-            <label>Observaciones</label>
-            <p><?=$articulo['observaciones']?></p>
-        </div>
-        
-        <div class="form-group">
-            <label>Estado</label>
-            <?php if($articulo['activo'] == '1') { ?>
-            <p><span class="label label-success"><strong>ACTIVO</strong></span></p>
-            <?php } else { ?>
-            <p><span class="label label-danger"><strong>INACTIVO</strong></span></p>
-            <?php } ?>
-        </div>
-
-    </form>
+    </section>
 </div>
