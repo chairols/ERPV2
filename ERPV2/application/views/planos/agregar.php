@@ -23,7 +23,6 @@
                         <h3 class="box-title"><?=$title?></h3>
                     </div>
                     <div class="box-body">
-                        <?php var_dump($segmento); ?>
                         <form method="POST" class="form-horizontal" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-sx-12">Plano</label>
