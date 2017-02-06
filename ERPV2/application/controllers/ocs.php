@@ -90,8 +90,11 @@ class Ocs extends CI_Controller {
         $this->load->view('layout_lte/footer');
     }
     
-    public function agregar_items($idoc) {
+    public function agregar_items($idoc = null) {
         $session = $this->session->all_userdata();
+        if($idoc == null) {
+            redirect('/ocs/', 'refresh');
+        }
         $this->r_session->check($session);
         $data['title'] = 'Agregar Orden de Compra';
         $data['session'] = $session;
@@ -101,6 +104,7 @@ class Ocs extends CI_Controller {
         $this->form_validation->set_rules('cantidad', 'Cantidad', 'required|numeric');
         $this->form_validation->set_rules('medida', 'Medida', 'required|integer');
         $this->form_validation->set_rules('articulo', 'Artículo', 'required|integer');
+        $this->form_validation->set_rules('fecha', 'Fecha', 'required');
         $this->form_validation->set_rules('precio', 'Precio', 'required|numeric');
         
         if($this->form_validation->run() == FALSE) {
@@ -111,6 +115,7 @@ class Ocs extends CI_Controller {
                 'cantidad' => $this->input->post('cantidad'),
                 'idmedida' => $this->input->post('medida'),
                 'idarticulo' => $this->input->post('articulo'),
+                'fecha' => $this->input->post('fecha'),
                 'precio' => $this->input->post('precio')
             );
             
@@ -155,10 +160,10 @@ class Ocs extends CI_Controller {
         //$data['ots'] = $this->ots_model->gets();
         $data['ocs_items'] = $this->ocs_model->gets_items($idoc);
          
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('ocs/agregar_items');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function borrar_item($idoc_item) {
