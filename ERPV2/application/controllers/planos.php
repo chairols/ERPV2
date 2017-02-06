@@ -29,10 +29,10 @@ class Planos extends CI_Controller {
         
         $data['planos'] = $this->planos_model->gets();
         
-        $this->load->view('layout_alela/header', $data);
-        $this->load->view('layout_alela/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('planos/index');
-        $this->load->view('layout_alela/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function agregar() {
