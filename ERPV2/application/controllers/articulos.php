@@ -215,10 +215,10 @@ class Articulos extends CI_Controller {
         $data['padres'] = $this->articulos_jerarquias_model->gets_combo_padre($idarticulo);
         $data['hijos'] = $this->articulos_jerarquias_model->gets_combo_hijo($idarticulo);
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('articulos/modificar');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function borrados() {
