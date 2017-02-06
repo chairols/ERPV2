@@ -36,10 +36,10 @@ class Ocs extends CI_Controller {
         
         $data['ocs'] = $this->ocs_model->gets();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('ocs/index');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function agregar() {
