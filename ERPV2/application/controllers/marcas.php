@@ -27,10 +27,10 @@ class Marcas extends CI_Controller {
         
         $data['marcas'] = $this->marcas_model->gets();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('marcas/index');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function agregar() {

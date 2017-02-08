@@ -1,9 +1,13 @@
-<div class="content-wrapper">
-    <section class="content-header">
-      <h1><?=$title?></h1>
-    </section>
-    
-    <section class="content">
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <h3 class="page-title">
+                    <?=$title?>
+                </h3>
+            </div>
+        </div>
+        
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li class="active"><a href="/marcas/">Listar Marcas</a></li>
@@ -13,17 +17,18 @@
                 <li><a href="/marcas/borradas/">Marcas Borradas</a></li>
             </ul>
         </div>
-        
-        <br>
-        
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title"><?=$title?></h3>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget blue">
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i> Marcas</h4>
+                        <span class="tools">
+                            <a href="javascript:;" class="icon-chevron-down"></a>
+                            <a href="javascript:;" class="icon-remove"></a>
+                        </span>
                     </div>
-                    <div class="box-body">
-                        <table class="table table-condensed table-hover table-bordered" id="datatable">
+                    <div class="widget-body">
+                        <table class="table table-condensed table-hover table-bordered" id="sample_1">
                             <thead>
                                 <tr>
                                     <th><strong>Marca</strong></th>
@@ -55,6 +60,6 @@
                     </div>
                 </div>
             </div>
-        </div> 
-    </section>
+        </div>
+    </div>
 </div>
