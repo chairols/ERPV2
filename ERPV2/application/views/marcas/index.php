@@ -35,17 +35,25 @@
                                 <tr>
                                     <td><?=$marca['marca']?></td>
                                     <td>
-                                        <a href="/marcas/ver/<?=$marca['idmarca']?>">
-                                            <i class="alert-success icon-eye-open tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver"></i>
+                                        <a href="/marcas/ver/<?=$marca['idmarca']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Ver">
+                                            <button class="btn btn-success btn-xs">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
                                         </a>
-                                        <a href="/marcas/modificar/<?=$marca['idmarca']?>">
-                                            <i class="alert-info icon-edit tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Editar"></i>
+                                        <a href="/marcas/modificar/<?=$marca['idmarca']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar">
+                                            <button class="btn btn-warning btn-xs">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
                                         </a> 
-                                        <a href="/marcas/borrar/<?=$marca['idmarca']?>">
-                                            <i class="alert-danger icon-remove tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar"></i>
+                                        <a href="/marcas/borrar/<?=$marca['idmarca']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar">
+                                            <button class="btn btn-danger btn-xs">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
                                         </a>
-                                        <a href="/log/ver/marcas/<?=$marca['idmarca']?>">
-                                            <i class="alert-info icon-time tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log"></i>
+                                        <a href="/log/ver/marcas/<?=$marca['idmarca']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log">
+                                            <button class="btn btn-info btn-xs">
+                                                <i class="fa fa-clock-o"></i>
+                                            </button>
                                         </a>
                                     </td>
                                 </tr>

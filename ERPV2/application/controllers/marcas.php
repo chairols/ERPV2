@@ -93,10 +93,10 @@ class Marcas extends CI_Controller {
         
         $data['marca'] = $this->marcas_model->get_where(array('idmarca' => $idmarca));
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('marcas/ver');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function modificar($idmarca = null) {
