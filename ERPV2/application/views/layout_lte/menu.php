@@ -261,7 +261,7 @@
                         }
                     ?>
                     <li class="treeview<?=($mm['active'])?' active"':''?>">
-                        <a href="<?=$mm['href']?>"><i class="<?=$mm['icono']?>"></i> <?=$mm['menu']?>
+                        <a href="<?=$mm['href']?>"><i class="<?=$mm['icono']?>"></i> <span><?=$mm['menu']?></span>
                             <?php if(count($mm['submenu']) > 0) { ?>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
