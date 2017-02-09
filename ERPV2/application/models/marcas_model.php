@@ -51,10 +51,23 @@ class Marcas_model extends CI_Model {
     
     /*
      *  marcas/modificar
+     *  marcas/borrar
      */
     public function update($datos, $idmarca) {
         $id = array('idmarca' => $idmarca);
         $this->db->update('marcas', $datos, $id);
+    }
+    
+    
+    /*
+     * 
+     * marcas/borradas
+     * 
+     */
+    public function gets_where($where) {
+        $query = $this->db->get_where('marcas', $where);
+        
+        return $query->result_array();
     }
 }
 ?>

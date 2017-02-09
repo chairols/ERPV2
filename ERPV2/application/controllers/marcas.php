@@ -142,5 +142,51 @@ class Marcas extends CI_Controller {
         $this->load->view('marcas/modificar');
         $this->load->view('layout_lte/footer');
     }
+    
+    public function borradas() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Listar Marcas Borradas';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $where = array(
+            'activo' => 0
+        );
+        $data['marcas'] = $this->marcas_model->gets_where($where);
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('marcas/borradas');
+        $this->load->view('layout_lte/footer');
+    }
+    
+    public function borrar($idmarca = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        if($idmarca == null) {
+            redirect('/marcas/', 'refresh');
+        }
+        
+        $datos = array(
+            'activo' => 0
+        );
+        
+        $this->marcas_model->update($datos, $idmarca);
+        
+        $log = array(
+            'tabla' => 'marcas',
+            'idtabla' => $idmarca,
+            'texto' => 'Se borró la marca',
+            'tipo' => 'del',
+            'idusuario' => $session['SID']
+        );
+
+        $this->log_model->set($log);
+        
+        redirect('/marcas/borradas/', 'refresh');
+    }
 }
 ?>

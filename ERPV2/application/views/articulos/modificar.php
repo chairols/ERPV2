@@ -100,10 +100,6 @@
                                 </div>
                             </div>
                         </form>
-                        <pre>
-                            <?php print_r($articulo); ?>
-                            <?php print_r($planos); ?>
-                        </pre>
                     </div>
                 </div>
             </div>

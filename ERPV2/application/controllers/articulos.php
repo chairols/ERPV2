@@ -248,6 +248,7 @@ class Articulos extends CI_Controller {
     
     public function borrar($idarticulo = null) {
         $session = $this->session->all_userdata();
+        $this->r_session->check($this->session->all_userdata());
         
         if($idarticulo == null) {
             redirect('/articulos/', 'refresh');
