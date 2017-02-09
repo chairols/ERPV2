@@ -49,11 +49,6 @@ class Articulos extends CI_Controller {
     
     public function index_ajax() {
         $session = $this->session->all_userdata();
-        $data['title'] = 'Listar Artículos';
-        $data['session'] = $session;
-        $data['segmento'] = $this->uri->segment(1);
-        $data['menu'] = $this->r_session->get_menu();
-        
         $data['articulos'] = $this->articulos_model->gets();
         
         $articulos = array();
