@@ -71,10 +71,15 @@ class Ots extends CI_Controller {
         );
         $data['articulo'] = $this->articulos_model->get_where($datos);
         
-        $this->load->view('layout/header_form', $data);
-        $this->load->view('layout/menu');
+        $datos = array(
+            'idproducto' => $data['articulo']['idproducto']
+        );
+        $data['producto'] = $this->productos_model->get_where($datos);
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('ots/ver');
-        $this->load->view('layout/footer_form');
+        $this->load->view('layout_lte/footer');
     }
     
     public function agregar() {
