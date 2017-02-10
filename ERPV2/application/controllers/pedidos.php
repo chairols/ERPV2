@@ -103,10 +103,10 @@ class Pedidos extends CI_Controller {
             redirect('/pedidos/agregar_items/'.$idpedido.'/', 'refresh');
         }
         
-        $this->load->view('layout/header_form', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('pedidos/agregar');
-        $this->load->view('layout/footer_form');
+        $this->load->view('layout_lte/footer');
     }
     
     public function agregar_items($idpedido = null) {
