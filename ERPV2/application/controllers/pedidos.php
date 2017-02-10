@@ -203,10 +203,10 @@ class Pedidos extends CI_Controller {
         $data['ots'] = $this->ots_model->gets();
         $data['ots_asociadas'] = $this->pedidos_model->gets_ots_asociadas($idpedido_item);
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('pedidos/asociar_ot');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function desasociar_ot($idpedido_item = null, $idot = null) {

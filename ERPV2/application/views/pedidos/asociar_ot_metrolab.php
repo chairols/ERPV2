@@ -1,9 +1,13 @@
-<div class="content-wrapper">
-    <section class="content-header">
-      <h1><?=$title?></h1>
-    </section>
-    
-    <section class="content">
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <h3 class="page-title">
+                    <?=$title?>
+                </h3>
+            </div>
+        </div>
+        
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li><a href="/pedidos/">Listar pedidos</a></li>
@@ -11,17 +15,13 @@
             </ul>
         </div>
         
-        <br>
-        
         <div class="row-fluid">
             <a href="/pedidos/agregar_items/<?=$item['idpedido']?>/">
                 <button class="btn btn-success">
-                    <i class="fa fa-chevron-left"></i> Volver al Pedido
+                    <i class="icon-chevron-left"></i> Volver al Pedido
                 </button>
             </a>
         </div>
-        
-        <br>
         
         <div class="row-fluid">
             <blockquote>
@@ -34,83 +34,44 @@
             </blockquote>
         </div>
         
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Asociar Orden de Trabajo</h3>
+        <div class="row-fluid">
+            <div class="span6">
+                <div class="widget blue">
+                    <div class="widget-title">
+                        <h4><i class="icon-reorder"></i> Asociar Orden de Trabajo</h4>
+                        <span class="tools">
+                            <a href="javascript:;" class="icon-chevron-down"></a>
+                            <a href="javascript:;" class="icon-remove"></a>
+                        </span>
                     </div>
-                    <div class="box-body">
+                    <div class="widget-body">
                         <form method="POST" class="form-horizontal">
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Orden de Trabajo</label>
-                                <div class="col-md-9 col-sm-9 col-sx-12">
-                                    <select name="ot" class="select2 form-control" onchange="cambiar();" id="ot">
+                            <div class="control-group">
+                                <label class="control-label">Orden de Trabajo</label>
+                                <div class="controls">
+                                    <select name="ot" class="select2 span12" onchange="cambiar();" id="ot">
                                         <?php foreach($ots as $ot) { ?>
-                                        <option value="<?=$ot['idot']?>"><?=$ot['fabrica']?> <?=$ot['numero_ot']?></option>
+                                        <option value="<?=$ot['idot']?>"><?=$ot['numero_ot']?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
                             </div>
+                            <hr>
                             <div class="control-group">
                                 <div id="resultado"></div>
                             </div>
-                            <div class="ln_solid"></div>
-                            <div class="form-group">
-                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button type="submit" class="btn btn-success">Asociar</button>
-                                </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="icon-save"></i> Asociar
+                                </button>
+                                <button type="reset" class="btn btn-danger">
+                                    <i class="icon-remove"></i> Limpiar
+                                </button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Órdenes de Trabajo Asociadas</h3>
-                    </div>
-                    <div class="box-body">
-                        <table class="table table-hover table-bordered table-condensed">
-                            <thead>
-                                <tr>
-                                    <th>Orden de Trabajo</th>
-                                    <th>Acción</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach($ots_asociadas as $ot) { ?>
-                                <tr>
-                                    <td>
-                                        <strong><?=$ot['fabrica']?> <?=$ot['numero_ot']?></strong>
-                                        <br>
-                                        <?=$ot['cantidad']?> - <?=$ot['producto']?> <?=$ot['articulo']?>
-                                    </td>
-                                    <td>
-                                        <a href="/pedidos/desasociar_ot/<?=$ot['idpedido_item']?>/<?=$ot['idot']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Desasociar Orden de Trabajo">
-                                            <button class="btn btn-danger btn-xs">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-
-
-<div id="main-content">
-    <div class="container-fluid">
-        
-        <div class="row-fluid">
-            
             <div class="span6">
                 <div class="widget blue">
                     <div class="widget-title">
