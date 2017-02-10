@@ -34,10 +34,10 @@ class Pedidos extends CI_Controller {
         
         $data['pedidos'] = $this->pedidos_model->gets();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('pedidos/index');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function agregar() {
