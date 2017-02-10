@@ -47,24 +47,6 @@ class Articulos extends CI_Controller {
         $this->load->view('layout_lte/footer');
     }
     
-    public function index_ajax() {
-        $session = $this->session->all_userdata();
-        $data['articulos'] = $this->articulos_model->gets();
-        
-        $articulos = array();
-        foreach($data['articulos'] as $a) {
-            $articulo = new ArticulosBean();
-            $articulo->setId($a['idarticulo']);
-            $articulo->armarArticuloPorID();
-            
-            $articulos[] = $articulo;
-        }
-        $data['articulos'] = $articulos;
-
-        $this->load->view('articulos/index_ajax', $data);
-
-    }
-    
     public function agregar() {
         $session = $this->session->all_userdata();
         $data['title'] = 'Agregar Artículo';

@@ -45,16 +45,6 @@ class Ots extends CI_Controller {
         $this->load->view('layout_lte/footer');
     }
     
-    public function index_ajax() {
-        $session = $this->session->all_userdata();
-        $this->r_session->check($session);
-        
-        $data['ots'] = $this->ots_model->gets();
-        
-        
-        $this->load->view('ots/index_ajax', $data);
-    }
-    
     public function ver($idot = null) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
