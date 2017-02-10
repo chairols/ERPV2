@@ -161,10 +161,10 @@ class Pedidos extends CI_Controller {
         $data['articulos'] = $this->articulos_model->gets();
         $data['pedido_items'] = $this->pedidos_model->gets_items($idpedido);
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('pedidos/agregar_items');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function borrar_item($idpedido_item = null) {

@@ -1,161 +1,159 @@
-<div id="main-content">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
-                <h3 class="page-title">
-                    <?=$title?>
-                </h3>
-            </div>
-        </div>
-        
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1><?=$title?></h1>
+    </section>
+    
+    <section class="content">
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li><a href="/pedidos/">Listar pedidos</a></li>
                 <li class="active"><a href="/pedidos/agregar/">Agregar pedido</a></li>
             </ul>
-            
-            <div class="row-fluid">
-                <div class="span12">
-                    <div class="widget blue">
-                        <div class="widget-title">
-                            <h4><i class="icon-reorder"></i> Agregar Items</h4>
-                            <span class="tools">
-                                <a href="javascript:;" class="icon-chevron-down"></a>
-                                <a href="javascript:;" class="icon-remove"></a>
-                            </span>
+        </div>
+        
+        <br>
+        
+        <section class="invoice">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h1 class="page-header">
+                        <div class="text-center">
+                            <strong>Pedido # <?=$pedido['idpedido']?></strong>
                         </div>
-                        <div class="widget-body">
-                            <div class="row-fluid">
-                                <div class="span12">
-                                    <div class="text-center">
-                                        <h1><strong>Pedido # <?=$pedido['idpedido']?></strong></h1>
-                                    </div>
-                                    <hr>
+                    </h1>
+                </div>
+            </div>
+            <div class="row invoice-info">
+                <div class="col-md-4 col-sm-4 col-xs-12 invoice-col">
+                    CLIENTE
+                    <address>
+                        <strong><?=$cliente['cliente']?></strong>
+                    </address>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 invoice-col">
+                    INFO
+                    <address>
+                        Domicilio: <strong><?=$cliente['domicilio']?></strong><br>
+                        Teléfono: <strong><?=$cliente['telefono']?></strong><br>
+                        Localidad: <strong><?=$cliente['localidad']?></strong>
+                    </address>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 invoice-col">
+                    PEDIDO
+                    <address>
+                        Número de Pedido: <strong><?=$pedido['idpedido']?></strong><br>
+                        Moneda: <strong><?=$pedido['moneda']['moneda']?></strong><br>
+                        Orden de Compra: <strong><?=$pedido['ordendecompra']?></strong><br>
+                        Adjunto: <?php if($pedido['adjunto'] != "") { ?>
+                        <a href="<?=$pedido['adjunto']?>" target="_blank"><i class="icon-file-text"></i></a>
+                        <?php } ?>
+                    </address>
+                </div>
+            </div>
+            <div class="row">
+                <form method="POST" class="form">
+                    <div class="row-fluid">
+                        <div class="col-sm-2 col-md-2 col-sx-12">
+                            <div class="form-group">
+                                <label class="control-label">Cantidad</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="form-control" name="cantidad" autofocus required>
                                 </div>
                             </div>
-                            <div class="space20"></div>
-                            <div class="row-fluid invoice-list">
-                                <div class="span4">
-                                    <h4>CLIENTE</h4>
-                                    <p>
-                                        <strong><?=$cliente['cliente']?></strong>
-                                    </p>
-                                </div>
-                                <div class="span4">
-                                    <h4>INFO</h4>
-                                    <p>
-                                        Domicilio: <strong><?=$cliente['domicilio']?></strong><br>
-                                        Teléfono: <strong><?=$cliente['telefono']?></strong><br>
-                                        Localidad: <strong><?=$cliente['localidad']?></strong>
-                                    </p>
-                                </div>
-                                <div class="span4">
-                                    <h4>PEDIDO</h4>
-                                    <p>
-                                        Número de Pedido: <strong><?=$pedido['idpedido']?></strong><br>
-                                        Moneda: <strong><?=$pedido['moneda']['moneda']?></strong><br>
-                                        Orden de Compra: <strong><?=$pedido['ordendecompra']?></strong><br>
-                                        Adjunto: <?php if($pedido['adjunto'] != "") { ?>
-                                        <a href="<?=$pedido['adjunto']?>" target="_blank"><i class="icon-file-text"></i></a>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-sx-12">
+                            <div class="form-group">
+                                <label class="control-label">Artículo</label>
+                                <div class="controls controls-row">
+                                    <select name="articulo" class="select2 form-control">
+                                        <?php foreach($articulos as $articulo) { ?>
+                                        <option value="<?=$articulo['idarticulo']?>"><?=$articulo['producto']?> <?=$articulo['articulo']?> <?=$articulo['plano']?> Pos <?=$articulo['posicion']?></option>
                                         <?php } ?>
-                                    </p>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="space20"></div>
-                            <div class="space20"></div>
-                            <div class="row-fluid">
-                                <form method="post">
-                                    <div class="span2">
-                                        <div class="control-group">
-                                            <label class="control-label"><strong>Cantidad</strong></label>
-                                            <div class="controls controls-row">
-                                                <input type="text" class="input-block-level" name="cantidad" autofocus required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="span6">
-                                        <div class="control-group">
-                                            <label class="control-label"><strong>Artículo</strong></label>
-                                            <div class="controls controls-row">
-                                                <select name="articulo" class="select2 input-xxlarge">
-                                                    <?php foreach($articulos as $articulo) { ?>
-                                                    <option value="<?=$articulo['idarticulo']?>"><?=$articulo['producto']?> <?=$articulo['articulo']?> <?=$articulo['plano']?> Pos <?=$articulo['posicion']?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="span2">
-                                        <div class="control-group">
-                                            <label class="control-label"><strong>Precio</strong></label>
-                                            <div class="controls controls-row">
-                                                <input type="text" class="input-block-level" name="precio" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="span2">
-                                        <div class="control-group">
-                                            <label class="control-label">&nbsp;</label>
-                                            <div class="controls controls-row">
-                                                <button type="submit" class="btn btn-success">
-                                                    <i class="icon-plus"></i> Agregar
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                        </div>
+                        <div class="col-sm-2 col-md-2 col-sx-12">
+                            <label class="control-label">Precio</label>
+                            <div class="controls controls-row">
+                                <input type="text" class="form-control" name="precio" required>
                             </div>
-                            <div class="row-fluid">
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th><strong>Cantidad</strong></th>
-                                            <th><strong>Artículo</strong></th>
-                                            <th><strong>Precio Unitario</strong></th>
-                                            <th><strong>Precio Total</strong></th>
-                                            <th><strong>Acción</strong></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $subtotal = 0; ?>
-                                        <?php foreach($pedido_items as $item) { ?>
-                                        <tr>
-                                            <td><?=$item['cantidad']?></td>
-                                            <td><?=$item['producto']?> <?=$item['articulo']?></td>
-                                            <td><?=$pedido['moneda']['simbolo']?> <?=number_format($item['precio'], 2)?></td>
-                                            <td><?=$pedido['moneda']['simbolo']?> <?=number_format($item['cantidad'] * $item['precio'], 2)?></td>
-                                            <td>
-                                                <a href="/pedidos/modificar_item/<?=$item['idpedido_item']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="label label-info tooltips"><i class="icon-edit"></i></a>
-                                                <a href="/pedidos/borrar_item/<?=$item['idpedido_item']?>"><i class="alert-danger icon-remove tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar"></i></a>
-                                                <a href="/pedidos/asociar_ot/<?=$item['idpedido_item']?>/"><i class="alert-success icon-plus tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Asociar Orden de Trabajo"></i></a>
-                                            </td>
-                                        </tr>
-                                        <?php $subtotal += ($item['cantidad'] * $item['precio']); ?>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="space20"></div>
-                            <div class="row-fluid">
-                                <div class="span4 invoice-block pull-right">
-                                    <ul class="unstyled amounts">
-                                        <li>
-                                            <strong>SUBTOTAL : </strong><?=$pedido['moneda']['simbolo']?> <?=number_format($subtotal, 2)?>
-                                        </li>
-                                        <li>
-                                            <strong>IVA : </strong><?=$pedido['moneda']['simbolo']?> <?=number_format($subtotal*0.21, 2)?>
-                                        </li>
-                                        <li>
-                                            <strong>TOTAL : </strong><?=$pedido['moneda']['simbolo']?> <?=number_format($subtotal*1.21, 2)?>
-                                        </li>
-                                    </ul>
-                                </div>
+                        </div>
+                        <div class="col-sm-1 col-md-1 col-sx-12">
+                            <div class="form-group">
+                                <label class="control-label">&nbsp;</label>
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa fa-plus"></i> Agregar
+                                </button>
                             </div>
                         </div>
                     </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-sx-12">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th><strong>Cantidad</strong></th>
+                                <th><strong>Artículo</strong></th>
+                                <th><strong>Precio Unitario</strong></th>
+                                <th><strong>Precio Total</strong></th>
+                                <th><strong>Acción</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $subtotal = 0; ?>
+                            <?php foreach($pedido_items as $item) { ?>
+                            <tr>
+                                <td><?=$item['cantidad']?></td>
+                                <td><?=$item['producto']?> <?=$item['articulo']?></td>
+                                <td><?=$pedido['moneda']['simbolo']?> <?=number_format($item['precio'], 2)?></td>
+                                <td><?=$pedido['moneda']['simbolo']?> <?=number_format($item['cantidad'] * $item['precio'], 2)?></td>
+                                <td>
+                                    <a href="/pedidos/modificar_item/<?=$item['idpedido_item']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar">
+                                        <button class="btn btn-warning btn-xs">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                    </a>
+                                    <a href="/pedidos/borrar_item/<?=$item['idpedido_item']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar">
+                                        <button class="btn btn-danger btn-xs">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </a>
+                                    <a href="/pedidos/asociar_ot/<?=$item['idpedido_item']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Asociar Orden de Trabajo">
+                                        <button class="btn btn-success btn-xs">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php $subtotal += ($item['cantidad'] * $item['precio']); ?>
+                            <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
-    </div>
+            <div class="row">
+                <div class="col-sm-4 col-md-4 col-sx-12 pull-right">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th style="width:50%">Subtotal :</th>
+                                <td><?=number_format($subtotal, 2)?></td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%">IVA :</th>
+                                <td><?=number_format($subtotal * 0.21, 2)?></td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%">Total : </th>
+                                <td><?=number_format($subtotal * 1.21, 2)?></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
 </div>
-
