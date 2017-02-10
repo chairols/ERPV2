@@ -39,7 +39,7 @@
             type: 'GET',
             url: '/ots/index_ajax/',
             beforeSend: function() {
-                $("#resultado").html('<div class="text-center"><img src="/assets/AdminLTE-2.3.11/gears.gif"></div>');
+                $("#resultado").html('<div class="text-center"><img src="/assets/AdminLTE-2.3.11/gears.gif"></div><br>');
             },
             success: function(data) {
                 $("#resultado").html(data);

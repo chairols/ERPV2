@@ -20,7 +20,7 @@
                         <h3 class="box-title"><?=$title?></h3>
                     </div>
                     <div class="box-body">
-                        <form method="POST" class="form-horizontal">
+                        <form method="POST" class="form-horizontal" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-sx-12">Cliente</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">

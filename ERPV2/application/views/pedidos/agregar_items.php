@@ -45,7 +45,11 @@
                         Moneda: <strong><?=$pedido['moneda']['moneda']?></strong><br>
                         Orden de Compra: <strong><?=$pedido['ordendecompra']?></strong><br>
                         Adjunto: <?php if($pedido['adjunto'] != "") { ?>
-                        <a href="<?=$pedido['adjunto']?>" target="_blank"><i class="icon-file-text"></i></a>
+                        <a href="<?=$pedido['adjunto']?>" target="_blank">
+                            <button class="btn btn-info btn-xs">
+                                <i class="fa fa-file-text"></i>
+                            </button>
+                        </a>
                         <?php } ?>
                     </address>
                 </div>

@@ -20,7 +20,7 @@
                         <h3 class="box-title"><?=$title?></h3>
                     </div>
                     <div class="box-body">
-                        <table class="table table-condensed table-bordered table-hover" id="datatable">
+                        <table class="table table-condensed table-bordered table-hover" id="datatable-desc">
                             <thead>
                                 <tr>
                                     <th><strong>Pedido #</strong></th>
