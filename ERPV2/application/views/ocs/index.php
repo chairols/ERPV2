@@ -20,42 +20,57 @@
                     <div class="box-header">
                         <h3 class="box-title"><?=$title?></h3>
                     </div>
-                    <div class="box-body">
-                        <table class="table table-hover table-bordered table-condensed" id="datatable-desc">
-                            <thead>
-                                <tr>
-                                    <th>O.C.</th>
-                                    <th>Fecha</th>
-                                    <th>Proveedor</th>
-                                    <th>Cantidad</th>
-                                    <th>Artículo</th>
-                                    <th>O.T.</th>
-                                    <th>Acción</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach($ocs as $oc) { ?>
-                                <tr>
-                                    <td><?=$oc['idoc']?></td>
-                                    <td><?=date('d/m/Y' , strtotime($oc['timestamp']))?></td>
-                                    <td><?=$oc['proveedor']?></td>
-                                    <td><?=$oc['cantidad']?> <?=$oc['medida_corta']?></td>
-                                    <td><?=$oc['producto']?> <?=$oc['articulo']?></td>
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <a href="/ocs/agregar_items/<?=$oc['idoc']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
-                                            <button class="btn btn-warning btn-xs">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                    <div id="gears">
+                        <div class="text-center">
+                            <img src="/assets/AdminLTE-2.3.11/gears.gif">
+                            <br><br>
+                        </div>
+                    </div>
+                    <div id="tabla" style="display: none;">
+                        <div class="box-body">
+                            <table class="table table-hover table-bordered table-condensed" id="datatable-desc">
+                                <thead>
+                                    <tr>
+                                        <th>O.C.</th>
+                                        <th>Fecha</th>
+                                        <th>Proveedor</th>
+                                        <th>Cantidad</th>
+                                        <th>Artículo</th>
+                                        <th>O.T.</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($ocs as $oc) { ?>
+                                    <tr>
+                                        <td><?=$oc['idoc']?></td>
+                                        <td><?=date('d/m/Y' , strtotime($oc['timestamp']))?></td>
+                                        <td><?=$oc['proveedor']?></td>
+                                        <td><?=$oc['cantidad']?> <?=$oc['medida_corta']?></td>
+                                        <td><?=$oc['producto']?> <?=$oc['articulo']?></td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <a href="/ocs/agregar_items/<?=$oc['idoc']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
+                                                <button class="btn btn-warning btn-xs">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
+
+<script type="text/javascript">
+    function inicio() {
+        $("#gears").hide();
+        $("#tabla").fadeIn(1000);
+    }
+</script>
