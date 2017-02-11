@@ -1,34 +1,36 @@
-<div id="main-content">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
-                <h3 class="page-title">
-                    <?=$title?>
-                </h3>
-            </div>
-        </div>
-        
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1><?=$title?></h1>
+    </section>
+    
+    <section class="content">
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li class="active"><a href="/proveedores/">Listar Proveedores</a></li>
                 <li><a href="/proveedores/agregar/">Agregar Proveedor</a></li>
+                <li><a href="/proveedores/modificar/">Modificar Proveedor</a></li>
             </ul>
-            
-            <div class="row-fluid">
-                <div class="span12">
-                    <div class="widget blue">
-                        <div class="widget-title">
-                            <h4><i class="icon-reorder"></i> Productos</h4>
-                            <span class="tools">
-                                <a href="javascript:;" class="icon-chevron-down"></a>
-                                <a href="javascript:;" class="icon-remove"></a>
-                            </span>
+        </div>
+        
+        <br>
+        
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><?=$title?></h3>
+                    </div>
+                    <div id="gears">
+                        <div class="text-center">
+                            <img src="/assets/AdminLTE-2.3.11/gears.gif">
+                            <br><br>
                         </div>
-                        <div class="widget-body">
-                            <table class="table table-bordered table-hover table-condensed" id="sample_1">
+                    </div>
+                    <div id="tabla" style="display: none;">
+                        <div class="box-body">
+                            <table class="table table-bordered table-hover table-condensed" id="datatable">
                                 <thead>
                                     <tr>
-                                        <th><strong>ID</strong></th>
                                         <th><strong>Proveedor</strong></th>
                                         <th><strong>Acción</strong></th>
                                     </tr>
@@ -36,14 +38,23 @@
                                 <tbody>
                                     <?php foreach($proveedores as $proveedor) { ?>
                                     <tr>
-                                        <td><?=$proveedor['idproveedor']?></td>
                                         <td><?=$proveedor['proveedor']?></td>
                                         <td>
-                                            <a href="/proveedores/modificar/<?=$proveedor['idproveedor']?>/">
-                                                <i class="icon-edit alert-info tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar"></i>
+                                            <a href="/proveedores/modificar/<?=$proveedor['idproveedor']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar">
+                                                <button class="btn btn-warning btn-xs">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
                                             </a> 
-                                            <a href="#" class="label label-important"><i class="icon-remove"></i></a>
-                                            <a href="/log/ver/proveedores/<?=$proveedor['idproveedor']?>/" class="label label-info"><i class="icon-time"></i></a>
+                                            <a href="#" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar">
+                                                <button class="btn btn-danger btn-xs">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </a>
+                                            <a href="/log/ver/proveedores/<?=$proveedor['idproveedor']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log">
+                                                <button class="btn btn-info btn-xs">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </button>
+                                            </a>
                                         </td>
                                     </tr>
                                     <?php } ?>
@@ -54,32 +65,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>
 
-
-
-<div class="table-responsive block-flat">
-    <table id="datatable">
-        <thead>
-            <tr>
-                <th><strong>ID</strong></th>
-                <th><strong>Proveedor</strong></th>
-                <th><strong>Acción</strong></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach($proveedores as $proveedor) { ?>
-            <tr>
-                <td><?=$proveedor['idproveedor']?></td>
-                <td><?=$proveedor['proveedor']?></td>
-                <td>
-                    <a href="#" class="label label-default"><i class="fa fa-pencil"></i></a> 
-                    <a href="#" class="label label-danger"><i class="fa fa-times"></i></a>
-                    <a href="/log/ver/proveedores/<?=$proveedor['idproveedor']?>/" class="label label-info"><i class="fa fa-clock-o"></i></a>
-                </td>
-            </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-</div>
+<script type="text/javascript">
+    function inicio() {
+        $("#gears").hide();
+        $("#tabla").fadeIn(1000);
+    }
+</script>
