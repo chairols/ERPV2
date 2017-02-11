@@ -115,7 +115,26 @@ class Menu extends CI_Controller {
             if($this->input->post('visible') == 'on')
                 $datos['visible'] = '1';
             
-            $this->menu_model->set($datos);
+            $id = $this->menu_model->set($datos);
+            
+            $datos = array(
+                'padre' => $this->input->post('padre')
+            );
+            $padre = $this->menu_model->get_where($datos);
+            
+            $log = array(
+                'tabla' => 'menu',
+                'idtabla' => $id,
+                'texto' => 'Se agregó el menú: <br>' 
+                . 'icono: '.$this->input->post('icono').'<i class="'.$this->input->post('icono').'"></i> <br>'
+                . 'menu: '.$this->input->post('menu').'<br>'
+                . 'href: '.$this->input->post('href').'<br>'
+                . 'orden: '.$this->input->post('orden').'<br>'
+                . 'padre: '.$padre['menu'],
+                'tipo' => 'add',
+                'idusuario' => $session['SID']
+            );
+            $this->log_model->set($log);
             
             redirect('/menu/', 'refresh');
         }
