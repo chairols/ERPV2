@@ -326,6 +326,7 @@ class Ocs extends CI_Controller {
         $this->form_validation->set_rules('cantidad', 'Cantidad', 'required');
         $this->form_validation->set_rules('medida', 'Unidad de Medida', 'required');
         $this->form_validation->set_rules('articulo', 'Articulo', 'required');
+        $this->form_validation->set_rules('fecha', 'Fecha de Entrega', 'required');
         $this->form_validation->set_rules('precio', 'Precio', 'required');
         
         if($this->form_validation->run() == FALSE) {
@@ -335,6 +336,7 @@ class Ocs extends CI_Controller {
                 'cantidad' => $this->input->post('cantidad'),
                 'idmedida' => $this->input->post('medida'),
                 'idarticulo' => $this->input->post('articulo'),
+                'fecha' => $this->input->post('fecha'),
                 'precio' => $this->input->post('precio')
             );
             
@@ -352,10 +354,10 @@ class Ocs extends CI_Controller {
         $data['medidas'] = $this->medidas_model->gets();
         $data['articulos'] = $this->articulos_model->gets();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('ocs/editar_item');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function asociar_ot($idoc_item = null) {

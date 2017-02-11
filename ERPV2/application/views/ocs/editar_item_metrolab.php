@@ -19,7 +19,7 @@
             <div class="span6">
                 <div class="widget blue">
                     <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> Agregar Orden de Compra</h4>
+                        <h4><i class="icon-reorder"></i> Editar Item</h4>
                         <span class="tools">
                             <a href="javascript:;" class="icon-chevron-down"></a>
                             <a href="javascript:;" class="icon-remove"></a>
@@ -28,23 +28,35 @@
                     <div class="widget-body">
                         <form method="POST" class="form-horizontal">
                             <div class="control-group">
-                                <label class="control-label">Proveedor</label>
+                                <label class="control-label">Cantidad</label>
                                 <div class="controls">
-                                    <select name="proveedor" class="span12 select2">
-                                        <?php foreach($proveedores as $proveedor) { ?>
-                                        <option value="<?=$proveedor['idproveedor']?>"><?=$proveedor['proveedor']?></option>
+                                    <input type="text" maxlength="100" class="span12" name="cantidad" value="<?=$item['cantidad']?>" required>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Unidad de Medida</label>
+                                <div class="controls">
+                                    <select name="medida" class="select2 span12">
+                                        <?php foreach($medidas as $medida) { ?>
+                                        <option value="<?=$medida['idmedida']?>"<?=($medida['idmedida']==$item['idmedida'])?" selected":""?>><?=$medida['medida_corta']?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Moneda</label>
+                                <label class="control-label">Artículo</label>
                                 <div class="controls">
-                                    <select name="moneda" class="span12 select2">
-                                        <?php foreach($monedas as $moneda) { ?>
-                                        <option value="<?=$moneda['idmoneda']?>"><?=$moneda['moneda']?></option>
+                                    <select name="articulo" class="select2 span12">
+                                        <?php foreach($articulos as $articulo) { ?>
+                                        <option value="<?=$articulo['idarticulo']?>"<?=($articulo['idarticulo']==$item['idarticulo'])?" selected":""?>><?=$articulo['producto']?> <?=$articulo['articulo']?></option>
                                         <?php } ?>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Precio Unitario</label>
+                                <div class="controls">
+                                    <input type="text" maxlength="100" class="span12" name="precio" value="<?=$item['precio']?>" required>
                                 </div>
                             </div>
                             <div class="form-actions">
