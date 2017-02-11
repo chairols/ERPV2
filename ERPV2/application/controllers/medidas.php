@@ -68,10 +68,10 @@ class Medidas extends CI_Controller {
             redirect('/medidas/', 'refresh');
         }
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('medidas/agregar');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
 }
 ?>
