@@ -24,7 +24,7 @@
                         <h3 class="box-title"><?=$title?></h3>
                     </div>
                     <div class="box-body">
-                        <table id="datatable-desc" class="table table-striped table-bordered table-condensed">
+                        <table id="datatable" class="table table-striped table-bordered table-condensed">
                             <thead>
                                 <tr>
                                     <th><strong>Artículo</strong></th>

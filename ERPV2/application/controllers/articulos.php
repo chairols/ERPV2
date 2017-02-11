@@ -92,6 +92,8 @@ class Articulos extends CI_Controller {
                'tipo' => 'add',
                'idusuario' => $session['SID']
             );
+            
+            $this->log_model->set($log);
 
             if($this->input->post('padres')) {
                 foreach($this->input->post('padres') as $padre) {

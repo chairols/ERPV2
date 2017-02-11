@@ -12,6 +12,7 @@ class Productos_model extends CI_Model {
      */
     public function set($datos) {
         $this->db->insert('productos', $datos);
+        return $this->db->insert_id();
     }
     
     /*

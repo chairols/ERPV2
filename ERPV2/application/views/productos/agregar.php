@@ -1,13 +1,9 @@
-<div id="main-content">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
-                <h3 class="page-title">
-                    <?=$title?>
-                </h3>
-            </div>
-        </div>
-        
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1><?=$title?></h1>
+    </section>
+    
+    <section class="content">
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li><a href="/productos/">Listar Productos</a></li>
@@ -16,47 +12,33 @@
             </ul>
         </div>
         
-        <div class="row-fluid">
-            <div class="span6">
-                <div class="widget blue">
-                    <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> Agregar Producto</h4>
-                        <span class="tools">
-                            <a href="javascript:;" class="icon-chevron-down"></a>
-                            <a href="javascript:;" class="icon-remove"></a>
-                        </span>
+        <br>
+        
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><?=$title?></h3>
                     </div>
-                    <div class="widget-body">
+                    <div class="box-body">
                         <form method="POST" class="form-horizontal">
-                            <div class="control-group">
-                                <label class="control-label">Producto</label>
-                                <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=set_value('producto')?>" name="producto" required autofocus>
-                                    <?=form_error('producto', '<div class="alert alert-danger">', '</div>')?>
-                                    <?=$alerta?>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Producto</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <input type="text" maxlength="100" class="form-control" value="<?=set_value('producto')?>" name="producto" required autofocus>
                                 </div>
                             </div>
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="icon-save"></i> Guardar
-                                </button>
-                                <button type="reset" class="btn btn-danger">
-                                    <i class="icon-remove"></i> Limpiar
-                                </button>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <button type="submit" class="btn btn-success">Agregar</button>
+                                    <button type="reset" class="btn btn-primary">Limpiar</button>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-
-
-<div class="block-flat">
-    <form role="form" method="post">
-        
-        <button type="submit" class="btn btn-primary">Agregar</button>
-    </form>
+    </section>
 </div>

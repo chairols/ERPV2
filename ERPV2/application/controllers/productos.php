@@ -58,18 +58,30 @@ class Productos extends CI_Controller {
                     'producto' => $this->input->post('producto')
                 );
 
-               $this->productos_model->set($datos); 
-
-               redirect('/productos/', 'refresh');
+                $id = $this->productos_model->set($datos); 
+               
+                $log = array(
+                    'tabla' => 'productos',
+                    'idtabla' => $id,
+                    'texto' => 'Se agregó: <br>'
+                     . 'producto: '.$this->input->post('producto'),
+                    'tipo' => 'add',
+                    'idusuario' => $session['SID']
+                );
+               
+                $this->log_model->set($log);
+                
+                redirect('/productos/', 'refresh');
+                
             } else {
                 $data['alerta'] = '<div class="alert alert-danger">El producto ya existe</div>';
             }
         }
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('productos/agregar');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function modificar($idproducto = null) {
