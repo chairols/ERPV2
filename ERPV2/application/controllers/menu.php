@@ -78,7 +78,7 @@ class Menu extends CI_Controller {
             'padre' => '0',
             'visible' => '1'
         );
-        $data['padres'] = $this->menu_model->gets_where($datos);
+        $data['padres'] = $this->menu_model->gets_padres_ordenados();
         
         $datos = array(
             'idmenu' => $idmenu
@@ -140,11 +140,7 @@ class Menu extends CI_Controller {
         }
         
         
-        $datos = array(
-            'padre' => '0',
-            'visible' => '1'
-        );
-        $data['padres'] = $this->menu_model->gets_where($datos);
+        $data['padres'] = $this->menu_model->gets_padres_ordenados();
         
         $this->load->view('layout_lte/header', $data);
         $this->load->view('layout_lte/menu');

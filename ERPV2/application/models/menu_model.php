@@ -48,11 +48,7 @@ class Menu_model extends CI_Model {
         return $query->result_array();
     }
     
-    /*
-     *  menu/agregar
-     * 
-     */
-    public function gets_where($where) {
+   public function gets_where($where) {
         $query = $this->db->get_where('menu', $where);
         
         return $query->result_array();
@@ -117,6 +113,22 @@ class Menu_model extends CI_Model {
     public function update($datos, $id) {
         $array = array('idmenu' => $id);
         $this->db->update('menu', $datos, $array);
+    }
+    
+    /*
+     *  menu/agregar
+     *  menu/modificar
+     */
+    public function gets_padres_ordenados() {
+        $query = $this->db->query("SELECT *
+                                    FROM
+                                        menu
+                                    WHERE
+                                        padre = '0' AND
+                                        visible = '1'
+                                    ORDER BY
+                                        menu");
+        return $query->result_array();              
     }
 }
 ?>
