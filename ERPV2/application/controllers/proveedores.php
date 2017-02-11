@@ -139,10 +139,10 @@ class Proveedores extends CI_Controller {
         $data['proveedor'] = $this->proveedores_model->get_where($datos);
         $data['provincias'] = $this->provincias_model->gets();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('proveedores/modificar');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
 }
 ?>
