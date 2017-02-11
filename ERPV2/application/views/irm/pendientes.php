@@ -20,30 +20,45 @@
                     <div class="box-header">
                         <h3 class="box-title"><?=$title?></h3>
                     </div>
-                    <div class="box-body">
-                        <table class="table table-hover table-bordered table-condensed" id="datatable-desc">
-                            <thead>
-                                <tr>
-                                    <th>Fecha de Compra</th>
-                                    <th>Cantidad Pendiente</th>
-                                    <th>Artículo</th>
-                                    <th>Proveedor</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach($pendientes as $pendiente) { ?>
-                                <tr>
-                                    <td><?=strftime('%Y-%m-%d', strtotime($pendiente['fecha']))?></td>
-                                    <td><?=$pendiente['cantidadpendiente']?></td>
-                                    <td><?=$pendiente['producto']?> <?=$pendiente['articulo']?></td>
-                                    <td><?=$pendiente['proveedor']?></td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                    <div id="gears">
+                        <div class="text-center">
+                            <img src="/assets/AdminLTE-2.3.11/gears.gif">
+                            <br><br>
+                        </div>
+                    </div>
+                    <div id="tabla" style="display: none;">
+                        <div class="box-body">
+                            <table class="table table-hover table-bordered table-condensed" id="datatable-desc">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha de Compra</th>
+                                        <th>Cantidad Pendiente</th>
+                                        <th>Artículo</th>
+                                        <th>Proveedor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($pendientes as $pendiente) { ?>
+                                    <tr>
+                                        <td><?=strftime('%Y-%m-%d', strtotime($pendiente['fecha']))?></td>
+                                        <td><?=$pendiente['cantidadpendiente']?></td>
+                                        <td><?=$pendiente['producto']?> <?=$pendiente['articulo']?></td>
+                                        <td><?=$pendiente['proveedor']?></td>
+                                    </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function inicio() {
+        $("#gears").hide();
+        $("#tabla").fadeIn(1000);
+    }
+</script>
