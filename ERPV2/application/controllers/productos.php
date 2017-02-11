@@ -122,10 +122,10 @@ class Productos extends CI_Controller {
         
         $data['producto'] = $this->productos_model->get_where(array('idproducto' => $idproducto));
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('productos/modificar');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
 }
 
