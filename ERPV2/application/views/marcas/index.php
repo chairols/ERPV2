@@ -22,47 +22,62 @@
                     <div class="box-header">
                         <h3 class="box-title"><?=$title?></h3>
                     </div>
-                    <div class="box-body">
-                        <table class="table table-condensed table-hover table-bordered" id="datatable">
-                            <thead>
-                                <tr>
-                                    <th><strong>Marca</strong></th>
-                                    <th><strong>Acción</strong></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach($marcas as $marca) { ?>
-                                <tr>
-                                    <td><?=$marca['marca']?></td>
-                                    <td>
-                                        <a href="/marcas/ver/<?=$marca['idmarca']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Ver">
-                                            <button class="btn btn-success btn-xs">
-                                                <i class="fa fa-eye"></i>
-                                            </button>
-                                        </a>
-                                        <a href="/marcas/modificar/<?=$marca['idmarca']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar">
-                                            <button class="btn btn-warning btn-xs">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                        </a> 
-                                        <a href="/marcas/borrar/<?=$marca['idmarca']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar">
-                                            <button class="btn btn-danger btn-xs">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </a>
-                                        <a href="/log/ver/marcas/<?=$marca['idmarca']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log">
-                                            <button class="btn btn-info btn-xs">
-                                                <i class="fa fa-clock-o"></i>
-                                            </button>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                    <div id="gears">
+                        <div class="text-center">
+                            <img src="/assets/AdminLTE-2.3.11/gears.gif">
+                            <br><br>
+                        </div>
+                    </div>
+                    <div id="tabla" style="display: none;">
+                        <div class="box-body">
+                            <table class="table table-condensed table-hover table-bordered" id="datatable">
+                                <thead>
+                                    <tr>
+                                        <th><strong>Marca</strong></th>
+                                        <th><strong>Acción</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($marcas as $marca) { ?>
+                                    <tr>
+                                        <td><?=$marca['marca']?></td>
+                                        <td>
+                                            <a href="/marcas/ver/<?=$marca['idmarca']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Ver">
+                                                <button class="btn btn-success btn-xs">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                            </a>
+                                            <a href="/marcas/modificar/<?=$marca['idmarca']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar">
+                                                <button class="btn btn-warning btn-xs">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                            </a> 
+                                            <a href="/marcas/borrar/<?=$marca['idmarca']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Borrar">
+                                                <button class="btn btn-danger btn-xs">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </a>
+                                            <a href="/log/ver/marcas/<?=$marca['idmarca']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log">
+                                                <button class="btn btn-info btn-xs">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div> 
     </section>
 </div>
+
+<script type="text/javascript">
+    function inicio() {
+        $("#gears").hide();
+        $("#tabla").fadeIn(1000);
+    }
+</script>
