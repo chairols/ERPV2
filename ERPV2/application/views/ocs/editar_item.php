@@ -79,34 +79,3 @@
         </div>
     </section>
 </div>
-
-
-
-<div id="main-content">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span6">
-                <div class="widget blue">
-                    <div class="widget-body">
-                        <form method="POST" class="form-horizontal">
-                            <div class="control-group">
-                                <label class="control-label">Precio Unitario</label>
-                                <div class="controls">
-                                    <input type="text" maxlength="100" class="span12" name="precio" value="<?=$item['precio']?>" required>
-                                </div>
-                            </div>
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="icon-save"></i> Guardar
-                                </button>
-                                <button type="reset" class="btn btn-danger">
-                                    <i class="icon-remove"></i> Limpiar
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
