@@ -165,6 +165,7 @@ class Usuarios extends CI_Controller {
                     'nombre' => $usuario['nombre'],
                     'apellido' => $usuario['apellido'],
                     'correo' => $usuario['correo'],
+                    'botonmenu' => 0,
                     'tipo_usuario' => $usuario['tipo_usuario']
                 );
                 $this->session->set_userdata($datos);

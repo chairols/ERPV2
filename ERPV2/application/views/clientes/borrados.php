@@ -1,13 +1,9 @@
-<div id="main-content">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
-                <h3 class="page-title">
-                    <?=$title?>
-                </h3>
-            </div>
-        </div>
-        
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1><?=$title?></h1>
+    </section>
+    
+    <section class="content">
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li><a href="/clientes/">Listar Clientes</a></li>
@@ -15,22 +11,27 @@
                 <li><a href="/clientes/modificar/">Modificar Clientes</a></li>
                 <li class="active"><a href="/clientes/borrados/">Clientes Borrados</a></li>
             </ul>
-            
-            <div class="row-fluid">
-                <div class="span12">
-                    <div class="widget blue">
-                        <div class="widget-title">
-                            <h4><i class="icon-reorder"></i> Clientes Borrados</h4>
-                            <span class="tools">
-                                <a href="javascript:;" class="icon-chevron-down"></a>
-                                <a href="javascript:;" class="icon-remove"></a>
-                            </span>
+        </div>
+        
+        <br>
+        
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><?=$title?></h3>
+                    </div>
+                    <div id="gears">
+                        <div class="text-center">
+                            <img src="/assets/AdminLTE-2.3.11/gears.gif">
+                            <br><br>
                         </div>
-                        <div class="widget-body">
-                            <table class="table table-condensed table-bordered table-hover" id="sample_1">
+                    </div>
+                    <div id="tabla" style="display: none;">
+                        <div class="box-body">
+                            <table class="table table-condensed table-bordered table-hover" id="datatable">
                                 <thead>
                                     <tr>
-                                        <th><strong>ID</strong></th>
                                         <th><strong>Cliente</strong></th>
                                         <th><strong>Acción</strong></th>
                                     </tr>
@@ -38,11 +39,18 @@
                                 <tbody>
                                     <?php foreach($clientes as $cliente) { ?>
                                     <tr>
-                                        <td><?=$cliente['idcliente']?></td>
                                         <td><?=$cliente['cliente']?></td>
                                         <td>
-                                            <a href="/clientes/modificar/<?=$cliente['idcliente']?>/" class="label label-default"><i class="icon-edit"></i></a> 
-                                            <a href="/log/ver/clientes/<?=$cliente['idcliente']?>/" class="label label-info"><i class="icon-time"></i></a>
+                                            <a href="/clientes/modificar/<?=$cliente['idcliente']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
+                                                <button class="btn btn-warning btn-xs">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                            </a> 
+                                            <a href="/log/ver/clientes/<?=$cliente['idcliente']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log" class="tooltips">
+                                                <button class="btn btn-info btn-xs">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </button>
+                                            </a>
                                         </td>
                                     </tr>
                                     <?php } ?>
@@ -53,32 +61,12 @@
                 </div>
             </div>
         </div>
-        
-    </div>
+    </section>
 </div>
 
-
-<div class="table-responsive block-flat">
-    <table id="datatable">
-        <thead>
-            <tr>
-                <th><strong>ID</strong></th>
-                <th><strong>Cliente</strong></th>
-                <th><strong>Acción</strong></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach($clientes as $cliente) { ?>
-            <tr>
-                <td><?=$cliente['idcliente']?></td>
-                <td><?=$cliente['cliente']?></td>
-                <td>
-                    <a href="#" class="label label-default"><i class="fa fa-pencil"></i></a> 
-                    <a href="#" class="label label-danger"><i class="fa fa-times"></i></a>
-                    <a href="/log/ver/clientes/<?=$cliente['idcliente']?>/" class="label label-info"><i class="fa fa-clock-o"></i></a>
-                </td>
-            </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-</div>
+<script type="text/javascript">
+    function inicio() {
+        $("#gears").hide();
+        $("#tabla").fadeIn(1000);
+    }
+</script>

@@ -6,8 +6,8 @@
     <section class="content">
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
-                <li><a href="/clientes/">Listar clientes</a></li>
-                <li class="active"><a href="/clientes/agregar/">Agregar cliente</a></li>
+                <li><a href="/clientes/">Listar Clientes</a></li>
+                <li class="active"><a href="/clientes/agregar/">Agregar Cliente</a></li>
                 <li><a href="/clientes/modificar/">Modificar Clientes</a></li>
                 <li><a href="/clientes/borrados/">Clientes Borrados</a></li>
             </ul>
@@ -75,8 +75,6 @@
                                     <textarea class="form-control" rows="5" name="observaciones"><?=set_value('observaciones')?></textarea>
                                 </div>
                             </div>
-                            
-                            
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
