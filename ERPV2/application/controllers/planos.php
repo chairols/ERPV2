@@ -184,16 +184,12 @@ class Planos extends CI_Controller {
         $data['segmento'] = $this->uri->segment(1);
         $data['menu'] = $this->r_session->get_menu();
         
-        $datos = array(
-            'activo' => '0'
-        );
-        $data['planos'] = $this->planos_model->gets_where($datos);
+        $data['planos'] = $this->planos_model->gets_borrados();
         
-        
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('planos/borrados');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function modificar($idplano = null) {

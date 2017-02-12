@@ -69,5 +69,19 @@ class Planos_model extends CI_Model {
         $id = array('idplano' => $idplano);
         $this->db->update('planos', $datos, $id);
     }
+    
+    
+    public function gets_borrados() {
+        $query = $this->db->query("SELECT p.*, c.cliente
+                                    FROM
+                                        planos p
+                                    LEFT JOIN
+                                        clientes c
+                                    ON  
+                                        p.idcliente = c.idcliente
+                                    WHERE
+                                        p.activo = '0'");
+        return $query->result_array();
+    }
 }
 ?>
