@@ -50,7 +50,9 @@
                                         <td><?=$oc['producto']?> <?=$oc['articulo']?></td>
                                         <td>
                                             <?php foreach($oc['ots'] as $ot) { ?>
-                                            <span class="badge bg-green"><?=$ot['fabrica']?> <?=$ot['numero_ot']?></span>
+                                            <a href="/ots/ver/<?=$ot['idot']?>/">
+                                                <span class="badge bg-green"><?=$ot['fabrica']?> <?=$ot['numero_ot']?></span>
+                                            </a>
                                             <?php } ?>
                                         </td>
                                         <td>
