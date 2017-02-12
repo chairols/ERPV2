@@ -77,10 +77,10 @@ class Provincias extends CI_Controller {
             }
         }
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('provincias/agregar');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function modificar($idprovincia = null) {
