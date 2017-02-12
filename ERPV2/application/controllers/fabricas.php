@@ -28,10 +28,10 @@ class Fabricas extends CI_Controller {
         
         $data['fabricas'] = $this->fabricas_model->gets();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('fabricas/index', $data);
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function agregar() {

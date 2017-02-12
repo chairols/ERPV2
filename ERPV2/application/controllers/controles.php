@@ -51,6 +51,15 @@ class Controles extends CI_Controller {
             
             $this->controles_model->set($datos);
             
+            $log = array(
+                   'tabla' => 'controles',
+                   'idtabla' => $id,
+                   'texto' => 'Se agregó el control '.$this->input->post('control'),
+                   'tipo' => 'add',
+                   'idusuario' => $session['SID']
+               );
+            $this->log_model->set($log);
+            
             redirect('/controles/', 'refresh');
         }
         
