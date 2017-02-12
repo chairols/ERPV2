@@ -28,9 +28,10 @@
                     </div>
                     <div id="tabla" style="display: none;">
                         <div class="box-body">
-                            <table class="table table-hover table-bordered table-condensed" id="datatable-desc">
+                            <table class="table table-hover table-bordered table-condensed" id="datatable">
                                 <thead>
                                     <tr>
+                                        <th>Fecha Prometida</th>
                                         <th>Fecha de Compra</th>
                                         <th>Cantidad Pendiente</th>
                                         <th>Artículo</th>
@@ -40,6 +41,7 @@
                                 <tbody>
                                     <?php foreach($pendientes as $pendiente) { ?>
                                     <tr>
+                                        <td><?=date('Y-m-d', strtotime($pendiente['prometida']))?></td>
                                         <td><?=strftime('%Y-%m-%d', strtotime($pendiente['fecha']))?></td>
                                         <td><?=$pendiente['cantidadpendiente']?></td>
                                         <td><?=$pendiente['producto']?> <?=$pendiente['articulo']?></td>
