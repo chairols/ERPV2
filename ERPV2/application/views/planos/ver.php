@@ -1,67 +1,69 @@
-<div id="main-content">
-    <div class="container-fluid">
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1><?=$title?></h1>
+    </section>
+    
+    <section class="content">
         <div class="row-fluid">
-            <div class="span12">
-                <h3 class="page-title">
-                    <?=$title?>
-                </h3>
-            </div>
+            <ul class="nav nav-tabs nav-tabs-justified">
+                <li><a href="/planos/">Listar Planos</a></li>
+                <li><a href="/planos/agregar/">Agregar Plano</a></li>
+                <li><a href="/planos/modificar">Modificar Plano</a></li>
+                <li class="active"><a href="/planos/ver/">Ver Plano</a></li>
+                <li><a href="/planos/borrados/">Planos Borrados</a></li>
+            </ul>
         </div>
         
-        <ul class="nav nav-tabs nav-tabs-justified">
-            <li><a href="/planos/">Listar Planos</a></li>
-            <li><a href="/planos/agregar/">Agregar Plano</a></li>
-            <li><a href="/planos/modificar">Modificar Plano</a></li>
-            <li class="active"><a href="/planos/ver/">Ver Plano</a></li>
-            <li><a href="/planos/borrados/">Planos Borrados</a></li>
-        </ul>
+        <br>
         
-        <div class="row-fluid">
-            <div class="span6">
-                <div class="widget blue">
-                    <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> Ver Plano</h4>
-                        <span class="tools">
-                            <a href="javascript:;" class="icon-chevron-down"></a>
-                            <a href="javascript:;" class="icon-remove"></a>
-                        </span>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><?=$title?></h3>
                     </div>
-                    <div class="widget-body">
-                        <form method="POST" class="form-horizontal" enctype="multipart/form-data">
-                            <div class="control-group">
-                                <label class="control-label">Plano</label>
-                                <div class="controls">
-                                    <input type="text" maxlength="100" class="span12" name="plano" value="<?=$plano->getPlano()?>" disabled>
+                    <div class="box-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Plano</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <input type="text" maxlength="100" class="form-control" name="plano" value="<?=$plano->getPlano()?>" disabled>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Revisión</label>
-                                <div class="controls">
-                                    <input type="number" maxlength="11" class="span12" name="revision" value="<?=$plano->getRevision()?>" disabled>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Revisión</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <input type="number" maxlength="11" class="form-control" name="revision" value="<?=$plano->getRevision()?>" disabled>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Cliente</label>
-                                <div class="controls">
-                                    <input type="text" maxlength="100" class="span12" value="<?=$plano->getCliente()->getCliente()?>" disabled>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Cliente</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <input type="text" maxlength="100" class="form-control" value="<?=$plano->getCliente()->getCliente()?>" disabled>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Archivo del Plano</label>
-                                <div class="controls">
-                                    <div class="control-label"><?=($plano->getUrlDelPlano()=="")?"No tiene plano":"<a href='".$plano->getUrlDelPlano()."' target='_blank'>Ver Plano</a>"?></div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Archivo del Plano</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <?php if($plano->getUrlDelPlano() != "") { ?>
+                                    <a href="<?=$plano->getUrlDelPlano()?>" target="_blank" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Plano">
+                                        <button class="btn btn-info">
+                                            <i class="fa fa-file"></i>
+                                        </button>
+                                    </a>
+                                    <?php } ?>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Observaciones</label>
-                                <div class="controls">
-                                    <textarea name="observaciones" class="span12" rows="6" disabled><?=$plano->getObservaciones()?></textarea>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Observaciones</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <textarea name="observaciones" class="form-control" rows="6" disabled><?=$plano->getObservaciones()?></textarea>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>

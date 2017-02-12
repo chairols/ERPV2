@@ -132,21 +132,16 @@ class Planos extends CI_Controller {
         if($idplano == null) {
             redirect('/planos/', 'refresh');
         }
-        /*
-        $datos = array(
-            'idplano' => $idplano
-        );
-        $data['plano'] = $this->planos_model->get_where($datos);
-        */
+        
         $data['plano'] = new PlanosBean();
         $data['plano']->setId($idplano);
         $data['plano']->armarPlanoPorID();
         
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('planos/ver');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function borrar($idplano = null) {
