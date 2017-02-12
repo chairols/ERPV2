@@ -31,7 +31,6 @@
                             <table id="datatable-desc" class="table table-striped table-bordered table-condensed">
                                 <thead>
                                     <tr>
-                                        <th><strong>Pedido #</strong></th>
                                         <th><strong>Menú</strong></th>
                                         <th><strong>Href</strong></th>
                                         <th><strong>Orden</strong></th>
@@ -43,7 +42,6 @@
                                 <tbody>
                                     <?php foreach($mmenu as $m) { ?>
                                     <tr>
-                                        <td><?=$m['idmenu']?></td>
                                         <td><?=$m['menu']?></td>
                                         <td><?=$m['href']?></td>
                                         <td><?=$m['orden']?></td>

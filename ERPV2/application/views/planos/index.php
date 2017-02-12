@@ -34,7 +34,6 @@
                                 <thead>
                                     <tr>
                                         <th><strong>Plano</strong></th>
-                                        <th><strong>ID</strong></th>
                                         <th><strong>Revisión</strong></th>
                                         <th><strong>Cliente</strong></th>
                                         <th><strong>Plano</strong></th>
@@ -45,7 +44,6 @@
                                     <?php foreach($planos as $plano) { ?>
                                     <tr>
                                         <td><?=$plano['plano']?></td>
-                                        <td><?=$plano['idplano']?></td>
                                         <td><?=$plano['revision']?></td>
                                         <td>
                                             <a href="/clientes/ver/<?=$plano['idcliente']?>/">

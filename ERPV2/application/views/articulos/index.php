@@ -34,7 +34,6 @@
                                 <thead>
                                     <tr>
                                         <th><strong>Artículo</strong></th>
-                                        <th><strong>Producto</strong></th>
                                         <th><strong>Plano</strong></th>
                                         <th><strong>Revisión</strong></th>
                                         <th><strong>Posición</strong></th>
@@ -44,8 +43,7 @@
                                 <tbody>
                                     <?php foreach($articulos as $articulo) { ?>
                                     <tr>
-                                        <td><?=$articulo->getArticulo()?></td>
-                                        <td><?=$articulo->getProducto()->getProducto()?></td>
+                                        <td><?=$articulo->getProducto()->getProducto()?> <?=$articulo->getArticulo()?></td>
                                         <td><?=($articulo->getPlano()->getUrlDelPlano()!='')?"<a href='".$articulo->getPlano()->getUrlDelPlano()."' target='_blank'>".$articulo->getPlano()->getPlano()."</a>":""?></td>
                                         <td><?=$articulo->getPlano()->getRevision()?></td>
                                         <td><?=$articulo->getPosicion()?></td>

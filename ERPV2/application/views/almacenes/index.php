@@ -32,7 +32,6 @@
                             <table id="datatable" class="table table-condensed table-hover table-bordered">
                                 <thead>
                                     <tr>
-                                        <th><strong>ID</strong></th>
                                         <th><strong>Almacén</strong></th>
                                         <th><strong>Acción</strong></th>
                                     </tr>
@@ -40,7 +39,6 @@
                                 <tbody>
                                     <?php foreach($almacenes as $almacen) { ?>
                                     <tr>
-                                        <td><?=$almacen['idalmacen']?></td>
                                         <td><?=$almacen['almacen']?></td>
                                         <td>
                                             <a href="/almacenes/ver/<?=$almacen['idalmacen']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver" class="tooltips">
