@@ -34,6 +34,7 @@
                                         <th>Fecha Prometida</th>
                                         <th>Fecha de Compra</th>
                                         <th>Cantidad Pendiente</th>
+                                        <th>U.M.</th>
                                         <th>Artículo</th>
                                         <th>Proveedor</th>
                                     </tr>
@@ -44,6 +45,7 @@
                                         <td><?=date('Y-m-d', strtotime($pendiente['prometida']))?></td>
                                         <td><?=strftime('%Y-%m-%d', strtotime($pendiente['fecha']))?></td>
                                         <td><?=$pendiente['cantidadpendiente']?></td>
+                                        <td><?=$pendiente['medida_larga']?></td>
                                         <td><?=$pendiente['producto']?> <?=$pendiente['articulo']?></td>
                                         <td><?=$pendiente['proveedor']?></td>
                                     </tr>
