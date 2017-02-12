@@ -23,6 +23,16 @@
                     <div class="box-body">
                         <form method="POST" class="form-horizontal">
                             <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Proveedor</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <select name="proveedor" class="form-control select2">
+                                        <?php foreach($proveedores as $proveedor) { ?>
+                                        <option value="<?=$proveedor['idproveedor']?>"><?=$proveedor['proveedor']?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-sx-12">Moneda</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
                                     <select name="moneda" class="form-control select2">
