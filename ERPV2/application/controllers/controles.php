@@ -54,10 +54,10 @@ class Controles extends CI_Controller {
             redirect('/controles/', 'refresh');
         }
         
-        $this->load->view('layout/header_form', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('controles/agregar');
-        $this->load->view('layout/footer_form');
+        $this->load->view('layout_lte/footer');
     }
     
     public function ajax_check_control($control = null) {
