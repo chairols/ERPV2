@@ -44,7 +44,7 @@ class Ocs_model extends CI_Model {
      *  ocs/index
      */
     public function gets() {
-        $query = $this->db->query("SELECT o.*, m.simbolo, p.proveedor, oi.cantidad, med.medida_corta, a.articulo, prod.producto
+        $query = $this->db->query("SELECT o.*, m.simbolo, p.proveedor, oi.idoc_item, oi.cantidad, med.medida_corta, a.articulo, prod.producto
                                     FROM
                                         ocs o,
                                         monedas m,

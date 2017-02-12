@@ -35,6 +35,9 @@ class Ocs extends CI_Controller {
         $data['menu'] = $this->r_session->get_menu();
         
         $data['ocs'] = $this->ocs_model->gets();
+        foreach ($data['ocs'] as $key => $value) {
+            $data['ocs'][$key]['ots'] = $this->ocs_model->gets_ots_asociadas($value['idoc_item']);
+        }
         
         $this->load->view('layout_lte/header', $data);
         $this->load->view('layout_lte/menu');

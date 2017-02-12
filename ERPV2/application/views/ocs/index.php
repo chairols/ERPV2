@@ -48,7 +48,11 @@
                                         <td><?=$oc['proveedor']?></td>
                                         <td><?=$oc['cantidad']?> <?=$oc['medida_corta']?></td>
                                         <td><?=$oc['producto']?> <?=$oc['articulo']?></td>
-                                        <td>&nbsp;</td>
+                                        <td>
+                                            <?php foreach($oc['ots'] as $ot) { ?>
+                                            <span class="badge bg-green"><?=$ot['fabrica']?> <?=$ot['numero_ot']?></span>
+                                            <?php } ?>
+                                        </td>
                                         <td>
                                             <a href="/ocs/agregar_items/<?=$oc['idoc']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
                                                 <button class="btn btn-warning btn-xs">
