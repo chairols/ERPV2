@@ -591,10 +591,10 @@ class Ots extends CI_Controller {
         
         $data['ots'] = $this->ots_model->gets_borradas();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('ots/borradas');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function trazabilidad($idot = null) {
