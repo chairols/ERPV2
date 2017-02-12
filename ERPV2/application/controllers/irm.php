@@ -31,6 +31,7 @@ class irm extends CI_Controller {
         $data['irms'] = $this->irm_model->gets();
         foreach ($data['irms'] as $key => $value) {
             $data['irms'][$key]['controles'] = $this->irm_model->gets_controles_por_idirm_item($value['idirm_item']);
+            $data['irms'][$key]['ots'] = $this->ocs_model->gets_ots_asociadas($value['idoc_item']);
         }
         
         $this->load->view('layout_lte/header', $data);

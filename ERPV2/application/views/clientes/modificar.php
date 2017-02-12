@@ -1,117 +1,91 @@
-<div id="main-content">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
-                <h3 class="page-title">
-                    <?=$title?>
-                </h3>
-            </div>
-        </div>
-        
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1><?=$title?></h1>
+    </section>
+    
+    <section class="content">
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
-                <li><a href="/clientes/">Listar clientes</a></li>
-                <li><a href="/clientes/agregar/">Agregar cliente</a></li>
+                <li><a href="/clientes/">Listar Clientes</a></li>
+                <li><a href="/clientes/agregar/">Agregar Cliente</a></li>
                 <li class="active"><a href="/clientes/modificar/">Modificar Clientes</a></li>
                 <li><a href="/clientes/borrados/">Clientes Borrados</a></li>
             </ul>
         </div>
         
-        <div class="row-fluid">
-            <div class="span6">
-                <div class="widget blue">
-                    <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> Modificar Cliente</h4>
-                        <span class="tools">
-                            <a href="javascript:;" class="icon-chevron-down"></a>
-                            <a href="javascript:;" class="icon-remove"></a>
-                        </span>
+        <br>
+        
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><?=$title?></h3>
                     </div>
-                    <div class="widget-body">
+                    <div class="box-body">
                         <form method="POST" class="form-horizontal">
-                            <div class="control-group">
-                                <label class="control-label">Cliente</label>
-                                <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=$cliente['cliente']?>" name="cliente" required autofocus>
-                                    <span class="help-inline">
-                                        <?=form_error('cliente', '<div class="alert alert-danger">', '</div>')?>
-                                        <?=$alerta?>
-                                    </span>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Cliente</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <input type="text" maxlength="100" class="form-control" value="<?=$cliente['cliente']?>" name="cliente" required autofocus>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Domicilio</label>
-                                <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=$cliente['domicilio']?>" name="domicilio">
-                                    <span class="help-inline">
-                                        <?=form_error('domicilio', '<div class="alert alert-danger">', '</div>')?>
-                                    </span>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Domicilio</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <input type="text" maxlength="100" class="form-control" value="<?=$cliente['domicilio']?>" name="domicilio">
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Teléfono</label>
-                                <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=$cliente['telefono']?>" name="telefono">
-                                    <span class="help-inline">
-                                        <?=form_error('telefono', '<div class="alert alert-danger">', '</div>')?>
-                                    </span>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Teléfono</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <input type="text" maxlength="100" class="form-control" value="<?=$cliente['telefono']?>" name="telefono">
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Localidad</label>
-                                <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=$cliente['localidad']?>" name="localidad">
-                                    <span class="help-inline">
-                                        <?=form_error('localidad', '<div class="alert alert-danger">', '</div>')?>
-                                    </span>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Localidad</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <input type="text" maxlength="100" class="form-control" value="<?=$cliente['localidad']?>" name="localidad">
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Provincia</label>
-                                <div class="controls">
-                                    <select name="provincia" class="select2 input-xlarge">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Provincia</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <select name="provincia" class="select2 form-control">
                                         <?php foreach($provincias as $provincia) { ?>
                                         <option value="<?=$provincia['idprovincia']?>"<?=($provincia['idprovincia']==$cliente['idprovincia'])?" selected":""?>><?=$provincia['provincia']?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Contacto</label>
-                                <div class="controls">
-                                    <input type="text" maxlength="100" class="input-xlarge" value="<?=$cliente['contacto']?>" name="contacto">
-                                    <span class="help-inline">
-                                        <?=form_error('contacto', '<div class="alert alert-danger">', '</div>')?>
-                                    </span>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Contacto</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <input type="text" maxlength="100" class="form-control" value="<?=$cliente['contacto']?>" name="contacto">
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Correo</label>
-                                <div class="controls">
-                                    <input type="email" maxlength="100" class="input-xlarge" value="<?=$cliente['correo']?>" name="correo">
-                                    <span class="help-inline">
-                                        <?=form_error('correo', '<div class="alert alert-danger">', '</div>')?>
-                                    </span>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Correo</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <input type="email" maxlength="100" class="form-control" value="<?=$cliente['correo']?>" name="correo">
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label">Observaciones</label>
-                                <div class="controls">
-                                    <textarea class="input-xlarge" name="observaciones"><?=$cliente['observaciones']?></textarea>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Observaciones</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <textarea class="form-control" rows="5" name="observaciones"><?=$cliente['observaciones']?></textarea>
                                 </div>
                             </div>
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="icon-save"></i> Guardar
-                                </button>
-                                <button type="reset" class="btn btn-danger">
-                                    <i class="icon-remove"></i> Limpiar
-                                </button>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <button type="submit" class="btn btn-success">Agregar</button>
+                                    <button type="reset" class="btn btn-primary">Limpiar</button>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>

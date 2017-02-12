@@ -6,7 +6,7 @@ class Irm_model extends CI_Model {
     }
     
     public function gets() {
-        $query = $this->db->query("SELECT i.*, pr.producto, a.articulo, p.proveedor, u.nombre, u.apellido, it.*
+        $query = $this->db->query("SELECT i.*, pr.producto, oi.idoc_item, a.articulo, p.proveedor, u.nombre, u.apellido, it.*
                                     FROM
                                         irm i,
                                         irm_items it,

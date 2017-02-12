@@ -38,6 +38,7 @@
                                         <th>Recepcionado</th>
                                         <th>Fecha</th>
                                         <th>Controles</th>
+                                        <th>O.T.</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
@@ -53,6 +54,13 @@
                                         <td>
                                             <?php foreach($irm['controles'] as $control) { ?>
                                             <span class="badge bg-green"><?=$control['control']?></span>
+                                            <?php } ?>
+                                        </td>
+                                        <td>
+                                            <?php foreach($irm['ots'] as $ot) { ?>
+                                            <a href="/ots/ver/<?=$ot['idot']?>/">
+                                                <span class="badge bg-green"><?=$ot['fabrica']?> <?=$ot['numero_ot']?></span>
+                                            </a>
                                             <?php } ?>
                                         </td>
                                         <td>

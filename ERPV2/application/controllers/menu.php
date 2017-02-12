@@ -9,7 +9,8 @@ class Menu extends CI_Controller {
             'form_validation'
         ));
         $this->load->model(array(
-            'menu_model'
+            'menu_model',
+            'log_model'
         ));
         $this->load->helper(array(
             'url'
