@@ -194,6 +194,7 @@ class Ots extends CI_Controller {
         if($this->form_validation->run() == FALSE) {
             
         } else {
+            
             $data['ot'] = $this->ots_model->get_where(array('idot' => $idot));
             $data['fabrica'] = $this->fabricas_model->get_where(array('idfabrica' => $data['ot']['idfabrica']));
             
@@ -215,12 +216,6 @@ class Ots extends CI_Controller {
                 $datos['fecha_terminado'] = $this->input->post('fecha_terminado');
             } 
 
-            if(strlen($this->input->post('numero_serie')) == 0) {
-                $datos['numero_serie'] = NULL;
-            } else {
-                $datos['numero_serie'] = $this->input->post('numero_serie');
-            } 
-
             if($this->input->post('pedido') == 'null') {
                 $datos['idpedido'] = NULL;
             } else {
@@ -229,9 +224,15 @@ class Ots extends CI_Controller {
             
             $this->ots_model->update($datos, $idot);
             
+            if(count($this->input->post('numero_serie')) == 0) {
+                $datos['numero_serie'] = NULL;
+            } else {
+                $datos['numero_serie'] = $this->input->post('numero_serie');
+            }
+            
             $this->numeros_serie_model->borrar_por_ot($idot);
             if(!is_null($datos['numero_serie'])) {
-                $numeros_serie = explode(",", $this->input->post('numero_serie'));
+                $numeros_serie = $this->input->post('numero_serie');
                 foreach($numeros_serie as $ns) {
                     $num_serie = array(
                         'numero_serie' => $ns,
@@ -239,6 +240,11 @@ class Ots extends CI_Controller {
                     );
                     $this->numeros_serie_model->set($num_serie);
                 }
+            }
+            
+            $numeros_de_serie = '';
+            foreach ($this->input->post('numero_serie') as $value) {
+                $numeros_de_serie .= $value.' - ';
             }
             
             $log = array(
@@ -251,7 +257,7 @@ class Ots extends CI_Controller {
                 . 'Fecha de Necesidad: '.$this->input->post('fecha_necesidad').'<br>'
                 . 'Fecha de Terminado: '.$this->input->post('fecha_terminado').'<br>'
                 . 'Observaciones: '.$this->input->post('observaciones').'<br>'
-                . 'Número de serie: '.$this->input->post('numero_serie').'<br>'
+                . 'Número de serie: '.$numeros_de_serie.'<br>'
                 . 'Pedido: '.$this->input->post('pedido'),
                'tipo' => 'edit',
                'idusuario' => $session['SID']

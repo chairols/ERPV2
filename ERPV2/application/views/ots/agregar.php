@@ -91,6 +91,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Números de Serie</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <textarea class="form-control" rows="5" name="numeros_serie"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-sx-12">Observaciones</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
                                     <textarea class="form-control" rows="5" name="observaciones"></textarea>
