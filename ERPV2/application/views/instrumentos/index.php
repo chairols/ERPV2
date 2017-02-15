@@ -49,6 +49,11 @@
                                         <td><?=$instrumento['modelo']?></td>
                                         <td><?=$instrumento['numero_serie']?></td>
                                         <td>
+                                            <a href="/instrumentos/modificar/<?=$instrumento['idinstrumento']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar">
+                                                <button class="btn btn-warning btn-xs">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                            </a>
                                             <a href="/log/ver/instrumentos/<?=$instrumento['idinstrumento']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log">
                                                 <button class="btn btn-info btn-xs">
                                                     <i class="fa fa-clock-o"></i>

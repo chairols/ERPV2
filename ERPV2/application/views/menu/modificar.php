@@ -49,7 +49,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-sx-12">Padre</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
-                                    <select name="padre" id="select2" class="form-control">
+                                    <select name="padre" class="select2 form-control">
                                         <option value="0" selected>--- No tiene ---</option>
                                         <?php foreach($padres as $padre) { ?>
                                         <option value="<?=$padre['idmenu']?>"<?=($mmenu['padre']==$padre['idmenu'])?" selected":""?>><?=$padre['menu']?></option>

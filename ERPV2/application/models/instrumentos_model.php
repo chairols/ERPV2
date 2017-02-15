@@ -13,7 +13,9 @@ class Instrumentos_model extends CI_Model {
         return $this->db->insert_id();
     }
     
-    
+    /*
+     *  instrumentos/index
+     */
     public function gets() {
         $query = $this->db->query("SELECT i.*, m.marca
                                     FROM
@@ -23,6 +25,15 @@ class Instrumentos_model extends CI_Model {
                                         i.idmarca = m.idmarca AND
                                         i.activo = '1'");
         return $query->result_array();
+    }
+    
+    /*
+     *  instrumentos/modificar
+     */
+    public function get_where($where) {
+        $query = $this->db->get_where('instrumentos', $where);
+        
+        return $query->row_array();
     }
 }
 ?>

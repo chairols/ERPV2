@@ -101,5 +101,28 @@ class Instrumentos extends CI_Controller {
         $this->load->view('instrumentos/agregar');
         $this->load->view('layout_lte/footer');
     }
+    
+    public function modificar($idinstrumento = null) {
+        $session = $this->session->all_userdata();
+        if($idinstrumento == null) {
+            redirect('/instrumentos/', 'refresh');
+        }
+        $data['title'] = 'Modificar Instrumento';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $datos = array(
+            'idinstrumento' => $idinstrumento
+        );
+        $data['instrumento'] = $this->instrumentos_model->get_where($datos);
+        
+        $data['marcas'] = $this->marcas_model->gets();
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('instrumentos/modificar');
+        $this->load->view('layout_lte/footer');
+    }
 }
 ?>
