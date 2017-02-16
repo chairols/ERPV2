@@ -152,5 +152,37 @@ class Ocs_model extends CI_Model {
     }
     
     
+    public function gets_ocs_por_fechas_y_proveedor($desde, $hasta, $idproveedor) {
+        $query = $this->db->query("SELECT o.*, oi.*
+                                    FROM 
+                                        ocs o,
+                                        ocs_items oi
+                                    WHERE
+                                        o.idoc = oi.idoc AND
+                                        o.idproveedor = '$idproveedor' AND
+                                        o.timestamp BETWEEN '$desde' AND '$hasta'");
+        
+        return $query->result_array();
+    }
+    
+    public function gets_ocs_por_fechas_y_moneda($desde, $hasta, $idmoneda) {
+        $query = $this->db->query("SELECT sum(oi.precio) as valor, m.moneda, p.proveedor
+                                    FROM 
+                                        ocs o,
+                                        ocs_items oi,
+                                        monedas m,
+                                        proveedores p
+                                    WHERE
+                                        o.idoc = oi.idoc AND
+                                        o.idmoneda = m.idmoneda AND
+                                        o.idproveedor = p.idproveedor AND
+                                        m.idmoneda = '$idmoneda' AND
+                                        o.timestamp BETWEEN '$desde' AND '$hasta' AND
+                                        oi.activo = '1'
+                                    GROUP BY
+                                        p.proveedor, m.moneda");
+        
+        return $query->result_array();
+    }
 }
 ?>
