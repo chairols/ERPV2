@@ -59,11 +59,18 @@
         <div class="row">
         <?php if(isset($monedas)) { 
             foreach($monedas as $key => $value) { ?>
+            <?php if(count($value['ocs']) > 0) { ?>
         
+            <?php 
+            $total = 0;
+            foreach($value['ocs'] as $oc) {
+                $total += $oc['valor'];
+            } ?>
+            
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title"><strong><?=$value['moneda']?></strong> - Período <?=$desde?> - <?=$hasta?></h3>
+                        <h3 class="box-title"><strong><?=$value['moneda']?></strong> - Período <?=date('d/m/Y', strtotime($desde))?> - <?=date('d/m/Y', strtotime($hasta))?> - <strong><?=$value['simbolo']?> <?=$total?></strong></h3> 
                     </div>
                     <div class="gears">
                         <div class="text-center">
@@ -74,18 +81,18 @@
                     <div class="tabla" style="display: none;">
                         <canvas id="id-<?=$key?>"></canvas>
                         
-                        <table class="table table-condensed table-hover table-bordered datatable-desc">
+                        <table class="table table-condensed table-hover table-bordered datatable">
                             <thead>
                                 <tr>
-                                    <th><strong>Monto</strong></th>
                                     <th><strong>Proveedor</strong></th>
+                                    <th><strong>Monto</strong></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach($value['ocs'] as $oc) { ?>
                                 <tr>
-                                    <td><?=$value['simbolo']?> <?=$oc['valor']?></td>
                                     <td><?=$oc['proveedor']?></td>
+                                    <td><?=$value['simbolo']?> <?=$oc['valor']?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -94,6 +101,7 @@
                 </div>
             </div>
         <?php }
+            }
         } ?>
         </div>
     </section>
@@ -107,6 +115,7 @@
         $(".tabla").fadeIn(1000);
         
         <?php foreach($monedas as $key => $value) { ?>
+        <?php if(count($value['ocs']) > 0) { ?>
         var pieChartCanvas = $("#id-<?=$key?>").get(0).getContext("2d");
         var pieChart = new Chart(pieChartCanvas);
         var PieData = [
@@ -144,6 +153,7 @@
         //Create pie or douhnut chart
         // You can switch between pie and douhnut using the method below.
         pieChart.Doughnut(PieData, pieOptions);
+        <?php } ?>
         <?php } ?>
             
     }

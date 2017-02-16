@@ -166,7 +166,7 @@ class Ocs_model extends CI_Model {
     }
     
     public function gets_ocs_por_fechas_y_moneda($desde, $hasta, $idmoneda) {
-        $query = $this->db->query("SELECT sum(oi.precio) as valor, m.moneda, p.proveedor
+        $query = $this->db->query("SELECT sum(oi.cantidad*oi.precio) as valor, m.moneda, p.proveedor
                                     FROM 
                                         ocs o,
                                         ocs_items oi,

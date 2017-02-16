@@ -49,7 +49,7 @@ class Indicadores extends CI_Controller {
     public function compras() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        $data['title'] = 'Entregas';
+        $data['title'] = 'Compras por Proveedor';
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         $data['menu'] = $this->r_session->get_menu();
@@ -63,7 +63,7 @@ class Indicadores extends CI_Controller {
             $data['monedas'] = $this->monedas_model->gets();
             
             foreach($data['monedas'] as $key => $value) {
-                $data['monedas'][$key]['ocs'] = $this->ocs_model->gets_ocs_por_fechas_y_moneda($this->input->post('desde'), $this->input->post('hasta'), $value['idmoneda']);
+                $data['monedas'][$key]['ocs'] = $this->ocs_model->gets_ocs_por_fechas_y_moneda($this->input->post('desde'), date('Y-m-d', strtotime($this->input->post('hasta').' + 1 days')), $value['idmoneda']);
                 foreach ($data['monedas'][$key]['ocs'] as $k => $v) {
                     $data['monedas'][$key]['ocs'][$k]['rgb'] = $this->generarColorRandom();
                     $data['monedas'][$key]['ocs'][$k]['rgb2'] = $this->generarColorRandom();
