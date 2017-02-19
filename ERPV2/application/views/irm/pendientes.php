@@ -46,8 +46,16 @@
                                         <td><?=strftime('%Y-%m-%d', strtotime($pendiente['fecha']))?></td>
                                         <td><?=$pendiente['cantidadpendiente']?></td>
                                         <td><?=$pendiente['medida_larga']?></td>
-                                        <td><?=$pendiente['producto']?> <?=$pendiente['articulo']?></td>
-                                        <td><?=$pendiente['proveedor']?></td>
+                                        <td>
+                                            <a href="/articulos/ver/<?=$pendiente['idarticulo']?>/">
+                                                <?=$pendiente['producto']?> <?=$pendiente['articulo']?>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/proveedores/ver/<?=$pendiente['idproveedor']?>/">
+                                                <?=$pendiente['proveedor']?>
+                                            </a>
+                                        </td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
