@@ -47,8 +47,16 @@
                                     <tr>
                                         <td><?=$irm['idirm']?></td>
                                         <td><?=$irm['cantidad']?></td>
-                                        <td><?=$irm['producto']?> <?=$irm['articulo']?></td>
-                                        <td><?=$irm['proveedor']?></td>
+                                        <td>
+                                            <a href="/articulos/ver/<?=$irm['idarticulo']?>/">
+                                                <?=$irm['producto']?> <?=$irm['articulo']?>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/proveedores/ver/<?=$irm['idproveedor']?>/">
+                                                <?=$irm['proveedor']?>
+                                            </a>
+                                        </td>
                                         <td><?=$irm['nombre']?> <?=$irm['apellido']?></td>
                                         <td><?=date('d/m/Y', strtotime($irm['timestamp']))?></td>
                                         <td>
