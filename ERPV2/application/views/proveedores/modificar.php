@@ -9,6 +9,7 @@
                 <li><a href="/proveedores/">Listar Proveedores</a></li>
                 <li><a href="/proveedores/agregar/">Agregar Proveedor</a></li>
                 <li class="active"><a href="/proveedores/modificar/">Modificar Proveedor</a></li>
+                <li><a href="/proveedores/ver/">Ver Proveedor</a></li>
             </ul>
         </div>
         

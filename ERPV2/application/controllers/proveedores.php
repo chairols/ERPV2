@@ -144,5 +144,33 @@ class Proveedores extends CI_Controller {
         $this->load->view('proveedores/modificar');
         $this->load->view('layout_lte/footer');
     }
+    
+    
+    public function ver($idproveedor = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Ver Proveedor';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        if($idproveedor == null) {
+            redirect('/proveedores/', 'refresh');
+        }
+        
+        $datos = array(
+            'idproveedor' => $idproveedor
+        );
+        $data['proveedor'] = $this->proveedores_model->get_where($datos);
+        
+        $datos = array(
+            'idprovincia' => $data['proveedor']['idprovincia']
+        );
+        $data['provincia'] = $this->provincias_model->get_where($datos);
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('proveedores/ver');
+        $this->load->view('layout_lte/footer');
+    }
 }
 ?>

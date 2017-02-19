@@ -9,6 +9,7 @@
                 <li class="active"><a href="/proveedores/">Listar Proveedores</a></li>
                 <li><a href="/proveedores/agregar/">Agregar Proveedor</a></li>
                 <li><a href="/proveedores/modificar/">Modificar Proveedor</a></li>
+                <li><a href="/proveedores/ver/">Ver Proveedor</a></li>
             </ul>
         </div>
         
@@ -40,6 +41,11 @@
                                     <tr>
                                         <td><?=$proveedor['proveedor']?></td>
                                         <td>
+                                            <a href="/proveedores/ver/<?=$proveedor['idproveedor']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver">
+                                                <button class="btn btn-success btn-xs">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                            </a>
                                             <a href="/proveedores/modificar/<?=$proveedor['idproveedor']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar">
                                                 <button class="btn btn-warning btn-xs">
                                                     <i class="fa fa-edit"></i>
