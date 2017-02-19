@@ -45,9 +45,17 @@
                                     <tr>
                                         <td><?=$oc['idoc']?></td>
                                         <td><?=date('d/m/Y' , strtotime($oc['timestamp']))?></td>
-                                        <td><?=$oc['proveedor']?></td>
+                                        <td>
+                                            <a href="/proveedores/ver/<?=$oc['idproveedor']?>/">
+                                                <?=$oc['proveedor']?>
+                                            </a>
+                                        </td>
                                         <td><?=$oc['cantidad']?> <?=$oc['medida_corta']?></td>
-                                        <td><?=$oc['producto']?> <?=$oc['articulo']?></td>
+                                        <td>
+                                            <a href="/articulos/ver/<?=$oc['idarticulo']?>/">
+                                                <?=$oc['producto']?> <?=$oc['articulo']?>
+                                            </a>
+                                        </td>
                                         <td>
                                             <?php foreach($oc['ots'] as $ot) { ?>
                                             <a href="/ots/ver/<?=$ot['idot']?>/">
