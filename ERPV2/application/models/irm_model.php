@@ -59,7 +59,7 @@ class Irm_model extends CI_Model {
      *  irm/pendientes
      */
     public function gets_pendientes_de_recepcion() {
-        $query = $this->db->query("SELECT pirm.cantidadpendiente, m.medida_larga, a.articulo, pr.producto, o.timestamp as fecha, oi.fecha as prometida, p.proveedor
+        $query = $this->db->query("SELECT pirm.cantidadpendiente, m.medida_larga, a.articulo, pr.producto, o.timestamp as fecha, oi.fecha as prometida, p.proveedor, p.idproveedor
                                     FROM
                                         pendientesirm pirm,
                                         ocs_items oi,

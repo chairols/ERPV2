@@ -2,7 +2,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.1
     </div>
-      <strong>Copyright &copy; 2015-<?=date('Y', time())?> <a href="http://www.rollerservice.com.ar">Roller Service S.A.</a>.</strong> All rights
+      <strong>Copyright &copy; 2015-<?=date('Y', time())?> <a href="http://www.rollerservice.com.ar">Roller Service S.A.</a></strong> All rights
     reserved.
   </footer>
 

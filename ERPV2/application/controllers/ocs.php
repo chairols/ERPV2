@@ -345,10 +345,28 @@ class Ocs extends CI_Controller {
             
             $this->ocs_model->update_item($datos, $idoc_item);
             
+            
             $datos = array(
                 'idoc_item' => $idoc_item
             );
             $data['item'] = $this->ocs_model->get_item_where($datos);
+            
+            
+            $datos = array(
+                'idoc_item' => $idoc_item
+            );
+            $pendienteirm = $this->irm_model->get_where_pendienteirm($datos);
+            
+            $cantidaditemoc = $this->input->post('cantidad');
+            $cantidadrecepcionado = $pendienteirm['cantidadrecepcionado'];
+            
+            $cantidadpendiente = ($cantidaditemoc - $cantidadrecepcionado);
+            $datos = array(
+                'cantidadpendiente' => $cantidadpendiente
+            );
+            
+            $this->irm_model->update_itempendienteirm_por_idoc_item($datos, $idoc_item);
+            
             
             redirect('/ocs/agregar_items/'.$data['item']['idoc'].'/', 'refresh');
         }
