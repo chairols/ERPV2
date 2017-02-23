@@ -110,6 +110,10 @@ class otBean {
         $this->articulo->armarArticuloPorID();
         
         
+        
+        $this->fechaDeNecesidad = $ot['fecha_necesidad'];
+        
+        $this->timestamp = $ot['timestamp'];
     }
 
 }

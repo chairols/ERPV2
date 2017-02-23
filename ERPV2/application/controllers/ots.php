@@ -614,9 +614,14 @@ class Ots extends CI_Controller {
         if(!$idot)
             redirect('/ots/', 'refresh');
         
+        /*
         $trazabilidad = new TrazabilidadBean();
         $trazabilidad->setIdot($idot);
         $trazabilidad->armarTrazabilidadPorOt();
+        
+        
+        $data['trazabilidad'] = $trazabilidad;
+        */
         
         /*
         echo "<br><br><br></pre>";
@@ -644,10 +649,10 @@ class Ots extends CI_Controller {
             $data['ocs'][] = $this->ots_model->gets_ocs_asociadas_por_monedas($idot, $value['idmoneda']);
         }
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('ots/trazabilidad');
-        $this->load->view('layout/footer');
+        $this->load->view('layout_lte/footer');
     }
     
     public function get_ot_ajax($idot = null) {

@@ -104,54 +104,6 @@
     </section>
 </div>
 
-
-
-<div id="main-content">
-    <div class="container-fluid">
-        
-        <div class="row-fluid">
-            
-            <div class="span6">
-                <div class="widget blue">
-                    <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> Órdenes de Trabajo Asociadas</h4>
-                        <span class="tools">
-                            <a href="javascript:;" class="icon-chevron-down"></a>
-                            <a href="javascript:;" class="icon-remove"></a>
-                        </span>
-                    </div>
-                    <div class="widget-body">
-                        <table class="table table-hover table-bordered table-condensed">
-                            <thead>
-                                <tr>
-                                    <th>Orden de Trabajo</th>
-                                    <th>Acción</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach($ots_asociadas as $ot) { ?>
-                                <tr>
-                                    <td>
-                                        <strong><?=$ot['fabrica']?> <?=$ot['numero_ot']?></strong>
-                                        <br>
-                                        <?=$ot['cantidad']?> - <?=$ot['producto']?> <?=$ot['articulo']?>
-                                    </td>
-                                    <td>
-                                        <a href="/pedidos/desasociar_ot/<?=$ot['idpedido_item']?>/<?=$ot['idot']?>">
-                                            <i class="alert-danger icon-remove tooltips" data-pacement="top" data-toggle="tooltip" data-original-title="Desasociar Orden de Trabajo"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script type="text/javascript">
     function inicio() {
         cambiar();

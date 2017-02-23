@@ -175,7 +175,7 @@ class Ots_model extends CI_Model {
      *  ots/trazabilidad
      */
     public function gets_pedidos_asociados($idot) {
-        $query = $this->db->query("SELECT pi.cantidad, pr.producto, a.articulo, m.simbolo, pi.precio, p.ordendecompra, p.adjunto, c.cliente
+        $query = $this->db->query("SELECT pi.idpedido_item, pi.cantidad, pr.producto, a.idarticulo, a.articulo, m.simbolo, pi.precio, p.idpedido, p.ordendecompra, p.adjunto, c.cliente
                                     FROM
                                         pedidos_items_ots pio,
                                         pedidos_items pi,

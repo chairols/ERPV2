@@ -13,6 +13,8 @@ class Beans {
         require_once 'beans/ocsBean.php';
         require_once 'beans/ocsItemsBean.php';
         require_once 'beans/otBean.php';
+        require_once 'beans/pedidosBean.php';
+        require_once 'beans/pedidosItemBean.php';
         require_once 'beans/planosBean.php';
         require_once 'beans/productosBean.php';
         require_once 'beans/proveedoresBean.php';
