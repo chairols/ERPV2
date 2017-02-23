@@ -69,7 +69,13 @@
                         </div>
                         <div id="tabla" style="display: none;">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <?php if(isset($ocs)) { ?>
                                 <canvas id="pieChart" style="height:250px"></canvas>
+                                <h4 class="box-title">
+                                    Período <?=date('d/m/Y', strtotime($desde))?> - <?=date('d/m/Y', strtotime($hasta))?> <br>
+                                    <strong><?=$p->getProveedor()?></strong>
+                                </h4>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -92,6 +98,7 @@
     }
     
     function crearChart() {
+        <?php if(isset($ocs)) { ?>
         var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
         var pieChart = new Chart(pieChartCanvas);
         var PieData = [
@@ -147,5 +154,6 @@
         //Create pie or douhnut chart
         // You can switch between pie and douhnut using the method below.
         pieChart.Doughnut(PieData, pieOptions);
+        <?php } ?>
     }
 </script>

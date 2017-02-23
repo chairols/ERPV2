@@ -6,7 +6,8 @@ class Indicadores extends CI_Controller {
         $this->load->library(array(
             'session',
             'r_session',
-            'form_validation'
+            'form_validation',
+            'beans'
         ));
         $this->load->model(array(
             'proveedores_model',
@@ -35,12 +36,19 @@ class Indicadores extends CI_Controller {
         if($this->form_validation->run() == FALSE) {
             
         } else {
+            $data['desde'] = $this->input->post('desde');
+            $data['hasta'] = $this->input->post('hasta');
+            
             $data['ocs'] = $this->ocs_model->gets_ocs_por_fechas_y_proveedor($this->input->post('desde'), $this->input->post('hasta'), $this->input->post('proveedor'));
             
             $data['cumplidas'] = 0;
             $data['cumplidas_vencidas'] = 0;
             $data['pendientes'] = 0;
             $data['pendientes_vencidas'] = 0;
+            
+            $data['p'] = new ProveedoresBean();
+            $data['p']->setId($this->input->post('proveedor'));
+            $data['p']->armarProveedorPorID();
             
             foreach($data['ocs'] as $oc) {
                 $oc['fecha_recepcionado'] = substr($oc['fecha_recepcionado'], 0, 10);
@@ -53,11 +61,11 @@ class Indicadores extends CI_Controller {
                     }
                 }
                 
-                if($oc['cantidad_recepcionada'] < $oc['cantidad_pedida'] || $oc['cantidad_recepcionada'] == null) {
-                    if($oc['fecha_prometida'] <= date('Y-m-d')) {
-                        $data['pendientes']++;
-                    } else {
+                if($oc['cantidad_recepcionada'] < $oc['cantidad_pedida'] || is_null($oc['cantidad_recepcionada'])) {
+                    if(strtotime($oc['fecha_prometida']) <= strtotime(date('Y-m-d'))) {
                         $data['pendientes_vencidas']++;
+                    } else {
+                        $data['pendientes']++;
                     }
                 }
                 

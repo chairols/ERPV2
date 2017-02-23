@@ -153,11 +153,11 @@ class Ocs_model extends CI_Model {
     
     
     public function gets_ocs_por_fechas_y_proveedor($desde, $hasta, $idproveedor) {
-        $query = $this->db->query("SELECT sum(oi.cantidad) as cantidad_pedida, sum(ii.cantidad) as cantidad_recepcionada, oi.fecha as fecha_prometida, max(ii.timestamp) as fecha_recepcionado, ii.idoc_item
+        $query = $this->db->query("SELECT sum(oi.cantidad) as cantidad_pedida, sum(ii.cantidad) as cantidad_recepcionada, oi.fecha as fecha_prometida, max(ii.timestamp) as fecha_recepcionado, oi.idoc_item
                                     FROM
-                                        ((ocs o
+                                        ((ocs_items oi
                                     INNER JOIN
-                                        ocs_items oi 
+                                        ocs o 
                                     ON
                                         o.idoc = oi.idoc) 
                                     LEFT JOIN
@@ -168,7 +168,7 @@ class Ocs_model extends CI_Model {
                                         o.idproveedor = '$idproveedor' AND
                                         o.timestamp BETWEEN '$desde' AND '$hasta'
                                     GROUP BY
-                                        ii.idoc_item");
+                                        oi.idoc_item    ");
         
         return $query->result_array();
     }
