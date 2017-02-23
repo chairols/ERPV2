@@ -153,17 +153,26 @@ class Ocs_model extends CI_Model {
     
     
     public function gets_ocs_por_fechas_y_proveedor($desde, $hasta, $idproveedor) {
-        $query = $this->db->query("SELECT o.*, oi.*
-                                    FROM 
-                                        ocs o,
-                                        ocs_items oi
+        $query = $this->db->query("SELECT sum(oi.cantidad) as cantidad_pedida, sum(ii.cantidad) as cantidad_recepcionada, oi.fecha as fecha_prometida, max(ii.timestamp) as fecha_recepcionado, ii.idoc_item
+                                    FROM
+                                        ((ocs o
+                                    INNER JOIN
+                                        ocs_items oi 
+                                    ON
+                                        o.idoc = oi.idoc) 
+                                    LEFT JOIN
+                                        irm_items ii 
+                                    ON
+                                        oi.idoc_item = ii.idoc_item)
                                     WHERE
-                                        o.idoc = oi.idoc AND
                                         o.idproveedor = '$idproveedor' AND
-                                        o.timestamp BETWEEN '$desde' AND '$hasta'");
+                                        o.timestamp BETWEEN '$desde' AND '$hasta'
+                                    GROUP BY
+                                        ii.idoc_item");
         
         return $query->result_array();
     }
+    
     
     public function gets_ocs_por_fechas_y_moneda($desde, $hasta, $idmoneda) {
         $query = $this->db->query("SELECT sum(oi.cantidad*oi.precio) as valor, m.moneda, p.proveedor

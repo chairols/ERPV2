@@ -36,6 +36,32 @@ class Indicadores extends CI_Controller {
             
         } else {
             $data['ocs'] = $this->ocs_model->gets_ocs_por_fechas_y_proveedor($this->input->post('desde'), $this->input->post('hasta'), $this->input->post('proveedor'));
+            
+            $data['cumplidas'] = 0;
+            $data['cumplidas_vencidas'] = 0;
+            $data['pendientes'] = 0;
+            $data['pendientes_vencidas'] = 0;
+            
+            foreach($data['ocs'] as $oc) {
+                $oc['fecha_recepcionado'] = substr($oc['fecha_recepcionado'], 0, 10);
+                
+                if($oc['cantidad_pedida'] == $oc['cantidad_recepcionada']) {
+                    if($oc['fecha_prometida'] <= $oc['fecha_recepcionado']) {
+                        $data['cumplidas']++;
+                    } else {
+                        $data['cumplidas_vencidas']++;
+                    }
+                }
+                
+                if($oc['cantidad_recepcionada'] < $oc['cantidad_pedida'] || $oc['cantidad_recepcionada'] == null) {
+                    if($oc['fecha_prometida'] <= date('Y-m-d')) {
+                        $data['pendientes']++;
+                    } else {
+                        $data['pendientes_vencidas']++;
+                    }
+                }
+                
+            }
         }
         
         $data['proveedores'] = $this->proveedores_model->gets();

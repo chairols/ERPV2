@@ -68,10 +68,6 @@
                             </div>
                         </div>
                         <div id="tabla" style="display: none;">
-                                <?php var_dump($this->input->post()); ?>
-                                <?php if(isset($ocs)) {
-                                        var_dump($ocs);  
-                                        } ?>
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                 <canvas id="pieChart" style="height:250px"></canvas>
                             </div>
@@ -99,42 +95,30 @@
         var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
         var pieChart = new Chart(pieChartCanvas);
         var PieData = [
-          {
-            value: 700,
-            color: "#f56954",
-            highlight: "#f56954",
-            label: "Chrome"
-          },
-          {
-            value: 500,
-            color: "#00a65a",
-            highlight: "#00a65a",
-            label: "IE"
-          },
-          {
-            value: 400,
-            color: "#f39c12",
-            highlight: "#f39c12",
-            label: "FireFox"
-          },
-          {
-            value: 600,
-            color: "#00c0ef",
-            highlight: "#00c0ef",
-            label: "Safari"
-          },
-          {
-            value: 300,
-            color: "#3c8dbc",
-            highlight: "#3c8dbc",
-            label: "Opera"
-          },
-          {
-            value: 100,
-            color: "#d2d6de",
-            highlight: "#d2d6de",
-            label: "Navigator"
-          }
+            {
+                value: <?=$cumplidas?>,
+                color: "#00a65a",
+                highlight: "#00a65a",
+                label: "Cumplidas"
+            },
+            {
+                value: <?=$cumplidas_vencidas?>,
+                color: "#00c0ef",
+                highlight: "#00c0ef",
+                label: "Cumplidas Vencidas"
+            },
+            {
+                value: <?=$pendientes?>,
+                color: "#f39c12",
+                highlight: "#f39c12",
+                label: "Pendientes"
+            },
+            {
+                value: <?=$pendientes_vencidas?>,
+                color: "#f56954",
+                highlight: "#f56954",
+                label: "Pendientes Vencidas"
+            }
         ];
         var pieOptions = {
           //Boolean - Whether we should show a stroke on each segment
