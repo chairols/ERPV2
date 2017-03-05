@@ -22,14 +22,14 @@
                     <div class="box-body">
                         <form method="POST" class="form-horizontal" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Hoja de Proceso</label>
-                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Hoja de Proceso</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" maxlength="100" class="form-control" name="hojadeproceso" required autofocus>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Archivo Editable</label>
-                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Archivo Editable</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="file" class="form-control" name="editable">
                                 </div>
                             </div>

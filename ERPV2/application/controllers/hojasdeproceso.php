@@ -48,6 +48,7 @@ class Hojasdeproceso extends CI_Controller {
             
         }
         
+        
         $this->load->view('layout_lte/header', $data);
         $this->load->view('layout_lte/menu');
         $this->load->view('hojasdeproceso/agregar', $data);

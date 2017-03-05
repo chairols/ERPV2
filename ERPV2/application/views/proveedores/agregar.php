@@ -24,38 +24,38 @@
                     <div class="box-body">
                         <form method="POST" class="form-horizontal">
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Proveedor</label>
-                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Proveedor</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" maxlength="100" class="form-control" value="<?=set_value('proveedor')?>" name="proveedor" autofocus required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Domicilio</label>
-                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Domicilio</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" maxlength="100" class="form-control" value="<?=set_value('domicilio')?>" name="domicilio">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-sx-12">CUIT</label>
-                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" maxlength="11" class="form-control" value="<?=set_value('cuit')?>" name="cuit">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Teléfono</label>
-                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Teléfono</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" maxlength="100" class="form-control" value="<?=set_value('telefono')?>" name="telefono">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Localidad</label>
-                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Localidad</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" maxlength="100" class="form-control" value="<?=set_value('localidad')?>" name="localidad">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Provincia</label>
-                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Provincia</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select name="provincia" class="select2 form-control">
                                         <?php foreach($provincias as $provincia) { ?>
                                         <option value="<?=$provincia['idprovincia']?>"><?=$provincia['provincia']?></option>
@@ -64,20 +64,20 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Contacto</label>
-                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Contacto</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" maxlength="100" class="form-control" value="<?=set_value('contacto')?>" name="contacto">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Correo</label>
-                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="email" maxlength="100" class="form-control" value="<?=set_value('correo')?>" name="correo">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Observaciones</label>
-                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Observaciones</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     <textarea class="form-control" rows="5" name="observaciones"><?=set_value('observaciones')?></textarea>
                                 </div>
                             </div>
