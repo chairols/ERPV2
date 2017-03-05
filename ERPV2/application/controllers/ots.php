@@ -231,7 +231,8 @@ class Ots extends CI_Controller {
             }
             
             $this->numeros_serie_model->borrar_por_ot($idot);
-            if(!is_null($datos['numero_serie'])) {
+            
+            if($datos['numero_serie'] != null) {
                 $numeros_serie = $this->input->post('numero_serie');
                 foreach($numeros_serie as $ns) {
                     $num_serie = array(
@@ -243,9 +244,12 @@ class Ots extends CI_Controller {
             }
             
             $numeros_de_serie = '';
-            foreach ($this->input->post('numero_serie') as $value) {
-                $numeros_de_serie .= $value.' - ';
+            if($this->input->post('numero_serie') != null) {
+                foreach ($this->input->post('numero_serie') as $value) {
+                    $numeros_de_serie .= $value.' - ';
+                }
             }
+            
             
             $log = array(
                'tabla' => 'ots',

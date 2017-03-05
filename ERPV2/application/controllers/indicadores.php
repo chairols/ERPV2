@@ -39,7 +39,7 @@ class Indicadores extends CI_Controller {
             $data['desde'] = $this->input->post('desde');
             $data['hasta'] = $this->input->post('hasta');
             
-            $data['ocs'] = $this->ocs_model->gets_ocs_por_fechas_y_proveedor($this->input->post('desde'), $this->input->post('hasta'), $this->input->post('proveedor'));
+            $data['ocs'] = $this->ocs_model->gets_ocs_por_fechas_y_proveedor($this->input->post('desde'), date('Y-m-d', strtotime($this->input->post('hasta').' + 1 days')), $this->input->post('proveedor'));
             
             $data['cumplidas'] = 0;
             $data['cumplidas_vencidas'] = 0;
