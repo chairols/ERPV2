@@ -12,6 +12,9 @@ class Reclamos extends CI_Controller {
             'irm_model',
             'reclamos_model'
         ));
+        $this->load->helper(array(
+            'url'
+        ));
     }
     
     public function index() {
@@ -21,6 +24,8 @@ class Reclamos extends CI_Controller {
         $data['session'] = $session;
         $data['segmento'] = $this->uri->segment(1);
         $data['menu'] = $this->r_session->get_menu();
+        
+        $data['reclamos'] = $this->reclamos_model->gets();
         
         $this->load->view('layout_lte/header', $data);
         $this->load->view('layout_lte/menu');
@@ -54,11 +59,13 @@ class Reclamos extends CI_Controller {
             foreach($this->input->post('articulos') as $articulo) {
                 $datos = array(
                     'idreclamo' => $idreclamo,
-                    'idirm_item' => $articulo
+                    'idpendienteirm' => $articulo
                 );
                 
                 $this->reclamos_model->set_item($datos);
             }
+            
+            redirect('/reclamos/', 'refresh');
         }
         
         $data['proveedores'] = $this->irm_model->gets_proveedores_con_irm_pendientes();

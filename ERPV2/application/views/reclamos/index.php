@@ -29,16 +29,34 @@
                     </div>
                     <div id="tabla" style="display: none;">
                         <div class="box-body">
-                            <table class="table table-bordered table-hover table-condensed" id="datatable">
+                            <table class="table table-bordered table-hover table-condensed" id="datatable-desc">
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
+                                        <th>Artículo</th>
+                                        <th>Proveedor</th>
+                                        <th>Reclamo</th>
+                                        <th>Usuario</th>
+                                        <th>Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach($reclamos as $reclamo) { ?>
                                     <tr>
-                                        <td>&nbsp;</td>
+                                        <td><?=date('Y-m-d', strtotime($reclamo['timestamp']))?></td>
+                                        <td><?=$reclamo['producto']?> <?=$reclamo['articulo']?></td>
+                                        <td><?=$reclamo['proveedor']?></td>
+                                        <td><?=$reclamo['reclamo']?></td>
+                                        <td><?=$reclamo['nombre']?> <?=$reclamo['apellido']?></td>
+                                        <td>
+                                            <a href="/reclamos/ver/<?=$reclamo['idreclamo_item']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver" class="tooltips">
+                                                <button class="btn btn-xs btn-success">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                            </a>
+                                        </td>
                                     </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
