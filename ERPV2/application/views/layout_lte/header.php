@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="/assets/AdminLTE-2.3.11/plugins/select2/select2.min.css">
   <!-- bootstrap datepicker -->
   <link rel="stylesheet" href="/assets/AdminLTE-2.3.11/plugins/datepicker/datepicker3.css">
+  <!-- Alertify JS -->
+  <link rel="stylesheet" href="/assets/AdminLTE-2.3.11/plugins/alertifyjs/css/alertify.min.css">
+  <link rel="stylesheet" href="/assets/AdminLTE-2.3.11/plugins/alertifyjs/css/themes/bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/assets/AdminLTE-2.3.11/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
