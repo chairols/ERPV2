@@ -28,6 +28,7 @@ class Tiposmaquinas extends CI_Controller {
         $this->load->view('layout_lte/header', $data);
         $this->load->view('layout_lte/menu');
         $this->load->view('tiposmaquinas/index');
+        $this->load->view('tiposmaquinas/script.php');
         $this->load->view('layout_lte/footer');
     }
     
@@ -42,6 +43,7 @@ class Tiposmaquinas extends CI_Controller {
         $this->load->view('layout_lte/header', $data);
         $this->load->view('layout_lte/menu');
         $this->load->view('tiposmaquinas/agregar');
+        $this->load->view('tiposmaquinas/script.php');
         $this->load->view('layout_lte/footer');
     }
     

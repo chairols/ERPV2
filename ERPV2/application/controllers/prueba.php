@@ -255,5 +255,7 @@ class Prueba extends CI_Controller {
         $this->load->view('prueba/alertify');
         $this->load->view('layout_lte/footer');
     }
+    
+    
 }
 ?>

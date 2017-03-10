@@ -32,13 +32,31 @@
                             <table class="table table-condensed table-hover table-bordered" id="datatable">
                                 <thead>
                                     <tr>
-                                        <th></th>
+                                        <th>Número de Máquina</th>
+                                        <th>Máquina</th>
+                                        <th>Tipo de Máquina</th>
+                                        <th>Ubicación</th>
+                                        <th>Estado</th>
+                                        <th>Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach($maquinas as $maquina) { ?>
                                     <tr>
-                                        <td>&nbsp;</td>
+                                        <td><?=$maquina['idmaquina']?></td>
+                                        <td><?=$maquina['marca']?> <?=$maquina['modelo']?></td>
+                                        <td><?=$maquina['tipo_maquina']?></td>
+                                        <td><?=$maquina['fabrica']?></td>
+                                        <td>
+                                            <?php if($maquina['estado'] == 'F') { ?>
+                                            <div class="badge bg-green">Funcionando</div>
+                                            <?php } elseif($maquina['estado'] == 'NF') { ?>
+                                            <div class="badge bg-red">No funciona</div>
+                                            <?php } ?>
+                                        </td>
+                                        <td></td>
                                     </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>

@@ -367,5 +367,6 @@
       format: 'yyyy-mm-dd'
     });
     // En Date Picker
+
     inicio();
 </script>
