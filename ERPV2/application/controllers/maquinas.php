@@ -56,8 +56,8 @@ class Maquinas extends CI_Controller {
     }
     
     public function agregar_post() {
-        //$session = $this->session->all_userdata();
-        //$this->r_session->check($session);
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
         
         $this->form_validation->set_rules('numero_maquina', 'Número de Máquina', 'required|is_natural');
         $this->form_validation->set_rules('tipo_maquina', 'Tipo de Máquina', 'required|is_natural');
