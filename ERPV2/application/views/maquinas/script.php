@@ -13,7 +13,7 @@
         });
         
         /*
-         * 
+         *  Agregar
          */
         $("#agregar").click(function() {
             

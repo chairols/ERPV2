@@ -59,12 +59,12 @@ class Maquinas extends CI_Controller {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
         
-        $this->form_validation->set_rules('numero_maquina', 'Número de Máquina', 'required|is_natural');
-        $this->form_validation->set_rules('tipo_maquina', 'Tipo de Máquina', 'required|is_natural');
-        $this->form_validation->set_rules('marca', 'Marca', 'required|is_natural');
+        $this->form_validation->set_rules('numero_maquina', 'Número de Máquina', 'required|is_natural_no_zero');
+        $this->form_validation->set_rules('tipo_maquina', 'Tipo de Máquina', 'required|is_natural_no_zero');
+        $this->form_validation->set_rules('marca', 'Marca', 'required|is_natural_no_zero');
         $this->form_validation->set_rules('estado', 'Estado', 'required');
-        $this->form_validation->set_rules('ubicacion', 'Ubicación', 'required|is_natural');
-        $this->form_validation->set_rules('frecuencia_preventivo', 'Frecuencia Preventivo', 'required|is_natural');
+        $this->form_validation->set_rules('ubicacion', 'Ubicación', 'required|is_natural_no_zero');
+        $this->form_validation->set_rules('frecuencia_preventivo', 'Frecuencia Preventivo', 'required|is_natural_no_zero');
         
         if($this->form_validation->run() == FALSE) {
             $json = array(
