@@ -60,6 +60,10 @@
                                 alertify.alert('<strong>ERROR</strong>', resultado['data']);
                             } else if(resultado['status'] == 'ok') {
                                 alertify.success("Se agregó correctamente");
+                                document.getElementById("fecha").value = "";
+                                document.getElementById("diagnostico").value = "";
+                                document.getElementById("correccion").value = "";
+                                document.getElementById("tiempo_reparacion").value = "";
                             }
                         }
                     });

@@ -10,8 +10,11 @@ class Mantenimientos extends CI_Controller {
         ));
         $this->load->model(array(
             'maquinas_model',
+            'marcas_model',
             'usuarios_model',
-            'mantenimientos_model'
+            'mantenimientos_model',
+            'tipos_maquinas_model',
+            'log_model'
         ));
         
         $this->load->helper(array(
@@ -85,6 +88,49 @@ class Mantenimientos extends CI_Controller {
             
             $id = $this->mantenimientos_model->set($datos);
             
+            $tipo_manteniemiento = '';
+            if($this->input->post('tipo_mantenimiento') == 'C') {
+                $tipo_manteniemiento = "Correctivo";
+            } elseif($this->input->post('tipo_mantenimiento') == 'P') {
+                $tipo_manteniemiento = "Preventivo";
+            }
+            
+            $datos = array(
+                'idmaquina' => $this->input->post('maquina')
+            );
+            $maquina = $this->maquinas_model->get_where($datos);
+            
+            $datos = array(
+                'idmarca' => $maquina['idmarca']
+            );
+            $maquina['marca'] = $this->marcas_model->get_where($datos);
+            
+            $datos = array(
+                'idtipo_maquina' => $maquina['idtipo_maquina']
+            );
+            $maquina['tipo_maquina'] = $this->tipos_maquinas_model->get_where($datos);
+            
+            $datos = array(
+                'idusuario' => $this->input->post('usuario')
+            );
+            $usuario = $this->usuarios_model->get_where($datos);
+            
+            $log = array(
+                'tabla' => 'mantenimientos',
+                'idtabla' => $id,
+                'texto' => 'Se agregó el mantenimiento <br> '
+                . 'fecha: '.$this->input->post('fecha').'<br>'
+                . 'tipo de mantenimiento: '.$tipo_manteniemiento.'<br>'
+                . 'maquina: '.$maquina['tipo_maquina']['tipo_maquina'].' '.$maquina['marca']['marca'].' '.$maquina['modelo'].'<br>'
+                . 'diagnostico: '.$this->input->post('diagnostico').'<br>'
+                . 'correccion: '.$this->input->post('correccion').'<br>'
+                . 'usuario: '.$usuario['nombre'].' '.$usuario['apellido'].'<br>'
+                . 'tiempo de reparación: '.$this->input->post('tiempo_reparacion'),
+                'tipo' => 'add',
+                'idusuario' => $session['SID']
+            );
+            $this->log_model->set($log);
+
             if($id > 0) {
                 $json = array(
                     'status' => 'ok'
