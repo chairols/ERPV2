@@ -87,7 +87,7 @@
                                             </a>
                                             <a href="/ots/trazabilidad/<?=$ot['idot']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Trazabilidad" class="tooltips">
                                                 <button class="btn btn-success btn-xs">
-                                                <i class="fa fa-exchange"></i>
+                                                    <i class="fa fa-exchange"></i>
                                                 </button>
                                             </a>
                                         </td>

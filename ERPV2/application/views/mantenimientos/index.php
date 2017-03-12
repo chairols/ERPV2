@@ -46,7 +46,13 @@
                                         <td><?=($mantenimiento['tipo_mantenimiento']=='P')?"Preventivo":"Correctivo"?></td>
                                         <td><?=$mantenimiento['tipo_maquina']?> <?=$mantenimiento['marca']?> <?=$mantenimiento['modelo']?></td>
                                         <td><?=$mantenimiento['tiempo_reparacion']?></td>
-                                        <td></td>
+                                        <td>
+                                            <a href="/log/ver/mantenimientos/<?=$mantenimiento['idmantenimiento']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log" class="tooltips">
+                                                <button class="btn btn-info btn-xs">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </button>
+                                            </a>
+                                        </td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
