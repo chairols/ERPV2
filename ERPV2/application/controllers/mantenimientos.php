@@ -146,5 +146,47 @@ class Mantenimientos extends CI_Controller {
             
         }
     }
+    
+    public function ver($idmantenimiento = NULL) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if($idmantenimiento == NULL) {
+            redirect('/mantenimientos/', 'refresh');
+        }
+        $data['title'] = 'Ver Mantenimiento';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $datos = array(
+            'idmantenimiento' => $idmantenimiento
+        );
+        $data['mantenimiento'] = $this->mantenimientos_model->get_where($datos);
+        
+        $datos = array(
+            'idmaquina' => $data['mantenimiento']['idmaquina']
+        );
+        $data['mantenimiento']['maquina'] = $this->maquinas_model->get_where($datos);
+        
+        $datos = array(
+            'idmarca' => $data['mantenimiento']['maquina']['idmarca']
+        );
+        $data['mantenimiento']['maquina']['marca'] = $this->marcas_model->get_where($datos);
+        
+        $datos = array(
+            'idtipo_maquina' => $data['mantenimiento']['maquina']['idtipo_maquina']
+        );
+        $data['mantenimiento']['maquina']['tipo_maquina'] = $this->tipos_maquinas_model->get_where($datos);
+        
+        $datos = array(
+            'idusuario' => $data['mantenimiento']['idusuario']
+        );
+        $data['mantenimiento']['usuario'] = $this->usuarios_model->get_where($datos);
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('mantenimientos/ver');
+        $this->load->view('layout_lte/footer');
+    }
 }
 ?>

@@ -24,5 +24,11 @@ class Mantenimientos_model extends CI_Model {
                                         m.activo = '1'");
         return $query->result_array();
     }
+    
+    public function get_where($where) {
+        $query = $this->db->get_where('mantenimientos', $where);
+        
+        return $query->row_array();
+    }
 }
 ?>

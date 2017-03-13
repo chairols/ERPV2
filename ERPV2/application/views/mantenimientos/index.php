@@ -47,6 +47,11 @@
                                         <td><?=$mantenimiento['tipo_maquina']?> <?=$mantenimiento['marca']?> <?=$mantenimiento['modelo']?></td>
                                         <td><?=$mantenimiento['tiempo_reparacion']?></td>
                                         <td>
+                                            <a href="/mantenimientos/ver/<?=$mantenimiento['idmantenimiento']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver" class="tooltips">
+                                                <button class="btn btn-success btn-xs">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                            </a>
                                             <a href="/log/ver/mantenimientos/<?=$mantenimiento['idmantenimiento']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log" class="tooltips">
                                                 <button class="btn btn-info btn-xs">
                                                     <i class="fa fa-clock-o"></i>
