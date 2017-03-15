@@ -25,10 +25,13 @@ class Plantillas extends CI_Controller {
         $data['segmento'] = $this->uri->segment(1);
         $data['menu'] = $this->r_session->get_menu();
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $data['plantillas'] = $this->plantillas_model->gets();
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('plantillas/index');
-        $this->load->view('layout/footer');
+        $this->load->view('plantillas/script');
+        $this->load->view('layout_lte/footer');
     }
     
     public function agregar() {
@@ -50,15 +53,28 @@ class Plantillas extends CI_Controller {
                 'plantilla' => $this->input->post('plantilla')
             );
             
-            $this->plantillas_model->set($datos);
+            $id = $this->plantillas_model->set($datos);
+            
+            $log = array(
+                'tabla' => 'plantillas',
+                'idtabla' => $id,
+                'texto' => 'Se agregó la plantilla<br>'
+                . 'Título: '.$this->input->post('titulo').'<br>'
+                . 'Plantilla: '.$this->input->post('plantilla'),
+                'tipo' => 'add',
+                'idusuario' => $session['SID']
+            );
+            $this->log_model->set($log);
             
             redirect('/plantillas/', 'refresh');
         }
         
-        $this->load->view('layout/header', $data);
-        $this->load->view('layout/menu');
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
         $this->load->view('plantillas/agregar');
-        $this->load->view('layout/footer');
+        $this->load->view('plantillas/script');
+        $this->load->view('layout_lte/footer');
     }
+    
 }
 ?>

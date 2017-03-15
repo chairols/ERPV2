@@ -256,6 +256,46 @@ class Prueba extends CI_Controller {
         $this->load->view('layout_lte/footer');
     }
     
+    public function upload_file() {
+        $this->load->library(array(
+            'session',
+            'r_session',
+            'form_validation',
+            'uri'
+        ));
+        $this->load->helper(array(
+            'url'
+        ));
+        $this->load->model(array(
+            'clientes_model',
+            'monedas_model',
+            'pedidos_model',
+            'provincias_model',
+            'prueba_model',
+            'log_model',
+            'articulos_model',
+            'productos_model',
+            'ots_model'
+        ));
+        
+        $session = $this->session->all_userdata();
+        $data['title'] = 'CK EDITOR';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        
+        
+        
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('prueba/upload_file');
+        $this->load->view('layout_lte/footer');
+    }
     
+    public function upload_file_post() {
+        
+    }
 }
 ?>

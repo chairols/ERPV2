@@ -1,13 +1,9 @@
-<div id="main-content">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
-                <h3 class="page-title">
-                    <?=$title?>
-                </h3>
-            </div>
-        </div>
-        
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1><?=$title?></h1>
+    </section>
+    
+    <section class="content">
         <div class="row-fluid">
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li><a href="/plantillas/">Listar Plantillas</a></li>
@@ -17,50 +13,38 @@
             </ul>
         </div>
         
-        <div class="row-fluid">
-            <div class="span12">
-                <div class="widget blue">
-                    <div class="widget-title">
-                        <h4><i class="icon-reorder"></i> Plantillas</h4>
-                        <span class="tools">
-                            <a href="javascript:;" class="icon-chevron-down"></a>
-                            <a href="javascript:;" class="icon-remove"></a>
-                        </span>
+        <br>
+        
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><?=$title?></h3>
                     </div>
-                    <div class="widget-body">
+                    <div class="box-body">
                         <form method="POST" class="form-horizontal">
-                            <div class="control-group">
-                                <label class="control-label">Título</label>
-                                <input type="text" maxlength="200" class="form-control span8" name="titulo" required autofocus>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Título</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" maxlength="200" name="titulo" class="form-control" required autofocus>
+                                </div>
                             </div>
-                            <div class="control-group">
-                                <textarea class="span12" id="plantilla" name="plantilla"></textarea>
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <textarea name="plantilla"></textarea>
+                                </div>
                             </div>
-                            <hr>
-                            <div class="form-control">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="icon-save"></i> Guardar
-                                </button>
-                                <button type="reset" class="btn btn-danger">
-                                    <i class="icon-remove"></i> Limpiar
-                                </button>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <button type="submit" class="btn btn-success">Agregar</button>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        
-    </div>
-    
-    
-    
-    <textarea class="span8" id="ck"></textarea>
+    </section>
 </div>
 
-<script type="text/javascript" src="/assets/assets/ckeditor_4.5.11_full/ckeditor.js"></script>
-<script type="text/javascript">
-    function inicio() {
-        CKEDITOR.replace('plantilla');
-    }
-</script>
