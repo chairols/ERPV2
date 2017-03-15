@@ -23,5 +23,16 @@ class Plantillas_model extends CI_Model {
                                         activo = '1'");
         return $query->result_array();
     }
+    
+    public function get_where($where) {
+        $query = $this->db->get_where('plantillas', $where);
+        
+        return $query->row_array();
+    }
+    
+    public function update($datos, $id) {
+        $array = array('idplantilla' => $id);
+        $this->db->update('plantillas', $datos, $array);
+    }
 }
 ?>

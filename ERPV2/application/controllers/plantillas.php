@@ -76,5 +76,55 @@ class Plantillas extends CI_Controller {
         $this->load->view('layout_lte/footer');
     }
     
+    public function modificar($idplantilla = NULL) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if($idplantilla == NULL) {
+            redirect('/plantillas/', 'refresh');
+        }
+        $data['title'] = 'Modificar Plantilla';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $this->form_validation->set_rules('titulo', 'Título', 'required');
+        $this->form_validation->set_rules('plantilla', 'Plantilla', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'titulo' => $this->input->post('titulo'),
+                'plantilla' => $this->input->post('plantilla')
+            );
+            
+            $this->plantillas_model->update($datos, $idplantilla);
+            
+            $log = array(
+                'tabla' => 'plantillas',
+                'idtabla' => $idplantilla,
+                'texto' => 'Se modificó la plantilla<br>'
+                . 'Título: '.$this->input->post('titulo').'<br>'
+                . 'Plantilla: '.$this->input->post('plantilla'),
+                'tipo' => 'edit',
+                'idusuario' => $session['SID']
+            );
+            $this->log_model->set($log);
+            
+            redirect('/plantillas/', 'refresh');
+        }
+        
+        $datos = array(
+            'idplantilla' => $idplantilla
+        );
+        $data['plantilla'] = $this->plantillas_model->get_where($datos);
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('plantillas/modificar');
+        $this->load->view('plantillas/script');
+        $this->load->view('layout_lte/footer');
+    }
+    
 }
 ?>

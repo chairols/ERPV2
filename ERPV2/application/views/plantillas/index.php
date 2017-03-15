@@ -40,7 +40,18 @@
                                     <?php foreach($plantillas as $plantilla) { ?>
                                     <tr>
                                         <td><?=$plantilla['titulo']?></td>
-                                        <td></td>
+                                        <td>
+                                            <a href="/plantillas/modificar/<?=$plantilla['idplantilla']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
+                                                <button class="btn btn-warning btn-xs">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                            </a> 
+                                            <a href="/log/ver/plantillas/<?=$plantilla['idplantilla']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log">
+                                                <button class="btn btn-info btn-xs">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </button>
+                                            </a>
+                                        </td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
