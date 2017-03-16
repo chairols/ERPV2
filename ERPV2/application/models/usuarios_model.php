@@ -52,7 +52,9 @@ class Usuarios_model extends CI_Model {
                                         usuarios u,
                                         roles r
                                     WHERE
-                                        u.tipo_usuario = r.idrol");
+                                        u.tipo_usuario = r.idrol
+                                    ORDER BY
+                                        u.nombre, u.apellido");
         return $query->result_array();
     }
     
