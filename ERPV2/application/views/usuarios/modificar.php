@@ -50,7 +50,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-sx-12">Password</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
-                                    <input type="password" maxlength="45" class="form-control" name="password" required>
+                                    <input type="password" maxlength="45" class="form-control" name="password">
                                 </div>
                             </div>
                             <div class="form-group">
