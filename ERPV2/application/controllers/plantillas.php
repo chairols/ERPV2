@@ -126,5 +126,24 @@ class Plantillas extends CI_Controller {
         $this->load->view('layout_lte/footer');
     }
     
+    public function imprimir($idplantilla = NULL) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if($idplantilla == NULL) {
+            redirect('/plantillas/', 'refresh');
+        }
+        $data['title'] = 'Ver Plantilla';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $datos = array(
+            'idplantilla' => $idplantilla
+        );
+        $data['plantilla'] = $this->plantillas_model->get_where($datos);
+        
+        $this->load->view('plantillas/imprimir', $data);
+    }
+    
 }
 ?>

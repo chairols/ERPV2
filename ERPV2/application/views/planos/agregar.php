@@ -84,37 +84,6 @@
 </div>
 
 
-
-
-<div id="main-content">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span6">
-                <div class="widget blue">
-                    <div class="widget-body">
-                        <form method="POST" class="form-horizontal" enctype="multipart/form-data">
-                            <div class="control-group">
-                                <label class="control-label">Observaciones</label>
-                                <div class="controls">
-                                    <textarea name="observaciones" class="span12" rows="6"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="icon-save"></i> Guardar
-                                </button>
-                                <button type="reset" class="btn btn-danger">
-                                    <i class="icon-remove"></i> Limpiar
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script type="text/javascript">
     function inicio() {
         $("#selectcliente").hide();

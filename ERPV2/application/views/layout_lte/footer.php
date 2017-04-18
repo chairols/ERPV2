@@ -224,7 +224,8 @@
 <!-- Alertify JS -->
 <script src="/assets/AdminLTE-2.3.11/plugins/alertifyjs/alertify.min.js"></script>
 <!-- CK Editor -->
-<script src="/assets/AdminLTE-2.3.11/plugins/ckeditor_4.5.11_full/ckeditor.js"></script>
+<script src="/assets/AdminLTE-2.3.11/plugins/ckeditor_4.6.2_ffc6e191bae9/ckeditor/ckeditor.js"></script>
+<!--<script src="/assets/AdminLTE-2.3.11/plugins/ckeditor_4.5.11_full/ckeditor.js"></script>-->
 <!--<script src="/assets/AdminLTE-2.3.11/plugins/ckeditor/ckeditor.js"></script>-->
 <!-- AdminLTE App -->
 <script src="/assets/AdminLTE-2.3.11/dist/js/app.min.js"></script>

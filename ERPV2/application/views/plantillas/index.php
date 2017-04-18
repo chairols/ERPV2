@@ -45,7 +45,12 @@
                                                 <button class="btn btn-warning btn-xs">
                                                     <i class="fa fa-edit"></i>
                                                 </button>
-                                            </a> 
+                                            </a>
+                                            <a href="/plantillas/imprimir/<?=$plantilla['idplantilla']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Imprimir" target="_blank">
+                                                <button class="btn btn-primary btn-xs">
+                                                    <i class="fa fa-print"></i>
+                                                </button>
+                                            </a>
                                             <a href="/log/ver/plantillas/<?=$plantilla['idplantilla']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log">
                                                 <button class="btn btn-info btn-xs">
                                                     <i class="fa fa-clock-o"></i>
