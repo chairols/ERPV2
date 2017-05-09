@@ -1,0 +1,1 @@
+<input type="text" id="numero" class="form-control" value="<?=$numero?>">
