@@ -26,6 +26,8 @@ class Certificados extends CI_Controller {
         $data['segmento'] = $this->uri->segment(1);
         $data['menu'] = $this->r_session->get_menu();
         
+        $data['certificados'] = $this->certificados_model->gets();
+        
         $this->load->view('layout_lte/header', $data);
         $this->load->view('layout_lte/menu');
         $this->load->view('certificados/index');
@@ -143,5 +145,31 @@ class Certificados extends CI_Controller {
             
         }
     }
+    
+    public function modificar($idcertificado = null) {
+        $session = $this->session->all_userdata();
+        if($idcertificado == null) {
+            redirect('/certificados/', 'refresh');
+        }
+        $data['title'] = 'Modificar Certificado';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $array = array(
+            'idcertificado' => $idcertificado
+        );
+        $data['certificado'] = $this->certificados_model->get_where($array);
+        
+        $data['articulos'] = $this->articulos_model->gets();
+        
+        $data['clientes'] = $this->clientes_model->gets();
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('certificados/modificar');
+        $this->load->view('certificados/script');
+        $this->load->view('layout_lte/footer');
+    } 
 }
 ?>

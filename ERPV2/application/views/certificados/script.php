@@ -73,6 +73,13 @@
             );
             
         });
+        
+        
+        /*
+        *  Modificar
+         */
+         
+        CKEDITOR.replace('certificado');
     }
     
     function redireccionar(url) {

@@ -25,13 +25,13 @@
                     <div class="box-body">
                         <form method="POST" class="form-horizontal">
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Artículo</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Artículo</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
                                     <input type="text" maxlength="100" class="form-control" name="articulo" required autofocus>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Plano</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Plano</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
                                     <div class="input-group">
                                         <span class="input-group-addon">
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Producto</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Producto</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
                                     <select name="producto" class="select2 form-control">
                                         <?php foreach($productos as $producto) { ?>
@@ -61,13 +61,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Posición</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Posición</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
                                     <input type="number" maxlength="11" class="form-control" value="<?=set_value('posicion')?>" name="posicion" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Padres</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Padres</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
                                     <select name="padres[]" class="select2 form-control" multiple="multiple">
                                         <?php foreach($articulos as $articulo) { ?>
@@ -77,7 +77,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Hijos</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Hijos</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
                                     <select name="hijos[]" class="select2 form-control" multiple="multiple">
                                         <?php foreach($articulos as $articulo) { ?>
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Observaciones</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Observaciones</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
                                     <textarea name="observaciones" rows="5" class="form-control"><?=set_value('observaciones')?></textarea>
                                 </div>

@@ -33,13 +33,34 @@
                                     <tr>
                                         <th><strong>Certificado</strong></th>
                                         <th><strong>Artículo</strong></th>
+                                        <th><strong>Número de Serie</strong></th>
                                         <th><strong>Cliente</strong></th>
                                         <th><strong>Fecha</strong></th>
                                         <th><strong>Acción</strong></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                    <?php foreach($certificados as $certificado) { ?>
+                                    <tr>
+                                        <td><?=$certificado['numero_certificado']?></td>
+                                        <td><?=$certificado['producto']?> <?=$certificado['articulo']?></td>
+                                        <td><?=$certificado['numero_serie']?></td>
+                                        <td><?=$certificado['cliente']?></td>
+                                        <td><?=$certificado['fecha']?></td>
+                                        <td>
+                                            <a href="/certificados/modificar/<?=$certificado['idcertificado']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
+                                                <button class="btn btn-xs btn-warning">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                            </a> 
+                                            <a href="/log/ver/certificados/<?=$certificado['idcertificado']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Log" class="tooltips">
+                                                <button class="btn btn-xs btn-info">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
