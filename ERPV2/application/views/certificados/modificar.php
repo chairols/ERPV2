@@ -21,17 +21,17 @@
                         <h3 class="box-title"><?=$title?></h3>
                     </div>
                     <div class="box-body">
-                        <form method="POST" class="form-horizontal">
+                        <div class="form-horizontal">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Número de Certificado</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
-                                    <input type="text" maxlength="11" class="form-control" name="articulo" value="<?=$certificado['numero_certificado']?>" readonly>
+                                    <input type="text" maxlength="11" class="form-control" id="num_certificado" value="<?=$certificado['numero_certificado']?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Artículo</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select name="articulo" class="select2 form-control">
+                                    <select id="articulo" class="select2 form-control">
                                     <?php foreach($articulos as $articulo) { ?>
                                         <option value="<?=$articulo['idarticulo']?>"<?=($articulo['idarticulo']==$certificado['idarticulo'])?" selected":""?>><?=$articulo['producto']?> <?=$articulo['articulo']?></option>
                                     <?php } ?>
@@ -41,13 +41,13 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Número de Serie</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" maxlength="11" class="form-control" name="numero_serie" value="<?=$certificado['numero_serie']?>" required>
+                                    <input type="text" maxlength="11" class="form-control" id="numero_serie" value="<?=$certificado['numero_serie']?>" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Cliente</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select name="cliente" class="select2 form-control">
+                                    <select id="cliente" class="select2 form-control">
                                     <?php foreach($clientes as $cliente) { ?>
                                         <option value="<?=$cliente['idcliente']?>"<?=($cliente['idcliente']==$certificado['idcliente'])?" selected":""?>><?=$cliente['cliente']?></option>
                                     <?php } ?>
@@ -67,16 +67,16 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <textarea name="certificado"><?=$certificado['certificado']?></textarea>
+                                    <textarea id="certificado" name="certificado"><?=$certificado['certificado']?></textarea>
                                 </div>
                             </div>
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button class="btn btn-success">Modificar</button>
+                                    <button class="btn btn-success" id="modificar">Modificar</button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

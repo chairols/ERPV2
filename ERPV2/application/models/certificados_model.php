@@ -36,8 +36,12 @@ class Certificados_model extends CI_Model {
     
     public function get_where($where) {
         $query = $this->db->get_where('certificados', $where);
-        
         return $query->row_array();
+    }
+    
+    public function update($datos, $idcertificado) {
+        $id = array('idcertificado' => $idcertificado);
+        $this->db->update('certificados', $datos, $id);
     }
 }
 

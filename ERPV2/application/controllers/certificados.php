@@ -171,5 +171,73 @@ class Certificados extends CI_Controller {
         $this->load->view('certificados/script');
         $this->load->view('layout_lte/footer');
     } 
+    
+    
+    public function modificar_post() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $this->form_validation->set_rules('idcertificado', 'Identificador de Certificado', 'required|integer');
+        $this->form_validation->set_rules('articulo', 'Artículo', 'required|integer');
+        $this->form_validation->set_rules('numero_serie', 'Número de Serie', 'required|integer');
+        $this->form_validation->set_rules('cliente', 'Cliente', 'required|integer');
+        $this->form_validation->set_rules('fecha', 'Fecha', 'required');
+        $this->form_validation->set_rules('certificado', 'Certificado', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            $json = array(
+                'status' => 'error',
+                'data' => validation_errors()
+            );
+            echo json_encode($json);
+        } else {
+            $datos = array(
+                'idarticulo' => $this->input->post('articulo'),
+                'numero_serie' => $this->input->post('numero_serie'),
+                'idcliente' => $this->input->post('cliente'),
+                'fecha' => $this->input->post('fecha'),
+                'certificado' => $this->input->post('certificado')
+            );
+            
+            $this->certificados_model->update($datos, $this->input->post('idcertificado'));
+            
+            $array = array(
+                'idarticulo' => $this->input->post('articulo')
+            );
+            $articulo = $this->articulos_model->get_where($array);
+            
+            $array = array(
+                'idproducto' => $articulo['idproducto']
+            );
+            $producto = $this->productos_model->get_where($array);
+            
+            $array = array(
+                'idcliente' => $this->input->post('cliente')
+            );
+            $cliente = $this->clientes_model->get_where($array);
+            
+            $log = array(
+                'tabla' => 'certificados',
+                'idtabla' => $this->input->post('idcertificado'),
+                'texto' => 'Se modificó el certificado <br> '
+                . 'Artículo: '.$producto['producto'].' '.$articulo['articulo'].'<br>'
+                . 'Número de Serie: '.$this->input->post('numero_serie').'<br>'
+                . 'Cliente: '.$cliente['cliente'].'<br>'
+                . 'Fecha: '.$this->input->post('fecha').'<br>'
+                . 'Certificado: '.$datos['certificado'].'<br>',
+                'tipo' => 'add',
+                'idusuario' => $session['SID']
+            );
+            $this->log_model->set($log);
+            
+            $json = array(
+                'status' => 'ok',
+                'id' => $this->input->post('idcertificado')
+            );
+            echo json_encode($json);
+        }
+        
+        
+    }
 }
 ?>
