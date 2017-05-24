@@ -48,7 +48,7 @@ class Certificados extends CI_Controller {
         $this->load->view('layout_lte/header', $data);
         $this->load->view('layout_lte/menu');
         $this->load->view('certificados/agregar');
-        $this->load->view('certificados/script');
+        $this->load->view('certificados/script_agregar');
         $this->load->view('layout_lte/footer');
     }
     
@@ -168,7 +168,7 @@ class Certificados extends CI_Controller {
         $this->load->view('layout_lte/header', $data);
         $this->load->view('layout_lte/menu');
         $this->load->view('certificados/modificar');
-        $this->load->view('certificados/script');
+        $this->load->view('certificados/script_modificar');
         $this->load->view('layout_lte/footer');
     } 
     
@@ -235,9 +235,26 @@ class Certificados extends CI_Controller {
                 'id' => $this->input->post('idcertificado')
             );
             echo json_encode($json);
+        }   
+    }
+    
+    public function imprimir($idcertificado = NULL) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if($idplantilla == NULL) {
+            redirect('/certificados/', 'refresh');
         }
+        $data['title'] = 'Imprimir Certificado';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
+        $datos = array(
+            'idcertificado' => $idplantilla
+        );
+        $data['certificado'] = $this->certificados_model->get_where($datos);
         
+        $this->load->view('certificados/imprimir', $data);
     }
 }
 ?>

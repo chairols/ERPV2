@@ -369,7 +369,9 @@
       autoclose: true,
       format: 'yyyy-mm-dd'
     });
-    // En Date Picker
+    // End Date Picker
 
     inicio();
+    
 </script>
+
