@@ -241,7 +241,7 @@ class Certificados extends CI_Controller {
     public function imprimir($idcertificado = NULL) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
-        if($idplantilla == NULL) {
+        if($idcertificado == NULL) {
             redirect('/certificados/', 'refresh');
         }
         $data['title'] = 'Imprimir Certificado';
@@ -250,7 +250,7 @@ class Certificados extends CI_Controller {
         $data['menu'] = $this->r_session->get_menu();
         
         $datos = array(
-            'idcertificado' => $idplantilla
+            'idcertificado' => $idcertificado
         );
         $data['certificado'] = $this->certificados_model->get_where($datos);
         

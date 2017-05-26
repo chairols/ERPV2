@@ -62,5 +62,21 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-yellow-gradient">
+                    <div class="inner">
+                        <h3><?=count($irm_pendientes)?></h3>
+                        <p>Materiales Pendientes de Recepción</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-car"></i>
+                    </div>
+                    <a href="/irm/pendientes/" class="small-box-footer">
+                        Más información <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 </div>

@@ -53,7 +53,7 @@
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                             </a> 
-                                            <a href="/certificados/imprimir/<?=$certificado['idcertificado']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Imprimir" class="tooltips">
+                                            <a href="/certificados/imprimir/<?=$certificado['idcertificado']?>" data-pacement="top" data-toggle="tooltip" data-original-title="Imprimir" class="tooltips" target="_blank">
                                                 <button class="btn btn-xs btn-primary">
                                                     <i class="fa fa-print"></i>
                                                 </button>

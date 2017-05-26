@@ -12,7 +12,8 @@ class Dashboard extends CI_Controller {
         ));
         $this->load->model(array(
             'ots_model',
-            'contratos_model'
+            'contratos_model',
+            'irm_model'
         ));
     }
     
@@ -28,6 +29,8 @@ class Dashboard extends CI_Controller {
         $data['ots_cumplidas'] = $this->ots_model->gets_cumplidas();
         $data['ots_vencidas'] = $this->ots_model->gets_vencidas();
         $data['contratos_vigentes'] = $this->contratos_model->gets_contratos_vigentes();
+        
+        $data['irm_pendientes'] = $this->irm_model->gets_pendientes_de_recepcion();
         
         
         $this->load->view('layout_lte/header', $data);
