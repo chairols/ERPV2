@@ -6,13 +6,14 @@ class Irm_model extends CI_Model {
     }
     
     public function gets() {
-        $query = $this->db->query("SELECT i.*, pr.producto, oi.idoc_item, a.idarticulo, a.articulo, p.proveedor, u.nombre, u.apellido, it.*
+        $query = $this->db->query("SELECT i.*, pr.producto, oi.idoc_item, m.medida_corta, a.idarticulo, a.articulo, p.proveedor, u.nombre, u.apellido, it.*
                                     FROM
                                         irm i,
                                         irm_items it,
                                         proveedores p,
                                         usuarios u,
                                         ocs_items oi,
+                                        medidas m,
                                         articulos a,
                                         productos pr
                                     WHERE
@@ -20,6 +21,7 @@ class Irm_model extends CI_Model {
                                         i.idproveedor = p.idproveedor AND
                                         i.idusuario = u.idusuario AND
                                         oi.idoc_item = it.idoc_item AND
+                                        oi.idmedida = m.idmedida AND
                                         oi.idarticulo = a.idarticulo AND
                                         a.idproducto = pr.idproducto");
         return $query->result_array();

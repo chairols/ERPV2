@@ -46,7 +46,7 @@
                                     <?php foreach($irms as $irm) { ?>
                                     <tr>
                                         <td><?=$irm['idirm']?></td>
-                                        <td><?=$irm['cantidad']?></td>
+                                        <td><?=$irm['cantidad']?> <?=$irm['medida_corta']?></td>
                                         <td>
                                             <a href="/articulos/ver/<?=$irm['idarticulo']?>/">
                                                 <?=$irm['producto']?> <?=$irm['articulo']?>
