@@ -37,7 +37,6 @@
                                         <th><strong>Artículo</strong></th>
                                         <th><strong>Marca</strong></th>
                                         <th><strong>Cantidad</strong></th>
-                                        <th><strong>Unidad de Medida</strong></th>
                                         <th><strong>Acción</strong></th>
                                     </tr>
                                 </thead>
@@ -47,8 +46,7 @@
                                     <tr>
                                         <td><?=$s['producto']?> <?=$s['articulo']?></td>
                                         <td><?=$s['marca']?></td>
-                                        <td><?=$s['cantidad']?></td>
-                                        <td><?=$s['medida_larga']?></td>
+                                        <td><?=$s['cantidad']?> <?=$s['medida_corta']?></td>
                                         <td>
                                             <a href="/stock/almacenes/<?=$s['idstock']?>/" data-pacement="top" data-toggle="tooltip" data-original-title="Modificar" class="tooltips">
                                                 <button class="btn btn-xs btn-warning">

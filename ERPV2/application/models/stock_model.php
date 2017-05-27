@@ -27,26 +27,7 @@ class Stock_model extends CI_Model {
     }
     
     public function gets() {
-        /*$query = $this->db->query("SELECT s.*, SUM(sa.cantidad) as cantidad, a.articulo, p.producto, a.posicion, m.medida_larga
-                                    FROM 
-                                        ((((stock s 
-                                    LEFT JOIN 
-                                        stock_almacenes sa 
-                                    ON 
-                                        s.idstock = sa.idstock)
-                                    INNER JOIN
-                                        articulos a
-                                    ON
-                                        s.idarticulo = a.idarticulo)
-                                    INNER JOIN
-                                        productos p
-                                    ON
-                                        a.idproducto = p.idproducto)
-                                    INNER JOIN
-                                        medidas m
-                                    ON
-                                        s.idmedida = m.idmedida)");*/
-        $query = $this->db->query("SELECT SUM(sa.cantidad) as cantidad, sa.idstock, a.articulo, p.producto, a.posicion, m.medida_larga, mar.marca
+        $query = $this->db->query("SELECT SUM(sa.cantidad) as cantidad, sa.idstock, a.articulo, p.producto, a.posicion, m.medida_corta, mar.marca
                                     FROM 
                                         stock s,
                                         stock_almacenes sa,
