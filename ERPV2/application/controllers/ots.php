@@ -14,6 +14,7 @@ class Ots extends CI_Controller {
         $this->load->model(array(
             'ots_model',
             'articulos_model',
+            'certificados_model',
             'productos_model',
             'fabricas_model',
             'planos_model',
@@ -618,25 +619,6 @@ class Ots extends CI_Controller {
         if(!$idot)
             redirect('/ots/', 'refresh');
         
-        /*
-        $trazabilidad = new TrazabilidadBean();
-        $trazabilidad->setIdot($idot);
-        $trazabilidad->armarTrazabilidadPorOt();
-        
-        
-        $data['trazabilidad'] = $trazabilidad;
-        */
-        
-        /*
-        echo "<br><br><br></pre>";
-        var_dump($trazabilidad->getOt()->getFabrica()->getFabrica());
-        var_dump($trazabilidad->getOt()->getNumeroOrdenDeTrabajo());
-        var_dump($trazabilidad->getOt()->getArticulo()->getProducto()->getProducto());
-        var_dump($trazabilidad->getOt()->getArticulo()->getArticulo());
-        var_dump($trazabilidad->getOt()->getTimestamp());
-        echo "</pre>";
-        */
-        
         
         
         $data['ot'] = $this->ots_model->get_where(array('idot' => $idot));
@@ -647,6 +629,8 @@ class Ots extends CI_Controller {
         
         $data['pedidos'] = $this->ots_model->gets_pedidos_asociados($idot);
         //$data['ocs'] = $this->ots_model->gets_ocs_asociadas($idot);
+        
+        $data['certificados'] = $this->certificados_model->gets_certificados_por_ot($idot);
         
         $monedas = $this->monedas_model->gets();
         foreach ($monedas as $key => $value) {

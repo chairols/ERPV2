@@ -1,16 +1,9 @@
 <div class="content-wrapper">
     <section class="content">
         <div class="row">
-            <div class="col-md-12">
-                <div class="box box-success box-solid">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Orden de Trabajo</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
+            <h1 class="alert-success">Orden de Trabajo</h1>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
                     <div class="box-body">
                         <table class="table table-condensed table-responsive table-striped">
                             <thead>
@@ -38,16 +31,9 @@
         </div>
         
         <div class="row">
-            <div class="col-md-12">
-                <div class="box box-success box-solid">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Pedidos</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
+            <h1 class="alert-success">Pedidos</h1>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
                     <div class="box-body">
                         <table class="table table-condensed table-responsive table-striped">
                             <thead>
@@ -86,16 +72,9 @@
         </div>
         
         <div class="row">
-            <div class="col-md-12">
-                <div class="box box-success box-solid">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Órdenes de Compra</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
+            <h1 class="alert-success">Órdenes de Compra</h1>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box">
                     <div class="box-body">
                         <?php foreach ($ocs as $oc) { ?>
                         <?php if(count($oc) > 0) { // Compruebo que no se muestren tablas vacías por las distintas monedas ?>
@@ -146,63 +125,5 @@
                 </div>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-success box-solid">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Recepción de Materiales</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-success box-solid">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Certificados</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <table class="table table-condensed table-responsive table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Certificado</th>
-                                    <th>Artículo</th>
-                                    <th>Número de Serie</th>
-                                    <th>Cliente</th>
-                                    <th>Fecha</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach($certificados as $certificado) { ?>
-                                <tr>
-                                    <td><?=$certificado['numero_certificado']?></td>
-                                    <td><?=$certificado['producto']?> <?=$certificado['articulo']?></td>
-                                    <td><?=$certificado['numero_serie']?></td>
-                                    <td><?=$certificado['cliente']?></td>
-                                    <td><?=$certificado['fecha']?></td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
     </section>
 </div>

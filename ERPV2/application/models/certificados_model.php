@@ -43,6 +43,23 @@ class Certificados_model extends CI_Model {
         $id = array('idcertificado' => $idcertificado);
         $this->db->update('certificados', $datos, $id);
     }
+    
+    public function gets_certificados_por_ot($idot) {
+        $query = $this->db->query("SELECT c.*, a.articulo, p.producto, cl.cliente
+                                    FROM
+                                        numeros_serie ns,
+                                        certificados c,
+                                        articulos a,
+                                        productos p,
+                                        clientes cl
+                                    WHERE
+                                        ns.idot = '$idot' AND
+                                        ns.numero_serie = c.numero_serie AND
+                                        c.idarticulo = a.idarticulo AND
+                                        a.idproducto = p.idproducto AND
+                                        c.idcliente = cl.idcliente");
+        return $query->result_array();
+    }
 }
 
 ?>
