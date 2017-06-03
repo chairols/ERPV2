@@ -14,13 +14,14 @@ class Ots extends CI_Controller {
         $this->load->model(array(
             'ots_model',
             'articulos_model',
-            'certificados_model',
             'productos_model',
             'fabricas_model',
             'planos_model',
             'monedas_model',
             'log_model',
-            'numeros_serie_model'
+            'numeros_serie_model',
+            'certificados_model',
+            'irm_model'
         ));
         $this->load->helper(array(
             'url'
@@ -631,6 +632,11 @@ class Ots extends CI_Controller {
         //$data['ocs'] = $this->ots_model->gets_ocs_asociadas($idot);
         
         $data['certificados'] = $this->certificados_model->gets_certificados_por_ot($idot);
+        
+        $data['irms'] = $this->irm_model->gets_items_por_ot($idot);
+        foreach($data['irms'] as $key => $value) {
+            $data['irms'][$key]['controles'] = $this->irm_model->gets_controles_por_idirm_item($value['idirm_item']);
+        }
         
         $monedas = $this->monedas_model->gets();
         foreach ($monedas as $key => $value) {

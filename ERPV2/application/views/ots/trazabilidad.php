@@ -159,7 +159,38 @@
                         </div>
                     </div>
                     <div class="box-body">
-                        
+                        <table class="table table-condensed table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <th>IRM</th>
+                                    <th>Cantidad</th>
+                                    <th>Artículo</th>
+                                    <th>Proveedor</th>
+                                    <th>Recepcionado</th>
+                                    <th>Fecha</th>
+                                    <th>Controles</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($irms as $irm) { ?>
+                                <tr>
+                                    <td><?=$irm['idirm']?></td>
+                                    <td><?=$irm['cantidad']?> <?=$irm['medida_corta']?></td>
+                                    <td><?=$irm['producto']?> <?=$irm['articulo']?></td>
+                                    <td><?=$irm['proveedor']?></td>
+                                    <td><?=$irm['nombre']?> <?=$irm['apellido']?></td>
+                                    <td><?=strftime('%d/%m/%Y', strtotime($irm['timestamp']))?></td>
+                                    <td>
+                                        <?php foreach($irm['controles'] as $value) { ?>
+                                        <span class="badge bg-green">
+                                            <?=$value['control']?>
+                                        </span>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -190,7 +221,11 @@
                             <tbody>
                                 <?php foreach($certificados as $certificado) { ?>
                                 <tr>
-                                    <td><?=$certificado['numero_certificado']?></td>
+                                    <td>
+                                        <a href="/certificados/imprimir/<?=$certificado['idcertificado']?>/" target="_blank">
+                                            <?=$certificado['numero_certificado']?>
+                                        </a>
+                                    </td>
                                     <td><?=$certificado['producto']?> <?=$certificado['articulo']?></td>
                                     <td><?=$certificado['numero_serie']?></td>
                                     <td><?=$certificado['cliente']?></td>

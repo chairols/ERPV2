@@ -181,5 +181,30 @@ class Irm_model extends CI_Model {
         
         return $query->result_array();
     }
+    
+    public function gets_items_por_ot($idot) {
+        $query = $this->db->query("SELECT ii.*, m.medida_corta, p.producto, a.articulo, pr.proveedor, u.nombre, u.apellido
+                                    FROM
+                                        irm_items ii,
+                                        ocs_items oi,
+                                        ocs_items_ots oio,
+                                        medidas m,
+                                        articulos a,
+                                        productos p,
+                                        irm i,
+                                        proveedores pr,
+                                        usuarios u
+                                    WHERE
+                                        ii.idoc_item = oi.idoc_item AND
+                                        oi.idoc_item = oio.idoc_item AND
+                                        oio.idot = '$idot' AND
+                                        oi.idmedida = m.idmedida AND
+                                        oi.idarticulo = a.idarticulo AND
+                                        a.idproducto = p.idproducto AND
+                                        ii.idirm = i.idirm AND
+                                        i.idproveedor = pr.idproveedor AND
+                                        ii.idusuario = u.idusuario");
+        return $query->result_array();
+    }
 }
 ?>
