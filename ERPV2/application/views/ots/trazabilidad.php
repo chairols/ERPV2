@@ -71,7 +71,9 @@
                                         <?=$pedido['ordendecompra']?>
                                         <?php if($pedido['adjunto'] != '') { ?>
                                         <a href="<?=$pedido['adjunto']?>" target="_blank">
-                                            <i class="icon-file"></i>
+                                            <button class="btn btn-info btn-xs">
+                                                <i class="fa fa-file"></i>
+                                            </button>
                                         </a>
                                         <?php } ?>
                                     </td>
