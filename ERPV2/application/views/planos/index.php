@@ -24,9 +24,8 @@
                     </div>
                     <div class="box-body">
                         <div id="gears">
-                            <div class="text-center">
-                                <img src="/assets/AdminLTE-2.3.11/gears.gif">
-                                <br><br>
+                            <div class="overlay">
+                                <i class="fa fa-refresh fa-spin"></i>
                             </div>
                         </div>
                         <div id="tabla" style="display: none">
