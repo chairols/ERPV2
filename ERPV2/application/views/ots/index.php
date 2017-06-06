@@ -24,11 +24,6 @@
                     <div class="box-header">
                         <h3 class="box-title"><?=$title?></h3>
                     </div>
-                    <div id="gears">
-                        <div class="overlay">
-                            <i class="fa fa-refresh fa-spin"></i>
-                        </div>
-                    </div>
                     <div id="tabla" style="display: none;">
                         <div class="box-body">
                             <table id="datatable-desc" class="table table-striped table-bordered table-condensed">
@@ -95,6 +90,9 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                    <div class="overlay" id="gears">
+                        <i class="fa fa-refresh fa-spin"></i>
                     </div>
                 </div>
             </div>
