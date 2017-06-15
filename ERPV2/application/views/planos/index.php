@@ -65,7 +65,9 @@
                                                         case "JPEG":
                                                         case "GIF":
                                                         case "TIFF":
+                                                        case "TIF":
                                                         case "BMP":
+                                                        case "XPS":
                                                             echo '<i class="fa fa-file-image-o"></i>';
                                                             break;
                                                             
@@ -79,7 +81,6 @@
                                                             break;
                                                     }
                                                     ?>
-                                                    <i class="fa fa-file"></i>
                                                 </button>
                                             </a>
                                         <?php } ?>
