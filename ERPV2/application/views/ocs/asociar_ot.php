@@ -123,7 +123,3 @@
         });
     }
 </script>
-
-<!--
-<img src="/assets/img/ajax-loader.gif">
--->

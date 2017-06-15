@@ -125,7 +125,7 @@
             type: 'GET',
             url: '/ots/ajax_fabricas/'+$("#fabrica").val(),
             beforeSend: function() {
-                $("#resultado").html('<img src="/assets/img/ajax-loader.gif">');
+                $("#resultado").html('<i class="fa fa-refresh fa-spin"></i>');
             },
             success: function(data) {
                 $("#resultado").html(data);
