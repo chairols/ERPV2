@@ -61,6 +61,8 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $total = 0; ?>
+                                <?php $moneda = null; ?>
                                 <?php foreach($pedidos as $pedido) { ?>
                                 <tr>
                                     <td><?=$pedido['cantidad']?></td>
@@ -78,8 +80,18 @@
                                         <?php } ?>
                                     </td>
                                     <td><?=$pedido['cliente']?></td>
+                                    <?php $moneda = $pedido['simbolo']; ?>
+                                    <?php $total+=($pedido['cantidad']*$pedido['precio']); ?>
                                 </tr>
                                 <?php } ?>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>Total</td>
+                                    <td class="alert-success bold"><?=$moneda?> <?=number_format($total, 2)?></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
