@@ -115,7 +115,7 @@
             type: 'GET',
             url: '/ots/get_ot_ajax/'+$("#ot").val(),
             beforeSend: function() {
-                $("#resultado").html('<img src="/assets/img/ajax-loader.gif">');
+                $("#resultado").html('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
             },
             success: function(data) {
                 $("#resultado").html(data);
@@ -123,3 +123,7 @@
         });
     }
 </script>
+
+<!--
+<img src="/assets/img/ajax-loader.gif">
+-->
