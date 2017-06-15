@@ -51,8 +51,34 @@
                                         </td>
                                         <td>
                                         <?php if($plano['planofile'] != '') { ?>
-                                            <a href="<?=$plano['planofile']?>" target="_blank" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Plano">
+                                            <a href="/planos/descargar/<?=$plano['idplano']?>/" target="_blank" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Plano">
                                                 <button class="btn btn-xs btn-primary">
+                                                    <?php
+                                                    $extension = explode('.', $plano['planofile']);
+                                                    $extension[1] = strtoupper($extension[1]);
+                                                    switch ($extension[1]) {
+                                                        case "PDF":
+                                                            echo '<i class="fa fa-file-pdf-o"></i>';
+                                                            break;
+                                                        
+                                                        case "JPG":
+                                                        case "JPEG":
+                                                        case "GIF":
+                                                        case "TIFF":
+                                                        case "BMP":
+                                                            echo '<i class="fa fa-file-image-o"></i>';
+                                                            break;
+                                                            
+                                                        case "ZIP":
+                                                        case "RAR":
+                                                            echo '<i class="fa fa-file-zip-o"></i>';
+                                                            break;
+                                                        
+                                                        default:
+                                                            echo '<i class="fa fa-file"></i>';
+                                                            break;
+                                                    }
+                                                    ?>
                                                     <i class="fa fa-file"></i>
                                                 </button>
                                             </a>

@@ -305,6 +305,22 @@ class Planos extends CI_Controller {
         
         redirect('/planos/modificar/'.$idplano.'/', 'refresh');
     }
+    
+    public function descargar($idplano = NULL) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        if($idplano == null) {
+            redirect('/planos/', 'refresh');
+        }
+        
+        $datos = array(
+            'idplano' => $idplano
+        );
+        $data['plano'] = $this->planos_model->get_where($datos);
+        
+        $this->load->view('planos/descargar', $data);
+    }
 }
 
 ?>
