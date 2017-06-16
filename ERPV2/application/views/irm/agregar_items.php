@@ -173,7 +173,7 @@
             type: 'GET',
             url: '/irm/cantidad/'+$("#articulo").val(),
             beforeSend: function() {
-                $("#cantidad").html('<img src="/assets/img/ajax-loader.gif">');
+                $("#cantidad").html('<i class="fa fa-refresh fa-spin"></i>');
             },
             success: function(data) {
                 $("#cantidad").html(data);
@@ -186,7 +186,7 @@
             type: 'GET',
             url: '/irm/unidaddemedida/'+$("#articulo").val(),
             beforeSend: function() {
-                $("#um").html('<img src="/assets/img/ajax-loader.gif">');
+                $("#um").html('<i class="fa fa-refresh fa-spin"></i>');
             },
             success: function(data) {
                 $("#um").html(data);
@@ -199,7 +199,7 @@
             type: 'GET',
             url: '/irm/ots/'+$("#articulo").val(),
             beforeSend: function() {
-                $("#ots").html('<img src="/assets/img/ajax-loader.gif">');
+                $("#ots").html('<i class="fa fa-refresh fa-spin"></i>');
             },
             success: function(data) {
                 $("#ots").html(data);
