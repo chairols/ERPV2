@@ -33,9 +33,9 @@
                                         <th>Fecha Prometida</th>
                                         <th>Fecha de Compra</th>
                                         <th>Cantidad Pendiente</th>
-                                        <th>U.M.</th>
                                         <th>Artículo</th>
                                         <th>Proveedor</th>
+                                        <th>O.T.</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,8 +43,7 @@
                                     <tr>
                                         <td><?=date('Y-m-d', strtotime($pendiente['prometida']))?></td>
                                         <td><?=strftime('%Y-%m-%d', strtotime($pendiente['fecha']))?></td>
-                                        <td><?=$pendiente['cantidadpendiente']?></td>
-                                        <td><?=$pendiente['medida_larga']?></td>
+                                        <td><?=$pendiente['cantidadpendiente']?> <?=$pendiente['medida_corta']?></td>
                                         <td>
                                             <a href="/articulos/ver/<?=$pendiente['idarticulo']?>/">
                                                 <?=$pendiente['producto']?> <?=$pendiente['articulo']?>
@@ -54,6 +53,13 @@
                                             <a href="/proveedores/ver/<?=$pendiente['idproveedor']?>/">
                                                 <?=$pendiente['proveedor']?>
                                             </a>
+                                        </td>
+                                        <td>
+                                            <?php foreach($pendiente['ots'] as $ot) { ?>
+                                            <a href="/ots/ver/<?=$ot['idot']?>/">
+                                                <span class="badge bg-green"><?=$ot['fabrica']?> <?=$ot['numero_ot']?></span>
+                                            </a>
+                                            <?php } ?>
                                         </td>
                                     </tr>
                                     <?php } ?>

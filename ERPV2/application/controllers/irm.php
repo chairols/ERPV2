@@ -81,6 +81,10 @@ class irm extends CI_Controller {
         $data['menu'] = $this->r_session->get_menu();
         
         $data['pendientes'] = $this->irm_model->gets_pendientes_de_recepcion();
+        foreach($data['pendientes'] as $key => $value) {
+            $data['pendientes'][$key]['ots'] = $this->ocs_model->gets_ots_asociadas($value['idoc_item']);
+        }
+        
         
         $this->load->view('layout_lte/header', $data);
         $this->load->view('layout_lte/menu');
