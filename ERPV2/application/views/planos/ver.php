@@ -46,10 +46,37 @@
                                 <label class="control-label col-md-3 col-sm-3 col-sx-12">Archivo del Plano</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
                                     <?php if($plano->getUrlDelPlano() != "") { ?>
-                                    <a href="<?=$plano->getUrlDelPlano()?>" target="_blank" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Plano">
-                                        <button class="btn btn-info">
-                                            <i class="fa fa-file"></i>
-                                        </button>
+                                    <a href="/planos/descargar/<?=$plano->getId()?>/" target="_blank" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Plano">
+                                    <button class="btn btn-primary">
+                                        <?php
+                                        $extension = explode('.', $plano->getUrlDelPlano());
+                                        $extension[1] = strtoupper($extension[1]);
+                                        switch ($extension[1]) {
+                                            case "PDF":
+                                                echo '<i class="fa fa-file-pdf-o"></i>';
+                                                break;
+
+                                            case "JPG":
+                                            case "JPEG":
+                                            case "GIF":
+                                            case "TIFF":
+                                            case "TIF":
+                                            case "BMP":
+                                            case "XPS":
+                                                echo '<i class="fa fa-file-image-o"></i>';
+                                                break;
+
+                                            case "ZIP":
+                                            case "RAR":
+                                                echo '<i class="fa fa-file-zip-o"></i>';
+                                                break;
+
+                                            default:
+                                                echo '<i class="fa fa-file"></i>';
+                                                break;
+                                        }
+                                        ?>
+                                    </button>
                                     </a>
                                     <?php } ?>
                                 </div>
