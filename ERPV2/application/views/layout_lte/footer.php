@@ -223,6 +223,8 @@
 <script src="/assets/AdminLTE-2.3.11/plugins/fastclick/fastclick.js"></script>
 <!-- Alertify JS -->
 <script src="/assets/AdminLTE-2.3.11/plugins/alertifyjs/alertify.min.js"></script>
+<!-- Chosen JS -->
+<script src="/assets/AdminLTE-2.3.11/plugins/chosen-js/chosen.jquery.js"></script>
 <!-- CK Editor -->
 <script src="/assets/AdminLTE-2.3.11/plugins/ckeditor_4.6.2_ffc6e191bae9/ckeditor/ckeditor.js"></script>
 <!--<script src="/assets/AdminLTE-2.3.11/plugins/ckeditor_4.5.11_full/ckeditor.js"></script>-->
@@ -371,6 +373,9 @@
     });
     // End Date Picker
 
+    // Chosen
+    $('.chosen').chosen();
+    // End Chosen
     inicio();
     
 </script>

@@ -21,6 +21,8 @@
   <!-- Alertify JS -->
   <link rel="stylesheet" href="/assets/AdminLTE-2.3.11/plugins/alertifyjs/css/alertify.min.css">
   <link rel="stylesheet" href="/assets/AdminLTE-2.3.11/plugins/alertifyjs/css/themes/bootstrap.min.css">
+  <!-- Chosen Js -->
+  <link rel="stylesheet" href="/assets/AdminLTE-2.3.11/plugins/chosen-js/bootstrap-chosen.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/assets/AdminLTE-2.3.11/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins

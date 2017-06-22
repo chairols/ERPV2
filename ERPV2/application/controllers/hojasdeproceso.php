@@ -9,7 +9,8 @@ class Hojasdeproceso extends CI_Controller {
             'form_validation'
         ));
         $this->load->model(array(
-            'hojasdeproceso_model'
+            'hojasdeproceso_model',
+            'log_model'
         ));
         $this->load->helper(array(
             'url'
@@ -52,7 +53,65 @@ class Hojasdeproceso extends CI_Controller {
         $this->load->view('layout_lte/header', $data);
         $this->load->view('layout_lte/menu');
         $this->load->view('hojasdeproceso/agregar', $data);
+        $this->load->view('hojasdeproceso/script_agregar');
         $this->load->view('layout_lte/footer');
+    }
+    
+    public function agregar_post() {
+        $session = $this->session->all_userdata();
+        $this->form_validation->set_rules('id', 'Número de Hoja de Proceso', 'required|integer');
+        $this->form_validation->set_rules('hojadeproceso', 'Nombre de la Hoja de Proceso', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            $json = array(
+                'status' => 'error',
+                'data' => validation_errors()
+            );
+            echo json_encode($json);
+        } else {
+            $datos = array(
+                'hojadeproceso' => $this->input->post('hojadeproceso')
+            );
+            
+            $id = $this->hojasdeproceso_model->set($datos);
+            
+            $log = array(
+                'tabla' => 'hojasdeproceso',
+                'idtabla' => $id,
+                'texto' => 'Se agregó la hoja de proceso <br> '
+                . 'Nombre: '.$this->input->post('hojadeproceso'),
+                'tipo' => 'add',
+                'idusuario' => $session['SID']
+            );
+            $this->log_model->set($log);
+            
+            if($id > 0) {
+                $json = array(
+                    'status' => 'ok',
+                    'id' => $id
+                );
+                echo json_encode($json);
+            } else {
+                $json = array(
+                    'status' => 'error',
+                    'data' => 'No se pudo agregar'
+                );
+                echo json_encode($json);
+            }
+            
+        }
+    }
+    
+    public function proximoid() {
+        $data['ultimoid'] = $this->hojasdeproceso_model->get_ultimo_id();
+        
+        if($data['ultimoid']['id'] == null) {
+            $data['proximoid'] = 1;
+        } else {
+            $data['proximoid'] = $data['ultimoid']['id'] + 1;
+        }
+        
+        $this->load->view('hojasdeproceso/proximoid', $data);
     }
 }
 ?>

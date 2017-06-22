@@ -8,6 +8,7 @@
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li class="active"><a href="/hojasdeproceso/">Listar Hojas de Proceso</a></li>
                 <li><a href="/hojasdeproceso/agregar/">Agregar Hoja de Proceso</a></li>
+                <li><a href="/hojasdeproceso/modificar/">Modificar Hoja de Proceso</a></li>
             </ul>
         </div>
         
@@ -25,6 +26,7 @@
                                 <tr>
                                     <th><strong>Código</strong></th>
                                     <th><strong>Hoja de Proceso</strong></th>
+                                    <th><strong>Artículos</strong></th>
                                     <th><strong>Revisión</strong></th>
                                     <th><strong>Aprobado</strong></th>
                                     <th><strong>Fecha de Aprobado</strong></th>
@@ -33,6 +35,7 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>

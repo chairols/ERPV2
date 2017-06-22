@@ -8,6 +8,7 @@
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li><a href="/hojasdeproceso/">Listar Hojas de Proceso</a></li>
                 <li class="active"><a href="/hojasdeproceso/agregar/">Agregar Hoja de Proceso</a></li>
+                <li><a href="/hojasdeproceso/modificar/">Modificar Hoja de Proceso</a></li>
             </ul>
         </div>
         
@@ -20,26 +21,24 @@
                         <h3 class="box-title"><?=$title?></h3>
                     </div>
                     <div class="box-body">
-                        <form method="POST" class="form-horizontal" enctype="multipart/form-data">
+                        <div class="form-horizontal">
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Hoja de Proceso</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" maxlength="100" class="form-control" name="hojadeproceso" required autofocus>
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Hoja de Proceso N°</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12" id="resultado">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Archivo Editable</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="file" class="form-control" name="editable">
+                                    <input type="text" maxlength="100" class="form-control" id="hojadeproceso" autofocus>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button type="submit" class="btn btn-success">Agregar</button>
-                                    <button type="reset" class="btn btn-primary">Limpiar</button>
+                                    <button id="agregar" class="btn btn-success">Agregar</button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

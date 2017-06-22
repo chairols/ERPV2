@@ -1,0 +1,75 @@
+{
+  "name": "chosen-js",
+  "version": "1.7.0",
+  "description": "Chosen is a JavaScript plugin that makes select boxes user-friendly. It is currently available in both jQuery and Prototype flavors.",
+  "keywords": [
+    "select",
+    "multiselect",
+    "dropdown",
+    "form",
+    "input",
+    "ui"
+  ],
+  "homepage": "https://harvesthq.github.io/chosen/",
+  "bugs": {
+    "url": "https://github.com/harvesthq/chosen/issues"
+  },
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Patrick Filler",
+      "url": "https://github.com/pfiller"
+    },
+    {
+      "name": "Christophe Coevoet",
+      "url": "https://github.com/stof"
+    },
+    {
+      "name": "Ken Earley",
+      "url": "https://github.com/kenearley"
+    },
+    {
+      "name": "Koen Punt",
+      "url": "https://github.com/koenpunt"
+    }
+  ],
+  "dependencies": {},
+  "files": [
+    "chosen.jquery.js",
+    "chosen.css",
+    "chosen-sprite@2x.png",
+    "chosen-sprite.png"
+  ],
+  "main": "chosen.jquery.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harvesthq/chosen.git"
+  },
+  "gitHead": "20457c69249226af89fda0b357591622b922b36a",
+  "_id": "chosen-js@1.7.0",
+  "scripts": {},
+  "_shasum": "8ceb2e929e2a072886edd384d78989dfbffa58c3",
+  "_from": "chosen-js@latest",
+  "_npmVersion": "4.1.2",
+  "_nodeVersion": "7.7.4",
+  "_npmUser": {
+    "name": "chosenjs",
+    "email": "chosenjs@getharvest.com"
+  },
+  "dist": {
+    "shasum": "8ceb2e929e2a072886edd384d78989dfbffa58c3",
+    "tarball": "https://registry.npmjs.org/chosen-js/-/chosen-js-1.7.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "chosenjs",
+      "email": "chosenjs@getharvest.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/chosen-js-1.7.0.tgz_1490389234489_0.23706221161410213"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/chosen-js/-/chosen-js-1.7.0.tgz"
+}
