@@ -1,18 +1,9 @@
 <script type="text/javascript">
     function inicio() {
-
-        $.ajax({
-            type: 'GET',
-            url: '/hojasdeproceso/proximoid/',
-            beforeSend: function() {
-                $("#resultado").html('<i class="fa fa-refresh fa-spin"></i>');
-            },
-            success: function(data) {
-                $("#resultado").html(data);
-            }
-        });
+    
+        articulos_asociados();
         
-        $("#agregar").click(function() {
+        $("#asociar_articulo").click(function() {
 
             alertify.defaults.transition = "slide";
             alertify.defaults.theme.ok = "btn btn-success";
@@ -30,15 +21,15 @@
 
             alertify.confirm(
                 "<strong>¿Desea confirmar?</strong>",
-                "Se agregará la Hoja de Proceso "+$("#nombrehp").val(),
+                "Se asociará el artículo "+$("#articulo option:selected").text(),
                 function() {
                     datos = {
-                        'id' : $("#id").val(),
+                        'articulo' : $("#articulo").val(),
                         'hojadeproceso' : $("#hojadeproceso").val()
                     };
                     $.ajax({
                         type: 'POST',
-                        url: '/hojasdeproceso/agregar_post/',
+                        url: '/hojasdeproceso/agregar_articulo_post/',
                         data: datos,
                         beforeSend: function() {
 
@@ -52,9 +43,7 @@
                                 alertify.alert('<strong>ERROR</strong>', resultado['data']);
                             } else if(resultado['status'] == 'ok') {
                                 alertify.success("Se agregó correctamente");
-                                document.getElementById("hojadeproceso").value = "";
-                                url = "/hojasdeproceso/modificar/"+resultado['id']+"/";
-                                setTimeout("redireccionar(url)", 1000);
+                                articulos_asociados();
                             }
                         }
                     });
@@ -66,12 +55,32 @@
 
         });
 
-        
-        
     }
     
-    function redireccionar(url) {
-        window.location = url;
+    function articulos_asociados() {
+        $.ajax({
+            type: 'GET',
+            url: '/hojasdeproceso/articulos_asociados/'+$("#hojadeproceso").val(),
+            beforeSend: function() {
+                $("#hojasdeproceso_articulos").html('<i class="fa fa-refresh fa-spin"></i>');
+            },
+            success: function(data) {
+                $("#hojasdeproceso_articulos").html(data);
+            }
+        });
     }
     
-</script>
+    function desasociar_articulo(idhojadeproceso, idarticulo) {
+        $.ajax({
+            type: 'GET',
+            url: '/hojasdeproceso/desasociar_articulo/'+idhojadeproceso+'/'+idarticulo+'/',
+            beforeSend: function() {
+                $("#hojasdeproceso_articulos").html('<i class="fa fa-refresh fa-spin"></i>');
+            },
+            success: function() {
+                articulos_asociados();
+            }
+        });
+        
+    }
+</script> 
