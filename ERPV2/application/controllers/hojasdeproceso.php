@@ -11,7 +11,8 @@ class Hojasdeproceso extends CI_Controller {
         $this->load->model(array(
             'hojasdeproceso_model',
             'log_model',
-            'articulos_model'
+            'articulos_model',
+            'usuarios_model'
         ));
         $this->load->helper(array(
             'url'
@@ -128,6 +129,7 @@ class Hojasdeproceso extends CI_Controller {
         $data['idhojadeproceso'] = $idhojadeproceso;
         
         $data['articulos'] = $this->articulos_model->gets();
+        $data['usuarios'] = $this->usuarios_model->gets();
         
         $this->load->view('layout_lte/header', $data);
         $this->load->view('layout_lte/menu');

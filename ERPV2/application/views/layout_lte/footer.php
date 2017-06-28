@@ -374,7 +374,10 @@
     // End Date Picker
 
     // Chosen
-    $('.chosen').chosen();
+    $('.chosen').chosen(
+            {
+                search_contains: true
+            });
     // End Chosen
     inicio();
     

@@ -6,11 +6,12 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="box">
+                <div class="box box-primary">
                     <div class="box-header">
                         <h3 class="box-title"><?=$title?></h3>
                     </div>
-                    <div class="box-body">
+                    <div id="tabla" style="display: none;">
+                        <div class="box-body">
                         <table id="datatable-desc" class="table table-striped table-bordered table-condensed">
                             <thead>
                                 <tr>
@@ -41,8 +42,19 @@
                             </tbody>
                         </table>
                     </div>
+                    </div>
+                    <div class="overlay" id="gears">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
+
+<script type="text/javascript">
+    function inicio() {
+        $("#gears").hide();
+        $("#tabla").fadeIn(1000);
+    }
+</script>
