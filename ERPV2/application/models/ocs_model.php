@@ -193,5 +193,23 @@ class Ocs_model extends CI_Model {
         
         return $query->result_array();
     }
+    
+    public function gets_totales_por_mes($anio, $moneda) {
+        $query = $this->db->query("SELECT m.idmoneda, m.moneda, SUM(oi.cantidad * oi.precio) as subtotal, MONTH(o.timestamp) as mes, YEAR(o.timestamp) as anio
+                                    FROM	
+                                        ocs o,
+                                        ocs_items oi,
+                                        monedas m
+                                    WHERE
+                                        o.idoc = oi.idoc AND
+                                        o.idmoneda = m.idmoneda AND
+                                        YEAR(o.timestamp) = '$anio' AND
+                                        m.idmoneda = '$moneda'
+                                    GROUP BY
+                                        m.moneda, MONTH(o.timestamp)
+                                    ORDER BY
+                                        MONTH(o.timestamp) ASC;");
+        return $query->result_array();
+    }
 }
 ?>

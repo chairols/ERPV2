@@ -12,7 +12,8 @@ class Indicadores extends CI_Controller {
         $this->load->model(array(
             'proveedores_model',
             'ocs_model',
-            'monedas_model'
+            'monedas_model',
+            'pedidos_model'
         ));
         $this->load->helper(array(
             'url'
@@ -128,5 +129,44 @@ class Indicadores extends CI_Controller {
         return "#".$color;
     }
     
+    public function utilidades() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Utilidades';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $this->form_validation->set_rules('anio', 'Año', 'required|integer');
+        $this->form_validation->set_rules('moneda', 'Moneda', 'required|integer');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $pedidos = $this->pedidos_model->gets_totales_por_mes($this->input->post('anio'), $this->input->post('moneda'));
+            foreach($pedidos as $pedido) {
+                $data['pedidos'][$pedido['mes']]['subtotal'] = $pedido['subtotal'];
+            }
+            
+            $ocs = $this->ocs_model->gets_totales_por_mes($this->input->post('anio'), $this->input->post('moneda'));
+            foreach($ocs as $oc) {
+                $data['ocs'][$oc['mes']]['subtotal'] = $oc['subtotal'];
+            }
+            
+            $data['ano'] = $this->input->post('anio');
+            $datos = array(
+                'idmoneda' => $this->input->post('moneda')
+            );
+            $data['mon'] = $this->monedas_model->get_where($datos);
+        }
+        
+        $data['anios'] = $this->pedidos_model->gets_anios_min_y_max();
+        $data['monedas'] = $this->monedas_model->gets();
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('indicadores/utilidades');
+        $this->load->view('layout_lte/footer');
+    }
 }
 ?>

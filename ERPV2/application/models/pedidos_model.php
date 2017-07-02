@@ -142,5 +142,37 @@ class Pedidos_model extends CI_Model {
     public function desasociar_ot($datos) {
         $this->db->delete('pedidos_items_ots', $datos);
     }
+    
+    
+    public function gets_totales_por_mes($anio, $moneda) {
+        $query = $this->db->query("SELECT m.idmoneda, m.moneda, SUM(pi.cantidad * pi.precio) as subtotal, MONTH(p.timestamp) as mes, YEAR(p.timestamp) as anio
+                                    FROM	
+                                        pedidos p,
+                                        pedidos_items pi,
+                                        monedas m
+                                    WHERE
+                                        p.idpedido = pi.idpedido AND
+                                        p.idmoneda = m.idmoneda AND
+                                        YEAR(p.timestamp) = '$anio' AND
+                                        m.idmoneda = '$moneda'
+                                    GROUP BY
+                                        m.moneda, MONTH(p.timestamp)
+                                    ORDER BY
+                                        MONTH(p.timestamp) ASC;");
+        return $query->result_array();
+    }
+    
+    public function gets_anios_min_y_max() {
+        $query = $this->db->query("SELECT YEAR(timestamp) as anio
+                                    FROM
+                                        pedidos
+                                    GROUP BY
+                                        anio
+                                    ORDER BY
+                                        anio DESC");
+        return $query->result_array();
+    }
+    
+    
 }
 ?>
