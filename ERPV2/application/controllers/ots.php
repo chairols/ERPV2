@@ -140,7 +140,25 @@ class Ots extends CI_Controller {
                 
                 $id = $this->ots_model->set($datos);
                 
+                
+                if(count($this->input->post('numero_serie')) == 0) {
+                    $datos['numero_serie'] = NULL;
+                } else {
+                    $datos['numero_serie'] = $this->input->post('numero_serie');
+                }
+                
                 $this->numeros_serie_model->borrar_por_ot($id);
+                
+                if($datos['numero_serie'] != null) {
+                    $numeros_serie = $this->input->post('numero_serie');
+                    foreach($numeros_serie as $ns) {
+                        $num_serie = array(
+                            'numero_serie' => $ns,
+                            'idot' => $id
+                        );
+                        $this->numeros_serie_model->set($num_serie);
+                    }
+                }
                 
                 
                 $fabrica = $this->fabricas_model->get_where(array('idfabrica' => $this->input->post('fabrica')));
@@ -660,6 +678,17 @@ class Ots extends CI_Controller {
         $data['producto'] = $this->productos_model->get_where(array('idproducto' => $data['articulo']['idproducto']));
         
         $this->load->view('ots/get_ot_ajax', $data);
+    }
+    
+    public function get_numeros_de_serie($cantidad = null) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        if($cantidad == null)
+            $cantidad = 0;
+        $data = $this->numeros_serie_model->get_ultimo_numero_de_serie();
+        $data['cantidad'] = $cantidad;
+
+        $this->load->view('ots/get_numeros_de_serie', $data);
     }
 }
 

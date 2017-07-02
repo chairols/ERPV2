@@ -55,7 +55,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-sx-12">Cantidad</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
-                                    <input type="text" maxlength="11" class="form-control" value="<?=set_value('cantidad')?>" name="cantidad">
+                                    <input type="text" maxlength="11" class="form-control" value="<?=set_value('cantidad')?>" name="cantidad" id="cantidad" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -67,7 +67,7 @@
                                         </div>
                                         <input type="text" id="dp1" name="fecha_necesidad" class="form-control pull-right datepicker">
                                         <div class="input-group-addon">
-                                            <a onclick="limpiar_campo('dp1');" href="#" class="label label-danger">
+                                            <a onclick="limpiar_campo('dp1');" class="label label-danger">
                                                 <i class="fa fa-close"></i>
                                             </a>
                                         </div>
@@ -83,10 +83,25 @@
                                         </div>
                                         <input type="text" id="dp2" name="fecha_terminado" class="form-control pull-right datepicker">
                                         <div class="input-group-addon">
-                                            <a onclick="limpiar_campo('dp2');" href="#" class="label label-danger">
+                                            <a onclick="limpiar_campo('dp2');" class="label label-danger">
                                                 <i class="fa fa-close"></i>
                                             </a>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-sx-12">Números de Serie</label>
+                                <div class="col-md-6 col-sm-6 col-sx-12">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <a onclick="generar_numeros_de_serie();" class="label label-success">
+                                                <i class="fa fa-plus-square"> Generar</i>
+                                            </a>
+                                        </div>
+                                        <select name="numero_serie[]" class="tags form-control" multiple tabindex="-1" aria-hidden="true" id="sele">
+                                            <div id="numeros_generados"></div>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -131,5 +146,24 @@
                 $("#resultado").html(data);
             }
         });
+    }
+    
+    function generar_numeros_de_serie() {
+        $.ajax({
+            type: 'GET',
+            url: '/ots/get_numeros_de_serie/'+$("#cantidad").val(),
+            beforeSend: function() {
+                $("#numeros_generados").html('<i class="fa fa-refresh fa-spin"></i>');
+            },
+            success: function(data) {
+                data = data.split(",");
+                for(i = 0; i < data.length; i++) {
+                    //alert
+                    $("#sele").append(data[i]);
+                }
+                
+            }
+        });
+        
     }
 </script>

@@ -225,6 +225,9 @@
 <script src="/assets/AdminLTE-2.3.11/plugins/alertifyjs/alertify.min.js"></script>
 <!-- Chosen JS -->
 <script src="/assets/AdminLTE-2.3.11/plugins/chosen-js/chosen.jquery.js"></script>
+<!-- Bootstrap Tags Input -->
+<script src="/assets/AdminLTE-2.3.11/plugins/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.min.js"></script>
+<script src="/assets/AdminLTE-2.3.11/plugins/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput-angular.js"></script>
 <!-- CK Editor -->
 <script src="/assets/AdminLTE-2.3.11/plugins/ckeditor_4.6.2_ffc6e191bae9/ckeditor/ckeditor.js"></script>
 <!--<script src="/assets/AdminLTE-2.3.11/plugins/ckeditor_4.5.11_full/ckeditor.js"></script>-->

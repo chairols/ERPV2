@@ -69,5 +69,13 @@ class Numeros_serie_model extends CI_Model {
         
         return $query->row_array();
     }
+    
+    
+    public function get_ultimo_numero_de_serie() {
+        $query = $this->db->query("SELECT MAX(numero_serie) as ultimo
+                                    FROM
+                                        numeros_serie");
+        return $query->row_array();
+    }
 }
 ?>

@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="/assets/AdminLTE-2.3.11/plugins/alertifyjs/css/themes/bootstrap.min.css">
   <!-- Chosen Js -->
   <link rel="stylesheet" href="/assets/AdminLTE-2.3.11/plugins/chosen-js/bootstrap-chosen.css">
+  <!-- Bootstrap Tags Input -->
+  <link rel="stylesheet" href="/assets/AdminLTE-2.3.11/plugins/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/assets/AdminLTE-2.3.11/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
