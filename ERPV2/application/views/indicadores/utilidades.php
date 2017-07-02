@@ -50,7 +50,7 @@
                                 $pedidos_total += $pedido['subtotal'];
                             }
                             ?>
-                            <h3 class="text-center">Órdenes de Compra: <?=$ocs_total?> - Pedidos: <?=$pedidos_total?></h3>
+                            <h3 class="text-center">Órdenes de Compra: <?=round($ocs_total, 2)?> - Pedidos: <?=round($pedidos_total, 2)?></h3>
                             <?php } ?>
                             <canvas id="barChart"></canvas>
                     </div>
@@ -76,7 +76,7 @@
                 //data: [65, 59, 80, 81, 56, 55, 40]
                 data: [
                     <?php for($i = 1; $i < 13; $i++) { ?>
-                    <?=(!isset($ocs[$i]))?"0":$ocs[$i]['subtotal']?>,
+                    <?=(!isset($ocs[$i]))?"0":round($ocs[$i]['subtotal'], 2)?>,
                     <?php } ?>
                 ]
               },
@@ -91,7 +91,7 @@
                 //data: [28, 48, 40, 19, 86, 27, 90]
                 data: [
                     <?php for($i = 1; $i < 13; $i++) { ?>
-                    <?=(!isset($pedidos[$i]))?"0":$pedidos[$i]['subtotal']?>,
+                    <?=(!isset($pedidos[$i]))?"0":round($pedidos[$i]['subtotal'], 2)?>,
                     <?php } ?>
                 ]
               }
