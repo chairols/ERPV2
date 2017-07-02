@@ -15,7 +15,7 @@
         
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="box">
+                <div class="box box-primary">
                     <div class="box-header">
                         <h3 class="box-title"><?=$title?></h3>
                     </div>
@@ -24,7 +24,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-sx-12">Cliente</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
-                                    <select name="cliente" class="select2 form-control">
+                                    <select name="cliente" class="form-control chosen">
                                         <?php foreach($clientes as $cliente) { ?>
                                         <option value="<?=$cliente['idcliente']?>"><?=$cliente['cliente']?></option>
                                         <?php } ?>
@@ -34,7 +34,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-sx-12">Moneda</label>
                                 <div class="col-md-6 col-sm-6 col-sx-12">
-                                    <select name="moneda" class="select2 form-control">
+                                    <select name="moneda" class="form-control chosen">
                                         <?php foreach($monedas as $moneda) { ?>
                                         <option value="<?=$moneda['idmoneda']?>"><?=$moneda['moneda']?></option>
                                         <?php } ?>
