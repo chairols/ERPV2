@@ -432,6 +432,7 @@ class Ots extends CI_Controller {
         $producto = $this->productos_model->get_where(array('idproducto' => $articulo['idproducto']));
         $fabrica = $this->fabricas_model->get_where(array('idfabrica' => $ot['idfabrica']));
         $plano = $this->planos_model->get_where(array('idplano' => $articulo['idplano']));
+        $numeros_serie = $this->numeros_serie_model->gets_por_ot($idot);
         
         
         $this->pdf = new Pdf_ot();
@@ -514,6 +515,17 @@ class Ots extends CI_Controller {
             $this->pdf->Cell(0, 6, utf8_decode("Fecha de Necesidad"));
             $this->pdf->Ln();
             $this->pdf->MultiCell(0, 6, strftime('%d/%m/%Y', strtotime($ot['fecha_necesidad'])), 1, 1);
+            $this->pdf->Ln();
+        }
+        
+        if(count($numeros_serie) > 0) {
+            $ns = '';
+            foreach($numeros_serie as $n) {
+                $ns .= $n['numero_serie'].' - ';
+            }
+            $this->pdf->Cell(0, 6, utf8_decode('Números de Serie'));
+            $this->pdf->Ln();
+            $this->pdf->MultiCell(0, 6, substr(utf8_decode($ns), 0, -3), 1, 1);
             $this->pdf->Ln();
         }
         
