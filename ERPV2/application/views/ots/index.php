@@ -32,6 +32,7 @@
                                     <th><strong>Fábrica</strong></th>
                                     <th><strong>Cantidad</strong></th>
                                     <th><strong>Material</strong></th>
+                                    <th><strong>Plano</strong></th>
                                     <th><strong>Necesidad</strong></th>
                                     <th><strong>Terminado</strong></th>
                                     <th><strong>Estado</strong></th>
@@ -44,6 +45,7 @@
                                         <td><?=$ot['fabrica']?></td>
                                         <td><?=$ot['cantidad']?></td>
                                         <td><a href="/articulos/ver/<?=$ot['idarticulo']?>"><?=$ot['producto']?> <?=$ot['articulo']?></a></td>
+                                        <td><?=(is_null($ot['idplano']))?"":"<a href='/planos/ver/".$ot['idplano']."' target='_blank'>".$ot['plano']."/".$ot['revision']." Pos ".$ot['posicion']."</a>"?></td>
                                         <td><?=$ot['fecha_necesidad']?></td>
                                         <td><?=$ot['fecha_terminado']?></td>
                                         <td>

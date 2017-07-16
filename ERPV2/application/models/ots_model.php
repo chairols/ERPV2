@@ -25,19 +25,14 @@ class Ots_model extends CI_Model {
      * 
      */
     public function gets() {
-        $query = $this->db->query("SELECT o.*, f.fabrica, p.producto, a.articulo
-                                    FROM
-                                        ots o,
-                                        fabricas f,
-                                        articulos a,
-                                        productos p
-                                    WHERE
-                                        o.idfabrica = f.idfabrica AND
-                                        a.idarticulo = o.idarticulo AND
-                                        a.idproducto = p.idproducto AND
-                                        o.activo = '1'
+        $query = $this->db->query("SELECT o.*, f.fabrica, p.producto, a.articulo, a.posicion, pl.idplano, pl.plano, pl.revision
+                                    FROM ((((ots o INNER JOIN fabricas f ON o.idfabrica = f.idfabrica)
+                                    INNER JOIN articulos a ON a.idarticulo = o.idarticulo)
+                                    INNER JOIN productos p ON a.idproducto = p.idproducto)
+                                    LEFT JOIN planos pl ON a.idplano = pl.idplano)
                                     ORDER BY
                                         o.numero_ot DESC");
+        
         return $query->result_array();
     }
     
