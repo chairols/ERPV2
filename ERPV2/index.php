@@ -45,7 +45,10 @@ if (defined('ENVIRONMENT'))
 			exit('The application environment is not set correctly.');
 	}
 }
-
+/*
+ * Configuración de la zona horaria
+ */
+        date_default_timezone_set('America/Argentina/Buenos_Aires');
 /*
  *---------------------------------------------------------------
  * SYSTEM FOLDER NAME
