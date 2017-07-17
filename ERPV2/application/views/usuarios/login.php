@@ -37,6 +37,9 @@
         <input type="password" name="password" class="form-control" placeholder="Contraseña">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+      <div class="form-group has-feedback">
+        <?=$this->recaptcha->render();?>
+      </div>
       <div class="row">
           <div class="col-xs-4"></div>
         <!-- /.col -->

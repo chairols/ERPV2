@@ -6,7 +6,8 @@ class Usuarios extends CI_Controller {
         $this->load->library(array(
             'form_validation',
             'session',
-            'r_session'
+            'r_session',
+            'recaptcha'
         ));
         $this->load->model(array(
             'usuarios_model',
@@ -154,22 +155,28 @@ class Usuarios extends CI_Controller {
         $this->form_validation->set_rules('usuario', 'Usuario', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         
-        if($this->form_validation->run() == FALSE) {
+        $captcha_answer = $this->input->post('g-recaptcha-response');
+        
+        $response = $this->recaptcha->verifyResponse($captcha_answer);
+        
+        if($response['success']) {
+            if($this->form_validation->run() == FALSE) {
             
-        } else {
-            $usuario = $this->usuarios_model->get_usuario($this->input->post('usuario'), $this->input->post('password'));
-            if(!empty($usuario)) {
-                $datos = array(
-                    'SID' => $usuario['idusuario'],
-                    'usuario' => $usuario['usuario'],
-                    'nombre' => $usuario['nombre'],
-                    'apellido' => $usuario['apellido'],
-                    'correo' => $usuario['correo'],
-                    'botonmenu' => 0,
-                    'tipo_usuario' => $usuario['tipo_usuario']
-                );
-                $this->session->set_userdata($datos);
-                redirect('/dashboard/', 'refresh');
+            } else {
+                $usuario = $this->usuarios_model->get_usuario($this->input->post('usuario'), $this->input->post('password'));
+                if(!empty($usuario)) {
+                    $datos = array(
+                        'SID' => $usuario['idusuario'],
+                        'usuario' => $usuario['usuario'],
+                        'nombre' => $usuario['nombre'],
+                        'apellido' => $usuario['apellido'],
+                        'correo' => $usuario['correo'],
+                        'botonmenu' => 0,
+                        'tipo_usuario' => $usuario['tipo_usuario']
+                    );
+                    $this->session->set_userdata($datos);
+                    redirect('/dashboard/', 'refresh');
+                }
             }
         }
         
