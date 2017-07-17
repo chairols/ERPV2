@@ -26,7 +26,7 @@ class Ots_model extends CI_Model {
      */
     public function gets() {
         $query = $this->db->query("SELECT o.*, f.fabrica, p.producto, a.articulo, a.posicion, pl.idplano, pl.plano, pl.revision
-                                    FROM ((((ots o INNER JOIN fabricas f ON o.idfabrica = f.idfabrica)
+                                    FROM ((((ots o INNER JOIN fabricas f ON o.idfabrica = f.idfabrica AND o.activo = '1')
                                     INNER JOIN articulos a ON a.idarticulo = o.idarticulo)
                                     INNER JOIN productos p ON a.idproducto = p.idproducto)
                                     LEFT JOIN planos pl ON a.idplano = pl.idplano)
