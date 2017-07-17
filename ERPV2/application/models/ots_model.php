@@ -101,6 +101,7 @@ class Ots_model extends CI_Model {
     public function update($datos, $id) {
         $array = array('idot' => $id);
         $this->db->update('ots', $datos, $array);
+        return $this->db->affected_rows();
     }
     
     /*

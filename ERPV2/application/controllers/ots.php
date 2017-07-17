@@ -608,7 +608,7 @@ class Ots extends CI_Controller {
         $datos = array(
             'activo' => '0'
         );
-        $this->ots_model->update($datos, $idot);
+        $affected = $this->ots_model->update($datos, $idot);
         
         $log = array(
             'tabla' => 'ots',
@@ -620,7 +620,19 @@ class Ots extends CI_Controller {
 
          $this->log_model->set($log);
          
-         redirect('/ots/borradas/', 'refresh');
+         //redirect('/ots/borradas/', 'refresh');
+         if($affected == '1') {
+             $json = array(
+                 'status' => 'ok'
+             );
+             echo json_encode($json);
+         } else {
+             $json = array(
+                 'status' => 'error',
+                 'data' => 'No se pudo eliminar'
+             );
+             echo json_encode($json);
+         }
     }
     
     public function borradas() {
