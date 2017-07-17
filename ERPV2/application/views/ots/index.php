@@ -44,8 +44,8 @@
                                         <td><?=$ot['numero_ot']?></td>
                                         <td><?=$ot['fabrica']?></td>
                                         <td><?=$ot['cantidad']?></td>
-                                        <td><a href="/articulos/ver/<?=$ot['idarticulo']?>"><?=$ot['producto']?> <?=$ot['articulo']?></a></td>
-                                        <td><?=(is_null($ot['idplano']))?"":"<a href='/planos/ver/".$ot['idplano']."' target='_blank'>".$ot['plano']."/".$ot['revision']." Pos ".$ot['posicion']."</a>"?></td>
+                                        <td><a href="/articulos/ver/<?=$ot['idarticulo']?>"><?=$ot['producto']?> <?=$ot['articulo']?> Pos <?=$ot['posicion']?></a></td>
+                                        <td><?=(is_null($ot['idplano']))?"":"<a href='/planos/ver/".$ot['idplano']."' target='_blank'>".$ot['plano']."/".$ot['revision']."</a>"?></td>
                                         <td><?=$ot['fecha_necesidad']?></td>
                                         <td><?=$ot['fecha_terminado']?></td>
                                         <td>
