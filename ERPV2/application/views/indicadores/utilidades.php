@@ -50,7 +50,7 @@
                                 $pedidos_total += $pedido['subtotal'];
                             }
                             ?>
-                            <h3 class="text-center">Órdenes de Compra: <?=round($ocs_total, 2)?> - Pedidos: <?=round($pedidos_total, 2)?></h3>
+                            <h3 class="text-center">Compras: <?=round($ocs_total, 2)?> - Ventas: <?=round($pedidos_total, 2)?></h3>
                             <?php } ?>
                             <canvas id="barChart"></canvas>
                     </div>

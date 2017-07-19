@@ -294,8 +294,39 @@ class Prueba extends CI_Controller {
         $this->load->view('layout_lte/footer');
     }
     
-    public function upload_file_post() {
+    public function datatable() {
+        $this->load->model(array(
+            'ots_model'
+        ));
+        $session = $this->session->all_userdata();
+        $data['title'] = 'Listar Órdenes de Trabajo';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
         
+        //$data['ots'] = $this->ots_model->gets();
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('prueba/datatable');
+        $this->load->view('layout_lte/footer');
+    
+    }
+    
+    public function datatable_ajax() {
+        $this->load->view('prueba/datatable_ajax');
+    }
+    
+    public function prueba_ajax() {
+        $this->load->model(array(
+            'ots_model',
+            'numeros_serie_model'
+        ));
+        $data['data'] = $this->ots_model->gets();
+        foreach ($data['data'] as $key => $value) {
+            $data['data'][$key]['numeros_serie'] = $this->numeros_serie_model->gets_por_ot($value['idot']);
+        } 
+        echo json_encode($data);
     }
 }
 ?>

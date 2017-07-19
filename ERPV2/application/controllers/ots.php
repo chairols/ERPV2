@@ -26,12 +26,16 @@ class Ots extends CI_Controller {
         $this->load->helper(array(
             'url'
         ));
+        
+        $this->r_session->check($this->session->all_userdata());
     }
     
     /*
      * Terminado
      */
-    public function index() {
+    /*
+     * Anterior
+    public function index2() {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);
         $data['title'] = 'Listar Órdenes de Trabajo';
@@ -45,6 +49,35 @@ class Ots extends CI_Controller {
         $this->load->view('layout_lte/menu');
         $this->load->view('ots/index');
         $this->load->view('layout_lte/footer');
+    }
+     * */
+     
+    
+    public function index() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Listar Órdenes de Trabajo';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        //$data['ots'] = $this->ots_model->gets();
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('ots/index');
+        $this->load->view('layout_lte/footer');
+    }
+    
+    public function index_ajax() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        
+        $data['data'] = $this->ots_model->gets();
+        foreach ($data['data'] as $key => $value) {
+            $data['data'][$key]['numeros_serie'] = $this->numeros_serie_model->gets_por_ot($value['idot']);
+        } 
+        echo json_encode($data);
     }
     
     public function ver($idot = null) {
