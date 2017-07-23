@@ -221,6 +221,43 @@ class Pedidos extends CI_Controller {
         
         redirect('/pedidos/asociar_ot/'.$idpedido_item.'/', 'refresh');
     }
+    
+    public function modificar_item($idpedido_item) {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Modificar Items de Pedido';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $this->form_validation->set_rules('cantidad', 'Cantidad', 'required|numeric');
+        $this->form_validation->set_rules('articulo', 'Artículo', 'required|integer');
+        $this->form_validation->set_rules('precio', 'Precio', 'required|numeric');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $datos = array(
+                'cantidad' => $this->input->post('cantidad'),
+                'idarticulo' => $this->input->post('articulo'),
+                'precio' => $this->input->post('precio')
+            );
+            
+            $this->pedidos_model->update_item($datos, $idpedido_item);
+        }
+        
+        $data['item_pedido'] = $this->pedidos_model->get_item_where($idpedido_item);
+        $data['pedido'] = $this->pedidos_model->get_where(array('idpedido' => $data['item_pedido']['idpedido']));
+        $data['cliente'] = $this->clientes_model->get_where(array('idcliente' => $data['pedido']['idcliente']));
+        $data['cliente']['provincia'] = $this->provincias_model->get_where(array('idprovincia' => $data['cliente']['idprovincia']));
+        $data['pedido']['moneda'] = $this->monedas_model->get_where(array('idmoneda' => $data['pedido']['idmoneda']));
+        $data['articulos'] = $this->articulos_model->gets();
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('pedidos/modificar_item');
+        $this->load->view('layout_lte/footer');
+    }
 }
 
 ?>

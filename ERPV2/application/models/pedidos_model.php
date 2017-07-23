@@ -173,6 +173,9 @@ class Pedidos_model extends CI_Model {
         return $query->result_array();
     }
     
-    
+    public function update_item($datos, $idpedido_item) {
+        $id = array('idpedido_item' => $idpedido_item);
+        $this->db->update('pedidos_items', $datos, $id);
+    }
 }
 ?>

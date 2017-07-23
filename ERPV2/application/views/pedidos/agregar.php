@@ -8,6 +8,7 @@
             <ul class="nav nav-tabs nav-tabs-justified">
                 <li><a href="/pedidos/">Listar pedidos</a></li>
                 <li class="active"><a href="/pedidos/agregar/">Agregar pedido</a></li>
+                <li><a href="/pedidos/agregar_items">Modificar Pedido</a></li>
             </ul>
         </div>
         
