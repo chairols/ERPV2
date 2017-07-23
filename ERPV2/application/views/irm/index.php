@@ -20,11 +20,6 @@
                     <div class="box-header">
                         <h3 class="box-title"><?=$title?></h3>
                     </div>
-                    <div id="gears">
-                        <div class="overlay">
-                            <i class="fa fa-refresh fa-spin"></i>
-                        </div>
-                    </div>
                     <div id="tabla" style="display: none;">
                         <div class="box-body">
                             <table class="table table-hover table-bordered table-condensed" id="datatable-desc">
@@ -81,6 +76,11 @@
                                     <?php } ?>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                    <div id="gears">
+                        <div class="overlay">
+                            <i class="fa fa-refresh fa-spin"></i>
                         </div>
                     </div>
                 </div>

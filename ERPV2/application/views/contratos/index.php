@@ -18,15 +18,9 @@
         
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="box">
+                <div class="box box-primary">
                     <div class="box-header">
                         <h3 class="box-title"><?=$title?></h3>
-                    </div>
-                    <div id="gears">
-                        <div class="text-center">
-                            <img src="/assets/AdminLTE-2.3.11/gears.gif">
-                            <br><br>
-                        </div>
                     </div>
                     <div id="tabla" style="display: none;">
                         <div class="box-body">
@@ -62,6 +56,11 @@
                                     <?php } ?>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                    <div id="gears">
+                        <div class="overlay">
+                            <i class="fa fa-refresh fa-spin"></i>
                         </div>
                     </div>
                 </div>
