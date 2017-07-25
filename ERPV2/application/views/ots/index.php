@@ -106,6 +106,13 @@ tr.shown td.details-control {
                     '<td>'+ns.substr(0, ns.length-2)+'</td>'+
                 '</tr>';
         }
+        if(d.observaciones != '') {
+            html = d.observaciones.replace(/\n/g, "<br>");
+            v += '<tr>'+
+                    '<td><strong>Observaciones</strong></td>'+
+                    '<td>'+html+'</td>'
+                '</tr>';
+        }
         v += '<tr>'+
                 '<td><strong>Acciones</strong></td>'+
                 '<td>'+
