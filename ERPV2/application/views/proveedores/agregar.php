@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Provincia</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select name="provincia" class="select2 form-control">
+                                    <select name="provincia" class="chosen form-control">
                                         <?php foreach($provincias as $provincia) { ?>
                                         <option value="<?=$provincia['idprovincia']?>"><?=$provincia['provincia']?></option>
                                         <?php } ?>
