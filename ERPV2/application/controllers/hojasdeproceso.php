@@ -128,6 +128,19 @@ class Hojasdeproceso extends CI_Controller {
         $data['menu'] = $this->r_session->get_menu();
         $data['idhojadeproceso'] = $idhojadeproceso;
         
+        $this->form_validation->set_rules('archivo', 'Archivo', 'required');
+        $this->form_validation->set_rules('revision', 'Revision', 'required|numeric');
+        $this->form_validation->set_rules('elaboro', 'Elaboró', 'required|numeric');
+        $this->form_validation->set_rules('reviso', 'Revisó', 'required|numeric');
+        $this->form_validation->set_rules('aprobo', 'Aprobó', 'required');
+        $this->form_validation->set_rules('fecha_aprobación', 'Fecha de Aprobación', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            
+        } else {
+            
+        }
+        
         $data['articulos'] = $this->articulos_model->gets();
         $data['usuarios'] = $this->usuarios_model->gets();
         
