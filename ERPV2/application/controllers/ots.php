@@ -724,6 +724,44 @@ class Ots extends CI_Controller {
         $this->load->view('layout_lte/footer');
     }
     
+    
+    public function trazabilidad_ajax($idot = null) {
+        $session = $this->session->all_userdata();
+        $data['title'] = 'Trazabilidad';
+        $data['session'] = $session;
+        //$data['segmento'] = $this->uri->segment(1);
+        //$data['menu'] = $this->r_session->get_menu();
+        
+        if(!$idot)
+            redirect('/ots/', 'refresh');
+        
+        
+        
+        $data['ot'] = $this->ots_model->get_where(array('idot' => $idot));
+        $data['articulo'] = $this->articulos_model->get_where(array('idarticulo' => $data['ot']['idarticulo']));
+        $data['producto'] = $this->productos_model->get_where(array('idproducto' => $data['articulo']['idproducto']));
+        $data['fabrica'] = $this->fabricas_model->get_where(array('idfabrica' => $data['ot']['idfabrica']));
+        $data['plano'] = $this->planos_model->get_where(array('idplano' => $data['articulo']['idplano']));
+        
+        $data['pedidos'] = $this->ots_model->gets_pedidos_asociados($idot);
+        //$data['ocs'] = $this->ots_model->gets_ocs_asociadas($idot);
+        
+        $data['certificados'] = $this->certificados_model->gets_certificados_por_ot($idot);
+        
+        $data['irms'] = $this->irm_model->gets_items_por_ot($idot);
+        foreach($data['irms'] as $key => $value) {
+            $data['irms'][$key]['controles'] = $this->irm_model->gets_controles_por_idirm_item($value['idirm_item']);
+        }
+        
+        $monedas = $this->monedas_model->gets();
+        foreach ($monedas as $key => $value) {
+            $data['ocs'][] = $this->ots_model->gets_ocs_asociadas_por_monedas($idot, $value['idmoneda']);
+        }
+        
+        $this->load->view('ots/trazabilidad_ajax', $data);
+        
+    }
+    
     public function get_ot_ajax($idot = null) {
         $session = $this->session->all_userdata();
         $this->r_session->check($session);

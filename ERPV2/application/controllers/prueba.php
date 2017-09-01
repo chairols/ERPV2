@@ -328,5 +328,20 @@ class Prueba extends CI_Controller {
         } 
         echo json_encode($data);
     }
+    
+    public function modal() {
+        $session = $this->session->all_userdata();
+        $data['title'] = 'Listar Órdenes de Trabajo';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        //$data['ots'] = $this->ots_model->gets();
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('prueba/modal');
+        $this->load->view('layout_lte/footer');
+    }
 }
 ?>

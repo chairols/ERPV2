@@ -57,7 +57,6 @@ tr.shown td.details-control {
     </section>
 </div>
 
-
 <script type="text/javascript">
     /* Formatting function for row details - modify as you need */
     function format ( d ) {
@@ -141,7 +140,7 @@ tr.shown td.details-control {
                             '<i class="fa fa-clock-o"></i>'+
                         '</button>'+
                     '</a>'+
-                    '<a href="/ots/trazabilidad/'+d.idot+'/" data-pacement="top" data-toggle="tooltip" data-original-title="Trazabilidad" class="tooltips">'+
+                    '<a onclick="trazabilidad('+d.idot+');" data-pacement="top" data-toggle="tooltip" data-original-title="Trazabilidad" class="tooltips">'+
                         '<button class="btn btn-success btn-xs">'+
                             '<i class="fa fa-exchange"></i>'+
                         '</button>'+
@@ -152,7 +151,7 @@ tr.shown td.details-control {
 
         return v;
     }
-     
+    
     function inicio() {
         var table = $('#example').DataTable( {
             "ajax": "/ots/index_ajax/",
@@ -284,4 +283,14 @@ tr.shown td.details-control {
                 }
             );
         }
+        
+    function trazabilidad(idot) {
+       $.ajax({
+            type: 'GET',
+            url: '/ots/trazabilidad_ajax/'+idot+'/',
+            success: function(data) {
+                alertify.alert().set({'startMaximized':true, 'title':'Trazabilidad', 'message':data}).show(); 
+            }
+        });
+    }
 </script>
