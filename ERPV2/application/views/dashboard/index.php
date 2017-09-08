@@ -78,5 +78,142 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <?php
+            $appservercolor = null;
+            $appservericono = null;
+            if($FEParamHomo['FEDummyResult']->AppServer == 'OK') {
+                $appservercolor = 'bg-green-gradient';
+                $appservericono = 'fa-thumbs-o-up';
+            } else {
+                $appservercolor = 'bg-red-gradient';
+                $appservericono = 'fa-thumbs-o-down';
+            }
+            ?>
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box <?=$appservercolor?>">
+                    <div class="inner">
+                        <h3><?=$FEParamHomo['FEDummyResult']->AppServer?></h3>
+                        <p>AppServer AFIP Homologación</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa <?=$appservericono?>"></i>
+                    </div>
+                </div>
+            </div>
+            <?php
+            $dbservercolor = null;
+            $dbservericono = null;
+            if($FEParamHomo['FEDummyResult']->DbServer == 'OK') {
+                $dbservercolor = 'bg-green-gradient';
+                $dbservericono = 'fa-thumbs-o-up';
+            } else {
+                $dbservercolor = 'bg-red-gradient';
+                $dbservericono = 'fa-thumbs-o-down';
+            }
+            ?>
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box <?=$dbservercolor?>">
+                    <div class="inner">
+                        <h3><?=$FEParamHomo['FEDummyResult']->DbServer?></h3>
+                        <p>DbServer AFIP Homologación</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa <?=$dbservericono?>"></i>
+                    </div>
+                </div>
+            </div>
+            <?php
+            $authservercolor = null;
+            $authservericono = null;
+            if($FEParamHomo['FEDummyResult']->AuthServer == 'OK') {
+                $dbservercolor = 'bg-green-gradient';
+                $dbservericono = 'fa-thumbs-o-up';
+            } else {
+                $dbservercolor = 'bg-red-gradient';
+                $dbservericono = 'fa-thumbs-o-down';
+            }
+            ?>
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-green-gradient">
+                    <div class="inner">
+                        <h3><?=$FEParamHomo['FEDummyResult']->AuthServer?></h3>
+                        <p>AuthServer AFIP Homologación</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-thumbs-o-up"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <?php
+            $appservercolor = null;
+            $appservericono = null;
+            if($FEParam['FEDummyResult']->AppServer == 'OK') {
+                $appservercolor = 'bg-green-gradient';
+                $appservericono = 'fa-thumbs-o-up';
+            } else {
+                $appservercolor = 'bg-red-gradient';
+                $appservericono = 'fa-thumbs-o-down';
+            }
+            ?>
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box <?=$appservercolor?>">
+                    <div class="inner">
+                        <h3><?=$FEParam['FEDummyResult']->AppServer?></h3>
+                        <p>AppServer AFIP Producción</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa <?=$appservericono?>"></i>
+                    </div>
+                </div>
+            </div>
+            <?php
+            $dbservercolor = null;
+            $dbservericono = null;
+            if($FEParam['FEDummyResult']->DbServer == 'OK') {
+                $dbservercolor = 'bg-green-gradient';
+                $dbservericono = 'fa-thumbs-o-up';
+            } else {
+                $dbservercolor = 'bg-red-gradient';
+                $dbservericono = 'fa-thumbs-o-down';
+            }
+            ?>
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box <?=$dbservercolor?>">
+                    <div class="inner">
+                        <h3><?=$FEParam['FEDummyResult']->DbServer?></h3>
+                        <p>DbServer AFIP Producción</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa <?=$dbservericono?>"></i>
+                    </div>
+                </div>
+            </div>
+            <?php
+            $authservercolor = null;
+            $authservericono = null;
+            if($FEParam['FEDummyResult']->AuthServer == 'OK') {
+                $dbservercolor = 'bg-green-gradient';
+                $dbservericono = 'fa-thumbs-o-up';
+            } else {
+                $dbservercolor = 'bg-red-gradient';
+                $dbservericono = 'fa-thumbs-o-down';
+            }
+            ?>
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-green-gradient">
+                    <div class="inner">
+                        <h3><?=$FEParam['FEDummyResult']->AuthServer?></h3>
+                        <p>AuthServer AFIP Producción</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-thumbs-o-up"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </div>

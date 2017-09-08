@@ -146,7 +146,7 @@
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>Total</td>
-                            <td class="alert-success bold"><?=$moneda.' '.number_format($total, 2)?></td>
+                            <td class="alert-info bold"><?=$moneda.' '.number_format($total, 2)?></td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
