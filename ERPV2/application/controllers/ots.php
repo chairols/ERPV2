@@ -785,6 +785,22 @@ class Ots extends CI_Controller {
 
         $this->load->view('ots/get_numeros_de_serie', $data);
     }
+    
+    public function sin_pedidos() {
+        $session = $this->session->all_userdata();
+        $this->r_session->check($session);
+        $data['title'] = 'Sin Pedidos';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        
+        $data['ots'] = $this->ots_model->gets_sin_pedidos();
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('ots/sin_pedidos');
+        $this->load->view('layout_lte/footer');
+    }
 }
 
 ?>

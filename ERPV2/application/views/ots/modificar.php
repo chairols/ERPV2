@@ -11,8 +11,7 @@
                 <li class="active"><a href="/ots/modificar/">Modificar O.T.</a></li>
                 <li><a href="/ots/ver/">Ver O.T.</a></li>
                 <li><a href="/ots/borradas/">O.T.S. Borradas</a></li>
-                <li><a href="/ots/pendientes/">O.T.S. Pendientes</a></li>
-                <li><a href="/ots/vencidas/">O.T.S. Vencidas</a></li>
+                <li><a href="/ots/sin_pedidos/">O.T.S. Sin Pedidos</a></li>
             </ul>
         </div>
         

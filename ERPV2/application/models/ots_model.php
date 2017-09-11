@@ -241,5 +241,19 @@ class Ots_model extends CI_Model {
                                         m.idmoneda = $idmoneda");
         return $query->result_array();
     }
+    
+    public function gets_sin_pedidos() {
+        $query = $this->db->query("SELECT o.*, pio.idpedido_item, f.fabrica, a.articulo, a.idarticulo, p.producto, pl.plano, pl.idplano
+                                    FROM 
+                                    (((((ots o LEFT JOIN pedidos_items_ots pio ON o.idot = pio.idot AND o.activo = 1)
+                                    INNER JOIN fabricas f ON o.idfabrica = f.idfabrica)
+                                    INNER JOIN articulos a ON o.idarticulo = a.idarticulo) 
+                                    INNER JOIN productos p ON a.idproducto = p.idproducto)
+                                    LEFT JOIN planos pl ON a.idplano = pl.idplano)
+                                    ORDER BY
+                                        o.idot DESC");
+        
+        return $query->result_array();
+    }
 }
 ?>
