@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Artículo</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select name="articulo" id="articulo" class="select2 form-control">
+                                    <select name="articulo" id="articulo" class="chosen form-control">
                                         <?php foreach($articulos as $articulo) { ?>
                                         <option value="<?=$articulo['idarticulo']?>"><?=$articulo['producto']?> <?=$articulo['articulo']?> <?=$articulo['plano']?> Rev <?=$articulo['revision']?> Pos <?=$articulo['posicion']?></option>
                                         <?php } ?>
@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Cliente</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select name="cliente" id="cliente" class="select2 form-control">
+                                    <select name="cliente" id="cliente" class="chosen form-control">
                                         <?php foreach($clientes as $cliente) { ?>
                                         <option value="<?=$cliente['idcliente']?>"><?=$cliente['cliente']?></option>
                                         <?php } ?>
@@ -68,7 +68,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Plantilla</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select name="plantilla" id="plantilla" class="select2 form-control">
+                                    <select name="plantilla" id="plantilla" class="chosen form-control">
                                         <?php foreach($plantillas as $plantilla) { ?>
                                         <option value="<?=$plantilla['idplantilla']?>"><?=$plantilla['titulo']?></option>
                                         <?php } ?>
