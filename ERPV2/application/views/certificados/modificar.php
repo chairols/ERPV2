@@ -31,9 +31,9 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Artículo</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select id="articulo" class="select2 form-control">
+                                    <select id="articulo" class="chosen form-control">
                                     <?php foreach($articulos as $articulo) { ?>
-                                        <option value="<?=$articulo['idarticulo']?>"<?=($articulo['idarticulo']==$certificado['idarticulo'])?" selected":""?>><?=$articulo['producto']?> <?=$articulo['articulo']?></option>
+                                        <option value="<?=$articulo['idarticulo']?>"<?=($articulo['idarticulo']==$certificado['idarticulo'])?" selected":""?>><?=$articulo['producto']?> <?=$articulo['articulo']?> <?=$articulo['plano']?> Rev <?=$articulo['revision']?> Pos <?=$articulo['posicion']?></option>
                                     <?php } ?>
                                     </select>
                                 </div>
@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Cliente</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select id="cliente" class="select2 form-control">
+                                    <select id="cliente" class="chosen form-control">
                                     <?php foreach($clientes as $cliente) { ?>
                                         <option value="<?=$cliente['idcliente']?>"<?=($cliente['idcliente']==$certificado['idcliente'])?" selected":""?>><?=$cliente['cliente']?></option>
                                     <?php } ?>
