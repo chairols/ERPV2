@@ -78,6 +78,8 @@
                 </div>
             </div>
         </div>
+        
+        <!--
         <div class="row">
             <?php
             $appservercolor = null;
@@ -215,5 +217,6 @@
                 </div>
             </div>
         </div>
+        -->
     </section>
 </div>

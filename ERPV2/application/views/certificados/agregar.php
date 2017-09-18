@@ -33,7 +33,7 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select name="articulo" id="articulo" class="select2 form-control">
                                         <?php foreach($articulos as $articulo) { ?>
-                                        <option value="<?=$articulo['idarticulo']?>"><?=$articulo['producto']?> <?=$articulo['articulo']?></option>
+                                        <option value="<?=$articulo['idarticulo']?>"><?=$articulo['producto']?> <?=$articulo['articulo']?> <?=$articulo['plano']?> Rev <?=$articulo['revision']?> Pos <?=$articulo['posicion']?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

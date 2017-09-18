@@ -34,7 +34,7 @@ class Dashboard extends CI_Controller {
         $data['irm_pendientes'] = $this->irm_model->gets_pendientes_de_recepcion();
         
         
-        
+        /*
         $wsfe = new Wsfe();
         $wsfe->CUIT = floatval(33647656779);
         $wsfe->setURL("https://wswhomo.afip.gov.ar/wsfev1/service.asmx");
@@ -44,6 +44,7 @@ class Dashboard extends CI_Controller {
         $wsfe->CUIT = floatval(33647656779);
         $wsfe->setURL("https://servicios1.afip.gov.ar/wsfev1/service.asmx");
         $data['FEParam'] = $wsfe->FEParamGet();
+        */
         
         $this->load->view('layout_lte/header', $data);
         $this->load->view('layout_lte/menu');
