@@ -295,6 +295,15 @@ class Articulos extends CI_Controller {
         $this->load->view('layout_lte/footer');
         
     }
+    
+    public function gets_ajax() {
+        $data = $this->articulos_model->gets();
+        
+        foreach ($data as $key => $value) {
+            $data[$key]['completo'] = $value['producto'].' '.$value['articulo'].' '.$value['plano'].' Rev '.$value['revision'].' Pos '.$value['posicion'];
+        }
+        echo json_encode($data);
+    }
 }
 
 ?>

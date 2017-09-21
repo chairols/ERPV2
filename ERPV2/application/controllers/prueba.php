@@ -343,5 +343,34 @@ class Prueba extends CI_Controller {
         $this->load->view('prueba/modal');
         $this->load->view('layout_lte/footer');
     }
+    
+    
+    public function ml() {
+        $session = $this->session->all_userdata();
+        $data['title'] = 'Listar Órdenes de Trabajo';
+        $data['session'] = $session;
+        $data['segmento'] = $this->uri->segment(1);
+        $data['menu'] = $this->r_session->get_menu();
+        $data['alerta'] = $this->input->post();
+        
+        
+        
+        $this->load->view('layout_lte/header', $data);
+        $this->load->view('layout_lte/menu');
+        $this->load->view('prueba/ml');
+        $this->load->view('layout_lte/footer');
+    }
+    
+    public function ml_ajax($condicion = '') {
+        $this->load->model(array(
+            'articulos_model'
+        ));
+        $data = $this->articulos_model->gets();
+        
+        foreach ($data as $key => $value) {
+            $data[$key]['completo'] = $value['producto'].' '.$value['articulo'].' '.$value['plano'].' Rev '.$value['revision'].' Pos '.$value['posicion'];
+        }
+        echo json_encode($data);
+    }
 }
 ?>

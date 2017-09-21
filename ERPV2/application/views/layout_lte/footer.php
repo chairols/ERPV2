@@ -232,6 +232,8 @@
 <script src="/assets/AdminLTE-2.3.11/plugins/ckeditor_4.6.2_ffc6e191bae9/ckeditor/ckeditor.js"></script>
 <!--<script src="/assets/AdminLTE-2.3.11/plugins/ckeditor_4.5.11_full/ckeditor.js"></script>-->
 <!--<script src="/assets/AdminLTE-2.3.11/plugins/ckeditor/ckeditor.js"></script>-->
+<!-- Easy Autocomplete -->
+<script src="/assets/AdminLTE-2.3.11/plugins/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/assets/AdminLTE-2.3.11/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
