@@ -304,7 +304,8 @@ class Prueba extends CI_Controller {
         $data['segmento'] = $this->uri->segment(1);
         $data['menu'] = $this->r_session->get_menu();
         
-        //$data['ots'] = $this->ots_model->gets();
+        $data['ots'] = $this->ots_model->gets();
+        
         
         $this->load->view('layout_lte/header', $data);
         $this->load->view('layout_lte/menu');
@@ -365,12 +366,17 @@ class Prueba extends CI_Controller {
         $this->load->model(array(
             'articulos_model'
         ));
-        $data = $this->articulos_model->gets();
+        //$data = $this->articulos_model->gets();
+        $condicion = str_replace('%20', ' ', $condicion);
+        $condicion = addslashes($condicion);
+        $data = $this->articulos_model->gets_product($condicion);
         
         foreach ($data as $key => $value) {
-            $data[$key]['completo'] = $value['producto'].' '.$value['articulo'].' '.$value['plano'].' Rev '.$value['revision'].' Pos '.$value['posicion'];
+            //$data[$key]['completo'] = $value['producto'].' '.$value['articulo'].' '.$value['plano'].' Rev '.$value['revision'].' Pos '.$value['posicion'];
+            $data[$key]['completo'] = $value['code'];
         }
         echo json_encode($data);
     }
+    
 }
 ?>

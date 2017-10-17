@@ -9,7 +9,8 @@ tr.shown td.details-control {
 }
 
 </style>
-
+<link rel="stylesheet" href="/assets/AdminLTE-2.3.11/plugins/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+<script src="/assets/AdminLTE-2.3.11/plugins/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
 <div class="content-wrapper">
     <section class="content">
         <div class="row">
@@ -32,6 +33,26 @@ tr.shown td.details-control {
                                 </tr>
                             </thead>
                         </table>
+                        <br><br>
+                        <table id="algo" class="table table-striped table-bordered table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>O.T.</th>
+                                    <th>Producto</th>
+                                    <th>Artículo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($ots as $ot) { ?>
+                                <tr>
+                                    <td><?=$ot['numero_ot']?></td>
+                                    <td><?=$ot['producto']?></td>
+                                    <td><?=$ot['articulo']?></td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                        
                     </div>
                 </div>
             </div>
@@ -128,6 +149,14 @@ tr.shown td.details-control {
     }
      
     function inicio() {
+        
+        $("#algo").DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'print'
+            ]
+        });
+        
         var table = $('#example').DataTable( {
             "ajax": "/prueba/prueba_ajax/",
             "columns": [
@@ -215,47 +244,50 @@ tr.shown td.details-control {
     }
     
     function borrar(idot, numero_ot) {
-            alertify.defaults.transition = "slide";
-            alertify.defaults.theme.ok = "btn btn-success";
-            alertify.defaults.theme.cancel = "btn btn-danger";
-            alertify.defaults.theme.input = "form-control";
-            alertify.defaults.notifier = {
-                delay: 3,
-                position: 'bottom-right',
-                closeButton: false
-            };
-            alertify.defaults.glossary = {
-                ok: "Confirmar",
-                cancel: "Cancelar"
-            };
-            
-            alertify.confirm(
-                "<strong>¿Está seguro?</strong>",
-                "Se eliminará la Orden de Trabajo "+numero_ot,
-                function() {
-                    $.ajax({
-                        type: 'GET',
-                        url: '/ots/borrar/'+idot,
-                        //data: datos,
-                        beforeSend: function() {
-                            
-                        },
-                        success: function(data) {
-                            alertify.defaults.glossary = {
-                                ok: "Aceptar",
-                            };
-                            resultado = $.parseJSON(data);
-                            if(resultado['status'] == 'error') {
-                                alertify.alert('<strong>ERROR</strong>', resultado['data']);
-                            } else if(resultado['status'] == 'ok') {
-                                alertify.success("Se eliminó correctamente");
-                            }
+        alertify.defaults.transition = "slide";
+        alertify.defaults.theme.ok = "btn btn-success";
+        alertify.defaults.theme.cancel = "btn btn-danger";
+        alertify.defaults.theme.input = "form-control";
+        alertify.defaults.notifier = {
+            delay: 3,
+            position: 'bottom-right',
+            closeButton: false
+        };
+        alertify.defaults.glossary = {
+            ok: "Confirmar",
+            cancel: "Cancelar"
+        };
+
+        alertify.confirm(
+            "<strong>¿Está seguro?</strong>",
+            "Se eliminará la Orden de Trabajo "+numero_ot,
+            function() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/ots/borrar/'+idot,
+                    //data: datos,
+                    beforeSend: function() {
+
+                    },
+                    success: function(data) {
+                        alertify.defaults.glossary = {
+                            ok: "Aceptar",
+                        };
+                        resultado = $.parseJSON(data);
+                        if(resultado['status'] == 'error') {
+                            alertify.alert('<strong>ERROR</strong>', resultado['data']);
+                        } else if(resultado['status'] == 'ok') {
+                            alertify.success("Se eliminó correctamente");
                         }
-                    });
-                },
-                function() {
-                    alertify.error("Se canceló la operación");
-                }
-            );
-        }
+                    }
+                });
+            },
+            function() {
+                alertify.error("Se canceló la operación");
+            }
+        );
+    }
+     
+    
+        
 </script>

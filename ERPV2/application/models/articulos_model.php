@@ -51,6 +51,17 @@ class Articulos_model extends CI_Model {
         return $query->result_array();
     }
     
+    public function gets_product($condicion) {
+        $query = $this->db->query("SELECT * 
+                                    FROM 
+                                        product
+                                    WHERE
+                                        code LIKE '%".$condicion."%'
+                                    LIMIT
+                                        20");
+        
+        return $query->result_array();
+    }
     /*
      * 
      *  articulos/borrados

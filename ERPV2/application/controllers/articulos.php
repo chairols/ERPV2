@@ -296,7 +296,7 @@ class Articulos extends CI_Controller {
         
     }
     
-    public function gets_ajax() {
+    public function gets_json() {
         $data = $this->articulos_model->gets();
         
         foreach ($data as $key => $value) {

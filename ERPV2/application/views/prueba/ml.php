@@ -36,13 +36,19 @@
 </div>
 
 <script type="text/javascript">
+    
+    
+    
+    
     function inicio() {
         
         var options = {
-            url: "/prueba/ml_ajax/",
+            url: function(frase) {
+                return "/prueba/ml_ajax/"+frase;
+            },
             getValue: "completo",
             list: {
-                maxNumberOfElements: 8,
+                maxNumberOfElements: 20,
                 match: {
                     enabled: true
                 },
@@ -50,14 +56,15 @@
                     enabled: true
                 },
                 onSelectItemEvent: function() {
-                    var value = $("#articulo").getSelectedItemData().idarticulo;
+                    //var value = $("#articulo").getSelectedItemData().idarticulo;
+                    var value = $("#articulo").getSelectedItemData().product_id;
 
                     $("#idarticulo").val(value);
+                    
 		}
-                
             }
         };
-
+       
         $("#articulo").easyAutocomplete(options);
     }
 </script>

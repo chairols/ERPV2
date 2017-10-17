@@ -28,6 +28,7 @@
                                         <th><strong>Pedido #</strong></th>
                                         <th><strong>Cliente</strong></th>
                                         <th><strong>Orden de Compra</strong></th>
+                                        <th><strong>Fecha</strong></th>
                                         <th><strong>Adjunto</strong></th>
                                         <th><strong>Acción</strong></th>
                                     </tr>
@@ -38,6 +39,7 @@
                                         <td><?=$pedido['idpedido']?></td>
                                         <td><?=$pedido['cliente']?></td>
                                         <td><?=$pedido['ordendecompra']?></td>
+                                        <td><?=date('d/m/Y', strtotime($pedido['timestamp']))?></td>
                                         <td><a href="<?=$pedido['adjunto']?>" target="_blank" data-pacement="top" data-toggle="tooltip" data-original-title="Ver Adjunto" class="tooltips">
                                             <?=($pedido['adjunto']!='')?"<button class='btn btn-info btn-xs'><i class='fa fa-file'></i></button>":""?>
                                             </a>
